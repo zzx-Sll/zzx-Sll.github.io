@@ -157,6 +157,84 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/15/uniapp%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="键盘敲烂，工资过万">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/15/uniapp%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" class="post-title-link" itemprop="url">uniapp开发遇到的坑</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-15 22:19:37" itemprop="dateCreated datePublished" datetime="2020-12-15T22:19:37+08:00">2020-12-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-17 22:48:29" itemprop="dateModified" datetime="2020-12-17T22:48:29+08:00">2020-12-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">工作中遇到的问题</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="uniapp开发遇到的坑"><a href="#uniapp开发遇到的坑" class="headerlink" title="uniapp开发遇到的坑"></a>uniapp开发遇到的坑</h3><p>####1 video和swiper组合使用的问题</p>
+<p>今天在工作中负责开发轮播图和视频相结合的功能，起初觉得很简单。就是简单地swiper+video标签，就能实现功能，但是事情并没有我想象的那么简单。在浏览器调试是没有任何问题，但是在真机上调试时发现视频并不会滚动。后来在官方文档上查阅了才发现，这是由于video原生标签优先级比组件标签的优先级高。导致无法轮播。后面换了一种方式来解决问题：官方推荐了一种自定义插件的方法，利用的思想就是：轮播的还是图片，但是当我点击图片时，让图片隐藏。视频自动播放。这时就不会进入轮播，而是进入了视频的全屏播放界面。当我退出播放时用重新进入轮播的界面。通过监听video标签的timeupdate事件和fullscreenchange事件来完成操作。</p>
+<h4 id="2-在uniapp中让文字换行的问题"><a href="#2-在uniapp中让文字换行的问题" class="headerlink" title="2 在uniapp中让文字换行的问题"></a>2 在uniapp中让文字换行的问题</h4><p>在uniapp中设置文本多行显示需要设置word-break:break-all; -webkit-lin-clamp:设置行数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">overflow: hidden;</span><br><span class="line">word-<span class="keyword">break</span>: <span class="keyword">break</span>-all;  <span class="comment">/* break-all(允许在单词内换行。) */</span></span><br><span class="line">text-overflow: ellipsis;  <span class="comment">/* 超出部分省略号 */</span></span><br><span class="line">display: -webkit-box; <span class="comment">/** 对象作为伸缩盒子模型显示 **/</span></span><br><span class="line">-webkit-box-orient: vertical; <span class="comment">/** 设置或检索伸缩盒对象的子元素的排列方式 **/</span></span><br><span class="line">-webkit-line-clamp: <span class="number">2</span>; <span class="comment">/** 显示的行数 **/</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/13/learn-TypeScipt02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -567,14 +645,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
