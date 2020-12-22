@@ -157,6 +157,76 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/21/learn-TyperScript03/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="键盘敲烂，工资过万">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/21/learn-TyperScript03/" class="post-title-link" itemprop="url">learn-TyperScript03</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-12-21 23:04:36 / 修改时间：23:07:55" itemprop="dateCreated datePublished" datetime="2020-12-21T23:04:36+08:00">2020-12-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="1-浏览器中运行TS"><a href="#1-浏览器中运行TS" class="headerlink" title="1 浏览器中运行TS"></a>1 浏览器中运行TS</h3><p>注意：浏览器中无法直接运行TS文件，需要 tsc xxx.ts将ts文件转换为js文件，才能运行</p>
+<p>简便方法： tsc –watch xxx.ts文件，每次更新修改文件，不需要重新tsc xxx.ts。</p>
+<p>解释：–watch 表示启用监视模式，只要重新保存了ts文件，就会自动调用tsc将ts转为js。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/15/uniapp%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -266,7 +336,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-20 23:25:52" itemprop="dateModified" datetime="2020-12-20T23:25:52+08:00">2020-12-20</time>
+                <time title="修改时间：2020-12-21 21:59:14" itemprop="dateModified" datetime="2020-12-21T21:59:14+08:00">2020-12-21</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -325,6 +395,10 @@
 <h3 id="7-对象方法的类型注解"><a href="#7-对象方法的类型注解" class="headerlink" title="7 对象方法的类型注解"></a>7 对象方法的类型注解</h3><p>问题：如何给对象中的方法，添加类型注解</p>
 <p>技巧：vscode中，将鼠标放在变量名称上，就会给出该变量的类型注解。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//箭头：(=&gt;)左边小括号中的内容：表示方法的参数类型,(=&gt;)右边表示方法的返回值类型。</span></span><br><span class="line"><span class="comment">//方法类型注解的关键点：1 参数 2返回值</span></span><br><span class="line"><span class="keyword">let</span> person: &#123;</span><br><span class="line">  Say: <span class="function">() =&gt;</span> <span class="keyword">void</span></span><br><span class="line">  Sing: <span class="function">(<span class="params">song: string</span>) =&gt;</span> <span class="keyword">void</span></span><br><span class="line">  Sum:<span class="function">(<span class="params">num1:number,num2:number</span>)=&gt;</span> number</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> person = &#123;</span><br><span class="line">  Say: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Hi&#x27;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  Sing:<span class="function">(<span class="params">song:string</span>)=&gt;</span> &#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">&#x27;唱&#x27;</span>+song);</span><br><span class="line">  &#125;,</span><br><span class="line">  Sum: <span class="function">(<span class="params">num1: number, num2: number</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> num1+num2</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="8-接口的使用"><a href="#8-接口的使用" class="headerlink" title="8 接口的使用"></a>8 接口的使用</h3><p>直接在对象名称后面写类型注解的坏处：1 代码结构不简洁 2 无法复用类型注解</p>
+<p>接口：为对象类型注解命名，并为你的代码简历契约来约束对象的结构。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// interface关键词指定接口</span></span><br><span class="line">interface person&#123;</span><br><span class="line">  name: string</span><br><span class="line">  age: number</span><br><span class="line">  sing:<span class="function">()=&gt;</span><span class="keyword">void</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ldh: person = &#123;</span><br><span class="line">  name: <span class="string">&#x27;刘德华&#x27;</span>,</span><br><span class="line">  age: <span class="number">18</span>,</span><br><span class="line">  sing: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">console</span>.log(ldh.name+<span class="string">&#x27;今年&#x27;</span>+ldh.age+<span class="string">&#x27;岁&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">ldh.sing()</span><br></pre></td></tr></table></figure>
 
 
       
@@ -668,7 +742,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
