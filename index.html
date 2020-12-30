@@ -157,6 +157,324 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/27/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="键盘敲烂，工资过万">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/27/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">算法与数据结构</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-27 22:09:44" itemprop="dateCreated datePublished" datetime="2020-12-27T22:09:44+08:00">2020-12-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-30 10:41:52" itemprop="dateModified" datetime="2020-12-30T10:41:52+08:00">2020-12-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="算法与数据结构"><a href="#算法与数据结构" class="headerlink" title="算法与数据结构"></a>算法与数据结构</h3><h4 id="数据结构："><a href="#数据结构：" class="headerlink" title="数据结构："></a>数据结构：</h4><p>数据结构是计算机存储、组织数据的方式，指的是相互之间存在一种或多种特定关系的数据元素集合。</p>
+<p>数据结构就是用来描述数据与数据之间的关系。</p>
+<p><strong>线性结构</strong>：元素之间一对一的关系</p>
+<p><strong>非线性结构：</strong>元素之间一对多的关系。</p>
+<p><strong>存储方式：</strong></p>
+<p>顺序存储：Set、Array</p>
+<p>散列存储：Map、Object</p>
+<p>链式存储：链表</p>
+<h4 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h4><p>栈是一种遵循先进后出原则的有序集合。</p>
+<p>栈的特点是只能在某一端进行添加或删除数据，遵循先进后出的原则。</p>
+<p>插入操作在栈中被称为入栈(push)</p>
+<p>删除操作栈中被称为退栈(pop)</p>
+<p>使用场景：方法调用，作用域。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用栈来判断是否是有效括号</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stack</span></span>&#123;</span><br><span class="line">      <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.stack=[]</span><br><span class="line">      &#125;</span><br><span class="line">    <span class="function"><span class="title">getSize</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.stack.length</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">push</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">      <span class="built_in">this</span>.stack.push(item)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">pop</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="built_in">this</span>.stack.pop()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">isEmpty</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="built_in">this</span>.stack.length!==<span class="number">0</span>? <span class="literal">true</span>:<span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> isTrueString=<span class="function"><span class="keyword">function</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">     <span class="keyword">const</span> myStack= <span class="keyword">new</span> Stack(); </span><br><span class="line">     <span class="keyword">var</span> obj=&#123;</span><br><span class="line">       <span class="string">&#x27;&#123;&#x27;</span>:<span class="string">&#x27;&#125;&#x27;</span>,</span><br><span class="line">       <span class="string">&#x27;[&#x27;</span>:<span class="string">&#x27;]&#x27;</span>,</span><br><span class="line">       <span class="string">&#x27;(&#x27;</span>:<span class="string">&#x27;)&#x27;</span></span><br><span class="line">     &#125;;</span><br><span class="line">     <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;str.length;i++)&#123;</span><br><span class="line">      <span class="comment">//  console.log(str[i]);</span></span><br><span class="line">        <span class="keyword">if</span>(obj[str[i]])&#123;</span><br><span class="line">          myStack.push(str[i])</span><br><span class="line">          <span class="built_in">console</span>.log(myStack);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          <span class="keyword">let</span> last=myStack.pop()</span><br><span class="line">          <span class="comment">// console.log(last);</span></span><br><span class="line">          <span class="keyword">if</span>(str[i]!==obj[last])&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> myStack.getSize()===<span class="number">0</span></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  console.log(myStack);</span></span><br><span class="line"><span class="built_in">console</span>.log(isTrueString(<span class="string">&#x27;()[]&#123;&#125;&#x27;</span>)); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(isTrueString(<span class="string">&#x27;([)]&#x27;</span>));   <span class="comment">//false</span></span><br><span class="line"><span class="built_in">console</span>.log(isTrueString(<span class="string">&#x27;&#123;[]&#125;&#x27;</span>));    <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>队列</strong></p>
+<p>队列是一种遵循先进先出原则的有序集合</p>
+<p>队列一个线性结构，特点是在某一端添加数据，在另一端删除数据。</p>
+<p>插入（insert）操作也称为入队(enqueue)</p>
+<p>删除(delete)操作也被称之为出队(dequeue)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//队列解决移动窗口的平均数</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">this</span>.queue=[]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">enQueue</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.queue.push(item)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">deQueue</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">this</span>.queue.shift()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">getHeader</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">this</span>.queue[<span class="number">0</span>]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">getSize</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">this</span>.queue.length</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">isEmpty</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">this</span>.queue.length===<span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> movingAverage=<span class="function"><span class="keyword">function</span>(<span class="params">size</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 将size,sum属性挂载到window对象上</span></span><br><span class="line">    <span class="built_in">this</span>.size=size;</span><br><span class="line">    <span class="built_in">this</span>.sum=<span class="number">0</span>;</span><br><span class="line">     <span class="built_in">this</span>.myQueue = <span class="keyword">new</span> Queue()</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="built_in">this</span>.myQueue);</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">  movingAverage(<span class="number">3</span>)</span><br><span class="line"> movingAverage.prototype.next=<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">        <span class="comment">// 初始化队列</span></span><br><span class="line">         <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">          <span class="comment">//超出size限制,执行出队操作</span></span><br><span class="line">          <span class="keyword">if</span>(size&lt;=myQueue.getSize())&#123;</span><br><span class="line"></span><br><span class="line">            sum-=myQueue.getHeader()</span><br><span class="line">               myQueue.deQueue()</span><br><span class="line">          &#125;</span><br><span class="line">          myQueue.enQueue(val)</span><br><span class="line">          <span class="comment">//  console.log(val);</span></span><br><span class="line">          <span class="comment">// console.log(sum);</span></span><br><span class="line">          <span class="comment">//  console.log(sum+=parseInt(val));</span></span><br><span class="line">         sum+=val</span><br><span class="line">          <span class="keyword">return</span> sum / myQueue.getSize()</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="built_in">console</span>.dir(movingAverage);</span><br><span class="line"> <span class="built_in">console</span>.log(movingAverage.prototype.next(<span class="number">1</span>));</span><br><span class="line"> <span class="built_in">console</span>.log(movingAverage.prototype.next(<span class="number">10</span>));</span><br><span class="line"> <span class="built_in">console</span>.log(movingAverage.prototype.next(<span class="number">4</span>));</span><br></pre></td></tr></table></figure>
+
+<p><strong>链表</strong></p>
+<p>链表是一个线性结构，同时也是一个天然的递归结构。链表可以充分利用计算机内存空间，实现灵活的内存动态管理。</p>
+<p>单线列表：头尾相连，上一个的next指向下一个的信息。最后一个的next指向null.</p>
+<p>环形链表：是一种链式存储结构，它的最后一个节点指向头结点，形成一个环。</p>
+<p>特点：从环形结构的任何一个节点出发都能找到任何其他节点。</p>
+<p>双向链表：双链表以类似的方式工作，但还有一个引用字段，称为prev字段。有了这个额外的字段，就能够知道当前字节点的的前一个节点。</p>
+<p>双向链表的特点：</p>
+<ul>
+<li>比起单链表，双链表需要多一个指针用于指向前驱节点，所以存储空间比单链表多一点。</li>
+<li>双链表的插入和删除需要同时维护next和prev两个指针。</li>
+<li>双链表中的元素访问需要通过顺序访问，即要通过遍历的方式来寻找元素。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/27/02-set%E5%92%8Cweakset/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="键盘敲烂，工资过万">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/27/02-set%E5%92%8Cweakset/" class="post-title-link" itemprop="url">02set和weakset</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-12-27 16:27:46 / 修改时间：17:09:53" itemprop="dateCreated datePublished" datetime="2020-12-27T16:27:46+08:00">2020-12-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><h4 id="set-1"><a href="#set-1" class="headerlink" title="set"></a>set</h4><p>es6中提供的一种新的数据结构set,它类似于数组，但是成员唯一，没有重复的值。需要记录成员又不希望重复登记的情况下可以用到set。</p>
+<p>Set的实例方法分为两大类：操作方法（用于操作数据）和遍历方法（用于遍历成员）。</p>
+<p>Set实例的属性：</p>
+<p>Set.prototype.size：返回Set实例的成员总数。</p>
+<p><strong>四个操作方法：</strong></p>
+<ul>
+<li>Set.prototype.add(value):添加某个值，返回Set结构本身。</li>
+<li>Set.prototype.delete(value):删除某个值，返回一个布尔值，表示删除是否成功。</li>
+<li>Set.prototype.has(value):返回一个布尔值，表示该值是否为Set成员。</li>
+<li>Set.prototype.clear()：清除所有成员，没有返回值。</li>
+</ul>
+<p>由于Set中值不会重复，可以用Set来做数组去重。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1= <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="comment">/*  console.log(s1);</span></span><br><span class="line"><span class="comment">console.log(s1.size);</span></span><br><span class="line"><span class="comment">s1.add(4)</span></span><br><span class="line"><span class="comment">console.log(s1);</span></span><br><span class="line"><span class="comment"> s1.add(4)</span></span><br><span class="line"><span class="comment">console.log(s1);</span></span><br><span class="line"><span class="comment">s1.delete(4)</span></span><br><span class="line"><span class="comment">console.log(s1);</span></span><br><span class="line"><span class="comment">s1.has(3) //true */</span></span><br><span class="line">s1.clear()</span><br><span class="line"><span class="built_in">console</span>.log(s1);</span><br></pre></td></tr></table></figure>
+
+<p><strong>四个遍历方法：</strong></p>
+<ul>
+<li>Set.prototype.keys():返回键名的遍历器</li>
+<li>Set.prototype.values():返回键值的遍历器</li>
+<li>Set.prototype.entries():返回键值对的遍历器</li>
+<li>Set.prototype.forEach():使用回调函数遍历每个成员</li>
+</ul>
+<p>注意：Set实例中key和value是一样的，所以keys()和values()这两个方法结果是一样的</p>
+<p>Set中查找某个值是否已经存在的时间复杂度是o(1),而数组找那个的indexOf方法时间 复杂度是O(n)，又由于Set中值不会重复，所以可以用Set做数组去重。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">let</span> s2 = <span class="keyword">new</span> <span class="built_in">Set</span>([&#123; <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span>, <span class="attr">age</span>: <span class="number">18</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">&#x27;zs1&#x27;</span>, <span class="attr">age</span>: <span class="number">19</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">&#x27;zs2&#x27;</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">&#x27;zs3&#x27;</span>, <span class="attr">age</span>: <span class="number">21</span> &#125;]);</span><br><span class="line">  <span class="comment">// 1 keys</span></span><br><span class="line"> <span class="comment">//  for (let i of s2.keys())&#123;</span></span><br><span class="line"> <span class="comment">//    console.log(i);</span></span><br><span class="line"> <span class="comment">//  &#125;</span></span><br><span class="line"> <span class="comment">// 2 values</span></span><br><span class="line"><span class="comment">/*  for (let i of s2.values()) &#123;</span></span><br><span class="line"><span class="comment">     console.log(i);</span></span><br><span class="line"><span class="comment">   &#125; */</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// 3 entries</span></span><br><span class="line">   <span class="comment">// for(let i of s2.entries())&#123;</span></span><br><span class="line">   <span class="comment">//   console.log(i);</span></span><br><span class="line">   <span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// 4 forEach()</span></span><br><span class="line">   s2.forEach(<span class="function">(<span class="params">key,item,obj</span>)=&gt;</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(key);</span><br><span class="line">     <span class="comment">// console.log(item);</span></span><br><span class="line">     <span class="built_in">console</span>.log(obj);</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-WeakSet"><a href="#2-WeakSet" class="headerlink" title="2 WeakSet"></a>2 WeakSet</h3><p>WeakSet结构与Set类型，也是不重复的值的集合，但是，它与Set有两个区别。</p>
+<ul>
+<li>WeakSet的成员只能是对象，而不能是其他类型的值。</li>
+<li>WeakSet中的对象都是弱引用</li>
+</ul>
+<p>如果一个对象没有任何引用，那么此对象会尽快被垃圾回收，释放掉它占用的内存。</p>
+<p>即垃圾回收机制不考虑weakset对该对象的引用，也就是说，如果其他对象都不在引用该对象，那么垃圾回收机制会自动回收该对象所占用的内存。</p>
+<p>WeakSet结构有一下三个方法：</p>
+<ul>
+<li>WeakSet.prototype.add(value):向WeakSet实例添加一个新成员。</li>
+<li>WeakSet.prototype.delete(value):清除WeakSet实例的指定成员</li>
+<li>WeakSet.prototype.has(value):返回一个boolean值，表示某个值是否在WeakSet实例中。</li>
+</ul>
+<p><strong>WeakSet不能遍历</strong>：是因为成员都是弱引用，随时可能消失。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/24/01-Symbol%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="键盘敲烂，工资过万">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/24/01-Symbol%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">01.Symbol数据类型</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-24 23:03:41" itemprop="dateCreated datePublished" datetime="2020-12-24T23:03:41+08:00">2020-12-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-27 16:26:43" itemprop="dateModified" datetime="2020-12-27T16:26:43+08:00">2020-12-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ES6%E8%BF%9B%E9%98%B6/" itemprop="url" rel="index"><span itemprop="name">ES6进阶</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="1-Symbol数据类型"><a href="#1-Symbol数据类型" class="headerlink" title="1 Symbol数据类型"></a>1 Symbol数据类型</h2><p><strong>Symbol:概述</strong>：Es6引入，表示独一无二的值。是js中的第七种数据类型。</p>
+<p>  直接调用symbol函数可以生成一个symbol，注意symbol不能使用new命令。否则会报错。</p>
+<p> symbol可以接受一个字符串作为参数，表示对symbol的描述。主要是为了在控制台显示，或者转为字符串时，比较容易区分。</p>
+<p> 注意：symbol函数的参数只是表示对当前symbol的值的描述，因此相同参数的symbol的值是不相等的。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 1 Symbol是独一无二的值</span></span><br><span class="line"><span class="comment">//  let s1=Symbol();</span></span><br><span class="line"><span class="comment">//  let s2=Symbol();</span></span><br><span class="line"><span class="comment">//  console.log(s1,s2);</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// let s1 = Symbol(&#x27;abc&#x27;);</span></span><br><span class="line">  <span class="comment">// let s2 = Symbol(&#x27;abc&#x27;);</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// console.log(s1===s2);</span></span><br></pre></td></tr></table></figure>
+
+<p>symbol作为属性:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> mySymbol = <span class="built_in">Symbol</span>(<span class="string">&#x27;enen&#x27;</span>);</span><br><span class="line"><span class="keyword">let</span> yourSymbol=<span class="built_in">Symbol</span>();</span><br><span class="line"><span class="comment">// 第一种写法</span></span><br><span class="line"><span class="comment">// let a=&#123;&#125;</span></span><br><span class="line"><span class="comment">// a[mySymbol]=&#x27;heheda&#x27;</span></span><br><span class="line"><span class="comment">// a[yourSymbol]=&#x27;xixi&#x27;</span></span><br><span class="line"><span class="comment">// console.log(a);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种写法</span></span><br><span class="line"><span class="comment">// let a=&#123;</span></span><br><span class="line"><span class="comment">//   [mySymbol]: &#x27;heheda&#x27;,</span></span><br><span class="line"><span class="comment">//  [yourSymbol]:&#x27;xixi&#x27;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// console.log(a);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第三种写法</span></span><br><span class="line"><span class="comment">// let a=&#123;&#125;;</span></span><br><span class="line"><span class="comment">// Object.defineProperty(a, mySymbol,&#123;value:&#x27;heheda&#x27;&#125;)</span></span><br><span class="line"><span class="comment">// console.log(a);</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Symbol作为属性名</strong>，该属性不会出现在 for in 、for of 循环中，也不会被Object.keys()、Object.getOwnPropertyName()、JSON.stringify()返回，有一个Object.getOwnPropertySymbols方法，可以获取指定对象的所有Symbol属性名。</p>
+<h4 id="symbol-for"><a href="#symbol-for" class="headerlink" title="symbol.for"></a>symbol.for</h4><p>有时，我们希望重新使用同一个symbol值，symbol.for方法可以做到这一点。他接受一个字符串作为参数，然后搜索有没有该参数作为名称的symbol值，如果有，就返回这个symbol值，否则就新建一个以该字符串为名称的symbol值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1=symbol.for(<span class="string">&#x27;car&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> s2=symbol.for(<span class="string">&#x27;car&#x27;</span>)</span><br><span class="line">s1===s2 <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+<p>symbol.for()与symbol()这两种写法，都会生成新的symbol。他们的区别，前者会被登记全局环境中搜索，后者不会。symbol.for()不会每次调用就返回一个新的symbol值，而是先检查全局中有没有被symbol.for注册过的相同symbol值，如果有就返回同一个symbol值，否则就创建一个symbol值。比如,如果你调用symbol.for(‘car’)，30次，每次都会返回同一个symbol值，但是symbol()则会返回30个不同的symbol值。</p>
+<h4 id="内置symbol"><a href="#内置symbol" class="headerlink" title="内置symbol"></a>内置symbol</h4><p>除了自己定义symbol值以外，es6还提供了11个内置的symbol值，指向语言内部使用的方法。</p>
+<ul>
+<li>symbol.hasInstance</li>
+<li>symbol.isConcatSpreadable</li>
+<li>symbol.species</li>
+<li>symbol.match</li>
+<li>symbol.replace</li>
+<li>symbol.search</li>
+<li>symbol.split</li>
+<li>symbol.toPrimitive</li>
+<li>symbol.toStringTag</li>
+<li>symbol.unscopables</li>
+<li>symbol.iterator,对象的symbol.iterator属性，指向该对象的默认生成遍历器的方法</li>
+</ul>
+<h4 id="使用symbol的场景"><a href="#使用symbol的场景" class="headerlink" title="使用symbol的场景"></a>使用symbol的场景</h4><ul>
+<li>消除魔术字符串（强耦合）利于后期维护</li>
+<li>实现属性私有</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/23/%E5%AD%A6%E4%B9%A0%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -171,7 +489,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/12/23/%E5%AD%A6%E4%B9%A0%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" class="post-title-link" itemprop="url">学习工作中遇到的坑</a>
+            <a href="/2020/12/23/%E5%AD%A6%E4%B9%A0%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" class="post-title-link" itemprop="url">未命名</a>
         </h2>
 
         <div class="post-meta">
@@ -180,10 +498,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-12-23 12:57:55 / 修改时间：13:06:44" itemprop="dateCreated datePublished" datetime="2020-12-23T12:57:55+08:00">2020-12-23</time>
+              <time title="创建时间：2020-12-23 12:57:55" itemprop="dateCreated datePublished" datetime="2020-12-23T12:57:55+08:00">2020-12-23</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-30 10:50:56" itemprop="dateModified" datetime="2020-12-30T10:50:56+08:00">2020-12-30</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -208,13 +532,36 @@
           <h3 id="学习或工作中遇到的坑"><a href="#学习或工作中遇到的坑" class="headerlink" title="学习或工作中遇到的坑"></a>学习或工作中遇到的坑</h3><p>1 forEach循环可以直接改变所有类型的值？</p>
 <p>总结：</p>
 <ul>
-<li><p>基本类型当我们拿到ele的时候，只是forEach给我们在另一个地方创建了一个新元素，和原数组的ele无关。当我们给ele赋值时时无法改变原数组的ele的值</p>
-</li>
-<li><p>js中的数据类型分为两大类：基本数据类型和引用数据类型。基本数据类型：number,string,boolean,null,undefined.它们在栈内存中直接存储变量与值。而Object对象的真正的数据是保存在堆中的。栈内只保存了对象的变量以及对应的堆的地址，所以操作Object其实就是直接操作了对象本身。</p>
-</li>
-<li><p>forEach的基本原理也是for循环，使用arr[index]的赋值形式改变，无论什么值都可以改变了。</p>
-</li>
+<li>基本类型当我们拿到ele的时候，只是forEach给我们在另一个地方创建了一个新元素，和原数组的ele无关。当我们给ele赋值时时无法改变原数组的ele的值</li>
+<li>js中的数据类型分为两大类：基本数据类型和引用数据类型。基本数据类型：number,string,boolean,null,undefined.它们在栈内存中直接存储变量与值。而Object对象的真正的数据是保存在堆中的。栈内只保存了对象的变量以及对应的堆的地址，所以操作Object其实就是直接操作了对象本身。</li>
+<li>forEach的基本原理也是for循环，使用arr[index]的赋值形式改变，无论什么值都可以改变了。</li>
 </ul>
+<p>2 let,const不能声明全局变量。</p>
+<p>原因：let,const声明的全部变量存在于块级作用域中。和顶层对象window没有关系。</p>
+<ul>
+<li>ES5声明变量只有两种方式：var和function。</li>
+<li>ES6有let、const、import、class再加上ES5的var、function共有六种声明变量的方式。</li>
+<li>还需要了解顶层对象：浏览器环境中顶层对象是window，Node中是global对象。</li>
+<li><strong>ES5中，顶层对象的属性等价于全局变量。(敲黑板了啊)</strong></li>
+<li><strong>ES6中，有所改变：var、function声明的全局变量，依然是顶层对象的属性；let、const、class声明的全局变量不属于顶层对象的属性</strong>，也就是说ES6开始，全局变量和顶层对象的属性开始分离、脱钩。</li>
+</ul>
+<h2 id="贪心算法："><a href="#贪心算法：" class="headerlink" title="贪心算法："></a>贪心算法：</h2><p>概念：指在进行每个子步骤时，都使用最优子项。以期望最终的出的结果是最优解的算法。</p>
+<h3 id="HTML5中的pattern属性的用法"><a href="#HTML5中的pattern属性的用法" class="headerlink" title="HTML5中的pattern属性的用法"></a>HTML5中的pattern属性的用法</h3><p><strong>设置input的类型为数字：</strong></p>
+<p>  type=”tel” 和 type=”number”的区别</p>
+<p><strong>tel</strong>:优点是ios和Android的表现差不多。但是会有字母。</p>
+<p><strong>number</strong>:安卓实现纯数字键盘，IOS不是九宫格。</p>
+<p><strong>pattern</strong>:用于验证表单的输入内容，通常HTML5的type属性，如Email,number,data类,url等，已经自带了简单的数据格式验证功能了，加上pattern后，前端部分的验证更加简单高效了。</p>
+<p>显而易见，pattern的属性值要用正则表达式。</p>
+<p>实例</p>
+<p>简单地数字验证</p>
+<p>数字的验证有两个：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">&quot;number&quot;</span> pattern=<span class="string">&quot;\d&quot;</span>&gt;</span><br><span class="line">&lt;input type=<span class="string">&quot;number&quot;</span> pattern=<span class="string">&quot;[0-9]*&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>对表单验证来说，这两个正则表达式是一样的，表现得话差异就很大：</p>
+<p>iOS中只有[0-9]*才能调起九宫格键盘，\d无效。</p>
+<p>Android4.4一下，两个都能调起九宫格数字键盘，4.4以上，只认type属性，就是说将上面的type=”number”改为text，将调起全键盘而不是九宫格数字键盘。</p>
 
       
     </div>
@@ -265,7 +612,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-23 13:08:31" itemprop="dateModified" datetime="2020-12-23T13:08:31+08:00">2020-12-23</time>
+                <time title="修改时间：2020-12-23 22:28:55" itemprop="dateModified" datetime="2020-12-23T22:28:55+08:00">2020-12-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -323,6 +670,12 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> removeBtn = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.remove-btn&#x27;</span>) <span class="keyword">as</span> HTMLButtonElement</span><br><span class="line"><span class="comment">//解绑事件</span></span><br><span class="line">removeBtn.addEventListener(<span class="string">&#x27;click&#x27;</span>,  <span class="function">()=&gt;</span> &#123;</span><br><span class="line">  addBtn.removeEventListener(<span class="string">&#x27;click&#x27;</span>, clickEvent)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>说明：添加和移除事件时，事件处理程序是同一个，都是函数handleClick(名字)。如果直接写两个相同的程序，虽然是两个函数长得一样，但是函数时引用类型，他们的地址不一样，所以不能移除事件。</p>
+<h5 id="2-6-可以先使用函数，再声明函数。"><a href="#2-6-可以先使用函数，再声明函数。" class="headerlink" title="2.6 可以先使用函数，再声明函数。"></a>2.6 可以先使用函数，再声明函数。</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">btn.addEventListener(<span class="string">&#x27;click&#x27;</span>,handleClick)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleClick</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;11&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>原因：函数在当前ts文件中的任意位置都有定义。</p>
+<h5 id="2-7-在函数声明形式的事件处理时，使用对象参数时，应该指定类型注解，否则，访问事件对象的属性时没有任何提示。"><a href="#2-7-在函数声明形式的事件处理时，使用对象参数时，应该指定类型注解，否则，访问事件对象的属性时没有任何提示。" class="headerlink" title="2.7 在函数声明形式的事件处理时，使用对象参数时，应该指定类型注解，否则，访问事件对象的属性时没有任何提示。"></a>2.7 在函数声明形式的事件处理时，使用对象参数时，应该指定类型注解，否则，访问事件对象的属性时没有任何提示。</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">btn.addEventListener(<span class="string">&#x27;click&#x27;</span>,handleClick)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleClick</span>(<span class="params">event:MouseeEvent</span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(event.target)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>技巧：使用原始方式（匿名回调函数）查看参数类型。</p>
 
       
     </div>
@@ -857,14 +1210,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
