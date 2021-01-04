@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="setsetes6中提供的一种新的数据结构set,它类似于数组，但是成员唯一，没有重复的值。需要记录成员又不希望重复登记的情况下可以用到set。 Set的实例方法分为两大类：操作方法（用于操作数据）和遍历方法（用于遍历成员）。 Set实例的属性： Set.prototype.size：返回Set实例的成员总数。 四个操作方法：  Set.prototype.add(value):添加某个值，返回S">
+  <meta name="description" content="Map数据类型Map数据类型是为了解决对象的键不能是任意类型而产生的。 构建Map数据类型： 1let m&#x3D;new Map()  Map的五种操作方法：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="02set和weakset">
-<meta property="og:url" content="http://example.com/2020/12/27/02-set%E5%92%8Cweakset/index.html">
+<meta property="og:title" content="Map和WeakMap">
+<meta property="og:url" content="http://example.com/2020/12/30/03-Map%E5%92%8CWeakMap/index.html">
 <meta property="og:site_name" content="zzx的个人博客">
-<meta property="og:description" content="setsetes6中提供的一种新的数据结构set,它类似于数组，但是成员唯一，没有重复的值。需要记录成员又不希望重复登记的情况下可以用到set。 Set的实例方法分为两大类：操作方法（用于操作数据）和遍历方法（用于遍历成员）。 Set实例的属性： Set.prototype.size：返回Set实例的成员总数。 四个操作方法：  Set.prototype.add(value):添加某个值，返回S">
+<meta property="og:description" content="Map数据类型Map数据类型是为了解决对象的键不能是任意类型而产生的。 构建Map数据类型： 1let m&#x3D;new Map()  Map的五种操作方法：">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-27T08:27:46.000Z">
-<meta property="article:modified_time" content="2020-12-30T03:36:50.676Z">
+<meta property="article:published_time" content="2020-12-30T13:41:47.000Z">
+<meta property="article:modified_time" content="2020-12-30T14:56:43.032Z">
 <meta property="article:author" content="zzx">
 <meta property="article:tag" content="导航">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2020/12/27/02-set%E5%92%8Cweakset/">
+<link rel="canonical" href="http://example.com/2020/12/30/03-Map%E5%92%8CWeakMap/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>02set和weakset | zzx的个人博客</title>
+  <title>Map和WeakMap | zzx的个人博客</title>
   
 
 
@@ -161,7 +161,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/27/02-set%E5%92%8Cweakset/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/30/03-Map%E5%92%8CWeakMap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
@@ -174,7 +174,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          02set和weakset
+          Map和WeakMap
         </h1>
 
         <div class="post-meta">
@@ -183,16 +183,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-12-27 16:27:46" itemprop="dateCreated datePublished" datetime="2020-12-27T16:27:46+08:00">2020-12-27</time>
+              <time title="创建时间：2020-12-30 21:41:47 / 修改时间：22:56:43" itemprop="dateCreated datePublished" datetime="2020-12-30T21:41:47+08:00">2020-12-30</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-30 11:36:50" itemprop="dateModified" datetime="2020-12-30T11:36:50+08:00">2020-12-30</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -214,45 +208,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="set"><a href="#set" class="headerlink" title="set"></a>set</h3><h4 id="set-1"><a href="#set-1" class="headerlink" title="set"></a>set</h4><p>es6中提供的一种新的数据结构set,它类似于数组，但是成员唯一，没有重复的值。需要记录成员又不希望重复登记的情况下可以用到set。</p>
-<p>Set的实例方法分为两大类：操作方法（用于操作数据）和遍历方法（用于遍历成员）。</p>
-<p>Set实例的属性：</p>
-<p>Set.prototype.size：返回Set实例的成员总数。</p>
-<p><strong>四个操作方法：</strong></p>
-<ul>
-<li>Set.prototype.add(value):添加某个值，返回Set结构本身。</li>
-<li>Set.prototype.delete(value):删除某个值，返回一个布尔值，表示删除是否成功。</li>
-<li>Set.prototype.has(value):返回一个布尔值，表示该值是否为Set成员。</li>
-<li>Set.prototype.clear()：清除所有成员，没有返回值。</li>
-</ul>
-<p>由于Set中值不会重复，可以用Set来做数组去重。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> s1= <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line"><span class="comment">/*  console.log(s1);</span></span><br><span class="line"><span class="comment">console.log(s1.size);</span></span><br><span class="line"><span class="comment">s1.add(4)</span></span><br><span class="line"><span class="comment">console.log(s1);</span></span><br><span class="line"><span class="comment"> s1.add(4)</span></span><br><span class="line"><span class="comment">console.log(s1);</span></span><br><span class="line"><span class="comment">s1.delete(4)</span></span><br><span class="line"><span class="comment">console.log(s1);</span></span><br><span class="line"><span class="comment">s1.has(3) //true */</span></span><br><span class="line">s1.clear()</span><br><span class="line"><span class="built_in">console</span>.log(s1);</span><br></pre></td></tr></table></figure>
+        <h3 id="Map数据类型"><a href="#Map数据类型" class="headerlink" title="Map数据类型"></a>Map数据类型</h3><p>Map数据类型是为了解决对象的键不能是任意类型而产生的。</p>
+<p>构建Map数据类型：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> m=<span class="keyword">new</span> <span class="built_in">Map</span>()</span><br></pre></td></tr></table></figure>
 
-<p><strong>四个遍历方法：</strong></p>
-<ul>
-<li>Set.prototype.keys():返回键名的遍历器</li>
-<li>Set.prototype.values():返回键值的遍历器</li>
-<li>Set.prototype.entries():返回键值对的遍历器</li>
-<li>Set.prototype.forEach():使用回调函数遍历每个成员</li>
-</ul>
-<p>注意：Set实例中key和value是一样的，所以keys()和values()这两个方法结果是一样的</p>
-<p>Set中查找某个值是否已经存在的时间复杂度是o(1),而数组找那个的indexOf方法时间 复杂度是O(n)，又由于Set中值不会重复，所以可以用Set做数组去重。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">let</span> s2 = <span class="keyword">new</span> <span class="built_in">Set</span>([&#123; <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span>, <span class="attr">age</span>: <span class="number">18</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">&#x27;zs1&#x27;</span>, <span class="attr">age</span>: <span class="number">19</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">&#x27;zs2&#x27;</span>, <span class="attr">age</span>: <span class="number">20</span> &#125;, &#123; <span class="attr">name</span>: <span class="string">&#x27;zs3&#x27;</span>, <span class="attr">age</span>: <span class="number">21</span> &#125;]);</span><br><span class="line">  <span class="comment">// 1 keys</span></span><br><span class="line"> <span class="comment">//  for (let i of s2.keys())&#123;</span></span><br><span class="line"> <span class="comment">//    console.log(i);</span></span><br><span class="line"> <span class="comment">//  &#125;</span></span><br><span class="line"> <span class="comment">// 2 values</span></span><br><span class="line"><span class="comment">/*  for (let i of s2.values()) &#123;</span></span><br><span class="line"><span class="comment">     console.log(i);</span></span><br><span class="line"><span class="comment">   &#125; */</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// 3 entries</span></span><br><span class="line">   <span class="comment">// for(let i of s2.entries())&#123;</span></span><br><span class="line">   <span class="comment">//   console.log(i);</span></span><br><span class="line">   <span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line">   <span class="comment">// 4 forEach()</span></span><br><span class="line">   s2.forEach(<span class="function">(<span class="params">key,item,obj</span>)=&gt;</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(key);</span><br><span class="line">     <span class="comment">// console.log(item);</span></span><br><span class="line">     <span class="built_in">console</span>.log(obj);</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-WeakSet"><a href="#2-WeakSet" class="headerlink" title="2 WeakSet"></a>2 WeakSet</h3><p>WeakSet结构与Set类型，也是不重复的值的集合，但是，它与Set有两个区别。</p>
-<ul>
-<li>WeakSet的成员只能是对象，而不能是其他类型的值。</li>
-<li>WeakSet中的对象都是弱引用</li>
-</ul>
-<p>如果一个对象没有任何引用，那么此对象会尽快被垃圾回收，释放掉它占用的内存。</p>
-<p>即垃圾回收机制不考虑weakset对该对象的引用，也就是说，如果其他对象都不在引用该对象，那么垃圾回收机制会自动回收该对象所占用的内存。</p>
-<p>WeakSet结构有一下三个方法：</p>
-<ul>
-<li>WeakSet.prototype.add(value):向WeakSet实例添加一个新成员。</li>
-<li>WeakSet.prototype.delete(value):清除WeakSet实例的指定成员</li>
-<li>WeakSet.prototype.has(value):返回一个boolean值，表示某个值是否在WeakSet实例中。</li>
-</ul>
-<p><strong>WeakSet不能遍历</strong>：是因为成员都是弱引用，随时可能消失。</p>
+<p>Map的五种操作方法：</p>
 
     </div>
 
@@ -271,12 +231,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/12/24/01-Symbol%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" rel="prev" title="01.Symbol数据类型">
-      <i class="fa fa-chevron-left"></i> 01.Symbol数据类型
+    <a href="/2020/12/27/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="prev" title="算法与数据结构">
+      <i class="fa fa-chevron-left"></i> 算法与数据结构
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/12/27/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="next" title="算法与数据结构">
-      算法与数据结构 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/12/30/04-Proxy/" rel="next" title="Proxy">
+      Proxy <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -336,7 +296,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#set"><span class="nav-number">1.</span> <span class="nav-text">set</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#set-1"><span class="nav-number">1.1.</span> <span class="nav-text">set</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-WeakSet"><span class="nav-number">2.</span> <span class="nav-text">2 WeakSet</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Map%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">Map数据类型</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
