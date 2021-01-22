@@ -20,17 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="键盘敲烂，工资过万">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zzx的个人博客">
-<meta property="og:url" content="http://example.com/tags/%E5%AF%BC%E8%88%AA/index.html">
+  <meta name="description" content="浏览器的渲染原理render 线程：浏览器渲染线程 js线程：js代码的执行进程 js阻塞页面加载 js和render线程互斥，当浏览器遇到js代码的时候，会优先执行js代码。  浏览器是多进程的，一个Tab是一个进程。 渲染进程是多线程的，最主要的是Render线程与js线程 javascript阻塞DOM解析  js阻塞代码 js阻塞了HTML的解析，也阻塞了其后的CSS解析，整个解析进程必须">
+<meta property="og:type" content="article">
+<meta property="og:title" content="09-浏览器及其渲染优化">
+<meta property="og:url" content="http://example.com/2021/01/20/09-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%8A%E5%85%B6%E6%B8%B2%E6%9F%93%E4%BC%98%E5%8C%96/index.html">
 <meta property="og:site_name" content="zzx的个人博客">
-<meta property="og:description" content="键盘敲烂，工资过万">
+<meta property="og:description" content="浏览器的渲染原理render 线程：浏览器渲染线程 js线程：js代码的执行进程 js阻塞页面加载 js和render线程互斥，当浏览器遇到js代码的时候，会优先执行js代码。  浏览器是多进程的，一个Tab是一个进程。 渲染进程是多线程的，最主要的是Render线程与js线程 javascript阻塞DOM解析  js阻塞代码 js阻塞了HTML的解析，也阻塞了其后的CSS解析，整个解析进程必须">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-20T13:52:17.000Z">
+<meta property="article:modified_time" content="2021-01-20T14:42:13.021Z">
 <meta property="article:author" content="zzx">
+<meta property="article:tag" content="导航">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/tags/%E5%AF%BC%E8%88%AA/">
+<link rel="canonical" href="http://example.com/2021/01/20/09-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%8A%E5%85%B6%E6%B8%B2%E6%9F%93%E4%BC%98%E5%8C%96/">
 
 
 <script id="page-configurations">
@@ -38,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: 导航 | zzx的个人博客</title>
+  <title>09-浏览器及其渲染优化 | zzx的个人博客</title>
   
 
 
@@ -151,238 +154,158 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">导航
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/20/09-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%8A%E5%85%B6%E6%B8%B2%E6%9F%93%E4%BC%98%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="键盘敲烂，工资过万">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          09-浏览器及其渲染优化
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-20 21:52:17 / 修改时间：22:42:13" itemprop="dateCreated datePublished" datetime="2021-01-20T21:52:17+08:00">2021-01-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" itemprop="url" rel="index"><span itemprop="name">浏览器原理及性能优化</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-20T21:52:17+08:00"
-              content="2021-01-20">
-          01-20
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/20/09-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%8A%E5%85%B6%E6%B8%B2%E6%9F%93%E4%BC%98%E5%8C%96/" itemprop="url">
-            <span itemprop="name">09-浏览器及其渲染优化</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-11T22:13:34+08:00"
-              content="2021-01-11">
-          01-11
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/11/07-Generator%E5%87%BD%E6%95%B0/" itemprop="url">
-            <span itemprop="name">07-Generator函数</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-03T21:41:12+08:00"
-              content="2021-01-03">
-          01-03
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/03/06-Iterator%E8%BF%AD%E4%BB%A3%E5%99%A8/" itemprop="url">
-            <span itemprop="name">06-Iterator迭代器</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-30T22:55:58+08:00"
-              content="2020-12-30">
-          12-30
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/30/04-Proxy/" itemprop="url">
-            <span itemprop="name">Proxy</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-30T21:41:47+08:00"
-              content="2020-12-30">
-          12-30
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/30/03-Map%E5%92%8CWeakMap/" itemprop="url">
-            <span itemprop="name">Map和WeakMap</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-27T22:09:44+08:00"
-              content="2020-12-27">
-          12-27
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/27/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url">
-            <span itemprop="name">算法与数据结构</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-27T16:27:46+08:00"
-              content="2020-12-27">
-          12-27
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/27/02-set%E5%92%8Cweakset/" itemprop="url">
-            <span itemprop="name">02set和weakset</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-24T23:03:41+08:00"
-              content="2020-12-24">
-          12-24
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/24/01-Symbol%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" itemprop="url">
-            <span itemprop="name">01.Symbol数据类型</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-23T12:57:55+08:00"
-              content="2020-12-23">
-          12-23
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/23/%E5%AD%A6%E4%B9%A0%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" itemprop="url">
-            <span itemprop="name">未命名</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-12-21T23:04:36+08:00"
-              content="2020-12-21">
-          12-21
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/12/21/learn-TyperScript03/" itemprop="url">
-            <span itemprop="name">learn-TyperScript03</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
+        <h3 id="浏览器的渲染原理"><a href="#浏览器的渲染原理" class="headerlink" title="浏览器的渲染原理"></a>浏览器的渲染原理</h3><p><strong>render 线程</strong>：浏览器渲染线程</p>
+<p><strong>js线程</strong>：js代码的执行进程</p>
+<p><strong>js阻塞页面加载</strong></p>
+<p>js和render线程互斥，当浏览器遇到js代码的时候，会优先执行js代码。</p>
+<ul>
+<li>浏览器是多进程的，一个Tab是一个进程。</li>
+<li>渲染进程是多线程的，最主要的是Render线程与js线程</li>
+<li>javascript阻塞DOM解析</li>
+</ul>
+<p><strong>js阻塞代码</strong></p>
+<p>js阻塞了HTML的解析，也阻塞了其后的CSS解析，整个解析进程必须等待js的执行完成才能够继续，这就是所谓的js阻塞页面。</p>
+<p><strong>浏览器的渲染机制</strong></p>
+<ul>
+<li>解析html形成DOM树</li>
+<li>解析CSS形成CSSOM树（css加载不会阻塞DOM树的形成，但是会阻塞render树的形成）</li>
+<li>CSS树和DOM树合并为render树（只包含渲染网页需要的节点）</li>
+<li>布局：layout，计算每个节点的大小和位置</li>
+<li>绘制：painte，将最终的渲染树渲染到屏幕上。</li>
+</ul>
+<p><strong>重排（回流）reflow与重绘repaint</strong></p>
+<p><strong>reflow:</strong></p>
+<p>重排指的是重新计算页面的布局，某个节点reflow时会重新计算节点的尺寸和位置，而且还有可能触发其子节点，祖先节点和页面上的其他节点reflow，在这之后再触发一次repaint。</p>
+<p>当render tree中的一部分（或全部）因为元素的规模尺寸，布局，隐藏等改变而需要重新构建。这就称为回流，每个页面至少需要一次回流，就是在页面第一次加载的时候。</p>
+<p>导致reflow的操作</p>
+<ul>
+<li>调整窗口大小</li>
+<li>改变字体</li>
+<li>增加或者移除样式表</li>
+<li>内容变化，比如用户在input框输入文字</li>
+<li>激活css伪类，比如：hover</li>
+<li>操作class属性</li>
+<li>脚本操作DOM</li>
+<li>计算offsetWidth和offsetHeight属性</li>
+<li>设置style属性的值</li>
+</ul>
+<p>触发页面重布局的一些css属性</p>
+<ul>
+<li><p>盒子模型相关的属性会触发重布局</p>
+</li>
+<li><p>改变节点内部文字结构也会触发布局</p>
+<ul>
+<li><p>  text-align</p>
+</li>
+<li><p>overflow-y</p>
+</li>
+<li><p>font-weight</p>
+</li>
+<li><p>overflow</p>
+</li>
+<li><p>font-family</p>
+</li>
+<li><p>line-height</p>
+</li>
+<li><p>vertical-align</p>
+</li>
+<li><p>white-space</p>
+</li>
+<li><p>font-size</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>  <strong>重绘repaint</strong></p>
+<p>  repaint或者redraw遍历所有的节点检测各节点的可见性、颜色、轮廓等可见的样式属性，然后根据检测的结构更新页面的响应部分。</p>
+<p>  当render tree中的一些元素需要更新属性，而这些属性只是影响元素的外观，风格而不会影响布局的，比如background-color，则就称为重绘。</p>
+<p>  只触发重绘不触发回流的一些css属性：</p>
+<ul>
+<li></li>
+</ul>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag"># 导航</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/11/07-Generator%E5%87%BD%E6%95%B0/" rel="prev" title="07-Generator函数">
+      <i class="fa fa-chevron-left"></i> 07-Generator函数
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/tags/%E5%AF%BC%E8%88%AA/page/2/">2</a><a class="extend next" rel="next" href="/tags/%E5%AF%BC%E8%88%AA/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
+  
+  
 
 
 
@@ -434,6 +357,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">浏览器的渲染原理</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
