@@ -157,6 +157,111 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/12/leran-typeSrcipt/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="键盘敲烂，工资过万">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/12/leran-typeSrcipt/" class="post-title-link" itemprop="url">leran typeSrcipt</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-12 13:23:37" itemprop="dateCreated datePublished" datetime="2020-12-12T13:23:37+08:00">2020-12-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-20 15:22:54" itemprop="dateModified" datetime="2020-12-20T15:22:54+08:00">2020-12-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="学习typeScript的第一天"><a href="#学习typeScript的第一天" class="headerlink" title="学习typeScript的第一天"></a>学习typeScript的第一天</h2><h4 id="ts的概念："><a href="#ts的概念：" class="headerlink" title="ts的概念："></a>ts的概念：</h4><ol>
+<li>typeScript是js的超集，为js增加来了类型系统。</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> age:number=<span class="number">18</span>   </span><br></pre></td></tr></table></figure>
+
+<p>  2.ts的优点：</p>
+<ul>
+<li><p> 类型化思维方式，使得开发更加严谨，提前发现错误，减少改bug的时间。</p>
+</li>
+<li><p>提高代码的可读性，维护和重构代码更加容易。</p>
+</li>
+<li><p>补充了接口，枚举等开发大型应用时js缺失的功能。</p>
+<h4 id="1-怎样下载ts"><a href="#1-怎样下载ts" class="headerlink" title="1 怎样下载ts"></a>1 怎样下载ts</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g typescript</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-运行ts"><a href="#2-运行ts" class="headerlink" title="2 运行ts"></a>2 运行ts</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tsc hello.ts</span><br><span class="line">node hello.js</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-简易运行"><a href="#3-简易运行" class="headerlink" title="3 简易运行"></a>3 简易运行</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i -g ts-node  </span><br><span class="line">ts-node hello.js</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-ts中变量的声明：let关键字，并且使用-number-string…声明变量类型类型"><a href="#4-ts中变量的声明：let关键字，并且使用-number-string…声明变量类型类型" class="headerlink" title="4 ts中变量的声明：let关键字，并且使用:number/string…声明变量类型类型"></a>4 ts中变量的声明：let关键字，并且使用:number/string…声明变量类型类型</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> age: number = <span class="number">18</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="5-类型注解：是一种为变量添加类型约束的方式。"><a href="#5-类型注解：是一种为变量添加类型约束的方式。" class="headerlink" title="5 类型注解：是一种为变量添加类型约束的方式。"></a>5 类型注解：是一种为变量添加类型约束的方式。</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//程序员和ts有个约定：变量age的类型为number</span></span><br><span class="line"><span class="keyword">let</span> age:number=<span class="number">10</span></span><br><span class="line"><span class="comment">//重要：约定了什么类型，就只能给变量赋什么类型的值。(回调函数是作为参数进行传递的，不需要进行类型注解)</span></span><br></pre></td></tr></table></figure>
+<h3 id="6-ts的数据类型：原始类型-对象类型"><a href="#6-ts的数据类型：原始类型-对象类型" class="headerlink" title="6 ts的数据类型：原始类型 对象类型"></a>6 ts的数据类型：原始类型 对象类型</h3></li>
+<li><p> 常用的原始数据类型：number/string/boolean/null/undefined</p>
+</li>
+</ul>
+<h3 id="7-算术运算符（-、-、-、-）"><a href="#7-算术运算符（-、-、-、-）" class="headerlink" title="7 算术运算符（+、-、*、/）"></a>7 算术运算符（+、-、*、/）</h3><ul>
+<li><p>加号可以和字符串一起使用，其他算术运算符应该和数字类型的一起使用</p>
+</li>
+<li><p>将字符串类型转换为数字类型。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span> - +<span class="string">&#x27;1&#x27;</span>);</span><br><span class="line"><span class="comment">//+&#x27;1&#x27;表示将&#x27;1&#x27;转为正1 string=&gt;number</span></span><br><span class="line"><span class="comment">//注意：在字符串前面加+号，可以将字符串转换为数字类型（字符串里面的类容为数字才有意义）</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/12/My-New-Post/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -378,7 +483,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
