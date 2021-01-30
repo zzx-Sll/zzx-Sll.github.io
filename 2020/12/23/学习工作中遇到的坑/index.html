@@ -27,11 +27,14 @@
 <meta property="og:site_name" content="zzx的个人博客">
 <meta property="og:description" content="学习或工作中遇到的坑1 forEach循环可以直接改变所有类型的值？ 总结：  基本类型当我们拿到ele的时候，只是forEach给我们在另一个地方创建了一个新元素，和原数组的ele无关。当我们给ele赋值时时无法改变原数组的ele的值 js中的数据类型分为两大类：基本数据类型和引用数据类型。基本数据类型：number,string,boolean,null,undefined.它们在栈内存中直接">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/27921/AppData/Roaming/Typora/typora-user-images/image-20210127230353358.png">
+<meta property="og:image" content="c:/Users/27921/AppData/Roaming/Typora/typora-user-images/image-20210127230439161.png">
 <meta property="article:published_time" content="2020-12-23T04:57:55.000Z">
-<meta property="article:modified_time" content="2021-01-21T15:01:59.351Z">
+<meta property="article:modified_time" content="2021-01-27T15:05:12.673Z">
 <meta property="article:author" content="zzx">
 <meta property="article:tag" content="导航">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/27921/AppData/Roaming/Typora/typora-user-images/image-20210127230353358.png">
 
 <link rel="canonical" href="http://example.com/2020/12/23/%E5%AD%A6%E4%B9%A0%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
 
@@ -191,7 +194,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-21 23:01:59" itemprop="dateModified" datetime="2021-01-21T23:01:59+08:00">2021-01-21</time>
+                <time title="修改时间：2021-01-27 23:05:12" itemprop="dateModified" datetime="2021-01-27T23:05:12+08:00">2021-01-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -280,6 +283,33 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>&lt;<span class="number">1</span>?<span class="literal">true</span>:<span class="number">0</span>&lt;<span class="number">2</span>?<span class="literal">true</span>:<span class="number">0</span>&lt;<span class="number">3</span>?<span class="literal">true</span>:<span class="literal">false</span></span><br></pre></td></tr></table></figure>
 
 
+
+<h3 id="async-await-promise的执行顺序机制"><a href="#async-await-promise的执行顺序机制" class="headerlink" title="async await promise的执行顺序机制"></a>async await promise的执行顺序机制</h3><ul>
+<li><strong>async 是立即执行函数</strong>，<strong>默认返回的是promise对象</strong></li>
+<li><strong>遇到awiat会返回，执行完await的函数体再继续执行后面的代码</strong></li>
+<li><strong>promise的立即执行函数，resolve和reject返回的是微任务，.then来接收</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;async1 start&#x27;</span>); </span><br><span class="line">      <span class="keyword">await</span> async2();</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;async1 end&#x27;</span>) </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;async2&#x27;</span>) </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;script start&#x27;</span>); </span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;setTimeout&#x27;</span>) </span><br><span class="line">    &#125;, <span class="number">0</span>);</span><br><span class="line">    async1();</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;promise1&#x27;</span>); </span><br><span class="line">      resolve()</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;promise2&#x27;</span>) </span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;script end&#x27;</span>) </span><br><span class="line"></span><br><span class="line">    <span class="comment">/* </span></span><br><span class="line"><span class="comment">    1 script start</span></span><br><span class="line"><span class="comment">    2 async1 start</span></span><br><span class="line"><span class="comment">    3 async2</span></span><br><span class="line"><span class="comment">    4 promise1</span></span><br><span class="line"><span class="comment">    5 script end</span></span><br><span class="line"><span class="comment">    6 async1 end</span></span><br><span class="line"><span class="comment">    7 promise2</span></span><br><span class="line"><span class="comment">    8 setTimeout</span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">    */</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="element-ui-中重置表单的坑"><a href="#element-ui-中重置表单的坑" class="headerlink" title="element ui 中重置表单的坑"></a>element ui 中重置表单的坑</h3><p><strong>问题</strong>：在本地添加数据,如vuex，添加完毕后重置表单，添加的数据也会被重置。</p>
+<p><strong>原因：</strong>引用数据类型，指向同一个地址，即使添加完成，然后重置，也会导致添加的数据为空或者初始化。</p>
+<p><strong>解决方法：</strong>深拷贝</p>
+<ol>
+<li>递归函数实现</li>
+<li>loadash 中的cloneDeep（obj）</li>
+<li>JSON.parse(JSON.stringify(obj))</li>
+</ol>
+<h3 id="element-ui-中对表格进行行内的编辑"><a href="#element-ui-中对表格进行行内的编辑" class="headerlink" title="element ui 中对表格进行行内的编辑"></a>element ui 中对表格进行行内的编辑</h3><ul>
+<li>给每行数据添加一个isSet属性，值为false。</li>
+<li>选中行，将当行的isSet设置为true</li>
+<li>根据v-if，来动态显示input输入框</li>
+<li>更改后，关闭input</li>
+<li>编辑下一行时，判断之前的编辑是否有保存</li>
+</ul>
+<p><img src="C:\Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210127230353358.png"><br><img src="C:\Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210127230439161.png"></p>
+
     </div>
 
     
@@ -362,7 +392,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E6%88%96%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91"><span class="nav-number">1.</span> <span class="nav-text">学习或工作中遇到的坑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%EF%BC%9A"><span class="nav-number"></span> <span class="nav-text">贪心算法：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML5%E4%B8%AD%E7%9A%84pattern%E5%B1%9E%E6%80%A7%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">HTML5中的pattern属性的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VUE-%E4%B8%AD%E8%B7%B3%E8%BD%AC%E5%88%B0%E5%A4%96%E9%83%A8%E9%93%BE%E6%8E%A5"><span class="nav-number">2.</span> <span class="nav-text">VUE 中跳转到外部链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%8A%98%E8%A1%8C%E6%98%BE%E7%A4%BA%E4%B9%8B%E5%BC%BA%E5%88%B6%E6%8D%A2%E8%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">多行文本折行显示之强制换行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue%E4%B8%AD%E9%9D%99%E6%80%81%E5%8A%A8%E6%80%81%E7%B1%BB%E5%90%8D%E7%9A%84%E5%85%B1%E5%AD%98"><span class="nav-number">4.</span> <span class="nav-text">vue中静态动态类名的共存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Echarts5-0%E7%89%88%E6%9C%AC%E7%9A%84%E5%9C%A8vue-cli%E5%BC%80%E5%8F%91%E4%B8%8B%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">Echarts5.0版本的在vue cli开发下的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%85%83%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%AA%E8%83%BD%E6%98%AF%E2%80%98%E2%80%99%E4%B8%89%E5%85%83%E2%80%98%E2%80%99%E4%B9%88%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">三元表达式只能是‘’三元‘’么？</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%A6%E4%B9%A0%E6%88%96%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91"><span class="nav-number">1.</span> <span class="nav-text">学习或工作中遇到的坑</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%EF%BC%9A"><span class="nav-number"></span> <span class="nav-text">贪心算法：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML5%E4%B8%AD%E7%9A%84pattern%E5%B1%9E%E6%80%A7%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">HTML5中的pattern属性的用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VUE-%E4%B8%AD%E8%B7%B3%E8%BD%AC%E5%88%B0%E5%A4%96%E9%83%A8%E9%93%BE%E6%8E%A5"><span class="nav-number">2.</span> <span class="nav-text">VUE 中跳转到外部链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%8A%98%E8%A1%8C%E6%98%BE%E7%A4%BA%E4%B9%8B%E5%BC%BA%E5%88%B6%E6%8D%A2%E8%A1%8C"><span class="nav-number">3.</span> <span class="nav-text">多行文本折行显示之强制换行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue%E4%B8%AD%E9%9D%99%E6%80%81%E5%8A%A8%E6%80%81%E7%B1%BB%E5%90%8D%E7%9A%84%E5%85%B1%E5%AD%98"><span class="nav-number">4.</span> <span class="nav-text">vue中静态动态类名的共存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Echarts5-0%E7%89%88%E6%9C%AC%E7%9A%84%E5%9C%A8vue-cli%E5%BC%80%E5%8F%91%E4%B8%8B%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">Echarts5.0版本的在vue cli开发下的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%85%83%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%8F%AA%E8%83%BD%E6%98%AF%E2%80%98%E2%80%99%E4%B8%89%E5%85%83%E2%80%98%E2%80%99%E4%B9%88%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">三元表达式只能是‘’三元‘’么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#async-await-promise%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E6%9C%BA%E5%88%B6"><span class="nav-number">7.</span> <span class="nav-text">async await promise的执行顺序机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#element-ui-%E4%B8%AD%E9%87%8D%E7%BD%AE%E8%A1%A8%E5%8D%95%E7%9A%84%E5%9D%91"><span class="nav-number">8.</span> <span class="nav-text">element ui 中重置表单的坑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#element-ui-%E4%B8%AD%E5%AF%B9%E8%A1%A8%E6%A0%BC%E8%BF%9B%E8%A1%8C%E8%A1%8C%E5%86%85%E7%9A%84%E7%BC%96%E8%BE%91"><span class="nav-number">9.</span> <span class="nav-text">element ui 中对表格进行行内的编辑</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -378,20 +408,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

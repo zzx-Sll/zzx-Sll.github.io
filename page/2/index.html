@@ -157,6 +157,294 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/23/%E5%AD%A6%E4%B9%A0%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="键盘敲烂，工资过万">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/23/%E5%AD%A6%E4%B9%A0%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-23 12:57:55" itemprop="dateCreated datePublished" datetime="2020-12-23T12:57:55+08:00">2020-12-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-27 23:05:12" itemprop="dateModified" datetime="2021-01-27T23:05:12+08:00">2021-01-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="学习或工作中遇到的坑"><a href="#学习或工作中遇到的坑" class="headerlink" title="学习或工作中遇到的坑"></a>学习或工作中遇到的坑</h3><p>1 forEach循环可以直接改变所有类型的值？</p>
+<p>总结：</p>
+<ul>
+<li>基本类型当我们拿到ele的时候，只是forEach给我们在另一个地方创建了一个新元素，和原数组的ele无关。当我们给ele赋值时时无法改变原数组的ele的值</li>
+<li>js中的数据类型分为两大类：基本数据类型和引用数据类型。基本数据类型：number,string,boolean,null,undefined.它们在栈内存中直接存储变量与值。而Object对象的真正的数据是保存在堆中的。栈内只保存了对象的变量以及对应的堆的地址，所以操作Object其实就是直接操作了对象本身。</li>
+<li>forEach的基本原理也是for循环，使用arr[index]的赋值形式改变，无论什么值都可以改变了。</li>
+</ul>
+<p>2 let,const不能声明全局变量。</p>
+<p>原因：let,const声明的全部变量存在于块级作用域中。和顶层对象window没有关系。</p>
+<ul>
+<li>ES5声明变量只有两种方式：var和function。</li>
+<li>ES6有let、const、import、class再加上ES5的var、function共有六种声明变量的方式。</li>
+<li>还需要了解顶层对象：浏览器环境中顶层对象是window，Node中是global对象。</li>
+<li><strong>ES5中，顶层对象的属性等价于全局变量。(敲黑板了啊)</strong></li>
+<li><strong>ES6中，有所改变：var、function声明的全局变量，依然是顶层对象的属性；let、const、class声明的全局变量不属于顶层对象的属性</strong>，也就是说ES6开始，全局变量和顶层对象的属性开始分离、脱钩。</li>
+</ul>
+<h2 id="贪心算法："><a href="#贪心算法：" class="headerlink" title="贪心算法："></a>贪心算法：</h2><p>概念：指在进行每个子步骤时，都使用最优子项。以期望最终的出的结果是最优解的算法。</p>
+<h3 id="HTML5中的pattern属性的用法"><a href="#HTML5中的pattern属性的用法" class="headerlink" title="HTML5中的pattern属性的用法"></a>HTML5中的pattern属性的用法</h3><p><strong>设置input的类型为数字：</strong></p>
+<p>  type=”tel” 和 type=”number”的区别</p>
+<p><strong>tel</strong>:优点是ios和Android的表现差不多。但是会有字母。</p>
+<p><strong>number</strong>:安卓实现纯数字键盘，IOS不是九宫格。</p>
+<p><strong>pattern</strong>:用于验证表单的输入内容，通常HTML5的type属性，如Email,number,data类,url等，已经自带了简单的数据格式验证功能了，加上pattern后，前端部分的验证更加简单高效了。</p>
+<p>显而易见，pattern的属性值要用正则表达式。</p>
+<p>实例</p>
+<p>简单地数字验证</p>
+<p>数字的验证有两个：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">&quot;number&quot;</span> pattern=<span class="string">&quot;\d&quot;</span>&gt;</span><br><span class="line">&lt;input type=<span class="string">&quot;number&quot;</span> pattern=<span class="string">&quot;[0-9]*&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>对表单验证来说，这两个正则表达式是一样的，表现得话差异就很大：</p>
+<p>iOS中只有[0-9]*才能调起九宫格键盘，\d无效。</p>
+<p>Android4.4一下，两个都能调起九宫格数字键盘，4.4以上，只认type属性，就是说将上面的type=”number”改为text，将调起全键盘而不是九宫格数字键盘。</p>
+<h3 id="VUE-中跳转到外部链接"><a href="#VUE-中跳转到外部链接" class="headerlink" title="VUE 中跳转到外部链接"></a>VUE 中跳转到外部链接</h3><ol>
+<li>当前窗口打开外部链接</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">goGuanWang</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">window</span>.location.herf(<span class="string">&quot;https://www.baidu.com&quot;</span>)   <span class="comment">// row中的数据是表格scope.row  由后台接口返回</span></span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>  2.新窗口打开外部链接</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">goGuanWang</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">window</span>.open(<span class="string">&quot;https://www.baidu.com&quot;</span>,<span class="string">&quot;_blank&quot;</span>)   <span class="comment">// row中的数据是表格scope.row  由后台接口返回</span></span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="多行文本折行显示之强制换行"><a href="#多行文本折行显示之强制换行" class="headerlink" title="多行文本折行显示之强制换行"></a>多行文本折行显示之强制换行</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">display: block;</span><br><span class="line">overflow: hidden; <span class="comment">//超出部分隐藏 </span></span><br><span class="line">text-overflow: ellipsis; <span class="comment">//超出部分显示省略号</span></span><br><span class="line">display: -webkit-box; <span class="comment">//转为块级元素</span></span><br><span class="line"><span class="comment">/*! autoprefixer: off */</span></span><br><span class="line">-webkit-box-orient: vertical; <span class="comment">//兼容性</span></span><br><span class="line">word-<span class="keyword">break</span>: <span class="keyword">break</span>-all; <span class="comment">//强制换行</span></span><br><span class="line">-webkit-line-clamp: <span class="number">2</span>; <span class="comment">//两行显示</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="vue中静态动态类名的共存"><a href="#vue中静态动态类名的共存" class="headerlink" title="vue中静态动态类名的共存"></a>vue中静态动态类名的共存</h3><p>数组形式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">&#x27;red&#x27;</span>,<span class="number">1</span>&gt;<span class="number">0</span>?<span class="string">&#x27;blur&#x27;</span>:<span class="string">&#x27;green&#x27;</span>] <span class="comment">//red为静态类名</span></span><br></pre></td></tr></table></figure>
+
+<p>对象形式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&#123;<span class="string">&#x27;red&#x27;</span>:<span class="literal">true</span>&#125;,&#123;<span class="string">&#x27;green&#x27;</span>:flag&#125;] <span class="comment">//red为静态类名，flag为动态类名</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Echarts5-0版本的在vue-cli开发下的问题"><a href="#Echarts5-0版本的在vue-cli开发下的问题" class="headerlink" title="Echarts5.0版本的在vue cli开发下的问题"></a>Echarts5.0版本的在vue cli开发下的问题</h3><p>升级到5.0版本，发现导入Echarts，为undefined。</p>
+<p><strong>原因：</strong>采用了exprot导出，而非export default导出</p>
+<p>解决办法：</p>
+<ul>
+<li>采用旧版本</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i echarts@<span class="number">4.9</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>采用5.0版本，但是导入方式为</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> echarts <span class="keyword">from</span> <span class="string">&#x27;echarts&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="三元表达式只能是‘’三元‘’么？"><a href="#三元表达式只能是‘’三元‘’么？" class="headerlink" title="三元表达式只能是‘’三元‘’么？"></a>三元表达式只能是‘’三元‘’么？</h3><p>答案：肯定不是的，三元表达式其实可以嵌套无数层，理论上可以无限套娃哦</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span>&lt;<span class="number">1</span>?<span class="literal">true</span>:<span class="number">0</span>&lt;<span class="number">2</span>?<span class="literal">true</span>:<span class="number">0</span>&lt;<span class="number">3</span>?<span class="literal">true</span>:<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="async-await-promise的执行顺序机制"><a href="#async-await-promise的执行顺序机制" class="headerlink" title="async await promise的执行顺序机制"></a>async await promise的执行顺序机制</h3><ul>
+<li><strong>async 是立即执行函数</strong>，<strong>默认返回的是promise对象</strong></li>
+<li><strong>遇到awiat会返回，执行完await的函数体再继续执行后面的代码</strong></li>
+<li><strong>promise的立即执行函数，resolve和reject返回的是微任务，.then来接收</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async1</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;async1 start&#x27;</span>); </span><br><span class="line">      <span class="keyword">await</span> async2();</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;async1 end&#x27;</span>) </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">async2</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;async2&#x27;</span>) </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;script start&#x27;</span>); </span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;setTimeout&#x27;</span>) </span><br><span class="line">    &#125;, <span class="number">0</span>);</span><br><span class="line">    async1();</span><br><span class="line">    <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;promise1&#x27;</span>); </span><br><span class="line">      resolve()</span><br><span class="line">    &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;promise2&#x27;</span>) </span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;script end&#x27;</span>) </span><br><span class="line"></span><br><span class="line">    <span class="comment">/* </span></span><br><span class="line"><span class="comment">    1 script start</span></span><br><span class="line"><span class="comment">    2 async1 start</span></span><br><span class="line"><span class="comment">    3 async2</span></span><br><span class="line"><span class="comment">    4 promise1</span></span><br><span class="line"><span class="comment">    5 script end</span></span><br><span class="line"><span class="comment">    6 async1 end</span></span><br><span class="line"><span class="comment">    7 promise2</span></span><br><span class="line"><span class="comment">    8 setTimeout</span></span><br><span class="line"><span class="comment">    </span></span><br><span class="line"><span class="comment">    */</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="element-ui-中重置表单的坑"><a href="#element-ui-中重置表单的坑" class="headerlink" title="element ui 中重置表单的坑"></a>element ui 中重置表单的坑</h3><p><strong>问题</strong>：在本地添加数据,如vuex，添加完毕后重置表单，添加的数据也会被重置。</p>
+<p><strong>原因：</strong>引用数据类型，指向同一个地址，即使添加完成，然后重置，也会导致添加的数据为空或者初始化。</p>
+<p><strong>解决方法：</strong>深拷贝</p>
+<ol>
+<li>递归函数实现</li>
+<li>loadash 中的cloneDeep（obj）</li>
+<li>JSON.parse(JSON.stringify(obj))</li>
+</ol>
+<h3 id="element-ui-中对表格进行行内的编辑"><a href="#element-ui-中对表格进行行内的编辑" class="headerlink" title="element ui 中对表格进行行内的编辑"></a>element ui 中对表格进行行内的编辑</h3><ul>
+<li>给每行数据添加一个isSet属性，值为false。</li>
+<li>选中行，将当行的isSet设置为true</li>
+<li>根据v-if，来动态显示input输入框</li>
+<li>更改后，关闭input</li>
+<li>编辑下一行时，判断之前的编辑是否有保存</li>
+</ul>
+<p><img src="C:\Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210127230353358.png"><br><img src="C:\Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210127230439161.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/21/learn-TyperScript03/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="键盘敲烂，工资过万">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/21/learn-TyperScript03/" class="post-title-link" itemprop="url">learn-TyperScript03</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-21 23:04:36" itemprop="dateCreated datePublished" datetime="2020-12-21T23:04:36+08:00">2020-12-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-30 15:43:31" itemprop="dateModified" datetime="2021-01-30T15:43:31+08:00">2021-01-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="1-浏览器中运行TS"><a href="#1-浏览器中运行TS" class="headerlink" title="1 浏览器中运行TS"></a>1 浏览器中运行TS</h3><p>注意：浏览器中无法直接运行TS文件，需要 tsc xxx.ts将ts文件转换为js文件，才能运行</p>
+<p>简便方法： tsc –watch xxx.ts文件，每次更新修改文件，不需要重新tsc xxx.ts。</p>
+<p>解释：–watch 表示启用监视模式，只要重新保存了ts文件，就会自动调用tsc将ts转为js。</p>
+<h3 id="2-Dom操作"><a href="#2-Dom操作" class="headerlink" title="2 Dom操作"></a>2 Dom操作</h3><h4 id="2-1-获取元素"><a href="#2-1-获取元素" class="headerlink" title="2.1 获取元素"></a>2.1 获取元素</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&#x27;query&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-类型断言"><a href="#2-2-类型断言" class="headerlink" title="2.2 类型断言"></a>2.2 类型断言</h4><p>问题：通过querySelector()通过id选择器获取DOM元素时，拿到的元素类型都是Element,因为无法根据id来确定元素的类型，所以盖饭那个发就返回了一个宽泛的类型：元素类型（element）。导致无法访问img的src属性。</p>
+<p>因为：element类型只包含所有元素共有的属性和方法。比如：（id属性）</p>
+<p>解决方法：使用类型断言，来手动指定更加具体的类型。（值as更具体的了类型）</p>
+<p>解释：我们确定id=”image”的元素是图片元素，所以我们将类型指定为HTMLImageElement.</p>
+<p>技巧：通过console.dir()打印dom元素对象，来查看该元素的类型。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取a标签</span></span><br><span class="line"><span class="keyword">var</span> lianjie = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;#lianjie&#x27;</span>) <span class="keyword">as</span> HTMLAnchorElement</span><br><span class="line">lianjie.href=<span class="string">&quot;http://www.baidu.com&quot;</span></span><br><span class="line"><span class="built_in">console</span>.dir(lianjie)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-操作文本内容"><a href="#2-3-操作文本内容" class="headerlink" title="2.3 操作文本内容"></a>2.3 操作文本内容</h4><p>读取：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dom.innerText</span><br><span class="line">dom.innerHTML</span><br></pre></td></tr></table></figure>
+
+<p>设置：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dom.innerText=<span class="string">&#x27;xxx&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：需要通过类型断言来指定DOM元素的具体类型，才可以用innerText属性。</p>
+<p>注意：设置内容时会<strong>覆盖原来的内容</strong>。</p>
+<h4 id="2-4-操作样式"><a href="#2-4-操作样式" class="headerlink" title="2.4 操作样式"></a>2.4 操作样式</h4><p><strong>1 style属性（行内样式）</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;p&#x27;</span>) <span class="keyword">as</span> HTMLParagraphElement</span><br><span class="line">p.style.fontSize=<span class="string">&#x27;70px&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>2 classList 属性 （类样式）</strong></p>
+<p>包含三个常用方法：添加（add）、移除(remove)、判断是否存在(contains)。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;p&#x27;</span>) <span class="keyword">as</span> HTMLParagraphElement</span><br><span class="line">p.classList.add(<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line">p.classList.remove(<span class="string">&#x27;c&#x27;</span>)</span><br><span class="line"><span class="keyword">var</span> tue:boolean=p.classList.contains(<span class="string">&#x27;a&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.5 操作事件</strong></p>
+<p>添加事件:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> addBtn = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.add-btn&#x27;</span>) <span class="keyword">as</span> HTMLButtonElement</span><br><span class="line"><span class="keyword">let</span> clickEvent = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;你再点下试试&#x27;</span>)</span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//添加事件</span></span><br><span class="line">addBtn.addEventListener(<span class="string">&#x27;click&#x27;</span>, clickEvent)</span><br></pre></td></tr></table></figure>
+
+<p>移除事件:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> removeBtn = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.remove-btn&#x27;</span>) <span class="keyword">as</span> HTMLButtonElement</span><br><span class="line"><span class="comment">//解绑事件</span></span><br><span class="line">removeBtn.addEventListener(<span class="string">&#x27;click&#x27;</span>,  <span class="function">()=&gt;</span> &#123;</span><br><span class="line">  addBtn.removeEventListener(<span class="string">&#x27;click&#x27;</span>, clickEvent)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//&#123;once:true&#125;设置为addEventListener的第三个参数，则该事件被调用一次后就自动解绑了。</span></span><br></pre></td></tr></table></figure>
+
+<p>说明：添加和移除事件时，事件处理程序是同一个，都是函数handleClick(名字)。如果直接写两个相同的程序，虽然是两个函数长得一样，但是函数时引用类型，他们的地址不一样，所以不能移除事件。</p>
+<h5 id="2-6-可以先使用函数，再声明函数。"><a href="#2-6-可以先使用函数，再声明函数。" class="headerlink" title="2.6 可以先使用函数，再声明函数。"></a>2.6 可以先使用函数，再声明函数。</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">btn.addEventListener(<span class="string">&#x27;click&#x27;</span>,handleClick)</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleClick</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;11&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>原因：函数在当前ts文件中的任意位置都有定义。</p>
+<h5 id="2-7-在函数声明形式的事件处理时，使用对象参数时，应该指定类型注解，否则，访问事件对象的属性时没有任何提示。"><a href="#2-7-在函数声明形式的事件处理时，使用对象参数时，应该指定类型注解，否则，访问事件对象的属性时没有任何提示。" class="headerlink" title="2.7 在函数声明形式的事件处理时，使用对象参数时，应该指定类型注解，否则，访问事件对象的属性时没有任何提示。"></a>2.7 在函数声明形式的事件处理时，使用对象参数时，应该指定类型注解，否则，访问事件对象的属性时没有任何提示。</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">btn.addEventListener(<span class="string">&#x27;click&#x27;</span>,handleClick)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">handleClick</span>(<span class="params">event:MouseeEvent</span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(event.target)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>技巧：使用原始方式（匿名回调函数）查看参数类型。</p>
+<h3 id="webpack中打包ts文件"><a href="#webpack中打包ts文件" class="headerlink" title="webpack中打包ts文件"></a>webpack中打包ts文件</h3><h4 id="下载依赖"><a href="#下载依赖" class="headerlink" title="下载依赖"></a>下载依赖</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yarn add -D typescript</span><br><span class="line">yarn add -D webpack webpack-cli</span><br><span class="line">yarn add -D webpack-dev-server</span><br><span class="line">yarn add -D html-webpack-plugin clean-webpack-plugin</span><br><span class="line">yarn add -D ts-loader</span><br><span class="line">yarn add -D cross-env</span><br></pre></td></tr></table></figure>
+
+<h4 id="入口文件及src"><a href="#入口文件及src" class="headerlink" title="入口文件及src"></a>入口文件及src</h4><p><img src="C:\Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210130153810329.png"></p>
+<h4 id="build-webpack-config-js"><a href="#build-webpack-config-js" class="headerlink" title="build/webpack.config.js"></a>build/webpack.config.js</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;CleanWebpackPlugin&#125; = <span class="built_in">require</span>(<span class="string">&#x27;clean-webpack-plugin&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">&#x27;html-webpack-plugin&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> isProd = process.env.NODE_ENV === <span class="string">&#x27;production&#x27;</span> <span class="comment">// 是否生产环境</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">resolve</span> (<span class="params">dir</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> path.resolve(__dirname, <span class="string">&#x27;..&#x27;</span>, dir)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  mode: isProd ? <span class="string">&#x27;production&#x27;</span> : <span class="string">&#x27;development&#x27;</span>,</span><br><span class="line">  entry: &#123;</span><br><span class="line">    app: <span class="string">&#x27;./src/main.ts&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  output: &#123;</span><br><span class="line">    path: resolve(<span class="string">&#x27;dist&#x27;</span>),</span><br><span class="line">    filename: <span class="string">&#x27;[name].[contenthash:8].js&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  <span class="built_in">module</span>: &#123;</span><br><span class="line">    rules: [</span><br><span class="line">      &#123;</span><br><span class="line">        test: <span class="regexp">/\.tsx?$/</span>,</span><br><span class="line">        use: <span class="string">&#x27;ts-loader&#x27;</span>,</span><br><span class="line">        include: [resolve(<span class="string">&#x27;src&#x27;</span>)]</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="keyword">new</span> CleanWebpackPlugin(&#123;</span><br><span class="line">    &#125;),</span><br><span class="line"></span><br><span class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">      template: <span class="string">&#x27;./public/index.html&#x27;</span></span><br><span class="line">    &#125;)</span><br><span class="line">  ],</span><br><span class="line"></span><br><span class="line">  resolve: &#123;</span><br><span class="line">    extensions: [<span class="string">&#x27;.ts&#x27;</span>, <span class="string">&#x27;.tsx&#x27;</span>, <span class="string">&#x27;.js&#x27;</span>]</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  devtool: isProd ? <span class="string">&#x27;cheap-module-source-map&#x27;</span> : <span class="string">&#x27;cheap-module-eval-source-map&#x27;</span>,</span><br><span class="line"></span><br><span class="line">  devServer: &#123;</span><br><span class="line">    host: <span class="string">&#x27;localhost&#x27;</span>, <span class="comment">// 主机名</span></span><br><span class="line">    stats: <span class="string">&#x27;errors-only&#x27;</span>, <span class="comment">// 打包日志输出输出错误信息</span></span><br><span class="line">    port: <span class="number">8081</span>,</span><br><span class="line">    open: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="配置打包命令"><a href="#配置打包命令" class="headerlink" title="配置打包命令"></a>配置打包命令</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;dev&quot;</span>: <span class="string">&quot;cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.js&quot;</span>,</span><br><span class="line"><span class="string">&quot;build&quot;</span>: <span class="string">&quot;cross-env NODE_ENV=production webpack --config build/webpack.config.js&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="运行与打包"><a href="#运行与打包" class="headerlink" title="运行与打包"></a>运行与打包</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yarn dev</span><br><span class="line">yarn build</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/15/uniapp%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -776,20 +1064,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
