@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Map数据类型Map数据类型是为了解决对象的键不能是任意类型而产生的。 构建Map数据类型： 1let m&#x3D;new Map()  Map的五种操作方法：">
+  <meta name="description" content="TypeSrcipte的接口接口 一般是值对象的类型注解，可理解为约束。 12345678910111213141516&#x2F;&#x2F;  接口：对象的类型注解，可理解为约束  &#x2F;&#x2F; readonly 只读属性，与const不同的是，定义属性的时候只能用它，？表示可有可无的属性  interface IPerson&amp;#123;    readonly id: number    name: string">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Map和WeakMap">
-<meta property="og:url" content="http://example.com/2020/12/30/03-Map%E5%92%8CWeakMap/index.html">
+<meta property="og:title" content="TypeSrcipt-接口">
+<meta property="og:url" content="http://example.com/2021/01/31/TypeSrcipt-%E6%8E%A5%E5%8F%A3/index.html">
 <meta property="og:site_name" content="zzx的个人博客">
-<meta property="og:description" content="Map数据类型Map数据类型是为了解决对象的键不能是任意类型而产生的。 构建Map数据类型： 1let m&#x3D;new Map()  Map的五种操作方法：">
+<meta property="og:description" content="TypeSrcipte的接口接口 一般是值对象的类型注解，可理解为约束。 12345678910111213141516&#x2F;&#x2F;  接口：对象的类型注解，可理解为约束  &#x2F;&#x2F; readonly 只读属性，与const不同的是，定义属性的时候只能用它，？表示可有可无的属性  interface IPerson&amp;#123;    readonly id: number    name: string">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-30T13:41:47.000Z">
-<meta property="article:modified_time" content="2020-12-30T14:56:43.032Z">
+<meta property="article:published_time" content="2021-01-31T05:30:21.000Z">
+<meta property="article:modified_time" content="2021-01-31T12:24:36.934Z">
 <meta property="article:author" content="zzx">
-<meta property="article:tag" content="导航">
+<meta property="article:tag" content="TypeScript">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2020/12/30/03-Map%E5%92%8CWeakMap/">
+<link rel="canonical" href="http://example.com/2021/01/31/TypeSrcipt-%E6%8E%A5%E5%8F%A3/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>Map和WeakMap | zzx的个人博客</title>
+  <title>TypeSrcipt-接口 | zzx的个人博客</title>
   
 
 
@@ -161,7 +161,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/30/03-Map%E5%92%8CWeakMap/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/31/TypeSrcipt-%E6%8E%A5%E5%8F%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
@@ -174,7 +174,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Map和WeakMap
+          TypeSrcipt-接口
         </h1>
 
         <div class="post-meta">
@@ -185,7 +185,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-12-30 21:41:47 / 修改时间：22:56:43" itemprop="dateCreated datePublished" datetime="2020-12-30T21:41:47+08:00">2020-12-30</time>
+              <time title="创建时间：2021-01-31 13:30:21 / 修改时间：20:24:36" itemprop="dateCreated datePublished" datetime="2021-01-31T13:30:21+08:00">2021-01-31</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -193,7 +193,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ES6%E8%BF%9B%E9%98%B6/" itemprop="url" rel="index"><span itemprop="name">ES6进阶</span></a>
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
                 </span>
             </span>
 
@@ -208,11 +208,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Map数据类型"><a href="#Map数据类型" class="headerlink" title="Map数据类型"></a>Map数据类型</h3><p>Map数据类型是为了解决对象的键不能是任意类型而产生的。</p>
-<p>构建Map数据类型：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> m=<span class="keyword">new</span> <span class="built_in">Map</span>()</span><br></pre></td></tr></table></figure>
+        <h3 id="TypeSrcipte的接口"><a href="#TypeSrcipte的接口" class="headerlink" title="TypeSrcipte的接口"></a>TypeSrcipte的接口</h3><p><strong>接口</strong></p>
+<p>一般是值对象的类型注解，可理解为约束。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  接口：对象的类型注解，可理解为约束</span></span><br><span class="line">  <span class="comment">// readonly 只读属性，与const不同的是，定义属性的时候只能用它，？表示可有可无的属性</span></span><br><span class="line">  interface IPerson&#123;</span><br><span class="line">    readonly id: number</span><br><span class="line">    name: string</span><br><span class="line">    age: number</span><br><span class="line">    sex?:string</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> ldh: IPerson = &#123;</span><br><span class="line">    id: <span class="number">1</span>,</span><br><span class="line">    name: <span class="string">&#x27;刘德华&#x27;</span>,</span><br><span class="line">    age: <span class="number">18</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  ldh.sex=<span class="string">&quot;男&quot;</span></span><br><span class="line">  <span class="built_in">console</span>.log(ldh);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;-----------------&quot;</span>);</span><br></pre></td></tr></table></figure>
 
-<p>Map的五种操作方法：</p>
+<p><strong>函数的接口</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数的接口</span></span><br><span class="line"> <span class="comment">// 函数的接口interface定义，参数类型，返回值类型</span></span><br><span class="line"> interface IFunction&#123;</span><br><span class="line">   (str:string,<span class="attr">subStr</span>:string):boolean</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">let</span> serachSubStr: IFunction=<span class="function"><span class="keyword">function</span>(<span class="params">str: string, subStr: string</span>): <span class="title">boolean</span></span>&#123;</span><br><span class="line"> </span><br><span class="line"> <span class="keyword">return</span>  str.search(subStr)&gt;-<span class="number">1</span></span><br><span class="line">   </span><br><span class="line"> &#125;</span><br><span class="line"> <span class="built_in">console</span>.log(serachSubStr(<span class="string">&#x27;hello wrold&#x27;</span>, <span class="string">&#x27;wrold&#x27;</span>));</span><br><span class="line"> </span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">&#x27;-----------------------&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>类的接口</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> </span><br><span class="line">  <span class="comment">// 类的接口：定义 interface关键字 实现类和接口直接的关系：implements关键字 实现接口与接口之间的关系：extends关键字</span></span><br><span class="line">  interface IFly&#123;</span><br><span class="line">    fly()</span><br><span class="line">  &#125;</span><br><span class="line">   interface ISwim&#123;</span><br><span class="line">    swim()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//接口继承</span></span><br><span class="line">  interface IFlyAndSwim <span class="keyword">extends</span> IFly, ISwim&#123; &#125;</span><br><span class="line">  <span class="comment">//类实现接口</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Star</span> <span class="title">implements</span> <span class="title">IFlyAndSwim</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="title">fly</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">&#x27;I can fly&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">swim</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">&#x27;I can swim&#x27;</span>);</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">//实例化类</span></span><br><span class="line">  <span class="keyword">let</span> zxy = <span class="keyword">new</span> Star()</span><br><span class="line">  zxy.fly()</span><br><span class="line">  zxy.swim()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -222,7 +227,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag"># 导航</a>
+              <a href="/tags/TypeScript/" rel="tag"># TypeScript</a>
           </div>
 
         
@@ -231,12 +236,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/12/27/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="prev" title="算法与数据结构">
-      <i class="fa fa-chevron-left"></i> 算法与数据结构
+    <a href="/2021/01/30/title-md/" rel="prev" title=":title.md">
+      <i class="fa fa-chevron-left"></i> :title.md
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/12/30/04-Proxy/" rel="next" title="Proxy">
-      Proxy <i class="fa fa-chevron-right"></i>
+    <a href="/2021/01/31/TypeScript-%E7%B1%BB/" rel="next" title="TypeScript-类">
+      TypeScript-类 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -296,7 +301,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Map%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">Map数据类型</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#TypeSrcipte%E7%9A%84%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.</span> <span class="nav-text">TypeSrcipte的接口</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
