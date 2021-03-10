@@ -157,6 +157,299 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/15/uniapp%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="敲代码是件快乐的事情">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/15/uniapp%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" class="post-title-link" itemprop="url">uniapp开发遇到的坑</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-15 22:19:37" itemprop="dateCreated datePublished" datetime="2020-12-15T22:19:37+08:00">2020-12-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-01-11 21:55:19" itemprop="dateModified" datetime="2021-01-11T21:55:19+08:00">2021-01-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">工作中遇到的问题</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="uniapp开发遇到的坑"><a href="#uniapp开发遇到的坑" class="headerlink" title="uniapp开发遇到的坑"></a>uniapp开发遇到的坑</h3><p>####1 video和swiper组合使用的问题</p>
+<p>今天在工作中负责开发轮播图和视频相结合的功能，起初觉得很简单。就是简单地swiper+video标签，就能实现功能，但是事情并没有我想象的那么简单。在浏览器调试是没有任何问题，但是在真机上调试时发现视频并不会滚动。后来在官方文档上查阅了才发现，这是由于video原生标签优先级比组件标签的优先级高。导致无法轮播。后面换了一种方式来解决问题：官方推荐了一种自定义插件的方法，利用的思想就是：轮播的还是图片，但是当我点击图片时，让图片隐藏。视频自动播放。这时就不会进入轮播，而是进入了视频的全屏播放界面。当我退出播放时用重新进入轮播的界面。通过监听video标签的timeupdate事件和fullscreenchange事件来完成操作。</p>
+<h4 id="2-在uniapp中让文字换行的问题"><a href="#2-在uniapp中让文字换行的问题" class="headerlink" title="2 在uniapp中让文字换行的问题"></a>2 在uniapp中让文字换行的问题</h4><p>在uniapp中设置文本多行显示需要设置word-break:break-all; -webkit-lin-clamp:设置行数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">overflow: hidden;</span><br><span class="line">word-<span class="keyword">break</span>: <span class="keyword">break</span>-all;  <span class="comment">/* break-all(允许在单词内换行。) */</span></span><br><span class="line">text-overflow: ellipsis;  <span class="comment">/* 超出部分省略号 */</span></span><br><span class="line">display: -webkit-box; <span class="comment">/** 对象作为伸缩盒子模型显示 **/</span></span><br><span class="line">-webkit-box-orient: vertical; <span class="comment">/** 设置或检索伸缩盒对象的子元素的排列方式 **/</span></span><br><span class="line">-webkit-line-clamp: <span class="number">2</span>; <span class="comment">/** 显示的行数 **/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-uniapp中的跨端兼容"><a href="#3-uniapp中的跨端兼容" class="headerlink" title="3 uniapp中的跨端兼容"></a>3 uniapp中的跨端兼容</h3><p>通常情况下uniapp开发的代码适合多端运行，但是每个平台都有自己的特性，因此会存在一些无法跨平台的情况。</p>
+<ul>
+<li>大量写if else 会造成代码执行性能低下，和管理混乱。</li>
+<li>编译到不同的工程后二次修改，会让后续升级变得很麻烦。</li>
+</ul>
+<p>解决方法：通过条件编译来在不同的平台下展示不同的代码。</p>
+<pre><code>   #### 条件编译</code></pre>
+<p>条件编译是用特殊的注释作为标记，在编译时根据这些特殊的注释，将注释里面的代码编译到不同平台。</p>
+<p><strong>写法：</strong>以#ifdef 或#ifndef 加%PLATFORM%开头，以#endif结尾.</p>
+<ul>
+<li>‘#ifdef:if defined’ 仅在某平台存在</li>
+<li>‘#ifndef’:if not defined 除了某平台外都存在</li>
+<li>%PLATFORM:平台名称。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>#ifdef <strong>APP-PLUS</strong> 需条件编译的代码 #endif</th>
+<th>仅出现在 App 平台下的代码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>#ifndef <strong>H5</strong> 需条件编译的代码 #endif</td>
+<td>除了 H5 平台，其它平台均存在的代码</td>
+</tr>
+<tr>
+<td>#ifdef <strong>H5</strong> || <strong>MP-WEIXIN</strong> 需条件编译的代码 #endif</td>
+<td>在 H5 平台或微信小程序平台存在的代码（这里只有||，不可能出现&amp;&amp;，因为没有交集）</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">值</th>
+<th align="left">平台</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">APP-PLUS</td>
+<td align="left">App</td>
+</tr>
+<tr>
+<td align="left">APP-PLUS-NVUE或APP-NVUE</td>
+<td align="left">App nvue</td>
+</tr>
+<tr>
+<td align="left">H5</td>
+<td align="left">H5</td>
+</tr>
+<tr>
+<td align="left">MP-WEIXIN</td>
+<td align="left">微信小程序</td>
+</tr>
+<tr>
+<td align="left">MP-ALIPAY</td>
+<td align="left">支付宝小程序</td>
+</tr>
+<tr>
+<td align="left">MP-BAIDU</td>
+<td align="left">百度小程序</td>
+</tr>
+<tr>
+<td align="left">MP-TOUTIAO</td>
+<td align="left">字节跳动小程序</td>
+</tr>
+<tr>
+<td align="left">MP-QQ</td>
+<td align="left">QQ小程序</td>
+</tr>
+<tr>
+<td align="left">MP-360</td>
+<td align="left">360小程序</td>
+</tr>
+<tr>
+<td align="left">MP</td>
+<td align="left">微信小程序/支付宝小程序/百度小程序/字节跳动小程序/QQ小程序/360小程序</td>
+</tr>
+<tr>
+<td align="left">QUICKAPP-WEBVIEW</td>
+<td align="left">快应用通用(包含联盟、华为)</td>
+</tr>
+<tr>
+<td align="left">QUICKAPP-WEBVIEW-UNION</td>
+<td align="left">快应用联盟</td>
+</tr>
+<tr>
+<td align="left">QUICKAPP-WEBVIEW-HUAWEI</td>
+<td align="left">快应用华为</td>
+</tr>
+</tbody></table>
+<h4 id="定义全局过滤器"><a href="#定义全局过滤器" class="headerlink" title="定义全局过滤器"></a>定义全局过滤器</h4><ul>
+<li><p> 定义 filter文件夹，在文件夹中 定义filter.js文件</p>
+</li>
+<li><p>定义过滤器</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//保留两位小数</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span>  <span class="title">numFormat</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">Number</span>.isFinite(val)) &#123;</span><br><span class="line">               val = <span class="number">0</span>;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">return</span> <span class="built_in">Number</span>(<span class="built_in">Number</span>(val).toFixed(<span class="number">2</span>));</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>main.js中引入</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//全局过滤器</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> filters <span class="keyword">from</span> <span class="string">&#x27;@/filter/filters.js&#x27;</span><span class="comment">// * as必须携带</span></span><br><span class="line"><span class="built_in">Object</span>.keys(filters).forEach(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// console.log(filters)</span></span><br><span class="line">  Vue.filter(key, filters[key])</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/13/learn-TypeScipt02/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="敲代码是件快乐的事情">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/13/learn-TypeScipt02/" class="post-title-link" itemprop="url">learn-TypeScipt02</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-13 22:20:02" itemprop="dateCreated datePublished" datetime="2020-12-13T22:20:02+08:00">2020-12-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-21 21:59:14" itemprop="dateModified" datetime="2020-12-21T21:59:14+08:00">2020-12-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="学习TS的第二天"><a href="#学习TS的第二天" class="headerlink" title="学习TS的第二天"></a>学习TS的第二天</h3><h4 id="1-TS中创建数组的方法："><a href="#1-TS中创建数组的方法：" class="headerlink" title="1 TS中创建数组的方法："></a>1 TS中创建数组的方法：</h4><ul>
+<li><p>语法一（推荐）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> strs:string[]=[]</span><br><span class="line"><span class="comment">//[]表示数组，如果数组中没有内容，就是一个空数组</span></span><br><span class="line"><span class="comment">//数组的类别注解由两部分组成 类型+[]，此处表示字符串类型的数组（只能出现字符串类型）</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>语法二（不推荐）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> strs:string[]=<span class="keyword">new</span> <span class="built_in">Array</span>()</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h3 id="2-函数的定义方法"><a href="#2-函数的定义方法" class="headerlink" title="2 函数的定义方法"></a>2 函数的定义方法</h3><p>和js中一样，利用funtion关键字定义</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;hi&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line">sayHi()</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-数组对象-forEach"><a href="#3-数组对象-forEach" class="headerlink" title="3 数组对象-forEach"></a>3 数组对象-forEach</h3><p>forEach方法说明：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">songs.forEach(<span class="function">(<span class="params">item,index</span>)=&gt;</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;索引为&#x27;</span>,index,<span class="string">&#x27;元素为&#x27;</span>,item)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>注意：不需要为回调函数的参数或返回值指定类型注解，因为这里的回调函数，是作为forEach方法的实参传入，不应该指定类型注解！</p>
+<p>forEach方法，可以根据当前数组的类型，自动推导出回调函数中参数的类型。</p>
+<h3 id="4-数组对象-some"><a href="#4-数组对象-some" class="headerlink" title="4 数组对象-some"></a>4 数组对象-some</h3><p>some方法：遍历数组，查找是否有一个满足条件的元素（如果有，就可以停止循环）。</p>
+<p>循环特点：根据回调函数的返回值，决定是否停止循环，如返回true，就停止，返回false，就继续循环。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> has:boolean=nums.some(<span class="function">(<span class="params">num</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(num&gt;<span class="number">10</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(has)</span><br></pre></td></tr></table></figure>
+
+<p>some方法的返回值：布尔值，如果找到满足条件的元素，结果为true,否则为false。</p>
+<h3 id="5-TS的类型推论"><a href="#5-TS的类型推论" class="headerlink" title="5 TS的类型推论"></a>5 TS的类型推论</h3><p>在某些场景下，类型推论会帮助提供类型。（在这些场景下，我们可以省略类型注解）</p>
+<p>发生类型注解的2种常见的场景：1 声明变量并初始化的时候   2 决定函数的返回值时</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> age =<span class="number">18</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1:number,num2:number</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> num1+num2</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//注意：这两种情况下，类型注解可以省略不写</span></span><br><span class="line"><span class="comment">//推荐：能省略类型注解的地方，就省略（合理利用ts的类型推论，可以提高开发效率）</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="6-接口：对象的类型注解"><a href="#6-接口：对象的类型注解" class="headerlink" title="6 接口：对象的类型注解"></a>6 接口：对象的类型注解</h3><p>TS中的对象是结构化的，结构简单来说就是对象有什么属性或方法。在使用对象前，就可以根据需求，提前设计好对象的结构。</p>
+<p>比如：创建一个对象，包含姓名、年龄两个属性。</p>
+<p>思考过程：1 对象的结构包含姓名、年龄两个属性 2 姓名-》字符串类型 年龄-》数值类型 3 创建对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//此处的&#123;&#125;表示对象的类型注解</span></span><br><span class="line"><span class="keyword">let</span> obj1: &#123;</span><br><span class="line">  name: string</span><br><span class="line">  age:number</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 此处的&#123;&#125;表示对象的值</span></span><br><span class="line">obj1 = &#123;</span><br><span class="line">  name: <span class="string">&#x27;zs&#x27;</span>,</span><br><span class="line">  age:<span class="number">18</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-对象方法的类型注解"><a href="#7-对象方法的类型注解" class="headerlink" title="7 对象方法的类型注解"></a>7 对象方法的类型注解</h3><p>问题：如何给对象中的方法，添加类型注解</p>
+<p>技巧：vscode中，将鼠标放在变量名称上，就会给出该变量的类型注解。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//箭头：(=&gt;)左边小括号中的内容：表示方法的参数类型,(=&gt;)右边表示方法的返回值类型。</span></span><br><span class="line"><span class="comment">//方法类型注解的关键点：1 参数 2返回值</span></span><br><span class="line"><span class="keyword">let</span> person: &#123;</span><br><span class="line">  Say: <span class="function">() =&gt;</span> <span class="keyword">void</span></span><br><span class="line">  Sing: <span class="function">(<span class="params">song: string</span>) =&gt;</span> <span class="keyword">void</span></span><br><span class="line">  Sum:<span class="function">(<span class="params">num1:number,num2:number</span>)=&gt;</span> number</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> person = &#123;</span><br><span class="line">  Say: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Hi&#x27;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  Sing:<span class="function">(<span class="params">song:string</span>)=&gt;</span> &#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">&#x27;唱&#x27;</span>+song);</span><br><span class="line">  &#125;,</span><br><span class="line">  Sum: <span class="function">(<span class="params">num1: number, num2: number</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> num1+num2</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="8-接口的使用"><a href="#8-接口的使用" class="headerlink" title="8 接口的使用"></a>8 接口的使用</h3><p>直接在对象名称后面写类型注解的坏处：1 代码结构不简洁 2 无法复用类型注解</p>
+<p>接口：为对象类型注解命名，并为你的代码简历契约来约束对象的结构。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// interface关键词指定接口</span></span><br><span class="line">interface person&#123;</span><br><span class="line">  name: string</span><br><span class="line">  age: number</span><br><span class="line">  sing:<span class="function">()=&gt;</span><span class="keyword">void</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ldh: person = &#123;</span><br><span class="line">  name: <span class="string">&#x27;刘德华&#x27;</span>,</span><br><span class="line">  age: <span class="number">18</span>,</span><br><span class="line">  sing: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">console</span>.log(ldh.name+<span class="string">&#x27;今年&#x27;</span>+ldh.age+<span class="string">&#x27;岁&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">ldh.sing()</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/12/leran-typeSrcipt/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -483,7 +776,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -496,7 +789,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

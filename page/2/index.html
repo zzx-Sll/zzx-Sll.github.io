@@ -157,6 +157,226 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/20/09-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%8A%E5%85%B6%E6%B8%B2%E6%9F%93%E4%BC%98%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="敲代码是件快乐的事情">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/20/09-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%8A%E5%85%B6%E6%B8%B2%E6%9F%93%E4%BC%98%E5%8C%96/" class="post-title-link" itemprop="url">09-浏览器及其渲染优化</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-20 21:52:17 / 修改时间：22:42:13" itemprop="dateCreated datePublished" datetime="2021-01-20T21:52:17+08:00">2021-01-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%9F%E7%90%86%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" itemprop="url" rel="index"><span itemprop="name">浏览器原理及性能优化</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="浏览器的渲染原理"><a href="#浏览器的渲染原理" class="headerlink" title="浏览器的渲染原理"></a>浏览器的渲染原理</h3><p><strong>render 线程</strong>：浏览器渲染线程</p>
+<p><strong>js线程</strong>：js代码的执行进程</p>
+<p><strong>js阻塞页面加载</strong></p>
+<p>js和render线程互斥，当浏览器遇到js代码的时候，会优先执行js代码。</p>
+<ul>
+<li>浏览器是多进程的，一个Tab是一个进程。</li>
+<li>渲染进程是多线程的，最主要的是Render线程与js线程</li>
+<li>javascript阻塞DOM解析</li>
+</ul>
+<p><strong>js阻塞代码</strong></p>
+<p>js阻塞了HTML的解析，也阻塞了其后的CSS解析，整个解析进程必须等待js的执行完成才能够继续，这就是所谓的js阻塞页面。</p>
+<p><strong>浏览器的渲染机制</strong></p>
+<ul>
+<li>解析html形成DOM树</li>
+<li>解析CSS形成CSSOM树（css加载不会阻塞DOM树的形成，但是会阻塞render树的形成）</li>
+<li>CSS树和DOM树合并为render树（只包含渲染网页需要的节点）</li>
+<li>布局：layout，计算每个节点的大小和位置</li>
+<li>绘制：painte，将最终的渲染树渲染到屏幕上。</li>
+</ul>
+<p><strong>重排（回流）reflow与重绘repaint</strong></p>
+<p><strong>reflow:</strong></p>
+<p>重排指的是重新计算页面的布局，某个节点reflow时会重新计算节点的尺寸和位置，而且还有可能触发其子节点，祖先节点和页面上的其他节点reflow，在这之后再触发一次repaint。</p>
+<p>当render tree中的一部分（或全部）因为元素的规模尺寸，布局，隐藏等改变而需要重新构建。这就称为回流，每个页面至少需要一次回流，就是在页面第一次加载的时候。</p>
+<p>导致reflow的操作</p>
+<ul>
+<li>调整窗口大小</li>
+<li>改变字体</li>
+<li>增加或者移除样式表</li>
+<li>内容变化，比如用户在input框输入文字</li>
+<li>激活css伪类，比如：hover</li>
+<li>操作class属性</li>
+<li>脚本操作DOM</li>
+<li>计算offsetWidth和offsetHeight属性</li>
+<li>设置style属性的值</li>
+</ul>
+<p>触发页面重布局的一些css属性</p>
+<ul>
+<li><p>盒子模型相关的属性会触发重布局</p>
+</li>
+<li><p>改变节点内部文字结构也会触发布局</p>
+<ul>
+<li><p>  text-align</p>
+</li>
+<li><p>overflow-y</p>
+</li>
+<li><p>font-weight</p>
+</li>
+<li><p>overflow</p>
+</li>
+<li><p>font-family</p>
+</li>
+<li><p>line-height</p>
+</li>
+<li><p>vertical-align</p>
+</li>
+<li><p>white-space</p>
+</li>
+<li><p>font-size</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>  <strong>重绘repaint</strong></p>
+<p>  repaint或者redraw遍历所有的节点检测各节点的可见性、颜色、轮廓等可见的样式属性，然后根据检测的结构更新页面的响应部分。</p>
+<p>  当render tree中的一些元素需要更新属性，而这些属性只是影响元素的外观，风格而不会影响布局的，比如background-color，则就称为重绘。</p>
+<p>  只触发重绘不触发回流的一些css属性：</p>
+<ul>
+<li></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/11/07-Generator%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="敲代码是件快乐的事情">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/11/07-Generator%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">07-Generator函数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-11 22:13:34 / 修改时间：22:59:50" itemprop="dateCreated datePublished" datetime="2021-01-11T22:13:34+08:00">2021-01-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/ES6%E8%BF%9B%E9%98%B6/" itemprop="url" rel="index"><span itemprop="name">ES6进阶</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Generator函数"><a href="#Generator函数" class="headerlink" title="Generator函数"></a>Generator函数</h3><p>概念：是es6中解决异步编程的方案。并且Generator行的行为与传统函数完全不同。</p>
+<p>生成Generator</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> * <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="number">12</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">let</span> a=f1(); <span class="comment">//返回可遍历对象</span></span><br><span class="line"> a.next()<span class="comment">//执行console.log(12)</span></span><br><span class="line"> <span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+
+<p>形式上：Generator函数是一个普通函数，但是有两个特征，一个function关键字与函数名之间有一个星号，二是，函数体内部可以使用yield关键字，定义不同的内部状态。（yield在英语是产出的意思）</p>
+<p><strong>执行Generatior函数</strong></p>
+<p>执行Generator函数，函数本身不会执行，而是会返回一个遍历器对象，同时该对象也是可遍历的，因为在其原型链上也有Symbol.iterator方法，并且该方法返回的对象就是该遍历器对象自身。</p>
+<p>因此，Gernerator函数返回的对象也可以被遍历，相当于每次调用对象next()的value来作为遍历结果，只有执行了该遍历器对象的next()方法，Generator函数才会执行：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> * <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="number">12</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">let</span> a=f1(); <span class="comment">//返回可遍历对象</span></span><br><span class="line"> a.next()<span class="comment">//执行console.log(12)</span></span><br><span class="line"> a[<span class="built_in">Symbol</span>.iterator]()===a <span class="comment">//true</span></span><br><span class="line"> <span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
+
+<p>*<em>yield和yield**</em></p>
+<p>yield关键后面可以指定每次next()后的遍历器对象的value值。并且每次执行完毕后都会在yield处暂停，直到没有yield关键字，才会一次性执行完全部的代码。并且返回done:true。</p>
+<p>next()可以传值，因为yield关键字并不存在返回值，next（）传递实参可以作为yield的返回值</p>
+<p>next()和yield实现了函数内外控制权的转移。</p>
+<p>yield*相当于遍历整个对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> * <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">&#x27;start&#x27;</span>);</span><br><span class="line">   <span class="keyword">yield</span> <span class="number">1</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">&#x27;end&#x27;</span>);</span><br><span class="line">   <span class="keyword">let</span> res= <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">&#x27;res&#x27;</span>,res);</span><br><span class="line">   <span class="keyword">yield</span> * [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">let</span> a=f1();</span><br><span class="line"> <span class="built_in">console</span>.log(a.next(<span class="number">100</span>));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/03/06-Iterator%E8%BF%AD%E4%BB%A3%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -772,7 +992,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-27 23:05:12" itemprop="dateModified" datetime="2021-01-27T23:05:12+08:00">2021-01-27</time>
+                <time title="修改时间：2021-03-08 23:01:11" itemprop="dateModified" datetime="2021-03-08T23:01:11+08:00">2021-03-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -886,7 +1106,19 @@
 <li>更改后，关闭input</li>
 <li>编辑下一行时，判断之前的编辑是否有保存</li>
 </ul>
-<p><img src="C:\Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210127230353358.png"><br><img src="C:\Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210127230439161.png"></p>
+<p><img src="/2020/12/23/%E5%AD%A6%E4%B9%A0%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210127230353358.png"><br><img src="/2020/12/23/%E5%AD%A6%E4%B9%A0%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210127230439161.png"></p>
+<h4 id="判断两个数组是否相等"><a href="#判断两个数组是否相等" class="headerlink" title="判断两个数组是否相等"></a>判断两个数组是否相等</h4><ul>
+<li>数组的长度是否相等</li>
+<li>数组中各项（顺序不做要求）是否相等如：[1,2,3]===[3,2,1] (true)</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> c = a.length === b.length &amp;&amp; a.filter(<span class="function"><span class="params">t</span> =&gt;</span> !b.includes(t));</span><br><span class="line"><span class="comment">//如果c为空数组，则代表两数组相等，如果c为false,或者为一个有子项的数据，则代表两数组不相等。其中的子项则为不相等的项</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="yarn-构建react-项目"><a href="#yarn-构建react-项目" class="headerlink" title="yarn 构建react 项目"></a>yarn 构建react 项目</h3><ul>
+<li>npm install -g yarn</li>
+<li>npm install create-react-app yarn -g</li>
+<li>create-react-app my-app</li>
+<li>yarn start</li>
+</ul>
 
       
     </div>
@@ -1025,299 +1257,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/15/uniapp%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
-      <meta itemprop="name" content="zzx">
-      <meta itemprop="description" content="敲代码是件快乐的事情">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zzx的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/15/uniapp%E5%BC%80%E5%8F%91%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" class="post-title-link" itemprop="url">uniapp开发遇到的坑</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-12-15 22:19:37" itemprop="dateCreated datePublished" datetime="2020-12-15T22:19:37+08:00">2020-12-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-11 21:55:19" itemprop="dateModified" datetime="2021-01-11T21:55:19+08:00">2021-01-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" itemprop="url" rel="index"><span itemprop="name">工作中遇到的问题</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="uniapp开发遇到的坑"><a href="#uniapp开发遇到的坑" class="headerlink" title="uniapp开发遇到的坑"></a>uniapp开发遇到的坑</h3><p>####1 video和swiper组合使用的问题</p>
-<p>今天在工作中负责开发轮播图和视频相结合的功能，起初觉得很简单。就是简单地swiper+video标签，就能实现功能，但是事情并没有我想象的那么简单。在浏览器调试是没有任何问题，但是在真机上调试时发现视频并不会滚动。后来在官方文档上查阅了才发现，这是由于video原生标签优先级比组件标签的优先级高。导致无法轮播。后面换了一种方式来解决问题：官方推荐了一种自定义插件的方法，利用的思想就是：轮播的还是图片，但是当我点击图片时，让图片隐藏。视频自动播放。这时就不会进入轮播，而是进入了视频的全屏播放界面。当我退出播放时用重新进入轮播的界面。通过监听video标签的timeupdate事件和fullscreenchange事件来完成操作。</p>
-<h4 id="2-在uniapp中让文字换行的问题"><a href="#2-在uniapp中让文字换行的问题" class="headerlink" title="2 在uniapp中让文字换行的问题"></a>2 在uniapp中让文字换行的问题</h4><p>在uniapp中设置文本多行显示需要设置word-break:break-all; -webkit-lin-clamp:设置行数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">overflow: hidden;</span><br><span class="line">word-<span class="keyword">break</span>: <span class="keyword">break</span>-all;  <span class="comment">/* break-all(允许在单词内换行。) */</span></span><br><span class="line">text-overflow: ellipsis;  <span class="comment">/* 超出部分省略号 */</span></span><br><span class="line">display: -webkit-box; <span class="comment">/** 对象作为伸缩盒子模型显示 **/</span></span><br><span class="line">-webkit-box-orient: vertical; <span class="comment">/** 设置或检索伸缩盒对象的子元素的排列方式 **/</span></span><br><span class="line">-webkit-line-clamp: <span class="number">2</span>; <span class="comment">/** 显示的行数 **/</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="3-uniapp中的跨端兼容"><a href="#3-uniapp中的跨端兼容" class="headerlink" title="3 uniapp中的跨端兼容"></a>3 uniapp中的跨端兼容</h3><p>通常情况下uniapp开发的代码适合多端运行，但是每个平台都有自己的特性，因此会存在一些无法跨平台的情况。</p>
-<ul>
-<li>大量写if else 会造成代码执行性能低下，和管理混乱。</li>
-<li>编译到不同的工程后二次修改，会让后续升级变得很麻烦。</li>
-</ul>
-<p>解决方法：通过条件编译来在不同的平台下展示不同的代码。</p>
-<pre><code>   #### 条件编译</code></pre>
-<p>条件编译是用特殊的注释作为标记，在编译时根据这些特殊的注释，将注释里面的代码编译到不同平台。</p>
-<p><strong>写法：</strong>以#ifdef 或#ifndef 加%PLATFORM%开头，以#endif结尾.</p>
-<ul>
-<li>‘#ifdef:if defined’ 仅在某平台存在</li>
-<li>‘#ifndef’:if not defined 除了某平台外都存在</li>
-<li>%PLATFORM:平台名称。</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>#ifdef <strong>APP-PLUS</strong> 需条件编译的代码 #endif</th>
-<th>仅出现在 App 平台下的代码</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>#ifndef <strong>H5</strong> 需条件编译的代码 #endif</td>
-<td>除了 H5 平台，其它平台均存在的代码</td>
-</tr>
-<tr>
-<td>#ifdef <strong>H5</strong> || <strong>MP-WEIXIN</strong> 需条件编译的代码 #endif</td>
-<td>在 H5 平台或微信小程序平台存在的代码（这里只有||，不可能出现&amp;&amp;，因为没有交集）</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th align="left">值</th>
-<th align="left">平台</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">APP-PLUS</td>
-<td align="left">App</td>
-</tr>
-<tr>
-<td align="left">APP-PLUS-NVUE或APP-NVUE</td>
-<td align="left">App nvue</td>
-</tr>
-<tr>
-<td align="left">H5</td>
-<td align="left">H5</td>
-</tr>
-<tr>
-<td align="left">MP-WEIXIN</td>
-<td align="left">微信小程序</td>
-</tr>
-<tr>
-<td align="left">MP-ALIPAY</td>
-<td align="left">支付宝小程序</td>
-</tr>
-<tr>
-<td align="left">MP-BAIDU</td>
-<td align="left">百度小程序</td>
-</tr>
-<tr>
-<td align="left">MP-TOUTIAO</td>
-<td align="left">字节跳动小程序</td>
-</tr>
-<tr>
-<td align="left">MP-QQ</td>
-<td align="left">QQ小程序</td>
-</tr>
-<tr>
-<td align="left">MP-360</td>
-<td align="left">360小程序</td>
-</tr>
-<tr>
-<td align="left">MP</td>
-<td align="left">微信小程序/支付宝小程序/百度小程序/字节跳动小程序/QQ小程序/360小程序</td>
-</tr>
-<tr>
-<td align="left">QUICKAPP-WEBVIEW</td>
-<td align="left">快应用通用(包含联盟、华为)</td>
-</tr>
-<tr>
-<td align="left">QUICKAPP-WEBVIEW-UNION</td>
-<td align="left">快应用联盟</td>
-</tr>
-<tr>
-<td align="left">QUICKAPP-WEBVIEW-HUAWEI</td>
-<td align="left">快应用华为</td>
-</tr>
-</tbody></table>
-<h4 id="定义全局过滤器"><a href="#定义全局过滤器" class="headerlink" title="定义全局过滤器"></a>定义全局过滤器</h4><ul>
-<li><p> 定义 filter文件夹，在文件夹中 定义filter.js文件</p>
-</li>
-<li><p>定义过滤器</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//保留两位小数</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span>  <span class="title">numFormat</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!<span class="built_in">Number</span>.isFinite(val)) &#123;</span><br><span class="line">               val = <span class="number">0</span>;</span><br><span class="line">             &#125;</span><br><span class="line">             <span class="keyword">return</span> <span class="built_in">Number</span>(<span class="built_in">Number</span>(val).toFixed(<span class="number">2</span>));</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>main.js中引入</p>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//全局过滤器</span></span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> filters <span class="keyword">from</span> <span class="string">&#x27;@/filter/filters.js&#x27;</span><span class="comment">// * as必须携带</span></span><br><span class="line"><span class="built_in">Object</span>.keys(filters).forEach(<span class="function"><span class="params">key</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// console.log(filters)</span></span><br><span class="line">  Vue.filter(key, filters[key])</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/13/learn-TypeScipt02/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
-      <meta itemprop="name" content="zzx">
-      <meta itemprop="description" content="敲代码是件快乐的事情">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zzx的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/13/learn-TypeScipt02/" class="post-title-link" itemprop="url">learn-TypeScipt02</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-12-13 22:20:02" itemprop="dateCreated datePublished" datetime="2020-12-13T22:20:02+08:00">2020-12-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-21 21:59:14" itemprop="dateModified" datetime="2020-12-21T21:59:14+08:00">2020-12-21</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="学习TS的第二天"><a href="#学习TS的第二天" class="headerlink" title="学习TS的第二天"></a>学习TS的第二天</h3><h4 id="1-TS中创建数组的方法："><a href="#1-TS中创建数组的方法：" class="headerlink" title="1 TS中创建数组的方法："></a>1 TS中创建数组的方法：</h4><ul>
-<li><p>语法一（推荐）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> strs:string[]=[]</span><br><span class="line"><span class="comment">//[]表示数组，如果数组中没有内容，就是一个空数组</span></span><br><span class="line"><span class="comment">//数组的类别注解由两部分组成 类型+[]，此处表示字符串类型的数组（只能出现字符串类型）</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>语法二（不推荐）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> strs:string[]=<span class="keyword">new</span> <span class="built_in">Array</span>()</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<h3 id="2-函数的定义方法"><a href="#2-函数的定义方法" class="headerlink" title="2 函数的定义方法"></a>2 函数的定义方法</h3><p>和js中一样，利用funtion关键字定义</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;hi&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line">sayHi()</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-数组对象-forEach"><a href="#3-数组对象-forEach" class="headerlink" title="3 数组对象-forEach"></a>3 数组对象-forEach</h3><p>forEach方法说明：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">songs.forEach(<span class="function">(<span class="params">item,index</span>)=&gt;</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;索引为&#x27;</span>,index,<span class="string">&#x27;元素为&#x27;</span>,item)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>注意：不需要为回调函数的参数或返回值指定类型注解，因为这里的回调函数，是作为forEach方法的实参传入，不应该指定类型注解！</p>
-<p>forEach方法，可以根据当前数组的类型，自动推导出回调函数中参数的类型。</p>
-<h3 id="4-数组对象-some"><a href="#4-数组对象-some" class="headerlink" title="4 数组对象-some"></a>4 数组对象-some</h3><p>some方法：遍历数组，查找是否有一个满足条件的元素（如果有，就可以停止循环）。</p>
-<p>循环特点：根据回调函数的返回值，决定是否停止循环，如返回true，就停止，返回false，就继续循环。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> has:boolean=nums.some(<span class="function">(<span class="params">num</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(num&gt;<span class="number">10</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(has)</span><br></pre></td></tr></table></figure>
-
-<p>some方法的返回值：布尔值，如果找到满足条件的元素，结果为true,否则为false。</p>
-<h3 id="5-TS的类型推论"><a href="#5-TS的类型推论" class="headerlink" title="5 TS的类型推论"></a>5 TS的类型推论</h3><p>在某些场景下，类型推论会帮助提供类型。（在这些场景下，我们可以省略类型注解）</p>
-<p>发生类型注解的2种常见的场景：1 声明变量并初始化的时候   2 决定函数的返回值时</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> age =<span class="number">18</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1:number,num2:number</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> num1+num2</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//注意：这两种情况下，类型注解可以省略不写</span></span><br><span class="line"><span class="comment">//推荐：能省略类型注解的地方，就省略（合理利用ts的类型推论，可以提高开发效率）</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="6-接口：对象的类型注解"><a href="#6-接口：对象的类型注解" class="headerlink" title="6 接口：对象的类型注解"></a>6 接口：对象的类型注解</h3><p>TS中的对象是结构化的，结构简单来说就是对象有什么属性或方法。在使用对象前，就可以根据需求，提前设计好对象的结构。</p>
-<p>比如：创建一个对象，包含姓名、年龄两个属性。</p>
-<p>思考过程：1 对象的结构包含姓名、年龄两个属性 2 姓名-》字符串类型 年龄-》数值类型 3 创建对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//此处的&#123;&#125;表示对象的类型注解</span></span><br><span class="line"><span class="keyword">let</span> obj1: &#123;</span><br><span class="line">  name: string</span><br><span class="line">  age:number</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 此处的&#123;&#125;表示对象的值</span></span><br><span class="line">obj1 = &#123;</span><br><span class="line">  name: <span class="string">&#x27;zs&#x27;</span>,</span><br><span class="line">  age:<span class="number">18</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="7-对象方法的类型注解"><a href="#7-对象方法的类型注解" class="headerlink" title="7 对象方法的类型注解"></a>7 对象方法的类型注解</h3><p>问题：如何给对象中的方法，添加类型注解</p>
-<p>技巧：vscode中，将鼠标放在变量名称上，就会给出该变量的类型注解。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//箭头：(=&gt;)左边小括号中的内容：表示方法的参数类型,(=&gt;)右边表示方法的返回值类型。</span></span><br><span class="line"><span class="comment">//方法类型注解的关键点：1 参数 2返回值</span></span><br><span class="line"><span class="keyword">let</span> person: &#123;</span><br><span class="line">  Say: <span class="function">() =&gt;</span> <span class="keyword">void</span></span><br><span class="line">  Sing: <span class="function">(<span class="params">song: string</span>) =&gt;</span> <span class="keyword">void</span></span><br><span class="line">  Sum:<span class="function">(<span class="params">num1:number,num2:number</span>)=&gt;</span> number</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> person = &#123;</span><br><span class="line">  Say: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;Hi&#x27;</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  Sing:<span class="function">(<span class="params">song:string</span>)=&gt;</span> &#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">&#x27;唱&#x27;</span>+song);</span><br><span class="line">  &#125;,</span><br><span class="line">  Sum: <span class="function">(<span class="params">num1: number, num2: number</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> num1+num2</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="8-接口的使用"><a href="#8-接口的使用" class="headerlink" title="8 接口的使用"></a>8 接口的使用</h3><p>直接在对象名称后面写类型注解的坏处：1 代码结构不简洁 2 无法复用类型注解</p>
-<p>接口：为对象类型注解命名，并为你的代码简历契约来约束对象的结构。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// interface关键词指定接口</span></span><br><span class="line">interface person&#123;</span><br><span class="line">  name: string</span><br><span class="line">  age: number</span><br><span class="line">  sing:<span class="function">()=&gt;</span><span class="keyword">void</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> ldh: person = &#123;</span><br><span class="line">  name: <span class="string">&#x27;刘德华&#x27;</span>,</span><br><span class="line">  age: <span class="number">18</span>,</span><br><span class="line">  sing: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">console</span>.log(ldh.name+<span class="string">&#x27;今年&#x27;</span>+ldh.age+<span class="string">&#x27;岁&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">ldh.sing()</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1389,7 +1328,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1402,7 +1341,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

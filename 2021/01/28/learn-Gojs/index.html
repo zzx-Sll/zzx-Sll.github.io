@@ -45,8 +45,10 @@
 <meta property="og:image" content="http://example.com/2021/01/28/learn-Gojs/Users/27921/AppData/Roaming/Typora/typora-user-images/image-20210128145047500.png">
 <meta property="og:image" content="http://example.com/2021/01/28/learn-Gojs/Users/27921/AppData/Roaming/Typora/typora-user-images/image-20210128210258680.png">
 <meta property="og:image" content="http://example.com/2021/01/28/learn-Gojs/Users/27921/AppData/Roaming/Typora/typora-user-images/image-20210129164109316.png">
+<meta property="og:image" content="http://example.com/2021/01/28/learn-Gojs/Users/27921/AppData/Roaming/Typora/typora-user-images/image-20210310093750151.png">
+<meta property="og:image" content="http://example.com/2021/01/28/learn-Gojs/Users/27921/AppData/Roaming/Typora/typora-user-images/image-20210310101921758.png">
 <meta property="article:published_time" content="2021-01-28T02:10:48.000Z">
-<meta property="article:modified_time" content="2021-01-30T08:20:08.638Z">
+<meta property="article:modified_time" content="2021-03-10T02:20:29.557Z">
 <meta property="article:author" content="zzx">
 <meta property="article:tag" content="导航">
 <meta name="twitter:card" content="summary">
@@ -210,7 +212,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-01-30 16:20:08" itemprop="dateModified" datetime="2021-01-30T16:20:08+08:00">2021-01-30</time>
+                <time title="修改时间：2021-03-10 10:20:29" itemprop="dateModified" datetime="2021-03-10T10:20:29+08:00">2021-03-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -277,6 +279,30 @@
 <li>Panel.Graduated</li>
 </ul>
 <p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210129164109316.png"></p>
+<h4 id="Animation-动画"><a href="#Animation-动画" class="headerlink" title="Animation 动画"></a>Animation 动画</h4><p>注册动画 </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">var</span> animation=<span class="keyword">new</span> go.Animation()<span class="comment">//全局的动画</span></span><br><span class="line"><span class="number">2</span> </span><br></pre></td></tr></table></figure>
+
+<p><strong>context menu 右键菜单</strong></p>
+<p>**TextBlock文本设置    **</p>
+<ul>
+<li>可以通过TextBlock.font来设置文本字体的大小</li>
+<li>可以通过TextBlock.stroke来设置文本的颜色</li>
+<li>通过GraphObject.background继承，设置文本的背景颜色</li>
+<li>TextBlock文字是自然适应容器的，但是也可以设置宽高固定大小</li>
+<li>可以设置TextBlock.wrap属性来使文本换行</li>
+<li>TextBolock.textAlign和GraphObject.alignment是不同的，前者是表示针对文本的对齐方式，后一个表示针对容器的对齐方式</li>
+<li>设置TextBlock.editable为true即可开启文本编辑功能</li>
+<li>如果你想对TextBlock中的文本进行某种验证，那么可以设置TextBlock.textValidation属性，该属性的值为function，你可以自行编写验证规则。你甚至可以更换文本编辑器，设置TextBlock.textEditor属性即可。</li>
+</ul>
+<p><strong>一个节点多个textBlock文本</strong></p>
+<p>如果你想要多个文本组成的节点，可以自由搭配。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">diagram.nodeTemplate =</span><br><span class="line">  $(go.Node, <span class="string">&quot;Auto&quot;</span>,</span><br><span class="line">    $(go.Shape, &#123; <span class="attr">fill</span>: <span class="string">&quot;white&quot;</span> &#125;),</span><br><span class="line">    $(go.Panel, <span class="string">&quot;Vertical&quot;</span>,</span><br><span class="line">      &#123; <span class="attr">margin</span>: <span class="number">3</span> &#125;,</span><br><span class="line">      $(go.TextBlock,</span><br><span class="line">        <span class="keyword">new</span> go.Binding(<span class="string">&quot;text&quot;</span>, <span class="string">&quot;t1&quot;</span>)),</span><br><span class="line">      $(go.TextBlock,</span><br><span class="line">        <span class="keyword">new</span> go.Binding(<span class="string">&quot;text&quot;</span>, <span class="string">&quot;t2&quot;</span>))</span><br><span class="line">    )</span><br><span class="line">  );</span><br><span class="line">diagram.model.nodeDataArray = [&#123; <span class="attr">t1</span>: <span class="string">&quot;Top&quot;</span>, <span class="attr">t2</span>: <span class="string">&quot;Bottom&quot;</span>&#125;];</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210310093750151.png"></p>
+<p>如果你想设三个或者多个节点文本一行排列，你可以这样做：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">Make(</span><br><span class="line">       go.Panel,</span><br><span class="line">       <span class="string">&quot;Horizontal&quot;</span>,</span><br><span class="line">       <span class="comment">//设置文字</span></span><br><span class="line">       Make(</span><br><span class="line">         go.TextBlock,</span><br><span class="line">         &#123;</span><br><span class="line">           alignment: go.Spot.Center,</span><br><span class="line">           textAlign: <span class="string">&quot;center&quot;</span>,</span><br><span class="line">           editable: <span class="literal">false</span>,</span><br><span class="line">           font: <span class="string">&quot;bold 11pt Lato, Helvetica, Arial, sans-serif&quot;</span>,</span><br><span class="line">           stroke: <span class="string">&quot;black&quot;</span></span><br><span class="line">         &#125;,</span><br><span class="line">         <span class="comment">//绑定到模型数据</span></span><br><span class="line">         <span class="keyword">new</span> go.Binding(<span class="string">&quot;text&quot;</span>, <span class="string">&quot;title&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">           <span class="keyword">return</span> val + <span class="string">&quot;:&quot;</span>;</span><br><span class="line">         &#125;).makeTwoWay(),</span><br><span class="line">         <span class="keyword">new</span> go.Binding(<span class="string">&quot;font&quot;</span>, <span class="string">&quot;font&quot;</span>).makeTwoWay()</span><br><span class="line">       ),</span><br><span class="line">       Make(</span><br><span class="line">         go.TextBlock,</span><br><span class="line">         &#123;</span><br><span class="line">           alignment: go.Spot.Center,</span><br><span class="line">           textAlign: <span class="string">&quot;center&quot;</span>,</span><br><span class="line">           editable: <span class="literal">false</span>,</span><br><span class="line">           font: <span class="string">&quot;bold 11pt Lato, Helvetica, Arial, sans-serif&quot;</span>,</span><br><span class="line">           stroke: <span class="string">&quot;black&quot;</span></span><br><span class="line">         &#125;,</span><br><span class="line">         <span class="comment">//绑定到模型数据</span></span><br><span class="line">         <span class="keyword">new</span> go.Binding(<span class="string">&quot;text&quot;</span>, <span class="string">&quot;text&quot;</span>).makeTwoWay(),</span><br><span class="line">         <span class="keyword">new</span> go.Binding(<span class="string">&quot;font&quot;</span>, <span class="string">&quot;font&quot;</span>).makeTwoWay()</span><br><span class="line">       ),</span><br><span class="line">       Make(</span><br><span class="line">         go.TextBlock,</span><br><span class="line">         &#123;</span><br><span class="line">           alignment: go.Spot.Center,</span><br><span class="line">           textAlign: <span class="string">&quot;center&quot;</span>,</span><br><span class="line">           editable: <span class="literal">false</span>,</span><br><span class="line">           font: <span class="string">&quot;bold 11pt Lato, Helvetica, Arial, sans-serif&quot;</span>,</span><br><span class="line">           stroke: <span class="string">&quot;black&quot;</span></span><br><span class="line">         &#125;,</span><br><span class="line">         <span class="comment">//绑定到模型数据</span></span><br><span class="line">         <span class="keyword">new</span> go.Binding(<span class="string">&quot;text&quot;</span>, <span class="string">&quot;unite&quot;</span>).makeTwoWay(),</span><br><span class="line">         <span class="keyword">new</span> go.Binding(<span class="string">&quot;font&quot;</span>, <span class="string">&quot;font&quot;</span>).makeTwoWay()</span><br><span class="line">       )</span><br><span class="line">     )</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210310101921758.png"></p>
 
     </div>
 
@@ -360,7 +386,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">入门教程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E8%A1%A8%E5%92%8C%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">图表和模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.1.</span> <span class="nav-text">节点设置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model"><span class="nav-number">4.</span> <span class="nav-text">Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="nav-number">5.</span> <span class="nav-text">效果图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GraphLinksModel"><span class="nav-number">6.</span> <span class="nav-text">GraphLinksModel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TreeModel"><span class="nav-number">7.</span> <span class="nav-text">TreeModel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E6%A8%A1%E6%9D%BF"><span class="nav-number">8.</span> <span class="nav-text">链接模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A"><span class="nav-number">9.</span> <span class="nav-text">双向数据绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#panel%E9%9D%A2%E6%9D%BF"><span class="nav-number">10.</span> <span class="nav-text">panel面板</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">入门教程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E8%A1%A8%E5%92%8C%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.</span> <span class="nav-text">图表和模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8A%82%E7%82%B9%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.1.</span> <span class="nav-text">节点设置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Model"><span class="nav-number">4.</span> <span class="nav-text">Model</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%88%E6%9E%9C%E5%9B%BE"><span class="nav-number">5.</span> <span class="nav-text">效果图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GraphLinksModel"><span class="nav-number">6.</span> <span class="nav-text">GraphLinksModel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TreeModel"><span class="nav-number">7.</span> <span class="nav-text">TreeModel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E6%A8%A1%E6%9D%BF"><span class="nav-number">8.</span> <span class="nav-text">链接模板</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A"><span class="nav-number">9.</span> <span class="nav-text">双向数据绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#panel%E9%9D%A2%E6%9D%BF"><span class="nav-number">10.</span> <span class="nav-text">panel面板</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Animation-%E5%8A%A8%E7%94%BB"><span class="nav-number">10.1.</span> <span class="nav-text">Animation 动画</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -376,7 +402,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -389,7 +415,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

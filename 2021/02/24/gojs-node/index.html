@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Generator函数概念：是es6中解决异步编程的方案。并且Generator行的行为与传统函数完全不同。 生成Generator 123456function * f1()&amp;#123;   console.log(12); &amp;#125; let a&#x3D;f1(); &#x2F;&#x2F;返回可遍历对象 a.next()&#x2F;&#x2F;执行console.log(12) console.log(a);  形式上：Generato">
+  <meta name="description" content="###Node节点常用API 获取所有节点    只读 节点线集合 linksConnected  此只读属性获取该节点连接的所有线，返回一个迭代器。包括进入和来自这个节点的线。  linksIntro">
 <meta property="og:type" content="article">
-<meta property="og:title" content="07-Generator函数">
-<meta property="og:url" content="http://example.com/2021/01/11/07-Generator%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:title" content="gojs---node">
+<meta property="og:url" content="http://example.com/2021/02/24/gojs-node/index.html">
 <meta property="og:site_name" content="zzx的个人博客">
-<meta property="og:description" content="Generator函数概念：是es6中解决异步编程的方案。并且Generator行的行为与传统函数完全不同。 生成Generator 123456function * f1()&amp;#123;   console.log(12); &amp;#125; let a&#x3D;f1(); &#x2F;&#x2F;返回可遍历对象 a.next()&#x2F;&#x2F;执行console.log(12) console.log(a);  形式上：Generato">
+<meta property="og:description" content="###Node节点常用API 获取所有节点    只读 节点线集合 linksConnected  此只读属性获取该节点连接的所有线，返回一个迭代器。包括进入和来自这个节点的线。  linksIntro">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-01-11T14:13:34.000Z">
-<meta property="article:modified_time" content="2021-01-11T14:59:50.008Z">
+<meta property="article:published_time" content="2021-02-24T10:10:24.000Z">
+<meta property="article:modified_time" content="2021-03-02T14:08:49.689Z">
 <meta property="article:author" content="zzx">
-<meta property="article:tag" content="导航">
+<meta property="article:tag" content="gojs">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/01/11/07-Generator%E5%87%BD%E6%95%B0/">
+<link rel="canonical" href="http://example.com/2021/02/24/gojs-node/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>07-Generator函数 | zzx的个人博客</title>
+  <title>gojs---node | zzx的个人博客</title>
   
 
 
@@ -161,7 +161,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/11/07-Generator%E5%87%BD%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/24/gojs-node/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
@@ -174,7 +174,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          07-Generator函数
+          gojs---node
         </h1>
 
         <div class="post-meta">
@@ -183,17 +183,23 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-01-11 22:13:34 / 修改时间：22:59:50" itemprop="dateCreated datePublished" datetime="2021-01-11T22:13:34+08:00">2021-01-11</time>
+              <time title="创建时间：2021-02-24 18:10:24" itemprop="dateCreated datePublished" datetime="2021-02-24T18:10:24+08:00">2021-02-24</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-02 22:08:49" itemprop="dateModified" datetime="2021-03-02T22:08:49+08:00">2021-03-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ES6%E8%BF%9B%E9%98%B6/" itemprop="url" rel="index"><span itemprop="name">ES6进阶</span></a>
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
                 </span>
             </span>
 
@@ -208,23 +214,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="Generator函数"><a href="#Generator函数" class="headerlink" title="Generator函数"></a>Generator函数</h3><p>概念：是es6中解决异步编程的方案。并且Generator行的行为与传统函数完全不同。</p>
-<p>生成Generator</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> * <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="number">12</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">let</span> a=f1(); <span class="comment">//返回可遍历对象</span></span><br><span class="line"> a.next()<span class="comment">//执行console.log(12)</span></span><br><span class="line"> <span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
-
-<p>形式上：Generator函数是一个普通函数，但是有两个特征，一个function关键字与函数名之间有一个星号，二是，函数体内部可以使用yield关键字，定义不同的内部状态。（yield在英语是产出的意思）</p>
-<p><strong>执行Generatior函数</strong></p>
-<p>执行Generator函数，函数本身不会执行，而是会返回一个遍历器对象，同时该对象也是可遍历的，因为在其原型链上也有Symbol.iterator方法，并且该方法返回的对象就是该遍历器对象自身。</p>
-<p>因此，Gernerator函数返回的对象也可以被遍历，相当于每次调用对象next()的value来作为遍历结果，只有执行了该遍历器对象的next()方法，Generator函数才会执行：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> * <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="number">12</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">let</span> a=f1(); <span class="comment">//返回可遍历对象</span></span><br><span class="line"> a.next()<span class="comment">//执行console.log(12)</span></span><br><span class="line"> a[<span class="built_in">Symbol</span>.iterator]()===a <span class="comment">//true</span></span><br><span class="line"> <span class="built_in">console</span>.log(a);</span><br></pre></td></tr></table></figure>
-
-<p>*<em>yield和yield**</em></p>
-<p>yield关键后面可以指定每次next()后的遍历器对象的value值。并且每次执行完毕后都会在yield处暂停，直到没有yield关键字，才会一次性执行完全部的代码。并且返回done:true。</p>
-<p>next()可以传值，因为yield关键字并不存在返回值，next（）传递实参可以作为yield的返回值</p>
-<p>next()和yield实现了函数内外控制权的转移。</p>
-<p>yield*相当于遍历整个对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> * <span class="title">f1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">&#x27;start&#x27;</span>);</span><br><span class="line">   <span class="keyword">yield</span> <span class="number">1</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">&#x27;end&#x27;</span>);</span><br><span class="line">   <span class="keyword">let</span> res= <span class="keyword">yield</span> <span class="number">2</span>;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">&#x27;res&#x27;</span>,res);</span><br><span class="line">   <span class="keyword">yield</span> * [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">let</span> a=f1();</span><br><span class="line"> <span class="built_in">console</span>.log(a.next(<span class="number">100</span>));</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+        <p>###<strong>Node节点常用API</strong></p>
+<p><strong>获取所有节点</strong></p>
+<ul>
+<li></li>
+</ul>
+<p><strong>只读 节点线集合 linksConnected</strong></p>
+<ul>
+<li>此只读属性获取该节点连接的所有线，返回一个迭代器。包括进入和来自这个节点的线。</li>
+</ul>
+<p><strong>linksIntro</strong></p>
 
     </div>
 
@@ -234,7 +233,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%AF%BC%E8%88%AA/" rel="tag"># 导航</a>
+              <a href="/tags/gojs/" rel="tag"># gojs</a>
           </div>
 
         
@@ -243,13 +242,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/01/03/06-Iterator%E8%BF%AD%E4%BB%A3%E5%99%A8/" rel="prev" title="06-Iterator迭代器">
-      <i class="fa fa-chevron-left"></i> 06-Iterator迭代器
+    <a href="/2021/02/03/%E5%88%9D%E8%AF%86Vue3/" rel="prev" title="初识Vue3">
+      <i class="fa fa-chevron-left"></i> 初识Vue3
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/01/20/09-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8F%8A%E5%85%B6%E6%B8%B2%E6%9F%93%E4%BC%98%E5%8C%96/" rel="next" title="09-浏览器及其渲染优化">
-      09-浏览器及其渲染优化 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -308,7 +304,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Generator%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">Generator函数</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
