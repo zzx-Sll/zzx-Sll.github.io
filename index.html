@@ -157,6 +157,606 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/10/React02-%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%8F%8Arender-props/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="敲代码是件快乐的事情">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/10/React02-%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%8F%8Arender-props/" class="post-title-link" itemprop="url">React02_组件生命周期及render-props</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-10 16:44:07" itemprop="dateCreated datePublished" datetime="2021-04-10T16:44:07+08:00">2021-04-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-12 20:09:02" itemprop="dateModified" datetime="2021-04-12T20:09:02+08:00">2021-04-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="React组件的生命周期"><a href="#React组件的生命周期" class="headerlink" title="React组件的生命周期"></a>React组件的生命周期</h3><h4 id="组件的生命周期：组件从创建到挂载到卸载的过程"><a href="#组件的生命周期：组件从创建到挂载到卸载的过程" class="headerlink" title="组件的生命周期：组件从创建到挂载到卸载的过程"></a>组件的生命周期：组件从创建到挂载到卸载的过程</h4><h4 id="创建时的生命周期"><a href="#创建时的生命周期" class="headerlink" title="创建时的生命周期"></a>创建时的生命周期</h4><ul>
+<li>constructor:构造函数<ul>
+<li>作用：设置state数据，this的指向设置</li>
+</ul>
+</li>
+<li>render：渲染函数<ul>
+<li>作用：渲染页面。注意：不要在此函数中使用setState()</li>
+</ul>
+</li>
+<li>componentDidMount:组件挂载到页面后触发的函数<ul>
+<li>作用：1 发送网络请求 2：获取dom结构</li>
+</ul>
+</li>
+<li>执行的顺序：constructor–&gt;render–&gt;componentDidMount</li>
+</ul>
+<h4 id="组件更新时的生命周期"><a href="#组件更新时的生命周期" class="headerlink" title="组件更新时的生命周期"></a>组件更新时的生命周期</h4><ul>
+<li>render():每次组件渲染都会触发<ul>
+<li>作用：渲染ui</li>
+</ul>
+</li>
+<li>componentDidUpdate():组件更新后触发<ul>
+<li>作用：1发送网络请求 2DOM操作 3：如果使用setState()必须放在一个if条件中，发送网络请求同理</li>
+<li>注意：if条件可以是判断props的不同，上次的props：prevProps,此次的props：this.props</li>
+</ul>
+</li>
+</ul>
+<h4 id="组件卸载时的生命周期"><a href="#组件卸载时的生命周期" class="headerlink" title="组件卸载时的生命周期"></a>组件卸载时的生命周期</h4><ul>
+<li>componentWillUnmount:组件卸载后触发<ul>
+<li>作用：执行清理工作（比如：清理定时器等）</li>
+</ul>
+</li>
+</ul>
+<h4 id="测试一下图片"><a href="#测试一下图片" class="headerlink" title="测试一下图片"></a>测试一下图片</h4><p><img src="/2021/04/10/React02-%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%8F%8Arender-props/jerry.gif"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/02/WebPack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="敲代码是件快乐的事情">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/02/WebPack/" class="post-title-link" itemprop="url">WebPack</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-02 12:56:30" itemprop="dateCreated datePublished" datetime="2021-04-02T12:56:30+08:00">2021-04-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-10 16:42:50" itemprop="dateModified" datetime="2021-04-10T16:42:50+08:00">2021-04-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="webpack打包工具"><a href="#webpack打包工具" class="headerlink" title="webpack打包工具"></a>webpack打包工具</h4><ol>
+<li>使用 :下载 webpack</li>
+<li>构建webpack  webpack init</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">index.js 为打包入口文件</span></span><br><span class="line"><span class="comment">1 运行指令：webpack ./src/index.js -o ./build/built.js --mode=development</span></span><br><span class="line"><span class="comment">  开发环境： ./src/index.js 为入口文件开始打包，打包后会输出到 ./build/built.js</span></span><br><span class="line"><span class="comment">  整体打包环境，是开发环境</span></span><br><span class="line"><span class="comment">  生产环境：webpack ./src/index.js -o ./build/built.js --mode=production</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">2 可以打包 js/json文件 不能打包css文件</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">//导入json文件</span></span><br><span class="line"><span class="keyword">import</span> data <span class="keyword">from</span> <span class="string">&#x27;./data.json&#x27;</span></span><br><span class="line"><span class="comment">//导入 css文件</span></span><br><span class="line"><span class="comment">// import &#x27;./index.css&#x27;</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a + b</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(add(<span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;data&#x27;</span>, data)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>打包css文件</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/02/deepClone/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="敲代码是件快乐的事情">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/02/deepClone/" class="post-title-link" itemprop="url">deepClone</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-04-02 11:05:32 / 修改时间：11:07:17" itemprop="dateCreated datePublished" datetime="2021-04-02T11:05:32+08:00">2021-04-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>深拷贝算法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 算法主体 Start */</span></span><br><span class="line"><span class="keyword">const</span> isArray = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">&quot;[object Array]&quot;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> isObject = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">&quot;[object Object]&quot;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> deepClone = <span class="function"><span class="keyword">function</span>(<span class="params">source</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> target = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">if</span> (!isArray(source) &amp;&amp; !isObject(source)) &#123;</span><br><span class="line">    target = source;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (isArray(source)) &#123;</span><br><span class="line">    target = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; source.length; i++) &#123;</span><br><span class="line">      target[i] = deepClone(source[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (isObject(source)) &#123;</span><br><span class="line">    target = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> source) &#123;</span><br><span class="line">      target[key] = deepClone(source[key]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> target;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; deepClone &#125;;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/10/React/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="敲代码是件快乐的事情">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/10/React/" class="post-title-link" itemprop="url">React</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-10 21:15:26" itemprop="dateCreated datePublished" datetime="2021-03-10T21:15:26+08:00">2021-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-12 20:17:40" itemprop="dateModified" datetime="2021-04-12T20:17:40+08:00">2021-04-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="React学习"><a href="#React学习" class="headerlink" title="React学习"></a>React学习</h3><h4 id="构建项目"><a href="#构建项目" class="headerlink" title="构建项目"></a>构建项目</h4><ul>
+<li><h3 id="yarn-构建react-项目"><a href="#yarn-构建react-项目" class="headerlink" title="yarn 构建react 项目"></a>yarn 构建react 项目</h3><ul>
+<li>npm install -g yarn</li>
+<li>npm install create-react-app yarn -g</li>
+<li>create-react-app my-app</li>
+<li>yarn start</li>
+<li>yarn 的常用命令<ul>
+<li>yarn install 下载所有依赖包</li>
+<li>yarn add pkg-name /yarn add pkg-name@version 添加包/添加包的指定版本</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>state</strong></p>
+<ul>
+<li> super关键字定义</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.通过函数构造器 constructor和super来指定state状态，需要用this.state=&#123;&#125;来定义</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ZhuangTai</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>()</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.state = &#123;</span><br><span class="line">      count: <span class="number">10</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>计数器:&#123;this.state.count&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>简洁写法</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2 简洁写法，不需要constructor和super关键字来指定</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ZhuangTai2</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    count: <span class="number">100</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>计数器2:&#123;this.state.count&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>setState修改状态</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ZhuangTai2</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="comment">//修改state的数据</span></span><br><span class="line">  <span class="comment">/* </span></span><br><span class="line"><span class="comment">    不能直接修改state的数据，只能通过setState()方法来修改</span></span><br><span class="line"><span class="comment">    setState()方法的作用：1 修改state数据 2更新ui</span></span><br><span class="line"><span class="comment">    思想：数据更新驱动视图的更新</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  state = &#123;</span><br><span class="line">    count: <span class="number">100</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        计数器<span class="number">2</span>:&#123;<span class="built_in">this</span>.state.count&#125;</span><br><span class="line">        &lt;button</span><br><span class="line">          onClick=&#123;<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">              count: <span class="built_in">this</span>.state.count + <span class="number">1</span>,</span><br><span class="line">            &#125;)</span><br><span class="line">          &#125;&#125;</span><br><span class="line">        &gt;</span><br><span class="line">          count+<span class="number">1</span></span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>React抽离事件处理程序时解决this的指向问题</strong></p>
+<ul>
+<li>抽离事件处理程序时this指向undefined的问题</li>
+<li>原因：</li>
+</ul>
+<ol>
+<li>jsx中this没有默认绑定，需要使用bind绑定，否则this会是undefined。</li>
+</ol>
+<p>由于类的方法默认不会绑定this，因此在调用的时候如果忘记绑定，this的值将会是undefined。</p>
+<p>通常如果不是直接调用，应该为方法绑定this。</p>
+<ol start="2">
+<li>这个问题的本质原因如下：</li>
+</ol>
+<p>这不是React的原因，这是JavaScript中本来就有的。如果你传递一个函数名给一个变量，然后通过在变量后加括号()来调用这个方法，此时方法内部的this的指向就会丢失。<br>3. 在React（或者说JSX）中，传递的事件参数不是一个字符串，而是一个实实在在的函数：</p>
+<p>这样说，React中的事件名（eg:onClick、onChange）就是所举例子中的中间变量，React在事件发生时调用onClick，由于onClick只是中间变量，所以处理函数中的this指向会丢失，其实真正调用时并不是this.handleClick(),如果是这样调用那么this指向就不会有问题。真正调用时是onClick()。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ZhuangTai2</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="comment">//修改state的数据</span></span><br><span class="line">  <span class="comment">/* </span></span><br><span class="line"><span class="comment">    不能直接修改state的数据，只能通过setState()方法来修改</span></span><br><span class="line"><span class="comment">    setState()方法的作用：1 修改state数据 2更新ui</span></span><br><span class="line"><span class="comment">    思想：数据更新驱动视图的更新</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="comment">/*  constructor() &#123;</span></span><br><span class="line"><span class="comment">    super()</span></span><br><span class="line"><span class="comment">    this.state = &#123;</span></span><br><span class="line"><span class="comment">      count: 100,</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    this.Increase = this.Increase.bind(this)</span></span><br><span class="line"><span class="comment">  &#125; */</span></span><br><span class="line">  state = &#123;</span><br><span class="line">    count: <span class="number">100</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Increase() &#123;</span></span><br><span class="line">  <span class="comment">//   this.setState(&#123;</span></span><br><span class="line">  <span class="comment">//     count: this.state.count + 1,</span></span><br><span class="line">  <span class="comment">//   &#125;)</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">  <span class="comment">// calss实例采用箭头函数方法解决this指向问题</span></span><br><span class="line">  Increase = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      count: <span class="built_in">this</span>.state.count + <span class="number">1</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        计数器<span class="number">2</span>:&#123;<span class="built_in">this</span>.state.count&#125;</span><br><span class="line">        &lt;button</span><br><span class="line">          <span class="comment">// onClick=&#123;() =&gt; &#123;</span></span><br><span class="line">          <span class="comment">//   this.setState(&#123;</span></span><br><span class="line">          <span class="comment">//     count: this.state.count + 1,</span></span><br><span class="line">          <span class="comment">//   &#125;)</span></span><br><span class="line">          <span class="comment">// &#125;&#125;</span></span><br><span class="line">          <span class="comment">// 1在constructor函数中绑定this指向</span></span><br><span class="line">          <span class="comment">// onClick=&#123;this.Increase&#125;</span></span><br><span class="line">          <span class="comment">//  2 箭头函数改变this的指向问题</span></span><br><span class="line">          <span class="comment">// onClick=&#123;() =&gt; this.Increase()&#125;</span></span><br><span class="line">          <span class="comment">//3 事件赋值时直接bind绑定this</span></span><br><span class="line">          <span class="comment">// onClick=&#123;this.Increase.bind(this)&#125;</span></span><br><span class="line">          <span class="comment">//4 class实例采用箭头函数的方式：实验性语法，依赖脚手架的babel</span></span><br><span class="line">          onClick=&#123;<span class="built_in">this</span>.Increase&#125;</span><br><span class="line">        &gt;</span><br><span class="line">          count+<span class="number">1</span></span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>受控组件</strong></p>
+<ul>
+<li>受到React控制的表单元素。此组件就叫受控组件。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//受控表单组件</span></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">普通文本框</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Controlled</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    text: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    RichText: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    city: <span class="string">&#x27;cs&#x27;</span>,</span><br><span class="line">    isChecked: <span class="literal">false</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 处理文本框值变化的函数</span></span><br><span class="line">  handlerChange = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// console.log(e.target.value)</span></span><br><span class="line">    <span class="keyword">const</span> name = e.target.name</span><br><span class="line">    <span class="comment">// const value = e.target.value</span></span><br><span class="line">    <span class="built_in">console</span>.log(e.target.type)</span><br><span class="line">    <span class="keyword">const</span> value =</span><br><span class="line">      e.target.type === <span class="string">&#x27;checkbox&#x27;</span> ? e.target.checked : e.target.value</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      [name]: value,</span><br><span class="line">      <span class="comment">// text: e.target.value,</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 处理文本域值变化的函数</span></span><br><span class="line">  <span class="function"><span class="title">RichHandler</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      RichText: e.target.value,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 处理下拉选择框城市变化函数</span></span><br><span class="line">  CityChange = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      city: e.target.value,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//处理复选框值变化的函数</span></span><br><span class="line">  CheckedChange = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e.target.checked)</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      isChecked: e.target.checked,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &#123;<span class="comment">/*</span></span><br><span class="line"><span class="comment">         文本框</span></span><br><span class="line"><span class="comment">         */</span>&#125;</span><br><span class="line">        &lt;input</span><br><span class="line">          name=<span class="string">&quot;text&quot;</span></span><br><span class="line">          type=<span class="string">&quot;text&quot;</span></span><br><span class="line">          value=&#123;<span class="built_in">this</span>.state.text&#125;</span><br><span class="line">          onChange=&#123;<span class="built_in">this</span>.handlerChange&#125;</span><br><span class="line">        &gt;&lt;/input&gt;</span><br><span class="line">        &#123;<span class="comment">/* </span></span><br><span class="line"><span class="comment">        富文本框</span></span><br><span class="line"><span class="comment">         */</span>&#125;</span><br><span class="line">        &lt;textarea</span><br><span class="line">          name=<span class="string">&quot;RichText&quot;</span></span><br><span class="line">          type=<span class="string">&quot;text&quot;</span></span><br><span class="line">          value=&#123;<span class="built_in">this</span>.state.RichText&#125;</span><br><span class="line">          <span class="comment">// onChange=&#123;this.RichHandler.bind(this)&#125;</span></span><br><span class="line">          onChange=&#123;<span class="built_in">this</span>.handlerChange&#125;</span><br><span class="line">        &gt;&lt;/textarea&gt;</span><br><span class="line"></span><br><span class="line">        &#123;<span class="comment">/* </span></span><br><span class="line"><span class="comment">        下拉框</span></span><br><span class="line"><span class="comment">         */</span>&#125;</span><br><span class="line">        &lt;select</span><br><span class="line">          name=<span class="string">&quot;city&quot;</span></span><br><span class="line">          value=&#123;<span class="built_in">this</span>.state.city&#125;</span><br><span class="line">          onChange=&#123;<span class="built_in">this</span>.handlerChange&#125;</span><br><span class="line">        &gt;</span><br><span class="line">          &lt;option value=<span class="string">&quot;nj&quot;</span>&gt;南京&lt;/option&gt;</span><br><span class="line">          &lt;option value=<span class="string">&quot;cs&quot;</span>&gt;长沙&lt;/option&gt;</span><br><span class="line">          &lt;option value=<span class="string">&quot;gl&quot;</span>&gt;桂林&lt;/option&gt;</span><br><span class="line">        &lt;/select&gt;</span><br><span class="line"></span><br><span class="line">        &#123;<span class="comment">/*  </span></span><br><span class="line"><span class="comment">        复选框</span></span><br><span class="line"><span class="comment">        */</span>&#125;</span><br><span class="line">        &lt;input</span><br><span class="line">          name=<span class="string">&quot;isChecked&quot;</span></span><br><span class="line">          type=<span class="string">&quot;checkbox&quot;</span></span><br><span class="line">          checked=&#123;<span class="built_in">this</span>.state.isChecked&#125;</span><br><span class="line">          onChange=&#123;<span class="built_in">this</span>.handlerChange&#125;</span><br><span class="line">        &gt;&lt;/input&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>非受控组件</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//非受控表单组件</span></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">1 this.refObj= React.creatRef()方法创建一个ref对象</span></span><br><span class="line"><span class="comment">2 把ref对象放到Dom中</span></span><br><span class="line"><span class="comment">3 通过 this.refObj.current.value拿到值</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UnControlled</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>()</span><br><span class="line">    <span class="built_in">this</span>.refObj = React.createRef()</span><br><span class="line">  &#125;</span><br><span class="line">  GetRef = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.refObj.current.value)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;input ref=&#123;<span class="built_in">this</span>.refObj&#125;&gt;&lt;/input&gt;</span><br><span class="line">        &lt;button onClick=&#123;<span class="built_in">this</span>.GetRef&#125;&gt;点击&lt;/button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>组件通讯</strong></p>
+<ul>
+<li><p>组件传参props</p>
+<ul>
+<li>函数组件通过组件名 function(props)接收。在组件内使用方式 props.xxx</li>
+<li>类组件，组件内使用参数：this.props.xxx</li>
+</ul>
+</li>
+<li><p>props特点</p>
+<ul>
+<li>可以传递任意类型参数</li>
+<li>props传递的参数都是只读属性</li>
+<li>在class类组件constructor函数中super中必须先将props作为参数传递进去。否则获取不到Props</li>
+</ul>
+</li>
+<li><p>组件通讯</p>
+<ul>
+<li><p>父传子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">父组件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="comment">//定义state</span></span><br><span class="line">  state = &#123;</span><br><span class="line">    lastName: <span class="string">&#x27;zhao&#x27;</span>,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;span&gt;父组件：&lt;/span&gt;</span><br><span class="line">        &lt;Son lastName=&#123;<span class="built_in">this</span>.state.lastName&#125;&gt;&lt;/Son&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">子组件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>子组件:&#123;this.props.lastName&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子传父</p>
+<ul>
+<li>原理，父组件定义回调函数，形参即为接收的数据。将回调函数作为数据通过props传递给子组件，由子组件在调用时将数据作为实参传递给父组件</li>
+<li>代码：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">父组件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="comment">//定义state</span></span><br><span class="line">  state = &#123;</span><br><span class="line">    lastName: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  GetChildData = <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;接收到子组件传递的数据&#x27;</span>, data)</span><br><span class="line">    <span class="comment">//给父组件中的state赋值</span></span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      lastName: data,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;span&gt;父组件接收到子组件传递的值：&#123;<span class="built_in">this</span>.state.lastName&#125;&lt;/span&gt;</span><br><span class="line">        &lt;Son GetChildData=&#123;<span class="built_in">this</span>.GetChildData&#125;&gt;&lt;/Son&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">子组件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    sonName: <span class="string">&#x27;xiaoZhao&#x27;</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  sendData = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.props.GetChildData(<span class="built_in">this</span>.state.sonName)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        子组件:</span><br><span class="line">        &lt;button onClick=&#123;<span class="built_in">this</span>.sendData&#125;&gt;点我向父组件传递数据&lt;/button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>兄弟组件之间传值</p>
+<ul>
+<li><p>将共享状态提升到最近的公共父组件中，由公共父组件管理这个状态</p>
+</li>
+<li><p>思想：状态提升</p>
+</li>
+<li><p>公共组件职责：1.提供共享状态 2.提供操作共享状态的方法</p>
+</li>
+<li><p>要通讯的子组件只需通过props接收或操作状态的方法</p>
+</li>
+<li><pre><code class="javascript">/* 
+3兄弟之间传
+*/
+// 父组件
+class Parent extends React.Component &#123;
+  //定义state
+  state = &#123;
+    lastName: &#39;&#39;,
+    count: 5,
+  &#125;
+  GetChildData = () =&gt; &#123;
+    var Bcount = this.state.count
+    console.log(&#39;Bcount=&gt;&#39;, Bcount)
+    // console.log(&#39;接收到子组件传递的数据&#39;, data)
+    this.setState(&#123;
+      count: (Bcount += 1),
+    &#125;)
+  &#125;
+
+  render() &#123;
+    return (
+      &lt;div&gt;
+        &lt;span&gt;父组件接收到子组件传递的值：&#123;this.state.count&#125;&lt;/span&gt;
+        &lt;Tom count=&#123;this.state.count&#125; GetChildData=&#123;this.GetChildData&#125;&gt;&lt;/Tom&gt;
+        &lt;Bob count=&#123;this.state.count&#125; GetChildData=&#123;this.GetChildData&#125;&gt;&lt;/Bob&gt;
+      &lt;/div&gt;
+    )
+  &#125;
+&#125;
+
+/* 子组件1 */
+class Tom extends React.Component &#123;
+  state = &#123;
+    sonName: &#39;xiaoZhao&#39;,
+    // tcount:&#39;&#39;
+  &#125;
+  sendData = () =&gt; &#123;
+    this.props.GetChildData()
+  &#125;
+  render() &#123;
+    return (
+      &lt;div&gt;
+        子组件Tom:
+        &lt;h2&gt;count:&#123;this.props.count&#125;&lt;/h2&gt;
+        &lt;button onClick=&#123;this.sendData&#125;&gt;点我向父组件传递数据&lt;/button&gt;
+      &lt;/div&gt;
+    )
+  &#125;
+&#125;
+
+/* 子组件2 */
+class Bob extends React.Component &#123;
+  state = &#123;
+    sonName: &#39;xiaoZhao&#39;,
+  &#125;
+  sendData = () =&gt; &#123;
+    this.props.GetChildData()
+  &#125;
+  render() &#123;
+    return (
+      &lt;div&gt;
+        子组件Bob:
+        &lt;h2&gt;count:&#123;this.props.count&#125;&lt;/h2&gt;
+        &lt;button onClick=&#123;this.sendData&#125;&gt;点我向父组件传递数据&lt;/button&gt;
+      &lt;/div&gt;
+    )
+  &#125;
+&#125;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">#### 深入Props</span><br><span class="line"></span><br><span class="line">- </span><br><span class="line"></span><br><span class="line">- props校验：约束规范props属性的类型</span><br><span class="line"></span><br><span class="line">  - 使用步骤</span><br><span class="line"></span><br><span class="line">    1. 安装 prop-types包 （yarn add prop-types&#x2F;npm install prop-types）</span><br><span class="line">    2. 导入 import 导入包</span><br><span class="line">    3. 使用组件名.propTypes &#x3D;&#123;&#125;来给组件的props属性添加校验规则</span><br><span class="line"></span><br><span class="line">    &#96;&#96;&#96;javascript</span><br><span class="line">    &#x2F;&#x2F;导入props校验包</span><br><span class="line">    import PropTypes from &#39;prop-types&#39;</span><br><span class="line">    </span><br><span class="line">    class Father extends React.Component &#123;</span><br><span class="line">      render() &#123;</span><br><span class="line">        return (</span><br><span class="line">          &lt;div&gt;</span><br><span class="line">            &#123;this.props.colors.map((item, i) &#x3D;&gt; &#123;</span><br><span class="line">              return &lt;p key&#x3D;&#123;i&#125;&gt;&#123;item&#125;&lt;&#x2F;p&gt;</span><br><span class="line">            &#125;)&#125;</span><br><span class="line">          &lt;&#x2F;div&gt;</span><br><span class="line">        )</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    Father.propTypes &#x3D; &#123;</span><br><span class="line">      colors: PropTypes.array,</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>props校验的常见类型</p>
+<ul>
+<li>array、bool、func、number、object、string</li>
+<li>React元素类型：element</li>
+<li>必填项：isRequired</li>
+<li>特定结构对象：shape({})</li>
+</ul>
+</li>
+<li><p>props的默认值</p>
+<ul>
+<li>场景：分页组件中每页的显示条数</li>
+<li>作用：给props设置默认值，在未传入props时生效</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/10/gojs-layer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="敲代码是件快乐的事情">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/10/gojs-layer/" class="post-title-link" itemprop="url">gojs-layer</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-10 10:30:55" itemprop="dateCreated datePublished" datetime="2021-03-10T10:30:55+08:00">2021-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-31 09:25:02" itemprop="dateModified" datetime="2021-03-31T09:25:02+08:00">2021-03-31</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="gojs中的图层级别-layer"><a href="#gojs中的图层级别-layer" class="headerlink" title="gojs中的图层级别(layer)"></a>gojs中的图层级别(layer)</h3><p><strong>标准层</strong></p>
+<p>每个图都从几个标准层开始，这些都是它们的Layer.name,按从最后面到最前面的顺序排列：</p>
+<ul>
+<li>“Grid”:保存了Diagram.grid和您希望位于所有内容之后的任何其他静态零件(“网格”图层中的所有零件都是自动不可选择的，因为该<a target="_blank" rel="noopener" href="https://gojs.net.cn/api/symbols/Layer.html">图层的</a><a target="_blank" rel="noopener" href="https://gojs.net.cn/api/symbols/Layer.html#allowSelect">Layer.allowSelect</a>为false 。）)</li>
+<li>“BackGround”:背景层</li>
+<li>“ForeGround”:前景层</li>
+<li>“Adornment”,保持装饰物的选择和各种工具</li>
+<li>“Tool”:持有用于执行各种工具的零件</li>
+</ul>
+<p>每个零件根据其Part.layerName放置字一个Layer中，默认值为空字符串。使用 Diagram.findLayer查找到具有图层名称的图层。通过设置Part.layerName更改零件所在的层。</p>
+<p>由于layer.isTemporary为true，UndoManager会自动忽略对“Grid”，“Adornment”,和”Tool”层中的零件所做的更改。</p>
+<p>由于Layer.allowSelect为false，因此无法选择”Grid”图层中的零件。这样可以放置用户选择可见的背景网格。</p>
+<p>如果你想在选择节点时改变他的层级，由于每个Part都有一个Part.selectionChanged函数，您可以在这个函数中设零件选中时改变他的层级，未选中时恢复层级</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//找到默认图层级别</span></span><br><span class="line">  <span class="keyword">var</span> forelayer = myDiagram.findLayer(<span class="string">&quot;&quot;</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;forelayer&quot;</span>, forelayer);</span><br><span class="line"><span class="comment">//节点选中事件</span></span><br><span class="line">selectionChanged: <span class="function"><span class="keyword">function</span> <span class="title">nodeSelectionChanged</span>(<span class="params">node</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 更改节点的层级</span></span><br><span class="line">  node.layerName = node.isSelected ? <span class="string">&quot;Foreground&quot;</span> : <span class="string">&quot;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line">layerChanged: <span class="function"><span class="keyword">function</span>(<span class="params">p, oldLayer, newLayer</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">if</span> (newLayer !== <span class="literal">null</span>) p.elt(<span class="number">1</span>).text = newLayer.name;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<p>同时，layer层级改变时也有相应的函数可以在层级改变后做一些事情。可以在layerChanged的函数中进行操作。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/02/24/gojs-node/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -188,7 +788,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-02 22:08:49" itemprop="dateModified" datetime="2021-03-02T22:08:49+08:00">2021-03-02</time>
+                <time title="修改时间：2021-04-02 08:44:17" itemprop="dateModified" datetime="2021-04-02T08:44:17+08:00">2021-04-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -221,6 +821,78 @@
 <li>此只读属性获取该节点连接的所有线，返回一个迭代器。包括进入和来自这个节点的线。</li>
 </ul>
 <p><strong>linksIntro</strong></p>
+<p><strong>查找节点</strong></p>
+<ul>
+<li>myDiagram.findNodeForKey(key)</li>
+</ul>
+<p><strong>查找节点的data</strong></p>
+<ul>
+<li>myDiagram.model.findNodeDataForKey(key)</li>
+</ul>
+<p><strong>查找link</strong></p>
+<ul>
+<li>myDiagram.findLinkForKey(key)</li>
+</ul>
+<p><strong>查找link的data</strong></p>
+<ul>
+<li>myDiagram.model.findLinkDataForKey(key)</li>
+</ul>
+<p><strong>注意：model下的方法是获取data的，diargram下的方法是获取图形对象的</strong></p>
+<p><strong>此外：link本身是没有属性key的，需自己定义。定义linkKey方法</strong></p>
+<ul>
+<li><p>先定义linkkeyProprety属性</p>
+</li>
+<li><p>再设置linkKey规则</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义linkkeyProprety</span></span><br><span class="line">myDiagram.model.linkkeyProprety=<span class="string">&#x27;key&#x27;</span></span><br><span class="line"><span class="comment">//默认linkKey定义的函数</span></span><br><span class="line">myDiagram.model.makeUniqueLinkKeyFunction = <span class="function"><span class="keyword">function</span>(<span class="params">model, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i = model.linkDataArray.length * <span class="number">2</span> + <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">while</span> (model.findLinkDataForKey(i) !== <span class="literal">null</span>) i += <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>更改model.node、model.link属性或者model本身的api</strong></p>
+<ul>
+<li>diagram.mode.setDataProperty（objectData:data,propName:string,val:any）一般属性</li>
+<li>如果要更改的是key，则setKeyForNodeData(nodedata: <a target="_blank" rel="noopener" href="https://gojs.net/latest/api/symbols/ObjectData.html">ObjectData</a>, key: <a target="_blank" rel="noopener" href="https://gojs.net/latest/api/index.html#Key">Key</a>): <em>void</em></li>
+<li>如果设置node的类别请用：setCategoryForNodeData(nodedata: <a target="_blank" rel="noopener" href="https://gojs.net/latest/api/symbols/ObjectData.html">ObjectData</a>, cat: <em>string</em>): <em>void</em></li>
+</ul>
+<p><strong>画布生成图片或svg</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> 1 普通图片显示</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="comment">// var img = myDiagram.makeImage(&#123;scale:1,background:&#x27;#fff&#x27;,&#125;); </span></span><br><span class="line"> <span class="comment">// 将图片的src属性作为URL地址</span></span><br><span class="line"> <span class="comment">//  this.preViewUrl = img.src;</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">/* </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> 2.以svg的图片形式</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">/*  this.preViewImg = myDiagram.makeSvg(&#123;scale:1.2&#125;);</span></span><br><span class="line"><span class="comment"> console.log(&#x27;img&#x27;,this.preViewImg);</span></span><br><span class="line"><span class="comment"> const svgBox=document.getElementById(&#x27;svgBox&#x27;)</span></span><br><span class="line"><span class="comment">  svgBox.appendChild(this.preViewImg) */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">//通过gojs API获取画布的img对象</span></span><br><span class="line">  </span><br><span class="line"> <span class="comment">/* var img = myDiagram.makeImage(&#123;scale:1,background:&#x27;#fff&#x27;,&#125;); */</span></span><br><span class="line"> <span class="comment">// var a = document.createElement(&#x27;a&#x27;);</span></span><br><span class="line"> <span class="comment">// var event = new MouseEvent(&#x27;click&#x27;);</span></span><br><span class="line"> <span class="comment">// a.download = &#x27;下载图片名称&#x27;;</span></span><br><span class="line"> <span class="comment">// 将图片的src属性作为URL地址</span></span><br><span class="line"> <span class="comment">// url = img.src;</span></span><br><span class="line"> <span class="comment">// a.href = url;</span></span><br><span class="line"> <span class="comment">// a.dispatchEvent(event);</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>gojs图表尺寸改变</strong></p>
+<ul>
+<li><p>概述：有时可能需要调整包含GoJS图表的div的大小。GoJS不会监听或尝试检测div大小的变化，因此在执行调整其包含div大小的操作时，必须手动告诉每个图表。</p>
+</li>
+<li><p>代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Resize the diagram with this button</span></span><br><span class="line">   <span class="keyword">var</span> button1 = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;button1&#x27;</span>);</span><br><span class="line">   button1.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="keyword">var</span> div = diagram.div;</span><br><span class="line">     div.style.width = <span class="string">&#x27;200px&#x27;</span>;</span><br><span class="line">     diagram.requestUpdate(); <span class="comment">// Needed!</span></span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>容器尺寸改变时画布内容居中无效</p>
+</li>
+<li><p>解决方法：先解除画布与div的关系，在重新赋值。做类似刷新的操作</p>
+</li>
+<li><pre><code class="javascript">     var div = myDiagram.div
+     //解除画布与div的关联
+      myDiagram.div=null
+     //重新挂载到容器上
+      myDiagram.div=div
+</code></pre>
+</li>
+<li><p>关于初始化</p>
+<ul>
+<li>如果要取消将关系图与HTML Div元素关联，要将Diagram.div设置为null，而且不可以手动修改此Div的内容这样不会引发Changed事件。</li>
+</ul>
+</li>
+</ul>
+<p><strong>gojs中的局部刷新问题</strong></p>
+<ul>
+<li>myDiagram.model.updateTargetBindings(nodeData); 不要事物更新</li>
+<li>myDiagram.model.setDataProperty(nodeData, ‘color’, “#ededed”); 需要事物更新</li>
+</ul>
+<p><strong>gojs监听模型的变化事件</strong></p>
+<ul>
+<li>apiaddModelChangedListener(listener: <em>function</em>(e: <a target="_blank" rel="noopener" href="https://gojs.net/latest/api/symbols/ChangedEvent.html">ChangedEvent</a>): <em>void</em>): <em>void</em></li>
+</ul>
+<p><strong>gojs的提示工具悬浮时间</strong></p>
+<ul>
+<li>“toolManager.toolTipDuration”: 100000,//tip 悬浮显示时间</li>
+</ul>
 
       
     </div>
@@ -687,470 +1359,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/31/TypeScript-%E7%B1%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
-      <meta itemprop="name" content="zzx">
-      <meta itemprop="description" content="敲代码是件快乐的事情">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zzx的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/31/TypeScript-%E7%B1%BB/" class="post-title-link" itemprop="url">TypeScript-类</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-01-31 20:25:29 / 修改时间：20:30:13" itemprop="dateCreated datePublished" datetime="2021-01-31T20:25:29+08:00">2021-01-31</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="类"><a href="#类" class="headerlink" title="类"></a>类</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ts中的类</span></span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">IPerson</span></span>&#123;</span><br><span class="line">   name: string</span><br><span class="line">   age: number</span><br><span class="line">   gender: string</span><br><span class="line">   <span class="function"><span class="title">constructor</span>(<span class="params">name:string,age:number,gender:string</span>)</span> &#123;</span><br><span class="line">     <span class="built_in">this</span>.name = name,</span><br><span class="line">       <span class="built_in">this</span>.age = age,</span><br><span class="line">       <span class="built_in">this</span>.gender=gender</span><br><span class="line">   &#125;</span><br><span class="line">   sayHis():<span class="keyword">void</span> &#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">`大家好,我是<span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>,今年<span class="subst">$&#123;<span class="built_in">this</span>.age&#125;</span>,性别<span class="subst">$&#123;<span class="built_in">this</span>.gender&#125;</span>`</span>);</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">let</span> ldh = <span class="keyword">new</span> IPerson(<span class="string">&#x27;刘德华&#x27;</span>, <span class="number">18</span>, <span class="string">&#x27;男&#x27;</span>)</span><br><span class="line"> ldh.sayHis()</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">&#x27;--------------------&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p><strong>继承</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ts中的继承 extends关键字 子类中super关键字可以改变父类中的this指向，可以调用父类的方法</span></span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">   name: string</span><br><span class="line">   age: number</span><br><span class="line">   gender: string</span><br><span class="line">   <span class="function"><span class="title">constructor</span>(<span class="params">name: string = <span class="string">&#x27;父&#x27;</span>, age: number = <span class="number">20</span>, gender: string = <span class="string">&#x27;男&#x27;</span></span>)</span> &#123;</span><br><span class="line">     <span class="built_in">this</span>.name = name</span><br><span class="line">     <span class="built_in">this</span>.age = age</span><br><span class="line">     <span class="built_in">this</span>.gender=gender</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="title">sayHi</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="built_in">this</span>.name&#125;</span>,今年<span class="subst">$&#123;<span class="built_in">this</span>.age&#125;</span>岁了`</span>);</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">Father</span></span>&#123;</span><br><span class="line">   <span class="function"><span class="title">constructor</span>(<span class="params">name,age,gender</span>)</span> &#123;</span><br><span class="line">     <span class="built_in">super</span>(name,age,gender)</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="title">say</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">     <span class="built_in">super</span>.sayHi()</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line">  </span><br><span class="line"> <span class="keyword">let</span> xm = <span class="keyword">new</span> Son(<span class="string">&#x27;小明&#x27;</span>, <span class="number">8</span>, <span class="string">&#x27;男&#x27;</span>)</span><br><span class="line"> <span class="built_in">console</span>.log(xm);</span><br><span class="line"> xm.say()</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">&#x27;-------------------------&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p><strong>多态</strong></p>
-<p> // 多态：引用父类的类型，指向子类的对象。这种情况叫多态</p>
-<p><strong>成员修饰符</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 成员修饰符:主要是描述类中的成员（属性，构造函数，方法）的可访问性</span></span><br><span class="line"><span class="comment">//public：默认，被public修饰符修饰的成员在父类，子类以及外部都可以访问到（公共的）</span></span><br><span class="line"><span class="comment">//private:被private修饰符修饰的成员只在父类可以访问到，子类以及外部不可以访问到（私有的）</span></span><br><span class="line"><span class="comment">//protected：被protected修饰符修饰的成员只在父类以及子类中可以访问到,外部不可以访问到（私有的）</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dad</span></span>&#123;</span><br><span class="line"><span class="comment">//  public name: string //public 修饰</span></span><br><span class="line"><span class="comment">//  private name: string //private 修饰</span></span><br><span class="line"> protected name: string <span class="comment">//protected 修饰</span></span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name: string</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.name=name</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">sayHi</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;父类中的名字&#x27;</span>,<span class="built_in">this</span>.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">baby</span> <span class="keyword">extends</span> <span class="title">Dad</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">name:string</span>)</span> &#123;</span><br><span class="line">      <span class="built_in">super</span>(name)</span><br><span class="line">  &#125;</span><br><span class="line"> <span class="function"><span class="title">sayHi</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;this.name&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> xh: baby = <span class="keyword">new</span> Dad(<span class="string">&#x27;小红&#x27;</span>)</span><br><span class="line">  xh.sayHi()</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/31/TypeSrcipt-%E6%8E%A5%E5%8F%A3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
-      <meta itemprop="name" content="zzx">
-      <meta itemprop="description" content="敲代码是件快乐的事情">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zzx的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/31/TypeSrcipt-%E6%8E%A5%E5%8F%A3/" class="post-title-link" itemprop="url">TypeSrcipt-接口</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-31 13:30:21" itemprop="dateCreated datePublished" datetime="2021-01-31T13:30:21+08:00">2021-01-31</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-02-27 15:00:38" itemprop="dateModified" datetime="2021-02-27T15:00:38+08:00">2021-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="TypeSrcipte的接口"><a href="#TypeSrcipte的接口" class="headerlink" title="TypeSrcipte的接口"></a>TypeSrcipte的接口</h3><p><strong>接口</strong></p>
-<p>一般是值对象的类型注解，可理解为约束。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  接口：对象的类型注解，可理解为约束</span></span><br><span class="line">  <span class="comment">// readonly 只读属性，与const不同的是，定义属性的时候只能用它，？表示可有可无的属性</span></span><br><span class="line">  interface IPerson&#123;</span><br><span class="line">    readonly id: number</span><br><span class="line">    name: string</span><br><span class="line">    age: number</span><br><span class="line">    sex?:string</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> ldh: IPerson = &#123;</span><br><span class="line">    id: <span class="number">1</span>,</span><br><span class="line">    name: <span class="string">&#x27;刘德华&#x27;</span>,</span><br><span class="line">    age: <span class="number">18</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  ldh.sex=<span class="string">&quot;男&quot;</span></span><br><span class="line">  <span class="built_in">console</span>.log(ldh);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;-----------------&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p><strong>函数的接口</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数的接口</span></span><br><span class="line"> <span class="comment">// 函数的接口interface定义，参数类型，返回值类型</span></span><br><span class="line"> interface IFunction&#123;</span><br><span class="line">   (str:string,<span class="attr">subStr</span>:string):boolean</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">let</span> serachSubStr: IFunction=<span class="function"><span class="keyword">function</span>(<span class="params">str: string, subStr: string</span>): <span class="title">boolean</span></span>&#123;</span><br><span class="line"> </span><br><span class="line"> <span class="keyword">return</span>  str.search(subStr)&gt;-<span class="number">1</span></span><br><span class="line">   </span><br><span class="line"> &#125;</span><br><span class="line"> <span class="built_in">console</span>.log(serachSubStr(<span class="string">&#x27;hello wrold&#x27;</span>, <span class="string">&#x27;wrold&#x27;</span>));</span><br><span class="line"> </span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">&#x27;-----------------------------&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p><strong>类的接口</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> </span><br><span class="line">  <span class="comment">// 类的接口：定义 interface关键字 实现类和接口直接的关系：implements关键字 实现接口与接口之间的关系：extends关键字</span></span><br><span class="line">  interface IFly&#123;</span><br><span class="line">    fly()</span><br><span class="line">  &#125;</span><br><span class="line">   interface ISwim&#123;</span><br><span class="line">    swim()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//接口继承</span></span><br><span class="line">  interface IFlyAndSwim <span class="keyword">extends</span> IFly, ISwim&#123; &#125;</span><br><span class="line">  <span class="comment">//类实现接口</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Star</span> <span class="title">implements</span> <span class="title">IFlyAndSwim</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="title">fly</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">&#x27;I can fly&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">swim</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">&#x27;I can swim&#x27;</span>);</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">//实例化类</span></span><br><span class="line">  <span class="keyword">let</span> zxy = <span class="keyword">new</span> Star()</span><br><span class="line">  zxy.fly()</span><br><span class="line">  zxy.swim()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/30/title-md/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
-      <meta itemprop="name" content="zzx">
-      <meta itemprop="description" content="敲代码是件快乐的事情">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zzx的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/30/title-md/" class="post-title-link" itemprop="url">:title.md</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-30 16:01:11" itemprop="dateCreated datePublished" datetime="2021-01-30T16:01:11+08:00">2021-01-30</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/30/TypeScript-%E7%AE%80%E5%8D%95%E8%AF%AD%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
-      <meta itemprop="name" content="zzx">
-      <meta itemprop="description" content="敲代码是件快乐的事情">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zzx的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/30/TypeScript-%E7%AE%80%E5%8D%95%E8%AF%AD%E6%B3%95/" class="post-title-link" itemprop="url">TypeScript-简单语法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-01-30 15:42:45 / 修改时间：20:27:10" itemprop="dateCreated datePublished" datetime="2021-01-30T15:42:45+08:00">2021-01-30</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="TypeSrcipt中的简单语法"><a href="#TypeSrcipt中的简单语法" class="headerlink" title="TypeSrcipt中的简单语法"></a>TypeSrcipt中的简单语法</h3><p><strong>基本数据类型</strong></p>
-<p><strong>boolean</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ts中的基本数据类型</span></span><br><span class="line"><span class="keyword">let</span> flag: boolean = <span class="literal">true</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;flag&#x27;</span>, flag);</span><br></pre></td></tr></table></figure>
-
-<p><strong>number</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数字类型</span></span><br><span class="line"><span class="keyword">let</span> num: number = <span class="number">123</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;num=&gt;&#x27;</span>, num);</span><br></pre></td></tr></table></figure>
-
-<p><strong>string</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//字符串类型</span></span><br><span class="line"><span class="keyword">let</span> str1:string=<span class="string">&#x27;呵呵&#x27;</span></span><br><span class="line"><span class="keyword">let</span> str2:string=<span class="string">&#x27;嘻嘻&#x27;</span></span><br><span class="line"><span class="keyword">let</span> str3: string = <span class="string">&#x27;哈哈&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;str1&#125;</span>,<span class="subst">$&#123;str2&#125;</span>,<span class="subst">$&#123;str3&#125;</span>`</span>);</span><br></pre></td></tr></table></figure>
-
-<p><strong>undefined和null</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//undefined和null类型都可以作为其他类型的子项，即可以赋值给其他类型</span></span><br><span class="line"><span class="keyword">let</span> und: <span class="literal">undefined</span> = <span class="literal">undefined</span></span><br><span class="line"><span class="keyword">let</span> nll: <span class="literal">null</span> = <span class="literal">null</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;und==nll&#x27;</span>, und == nll);</span><br><span class="line"><span class="keyword">let</span> num2: number = <span class="number">1000</span>;</span><br><span class="line">num2=und</span><br><span class="line">num2=nll</span><br><span class="line"><span class="built_in">console</span>.log(num2);</span><br></pre></td></tr></table></figure>
-
-<p><strong>数组和元组类型</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//数组类型即元组类型</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;------------------&#x27;</span>);</span><br><span class="line"><span class="comment">// 数组有两种定义方式</span></span><br><span class="line"><span class="comment">// 1 let 变量:类型[]=[&#x27;值&#x27;]</span></span><br><span class="line"><span class="keyword">let</span> arr1: string[] = [<span class="string">&#x27;hi&#x27;</span>, <span class="string">&#x27;hehe&#x27;</span>]</span><br><span class="line"><span class="comment">//2 let 变量:Array&lt;类型&gt;=[&quot;值&quot;]</span></span><br><span class="line"><span class="keyword">let</span> arr2:<span class="built_in">Array</span>&lt;number&gt;=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr1);</span><br><span class="line"><span class="built_in">console</span>.log(arr2);</span><br><span class="line"><span class="comment">// 元组的定义方式:</span></span><br><span class="line"><span class="comment">//好处：可以定义多个类型，但是位置和数量必须和定义的时候保持一致。也可以根据不同位置的值，提示不同的方法</span></span><br><span class="line"><span class="keyword">let</span> arr3: [string, number, boolean] = [<span class="string">&#x27;小橹&#x27;</span>, <span class="number">666</span>, <span class="literal">true</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr3);</span><br><span class="line"><span class="built_in">console</span>.log(arr3[<span class="number">0</span>].split(<span class="string">&#x27;&#x27;</span>));</span><br><span class="line"><span class="built_in">console</span>.log(arr3[<span class="number">1</span>].toString());</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;------------------------------&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p><strong>枚举类型</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 枚举类型，数量，位置固定,每个成员都有自己的编号，默认从0开始，也可以手动指定如pink=4</span></span><br><span class="line"><span class="comment">// enum关键字</span></span><br><span class="line">enum Color&#123;</span><br><span class="line">  pink,</span><br><span class="line">  green,</span><br><span class="line">  red</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(Color[<span class="number">1</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(Color.red);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;-----------------&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p><strong>any类型</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//any类型：当我们不知道当前要保存的值的类型是什么时，可以使用any类型，优点是可以改变变量类型，数组的也行，确定是对数组中的某项的方法属性不能约束了</span></span><br><span class="line"><span class="keyword">let</span> able: any = <span class="number">123</span></span><br><span class="line">able = <span class="string">&#x27;呵呵哒&#x27;</span></span><br><span class="line"><span class="keyword">let</span> arr4:any[]=[<span class="number">1</span>,<span class="string">&#x27;嗯嗯&#x27;</span>,<span class="literal">true</span>]</span><br><span class="line"><span class="built_in">console</span>.log(able);</span><br><span class="line"><span class="built_in">console</span>.log(arr4);</span><br></pre></td></tr></table></figure>
-
-<p><strong>void类型</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//void类型，作为指定函数没有返回值的类型，通常是和any相反的（undefined,null）</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;---------------&#x27;</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayHi</span>(<span class="params"></span>): <span class="title">void</span></span>&#123;</span><br><span class="line">  <span class="comment">// console.log(&#x27;啥也没有return&#x27;);</span></span><br><span class="line">  <span class="comment">// return </span></span><br><span class="line">  <span class="comment">// return undefined</span></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sayHi());</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;--------------------&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p><strong>object类型</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// object类型：除了基础数据类型之外的类型</span></span><br><span class="line"><span class="keyword">let</span> obj: object = <span class="function"><span class="keyword">function</span> <span class="title">sayWhy</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;why&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(obj);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;------------------&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p><strong>联合类型</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//联合类型 类型1|类型2（可取多个类型中的一个）</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logInfo</span>(<span class="params">str:number|string</span>):<span class="title">string</span> </span>&#123;</span><br><span class="line">     <span class="keyword">return</span> str.toString()</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(logInfo(<span class="number">123456</span>));</span><br><span class="line"><span class="built_in">console</span>.log(logInfo(<span class="string">&#x27;我的吗&#x27;</span>));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;-------------------------&#x27;</span>);</span><br></pre></td></tr></table></figure>
-
-<p><strong>类型断言</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//类型断言，有时编译器会推测出可能存在的类型错误，而我们可以指定某个变量的类型，让编译器不提升错误</span></span><br><span class="line"><span class="comment">// 语法：1 &lt;类型&gt;变量名 2 变量名 as 类型</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logLength</span>(<span class="params">str:number|string</span>):<span class="title">number</span> </span>&#123;</span><br><span class="line"> <span class="comment">/*  if ((&lt;string&gt;str).length) &#123;</span></span><br><span class="line"><span class="comment">      return (&lt;string&gt;str).length</span></span><br><span class="line"><span class="comment">  &#125; */</span></span><br><span class="line">   <span class="keyword">if</span> ((str <span class="keyword">as</span> string).length) &#123;</span><br><span class="line">      <span class="keyword">return</span> (&lt;string&gt;str).length</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> str.toString().length</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(logLength(<span class="number">1234567</span>));</span><br><span class="line"><span class="built_in">console</span>.log(logLength(<span class="string">&#x27;hohaohaho&#x27;</span>));</span><br></pre></td></tr></table></figure>
-
-<p><strong>类型推断</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// 类型推断：有时在为定义变量类型时，编译器会自动推断变量类型</span></span><br><span class="line"><span class="comment">//1当初始化变量时，推断的类型就是值的类型</span></span><br><span class="line"><span class="keyword">let</span> num5 = <span class="number">8</span></span><br><span class="line"><span class="comment">// num5=&#x27;23&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(num5);</span><br><span class="line"><span class="comment">//2当变量只声明为赋值时，推断为any类型</span></span><br><span class="line"><span class="keyword">let</span> obj2;</span><br><span class="line">obj2 = <span class="number">789</span></span><br><span class="line">obj2=<span class="string">&#x27;00000&#x27;</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/28/learn-Gojs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
-      <meta itemprop="name" content="zzx">
-      <meta itemprop="description" content="敲代码是件快乐的事情">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zzx的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/28/learn-Gojs/" class="post-title-link" itemprop="url">learn-Gojs</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-28 10:10:48" itemprop="dateCreated datePublished" datetime="2021-01-28T10:10:48+08:00">2021-01-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-10 10:20:29" itemprop="dateModified" datetime="2021-03-10T10:20:29+08:00">2021-03-10</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0Gojs/" itemprop="url" rel="index"><span itemprop="name">学习Gojs</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>##Gojs的初探</p>
-<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210128145239476.png"></p>
-<p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210128145358556.png"></p>
-<p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210128145410526.png"></p>
-<h3 id="入门教程"><a href="#入门教程" class="headerlink" title="入门教程"></a>入门教程</h3><p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210128143733957.png"></p>
-<p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210128143836931.png"></p>
-<h3 id="图表和模型"><a href="#图表和模型" class="headerlink" title="图表和模型"></a>图表和模型</h3><p>图的节点和链接是由模型管理的数据的可视化。 <strong>GoJS</strong>具有模型视图架构，其中模型保存描述节点和链接的数据（JavaScript对象的数组），而图作为视图使用实际的Node和Link对象可视化此数据。在编辑后加载然后保存的是模型，而不是图。您可以在模型的数据对象上添加应用所需的任何属性；您不向Diagram和GraphObject类添加属性或修改其原型。</p>
-<h4 id="节点设置"><a href="#节点设置" class="headerlink" title="节点设置"></a>节点设置</h4><ul>
-<li>Shape, to display pre-defined or custom geometry with colors</li>
-<li>TextBlock, to display (potentially editable) text in various fonts</li>
-<li>Picture, to display images, including SVG files</li>
-<li>Panel, containers to hold a collection of other objects that can be positioned and sized in different manners according to the type of the Panel (like tables, vertical stacks, and stretching containers)</li>
-</ul>
-<p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210128102932930.png"></p>
-<h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><p><img src="/2021/01/28/learn-Gojs/ITHEIMA\jiuye\19.blog\source_posts\title-md\image-20210128144212301.png"></p>
-<p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210128144235174.png"></p>
-<h3 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h3><p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210128144332160.png"></p>
-<h3 id="GraphLinksModel"><a href="#GraphLinksModel" class="headerlink" title="GraphLinksModel"></a>GraphLinksModel</h3><p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210128144455788.png"></p>
-<p><strong>只需将Model改为GraphLinksModel，然后设置linkDataArray中from,to属性即可</strong></p>
-<p><strong>效果图</strong></p>
-<p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210128144648747.png"></p>
-<h3 id="TreeModel"><a href="#TreeModel" class="headerlink" title="TreeModel"></a>TreeModel</h3><p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210128144836128.png"></p>
-<p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210128144846011.png"></p>
-<p><strong>效果图</strong></p>
-<p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210128144947081.png"></p>
-<h3 id="链接模板"><a href="#链接模板" class="headerlink" title="链接模板"></a>链接模板</h3><p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210128141859292.png"></p>
-<p><strong>效果图</strong></p>
-<p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210128145047500.png"></p>
-<h3 id="双向数据绑定"><a href="#双向数据绑定" class="headerlink" title="双向数据绑定"></a>双向数据绑定</h3><p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210128210258680.png" alt="image-20210128210258680"></p>
-<h3 id="panel面板"><a href="#panel面板" class="headerlink" title="panel面板"></a>panel面板</h3><p>面板的可设置属性：</p>
-<ul>
-<li>Panel.Positon </li>
-<li>Panel.Vertical</li>
-<li>Panel.Horizontal</li>
-<li>Panel.Auto</li>
-<li>Panel.Spot</li>
-<li>Panel.Table</li>
-<li>Panel.Table</li>
-<li>Panel.Viewbox</li>
-<li>Panel.Link</li>
-<li>Panel.Grid</li>
-<li>Panel.Graduated</li>
-</ul>
-<p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210129164109316.png"></p>
-<h4 id="Animation-动画"><a href="#Animation-动画" class="headerlink" title="Animation 动画"></a>Animation 动画</h4><p>注册动画 </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> <span class="keyword">var</span> animation=<span class="keyword">new</span> go.Animation()<span class="comment">//全局的动画</span></span><br><span class="line"><span class="number">2</span> </span><br></pre></td></tr></table></figure>
-
-<p><strong>context menu 右键菜单</strong></p>
-<p>**TextBlock文本设置    **</p>
-<ul>
-<li>可以通过TextBlock.font来设置文本字体的大小</li>
-<li>可以通过TextBlock.stroke来设置文本的颜色</li>
-<li>通过GraphObject.background继承，设置文本的背景颜色</li>
-<li>TextBlock文字是自然适应容器的，但是也可以设置宽高固定大小</li>
-<li>可以设置TextBlock.wrap属性来使文本换行</li>
-<li>TextBolock.textAlign和GraphObject.alignment是不同的，前者是表示针对文本的对齐方式，后一个表示针对容器的对齐方式</li>
-<li>设置TextBlock.editable为true即可开启文本编辑功能</li>
-<li>如果你想对TextBlock中的文本进行某种验证，那么可以设置TextBlock.textValidation属性，该属性的值为function，你可以自行编写验证规则。你甚至可以更换文本编辑器，设置TextBlock.textEditor属性即可。</li>
-</ul>
-<p><strong>一个节点多个textBlock文本</strong></p>
-<p>如果你想要多个文本组成的节点，可以自由搭配。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">diagram.nodeTemplate =</span><br><span class="line">  $(go.Node, <span class="string">&quot;Auto&quot;</span>,</span><br><span class="line">    $(go.Shape, &#123; <span class="attr">fill</span>: <span class="string">&quot;white&quot;</span> &#125;),</span><br><span class="line">    $(go.Panel, <span class="string">&quot;Vertical&quot;</span>,</span><br><span class="line">      &#123; <span class="attr">margin</span>: <span class="number">3</span> &#125;,</span><br><span class="line">      $(go.TextBlock,</span><br><span class="line">        <span class="keyword">new</span> go.Binding(<span class="string">&quot;text&quot;</span>, <span class="string">&quot;t1&quot;</span>)),</span><br><span class="line">      $(go.TextBlock,</span><br><span class="line">        <span class="keyword">new</span> go.Binding(<span class="string">&quot;text&quot;</span>, <span class="string">&quot;t2&quot;</span>))</span><br><span class="line">    )</span><br><span class="line">  );</span><br><span class="line">diagram.model.nodeDataArray = [&#123; <span class="attr">t1</span>: <span class="string">&quot;Top&quot;</span>, <span class="attr">t2</span>: <span class="string">&quot;Bottom&quot;</span>&#125;];</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210310093750151.png"></p>
-<p>如果你想设三个或者多个节点文本一行排列，你可以这样做：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">Make(</span><br><span class="line">       go.Panel,</span><br><span class="line">       <span class="string">&quot;Horizontal&quot;</span>,</span><br><span class="line">       <span class="comment">//设置文字</span></span><br><span class="line">       Make(</span><br><span class="line">         go.TextBlock,</span><br><span class="line">         &#123;</span><br><span class="line">           alignment: go.Spot.Center,</span><br><span class="line">           textAlign: <span class="string">&quot;center&quot;</span>,</span><br><span class="line">           editable: <span class="literal">false</span>,</span><br><span class="line">           font: <span class="string">&quot;bold 11pt Lato, Helvetica, Arial, sans-serif&quot;</span>,</span><br><span class="line">           stroke: <span class="string">&quot;black&quot;</span></span><br><span class="line">         &#125;,</span><br><span class="line">         <span class="comment">//绑定到模型数据</span></span><br><span class="line">         <span class="keyword">new</span> go.Binding(<span class="string">&quot;text&quot;</span>, <span class="string">&quot;title&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">           <span class="keyword">return</span> val + <span class="string">&quot;:&quot;</span>;</span><br><span class="line">         &#125;).makeTwoWay(),</span><br><span class="line">         <span class="keyword">new</span> go.Binding(<span class="string">&quot;font&quot;</span>, <span class="string">&quot;font&quot;</span>).makeTwoWay()</span><br><span class="line">       ),</span><br><span class="line">       Make(</span><br><span class="line">         go.TextBlock,</span><br><span class="line">         &#123;</span><br><span class="line">           alignment: go.Spot.Center,</span><br><span class="line">           textAlign: <span class="string">&quot;center&quot;</span>,</span><br><span class="line">           editable: <span class="literal">false</span>,</span><br><span class="line">           font: <span class="string">&quot;bold 11pt Lato, Helvetica, Arial, sans-serif&quot;</span>,</span><br><span class="line">           stroke: <span class="string">&quot;black&quot;</span></span><br><span class="line">         &#125;,</span><br><span class="line">         <span class="comment">//绑定到模型数据</span></span><br><span class="line">         <span class="keyword">new</span> go.Binding(<span class="string">&quot;text&quot;</span>, <span class="string">&quot;text&quot;</span>).makeTwoWay(),</span><br><span class="line">         <span class="keyword">new</span> go.Binding(<span class="string">&quot;font&quot;</span>, <span class="string">&quot;font&quot;</span>).makeTwoWay()</span><br><span class="line">       ),</span><br><span class="line">       Make(</span><br><span class="line">         go.TextBlock,</span><br><span class="line">         &#123;</span><br><span class="line">           alignment: go.Spot.Center,</span><br><span class="line">           textAlign: <span class="string">&quot;center&quot;</span>,</span><br><span class="line">           editable: <span class="literal">false</span>,</span><br><span class="line">           font: <span class="string">&quot;bold 11pt Lato, Helvetica, Arial, sans-serif&quot;</span>,</span><br><span class="line">           stroke: <span class="string">&quot;black&quot;</span></span><br><span class="line">         &#125;,</span><br><span class="line">         <span class="comment">//绑定到模型数据</span></span><br><span class="line">         <span class="keyword">new</span> go.Binding(<span class="string">&quot;text&quot;</span>, <span class="string">&quot;unite&quot;</span>).makeTwoWay(),</span><br><span class="line">         <span class="keyword">new</span> go.Binding(<span class="string">&quot;font&quot;</span>, <span class="string">&quot;font&quot;</span>).makeTwoWay()</span><br><span class="line">       )</span><br><span class="line">     )</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210310101921758.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1222,7 +1430,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1235,7 +1443,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

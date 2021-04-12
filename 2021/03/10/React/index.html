@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="React学习构建项目 yarn 构建react 项目 npm install -g yarn npm install create-react-app yarn -g create-react-app my-app yarn start yarn 的常用命令 yarn install 下载所有依赖包 yarn add pkg-name &#x2F;yarn add pkg-name@version 添加包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React">
+<meta property="og:url" content="http://example.com/2021/03/10/React/index.html">
+<meta property="og:site_name" content="zzx的个人博客">
+<meta property="og:description" content="React学习构建项目 yarn 构建react 项目 npm install -g yarn npm install create-react-app yarn -g create-react-app my-app yarn start yarn 的常用命令 yarn install 下载所有依赖包 yarn add pkg-name &#x2F;yarn add pkg-name@version 添加包">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-10T13:15:26.000Z">
+<meta property="article:modified_time" content="2021-04-12T12:17:40.801Z">
+<meta property="article:author" content="zzx">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/03/10/React/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>React | zzx的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">zzx的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/10/React/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="敲代码是件快乐的事情">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          React
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-10 21:15:26" itemprop="dateCreated datePublished" datetime="2021-03-10T21:15:26+08:00">2021-03-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-12 20:17:40" itemprop="dateModified" datetime="2021-04-12T20:17:40+08:00">2021-04-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="React学习"><a href="#React学习" class="headerlink" title="React学习"></a>React学习</h3><h4 id="构建项目"><a href="#构建项目" class="headerlink" title="构建项目"></a>构建项目</h4><ul>
+<li><h3 id="yarn-构建react-项目"><a href="#yarn-构建react-项目" class="headerlink" title="yarn 构建react 项目"></a>yarn 构建react 项目</h3><ul>
+<li>npm install -g yarn</li>
+<li>npm install create-react-app yarn -g</li>
+<li>create-react-app my-app</li>
+<li>yarn start</li>
+<li>yarn 的常用命令<ul>
+<li>yarn install 下载所有依赖包</li>
+<li>yarn add pkg-name /yarn add pkg-name@version 添加包/添加包的指定版本</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>state</strong></p>
+<ul>
+<li> super关键字定义</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.通过函数构造器 constructor和super来指定state状态，需要用this.state=&#123;&#125;来定义</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ZhuangTai</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>()</span><br><span class="line"></span><br><span class="line">    <span class="built_in">this</span>.state = &#123;</span><br><span class="line">      count: <span class="number">10</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>计数器:&#123;this.state.count&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>简洁写法</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2 简洁写法，不需要constructor和super关键字来指定</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ZhuangTai2</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    count: <span class="number">100</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>计数器2:&#123;this.state.count&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>setState修改状态</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ZhuangTai2</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="comment">//修改state的数据</span></span><br><span class="line">  <span class="comment">/* </span></span><br><span class="line"><span class="comment">    不能直接修改state的数据，只能通过setState()方法来修改</span></span><br><span class="line"><span class="comment">    setState()方法的作用：1 修改state数据 2更新ui</span></span><br><span class="line"><span class="comment">    思想：数据更新驱动视图的更新</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  state = &#123;</span><br><span class="line">    count: <span class="number">100</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        计数器<span class="number">2</span>:&#123;<span class="built_in">this</span>.state.count&#125;</span><br><span class="line">        &lt;button</span><br><span class="line">          onClick=&#123;<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">              count: <span class="built_in">this</span>.state.count + <span class="number">1</span>,</span><br><span class="line">            &#125;)</span><br><span class="line">          &#125;&#125;</span><br><span class="line">        &gt;</span><br><span class="line">          count+<span class="number">1</span></span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>React抽离事件处理程序时解决this的指向问题</strong></p>
+<ul>
+<li>抽离事件处理程序时this指向undefined的问题</li>
+<li>原因：</li>
+</ul>
+<ol>
+<li>jsx中this没有默认绑定，需要使用bind绑定，否则this会是undefined。</li>
+</ol>
+<p>由于类的方法默认不会绑定this，因此在调用的时候如果忘记绑定，this的值将会是undefined。</p>
+<p>通常如果不是直接调用，应该为方法绑定this。</p>
+<ol start="2">
+<li>这个问题的本质原因如下：</li>
+</ol>
+<p>这不是React的原因，这是JavaScript中本来就有的。如果你传递一个函数名给一个变量，然后通过在变量后加括号()来调用这个方法，此时方法内部的this的指向就会丢失。<br>3. 在React（或者说JSX）中，传递的事件参数不是一个字符串，而是一个实实在在的函数：</p>
+<p>这样说，React中的事件名（eg:onClick、onChange）就是所举例子中的中间变量，React在事件发生时调用onClick，由于onClick只是中间变量，所以处理函数中的this指向会丢失，其实真正调用时并不是this.handleClick(),如果是这样调用那么this指向就不会有问题。真正调用时是onClick()。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ZhuangTai2</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="comment">//修改state的数据</span></span><br><span class="line">  <span class="comment">/* </span></span><br><span class="line"><span class="comment">    不能直接修改state的数据，只能通过setState()方法来修改</span></span><br><span class="line"><span class="comment">    setState()方法的作用：1 修改state数据 2更新ui</span></span><br><span class="line"><span class="comment">    思想：数据更新驱动视图的更新</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">  <span class="comment">/*  constructor() &#123;</span></span><br><span class="line"><span class="comment">    super()</span></span><br><span class="line"><span class="comment">    this.state = &#123;</span></span><br><span class="line"><span class="comment">      count: 100,</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    this.Increase = this.Increase.bind(this)</span></span><br><span class="line"><span class="comment">  &#125; */</span></span><br><span class="line">  state = &#123;</span><br><span class="line">    count: <span class="number">100</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Increase() &#123;</span></span><br><span class="line">  <span class="comment">//   this.setState(&#123;</span></span><br><span class="line">  <span class="comment">//     count: this.state.count + 1,</span></span><br><span class="line">  <span class="comment">//   &#125;)</span></span><br><span class="line">  <span class="comment">// &#125;</span></span><br><span class="line">  <span class="comment">// calss实例采用箭头函数方法解决this指向问题</span></span><br><span class="line">  Increase = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      count: <span class="built_in">this</span>.state.count + <span class="number">1</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        计数器<span class="number">2</span>:&#123;<span class="built_in">this</span>.state.count&#125;</span><br><span class="line">        &lt;button</span><br><span class="line">          <span class="comment">// onClick=&#123;() =&gt; &#123;</span></span><br><span class="line">          <span class="comment">//   this.setState(&#123;</span></span><br><span class="line">          <span class="comment">//     count: this.state.count + 1,</span></span><br><span class="line">          <span class="comment">//   &#125;)</span></span><br><span class="line">          <span class="comment">// &#125;&#125;</span></span><br><span class="line">          <span class="comment">// 1在constructor函数中绑定this指向</span></span><br><span class="line">          <span class="comment">// onClick=&#123;this.Increase&#125;</span></span><br><span class="line">          <span class="comment">//  2 箭头函数改变this的指向问题</span></span><br><span class="line">          <span class="comment">// onClick=&#123;() =&gt; this.Increase()&#125;</span></span><br><span class="line">          <span class="comment">//3 事件赋值时直接bind绑定this</span></span><br><span class="line">          <span class="comment">// onClick=&#123;this.Increase.bind(this)&#125;</span></span><br><span class="line">          <span class="comment">//4 class实例采用箭头函数的方式：实验性语法，依赖脚手架的babel</span></span><br><span class="line">          onClick=&#123;<span class="built_in">this</span>.Increase&#125;</span><br><span class="line">        &gt;</span><br><span class="line">          count+<span class="number">1</span></span><br><span class="line">        &lt;/button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>受控组件</strong></p>
+<ul>
+<li>受到React控制的表单元素。此组件就叫受控组件。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//受控表单组件</span></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">普通文本框</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Controlled</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    text: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    RichText: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">    city: <span class="string">&#x27;cs&#x27;</span>,</span><br><span class="line">    isChecked: <span class="literal">false</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 处理文本框值变化的函数</span></span><br><span class="line">  handlerChange = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// console.log(e.target.value)</span></span><br><span class="line">    <span class="keyword">const</span> name = e.target.name</span><br><span class="line">    <span class="comment">// const value = e.target.value</span></span><br><span class="line">    <span class="built_in">console</span>.log(e.target.type)</span><br><span class="line">    <span class="keyword">const</span> value =</span><br><span class="line">      e.target.type === <span class="string">&#x27;checkbox&#x27;</span> ? e.target.checked : e.target.value</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      [name]: value,</span><br><span class="line">      <span class="comment">// text: e.target.value,</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 处理文本域值变化的函数</span></span><br><span class="line">  <span class="function"><span class="title">RichHandler</span>(<span class="params">e</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      RichText: e.target.value,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 处理下拉选择框城市变化函数</span></span><br><span class="line">  CityChange = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      city: e.target.value,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//处理复选框值变化的函数</span></span><br><span class="line">  CheckedChange = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e.target.checked)</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      isChecked: e.target.checked,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &#123;<span class="comment">/*</span></span><br><span class="line"><span class="comment">         文本框</span></span><br><span class="line"><span class="comment">         */</span>&#125;</span><br><span class="line">        &lt;input</span><br><span class="line">          name=<span class="string">&quot;text&quot;</span></span><br><span class="line">          type=<span class="string">&quot;text&quot;</span></span><br><span class="line">          value=&#123;<span class="built_in">this</span>.state.text&#125;</span><br><span class="line">          onChange=&#123;<span class="built_in">this</span>.handlerChange&#125;</span><br><span class="line">        &gt;&lt;/input&gt;</span><br><span class="line">        &#123;<span class="comment">/* </span></span><br><span class="line"><span class="comment">        富文本框</span></span><br><span class="line"><span class="comment">         */</span>&#125;</span><br><span class="line">        &lt;textarea</span><br><span class="line">          name=<span class="string">&quot;RichText&quot;</span></span><br><span class="line">          type=<span class="string">&quot;text&quot;</span></span><br><span class="line">          value=&#123;<span class="built_in">this</span>.state.RichText&#125;</span><br><span class="line">          <span class="comment">// onChange=&#123;this.RichHandler.bind(this)&#125;</span></span><br><span class="line">          onChange=&#123;<span class="built_in">this</span>.handlerChange&#125;</span><br><span class="line">        &gt;&lt;/textarea&gt;</span><br><span class="line"></span><br><span class="line">        &#123;<span class="comment">/* </span></span><br><span class="line"><span class="comment">        下拉框</span></span><br><span class="line"><span class="comment">         */</span>&#125;</span><br><span class="line">        &lt;select</span><br><span class="line">          name=<span class="string">&quot;city&quot;</span></span><br><span class="line">          value=&#123;<span class="built_in">this</span>.state.city&#125;</span><br><span class="line">          onChange=&#123;<span class="built_in">this</span>.handlerChange&#125;</span><br><span class="line">        &gt;</span><br><span class="line">          &lt;option value=<span class="string">&quot;nj&quot;</span>&gt;南京&lt;/option&gt;</span><br><span class="line">          &lt;option value=<span class="string">&quot;cs&quot;</span>&gt;长沙&lt;/option&gt;</span><br><span class="line">          &lt;option value=<span class="string">&quot;gl&quot;</span>&gt;桂林&lt;/option&gt;</span><br><span class="line">        &lt;/select&gt;</span><br><span class="line"></span><br><span class="line">        &#123;<span class="comment">/*  </span></span><br><span class="line"><span class="comment">        复选框</span></span><br><span class="line"><span class="comment">        */</span>&#125;</span><br><span class="line">        &lt;input</span><br><span class="line">          name=<span class="string">&quot;isChecked&quot;</span></span><br><span class="line">          type=<span class="string">&quot;checkbox&quot;</span></span><br><span class="line">          checked=&#123;<span class="built_in">this</span>.state.isChecked&#125;</span><br><span class="line">          onChange=&#123;<span class="built_in">this</span>.handlerChange&#125;</span><br><span class="line">        &gt;&lt;/input&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>非受控组件</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//非受控表单组件</span></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">1 this.refObj= React.creatRef()方法创建一个ref对象</span></span><br><span class="line"><span class="comment">2 把ref对象放到Dom中</span></span><br><span class="line"><span class="comment">3 通过 this.refObj.current.value拿到值</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UnControlled</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>()</span><br><span class="line">    <span class="built_in">this</span>.refObj = React.createRef()</span><br><span class="line">  &#125;</span><br><span class="line">  GetRef = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.refObj.current.value)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;input ref=&#123;<span class="built_in">this</span>.refObj&#125;&gt;&lt;/input&gt;</span><br><span class="line">        &lt;button onClick=&#123;<span class="built_in">this</span>.GetRef&#125;&gt;点击&lt;/button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>组件通讯</strong></p>
+<ul>
+<li><p>组件传参props</p>
+<ul>
+<li>函数组件通过组件名 function(props)接收。在组件内使用方式 props.xxx</li>
+<li>类组件，组件内使用参数：this.props.xxx</li>
+</ul>
+</li>
+<li><p>props特点</p>
+<ul>
+<li>可以传递任意类型参数</li>
+<li>props传递的参数都是只读属性</li>
+<li>在class类组件constructor函数中super中必须先将props作为参数传递进去。否则获取不到Props</li>
+</ul>
+</li>
+<li><p>组件通讯</p>
+<ul>
+<li><p>父传子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">父组件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="comment">//定义state</span></span><br><span class="line">  state = &#123;</span><br><span class="line">    lastName: <span class="string">&#x27;zhao&#x27;</span>,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;span&gt;父组件：&lt;/span&gt;</span><br><span class="line">        &lt;Son lastName=&#123;<span class="built_in">this</span>.state.lastName&#125;&gt;&lt;/Son&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">子组件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>子组件:&#123;this.props.lastName&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子传父</p>
+<ul>
+<li>原理，父组件定义回调函数，形参即为接收的数据。将回调函数作为数据通过props传递给子组件，由子组件在调用时将数据作为实参传递给父组件</li>
+<li>代码：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">父组件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="comment">//定义state</span></span><br><span class="line">  state = &#123;</span><br><span class="line">    lastName: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  GetChildData = <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;接收到子组件传递的数据&#x27;</span>, data)</span><br><span class="line">    <span class="comment">//给父组件中的state赋值</span></span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      lastName: data,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;span&gt;父组件接收到子组件传递的值：&#123;<span class="built_in">this</span>.state.lastName&#125;&lt;/span&gt;</span><br><span class="line">        &lt;Son GetChildData=&#123;<span class="built_in">this</span>.GetChildData&#125;&gt;&lt;/Son&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">子组件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    sonName: <span class="string">&#x27;xiaoZhao&#x27;</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  sendData = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.props.GetChildData(<span class="built_in">this</span>.state.sonName)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        子组件:</span><br><span class="line">        &lt;button onClick=&#123;<span class="built_in">this</span>.sendData&#125;&gt;点我向父组件传递数据&lt;/button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>兄弟组件之间传值</p>
+<ul>
+<li><p>将共享状态提升到最近的公共父组件中，由公共父组件管理这个状态</p>
+</li>
+<li><p>思想：状态提升</p>
+</li>
+<li><p>公共组件职责：1.提供共享状态 2.提供操作共享状态的方法</p>
+</li>
+<li><p>要通讯的子组件只需通过props接收或操作状态的方法</p>
+</li>
+<li><pre><code class="javascript">/* 
+3兄弟之间传
+*/
+// 父组件
+class Parent extends React.Component &#123;
+  //定义state
+  state = &#123;
+    lastName: &#39;&#39;,
+    count: 5,
+  &#125;
+  GetChildData = () =&gt; &#123;
+    var Bcount = this.state.count
+    console.log(&#39;Bcount=&gt;&#39;, Bcount)
+    // console.log(&#39;接收到子组件传递的数据&#39;, data)
+    this.setState(&#123;
+      count: (Bcount += 1),
+    &#125;)
+  &#125;
+
+  render() &#123;
+    return (
+      &lt;div&gt;
+        &lt;span&gt;父组件接收到子组件传递的值：&#123;this.state.count&#125;&lt;/span&gt;
+        &lt;Tom count=&#123;this.state.count&#125; GetChildData=&#123;this.GetChildData&#125;&gt;&lt;/Tom&gt;
+        &lt;Bob count=&#123;this.state.count&#125; GetChildData=&#123;this.GetChildData&#125;&gt;&lt;/Bob&gt;
+      &lt;/div&gt;
+    )
+  &#125;
+&#125;
+
+/* 子组件1 */
+class Tom extends React.Component &#123;
+  state = &#123;
+    sonName: &#39;xiaoZhao&#39;,
+    // tcount:&#39;&#39;
+  &#125;
+  sendData = () =&gt; &#123;
+    this.props.GetChildData()
+  &#125;
+  render() &#123;
+    return (
+      &lt;div&gt;
+        子组件Tom:
+        &lt;h2&gt;count:&#123;this.props.count&#125;&lt;/h2&gt;
+        &lt;button onClick=&#123;this.sendData&#125;&gt;点我向父组件传递数据&lt;/button&gt;
+      &lt;/div&gt;
+    )
+  &#125;
+&#125;
+
+/* 子组件2 */
+class Bob extends React.Component &#123;
+  state = &#123;
+    sonName: &#39;xiaoZhao&#39;,
+  &#125;
+  sendData = () =&gt; &#123;
+    this.props.GetChildData()
+  &#125;
+  render() &#123;
+    return (
+      &lt;div&gt;
+        子组件Bob:
+        &lt;h2&gt;count:&#123;this.props.count&#125;&lt;/h2&gt;
+        &lt;button onClick=&#123;this.sendData&#125;&gt;点我向父组件传递数据&lt;/button&gt;
+      &lt;/div&gt;
+    )
+  &#125;
+&#125;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">#### 深入Props</span><br><span class="line"></span><br><span class="line">- </span><br><span class="line"></span><br><span class="line">- props校验：约束规范props属性的类型</span><br><span class="line"></span><br><span class="line">  - 使用步骤</span><br><span class="line"></span><br><span class="line">    1. 安装 prop-types包 （yarn add prop-types&#x2F;npm install prop-types）</span><br><span class="line">    2. 导入 import 导入包</span><br><span class="line">    3. 使用组件名.propTypes &#x3D;&#123;&#125;来给组件的props属性添加校验规则</span><br><span class="line"></span><br><span class="line">    &#96;&#96;&#96;javascript</span><br><span class="line">    &#x2F;&#x2F;导入props校验包</span><br><span class="line">    import PropTypes from &#39;prop-types&#39;</span><br><span class="line">    </span><br><span class="line">    class Father extends React.Component &#123;</span><br><span class="line">      render() &#123;</span><br><span class="line">        return (</span><br><span class="line">          &lt;div&gt;</span><br><span class="line">            &#123;this.props.colors.map((item, i) &#x3D;&gt; &#123;</span><br><span class="line">              return &lt;p key&#x3D;&#123;i&#125;&gt;&#123;item&#125;&lt;&#x2F;p&gt;</span><br><span class="line">            &#125;)&#125;</span><br><span class="line">          &lt;&#x2F;div&gt;</span><br><span class="line">        )</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    Father.propTypes &#x3D; &#123;</span><br><span class="line">      colors: PropTypes.array,</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>props校验的常见类型</p>
+<ul>
+<li>array、bool、func、number、object、string</li>
+<li>React元素类型：element</li>
+<li>必填项：isRequired</li>
+<li>特定结构对象：shape({})</li>
+</ul>
+</li>
+<li><p>props的默认值</p>
+<ul>
+<li>场景：分页组件中每页的显示条数</li>
+<li>作用：给props设置默认值，在未传入props时生效</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/React/" rel="tag"># React</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/10/gojs-layer/" rel="prev" title="gojs-layer">
+      <i class="fa fa-chevron-left"></i> gojs-layer
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/04/02/deepClone/" rel="next" title="deepClone">
+      deepClone <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#React%E5%AD%A6%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">React学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.1.</span> <span class="nav-text">构建项目</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yarn-%E6%9E%84%E5%BB%BAreact-%E9%A1%B9%E7%9B%AE"><span class="nav-number">2.</span> <span class="nav-text">yarn 构建react 项目</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zzx"
+      src="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+  <p class="site-author-name" itemprop="name">zzx</p>
+  <div class="site-description" itemprop="description">敲代码是件快乐的事情</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zzx-Sll" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zzx-Sll" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zzx</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

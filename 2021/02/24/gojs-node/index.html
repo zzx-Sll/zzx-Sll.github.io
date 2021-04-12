@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="###Node节点常用API 获取所有节点    只读 节点线集合 linksConnected  此只读属性获取该节点连接的所有线，返回一个迭代器。包括进入和来自这个节点的线。  linksIntro">
+  <meta name="description" content="###Node节点常用API 获取所有节点    只读 节点线集合 linksConnected  此只读属性获取该节点连接的所有线，返回一个迭代器。包括进入和来自这个节点的线。  linksIntro 查找节点  myDiagram.findNodeForKey(key)  查找节点的data  myDiagram.model.findNodeDataForKey(key)  查找link  m">
 <meta property="og:type" content="article">
 <meta property="og:title" content="gojs---node">
 <meta property="og:url" content="http://example.com/2021/02/24/gojs-node/index.html">
 <meta property="og:site_name" content="zzx的个人博客">
-<meta property="og:description" content="###Node节点常用API 获取所有节点    只读 节点线集合 linksConnected  此只读属性获取该节点连接的所有线，返回一个迭代器。包括进入和来自这个节点的线。  linksIntro">
+<meta property="og:description" content="###Node节点常用API 获取所有节点    只读 节点线集合 linksConnected  此只读属性获取该节点连接的所有线，返回一个迭代器。包括进入和来自这个节点的线。  linksIntro 查找节点  myDiagram.findNodeForKey(key)  查找节点的data  myDiagram.model.findNodeDataForKey(key)  查找link  m">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-24T10:10:24.000Z">
-<meta property="article:modified_time" content="2021-03-02T14:08:49.689Z">
+<meta property="article:modified_time" content="2021-04-02T00:44:17.815Z">
 <meta property="article:author" content="zzx">
 <meta property="article:tag" content="gojs">
 <meta name="twitter:card" content="summary">
@@ -191,7 +191,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-02 22:08:49" itemprop="dateModified" datetime="2021-03-02T22:08:49+08:00">2021-03-02</time>
+                <time title="修改时间：2021-04-02 08:44:17" itemprop="dateModified" datetime="2021-04-02T08:44:17+08:00">2021-04-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -224,6 +224,78 @@
 <li>此只读属性获取该节点连接的所有线，返回一个迭代器。包括进入和来自这个节点的线。</li>
 </ul>
 <p><strong>linksIntro</strong></p>
+<p><strong>查找节点</strong></p>
+<ul>
+<li>myDiagram.findNodeForKey(key)</li>
+</ul>
+<p><strong>查找节点的data</strong></p>
+<ul>
+<li>myDiagram.model.findNodeDataForKey(key)</li>
+</ul>
+<p><strong>查找link</strong></p>
+<ul>
+<li>myDiagram.findLinkForKey(key)</li>
+</ul>
+<p><strong>查找link的data</strong></p>
+<ul>
+<li>myDiagram.model.findLinkDataForKey(key)</li>
+</ul>
+<p><strong>注意：model下的方法是获取data的，diargram下的方法是获取图形对象的</strong></p>
+<p><strong>此外：link本身是没有属性key的，需自己定义。定义linkKey方法</strong></p>
+<ul>
+<li><p>先定义linkkeyProprety属性</p>
+</li>
+<li><p>再设置linkKey规则</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义linkkeyProprety</span></span><br><span class="line">myDiagram.model.linkkeyProprety=<span class="string">&#x27;key&#x27;</span></span><br><span class="line"><span class="comment">//默认linkKey定义的函数</span></span><br><span class="line">myDiagram.model.makeUniqueLinkKeyFunction = <span class="function"><span class="keyword">function</span>(<span class="params">model, data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> i = model.linkDataArray.length * <span class="number">2</span> + <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">while</span> (model.findLinkDataForKey(i) !== <span class="literal">null</span>) i += <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>更改model.node、model.link属性或者model本身的api</strong></p>
+<ul>
+<li>diagram.mode.setDataProperty（objectData:data,propName:string,val:any）一般属性</li>
+<li>如果要更改的是key，则setKeyForNodeData(nodedata: <a target="_blank" rel="noopener" href="https://gojs.net/latest/api/symbols/ObjectData.html">ObjectData</a>, key: <a target="_blank" rel="noopener" href="https://gojs.net/latest/api/index.html#Key">Key</a>): <em>void</em></li>
+<li>如果设置node的类别请用：setCategoryForNodeData(nodedata: <a target="_blank" rel="noopener" href="https://gojs.net/latest/api/symbols/ObjectData.html">ObjectData</a>, cat: <em>string</em>): <em>void</em></li>
+</ul>
+<p><strong>画布生成图片或svg</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> 1 普通图片显示</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="comment">// var img = myDiagram.makeImage(&#123;scale:1,background:&#x27;#fff&#x27;,&#125;); </span></span><br><span class="line"> <span class="comment">// 将图片的src属性作为URL地址</span></span><br><span class="line"> <span class="comment">//  this.preViewUrl = img.src;</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">/* </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> 2.以svg的图片形式</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">/*  this.preViewImg = myDiagram.makeSvg(&#123;scale:1.2&#125;);</span></span><br><span class="line"><span class="comment"> console.log(&#x27;img&#x27;,this.preViewImg);</span></span><br><span class="line"><span class="comment"> const svgBox=document.getElementById(&#x27;svgBox&#x27;)</span></span><br><span class="line"><span class="comment">  svgBox.appendChild(this.preViewImg) */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">//通过gojs API获取画布的img对象</span></span><br><span class="line">  </span><br><span class="line"> <span class="comment">/* var img = myDiagram.makeImage(&#123;scale:1,background:&#x27;#fff&#x27;,&#125;); */</span></span><br><span class="line"> <span class="comment">// var a = document.createElement(&#x27;a&#x27;);</span></span><br><span class="line"> <span class="comment">// var event = new MouseEvent(&#x27;click&#x27;);</span></span><br><span class="line"> <span class="comment">// a.download = &#x27;下载图片名称&#x27;;</span></span><br><span class="line"> <span class="comment">// 将图片的src属性作为URL地址</span></span><br><span class="line"> <span class="comment">// url = img.src;</span></span><br><span class="line"> <span class="comment">// a.href = url;</span></span><br><span class="line"> <span class="comment">// a.dispatchEvent(event);</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>gojs图表尺寸改变</strong></p>
+<ul>
+<li><p>概述：有时可能需要调整包含GoJS图表的div的大小。GoJS不会监听或尝试检测div大小的变化，因此在执行调整其包含div大小的操作时，必须手动告诉每个图表。</p>
+</li>
+<li><p>代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Resize the diagram with this button</span></span><br><span class="line">   <span class="keyword">var</span> button1 = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;button1&#x27;</span>);</span><br><span class="line">   button1.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="keyword">var</span> div = diagram.div;</span><br><span class="line">     div.style.width = <span class="string">&#x27;200px&#x27;</span>;</span><br><span class="line">     diagram.requestUpdate(); <span class="comment">// Needed!</span></span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>容器尺寸改变时画布内容居中无效</p>
+</li>
+<li><p>解决方法：先解除画布与div的关系，在重新赋值。做类似刷新的操作</p>
+</li>
+<li><pre><code class="javascript">     var div = myDiagram.div
+     //解除画布与div的关联
+      myDiagram.div=null
+     //重新挂载到容器上
+      myDiagram.div=div
+</code></pre>
+</li>
+<li><p>关于初始化</p>
+<ul>
+<li>如果要取消将关系图与HTML Div元素关联，要将Diagram.div设置为null，而且不可以手动修改此Div的内容这样不会引发Changed事件。</li>
+</ul>
+</li>
+</ul>
+<p><strong>gojs中的局部刷新问题</strong></p>
+<ul>
+<li>myDiagram.model.updateTargetBindings(nodeData); 不要事物更新</li>
+<li>myDiagram.model.setDataProperty(nodeData, ‘color’, “#ededed”); 需要事物更新</li>
+</ul>
+<p><strong>gojs监听模型的变化事件</strong></p>
+<ul>
+<li>apiaddModelChangedListener(listener: <em>function</em>(e: <a target="_blank" rel="noopener" href="https://gojs.net/latest/api/symbols/ChangedEvent.html">ChangedEvent</a>): <em>void</em>): <em>void</em></li>
+</ul>
+<p><strong>gojs的提示工具悬浮时间</strong></p>
+<ul>
+<li>“toolManager.toolTipDuration”: 100000,//tip 悬浮显示时间</li>
+</ul>
 
     </div>
 
@@ -245,7 +317,10 @@
     <a href="/2021/02/03/%E5%88%9D%E8%AF%86Vue3/" rel="prev" title="初识Vue3">
       <i class="fa fa-chevron-left"></i> 初识Vue3
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/10/gojs-layer/" rel="next" title="gojs-layer">
+      gojs-layer <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -319,7 +394,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -332,7 +407,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
