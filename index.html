@@ -157,6 +157,138 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/18/React03-React%E5%8E%9F%E7%90%86%E6%8F%AD%E7%A7%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="敲代码是件快乐的事情">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/04/18/React03-React%E5%8E%9F%E7%90%86%E6%8F%AD%E7%A7%98/" class="post-title-link" itemprop="url">React03-React原理揭秘</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-18 11:15:11" itemprop="dateCreated datePublished" datetime="2021-04-18T11:15:11+08:00">2021-04-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-05-17 08:52:38" itemprop="dateModified" datetime="2021-05-17T08:52:38+08:00">2021-05-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="setState-说明"><a href="#setState-说明" class="headerlink" title="setState()说明"></a>setState()说明</h4><h5 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h5><ul>
+<li>setState()更新数据是异步的(相对来说是异步的)</li>
+<li>注意：使用该语法，后面的setState不要依赖前面的setState的值</li>
+<li>多次调用setState，只会触发一次render</li>
+</ul>
+<h5 id="setState是异步的么？"><a href="#setState是异步的么？" class="headerlink" title="setState是异步的么？"></a>setState是异步的么？</h5><ul>
+<li>setState不是异步的，它没有用到异步的模块。但是它是批量更新的。</li>
+<li>setState在批量更新函数，在同一个React的生命周期钩子函数中使用时是相对异步的。上一次的setState的值，下一次不能立马拿到。</li>
+<li>setState在异步模块中是相对同步的，上一次的setState的值，下一次可以立马拿到。</li>
+</ul>
+<h5 id="推荐语法"><a href="#推荐语法" class="headerlink" title="推荐语法"></a>推荐语法</h5><ul>
+<li>使用setState((state,props)=&gt;{})语法</li>
+<li>参数 state:表示最新的state</li>
+<li>参数props:表示最新的props</li>
+</ul>
+<h5 id="第二个参数"><a href="#第二个参数" class="headerlink" title="第二个参数"></a>第二个参数</h5><ul>
+<li>场景：在状态更新后（页面完成渲染后立即执行某个操作）与 componentDidUpdate钩子做的功能有时可以相互替代<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.setState(<span class="function">(<span class="params">state,props</span>)=&gt;</span>&#123;&#125;,</span><br><span class="line">()=&gt;&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;这个函数会在页面完成更新渲染后立即执行&#x27;</span>)</span><br><span class="line">&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h6 id="jsx语法的转换过程"><a href="#jsx语法的转换过程" class="headerlink" title="jsx语法的转换过程"></a>jsx语法的转换过程</h6><ul>
+<li>jsx仅仅是createElement()方法的语法糖</li>
+<li>jsx语法被@babel/preset-react插件编译为createElement（）方法</li>
+<li>React元素：是一个对象，用来描述你希望在屏幕上看到的内容</li>
+</ul>
+<h5 id="组件更新机制"><a href="#组件更新机制" class="headerlink" title="组件更新机制"></a>组件更新机制</h5><ul>
+<li>setState()的两个作用</li>
+<li>修改state</li>
+<li>更新组件</li>
+<li>过程父组件更新自己时，同时会更新其所有子组件，但对兄弟组件无影响</li>
+</ul>
+<h5 id="组件性能优化"><a href="#组件性能优化" class="headerlink" title="组件性能优化"></a>组件性能优化</h5><h5 id="减轻state"><a href="#减轻state" class="headerlink" title="减轻state"></a>减轻state</h5><ul>
+<li>减轻state:只存储渲染相关的数据</li>
+<li>注意：不用做渲染的数据不要放在state中</li>
+<li>对于这种需要多个方法中用到的数据，用this.xxx存储起来</li>
+</ul>
+<h5 id="避免不必要的重新渲染"><a href="#避免不必要的重新渲染" class="headerlink" title="避免不必要的重新渲染"></a>避免不必要的重新渲染</h5><ul>
+<li>组件更新机制：父组件更新会引起子组件也被更新，这种思路很清晰</li>
+<li>问题：子组件没有任何变化时也会更新</li>
+<li>如何避免不必要的渲染？</li>
+<li>解决方式：使用钩子函数 shouldComponentUpdate(nextProps,nextState)<ul>
+<li>在这个函数中，nextProps和nextState是最新的状态及属性</li>
+</ul>
+</li>
+<li>作用：这个函数有返回值，如果返回true，则代表需要重新渲染，如果返回false，代表不需要重新渲染</li>
+<li>触发时机：更新阶段的钩子函数，组件重新渲染前执行(比render早)<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">* 性能优化，防止不必要的渲染 */</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OpComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    number: <span class="number">0</span>,</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/* 点击按钮更新随机数 */</span></span><br><span class="line">  handleClick = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(<span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        number: <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">3</span>),</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      number: <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">3</span>),</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/* 判断组件是否需要更新的钩子函数 */</span></span><br><span class="line">  <span class="function"><span class="title">shouldComponentUpdate</span>(<span class="params">nextprops, nextState</span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;nextState&#x27;</span>, nextState)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;this.state&#x27;</span>, <span class="built_in">this</span>.state)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment">/* </span></span><br><span class="line"><span class="comment">    state条件判断</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="comment">/* return nextState.number !== this.state.number */</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;组件更新&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &#123;<span class="comment">/*  &lt;h2&gt;随机数：&#123;this.state.number&#125;&lt;/h2&gt; */</span>&#125;</span><br><span class="line">        &lt;Son number=&#123;<span class="built_in">this</span>.state.number&#125;&gt;&lt;/Son&gt;</span><br><span class="line">        &lt;button onClick=&#123;<span class="built_in">this</span>.handleClick&#125;&gt;更新随机数&lt;/button&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="comment">/* 判断组件是否需要更新的钩子函数 */</span></span><br><span class="line">  <span class="function"><span class="title">shouldComponentUpdate</span>(<span class="params">nextprops, nextState</span>)</span> &#123;</span><br><span class="line">    <span class="comment">/* </span></span><br><span class="line"><span class="comment">    state条件判断</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="comment">/* return nextState.number !== this.state.number */</span></span><br><span class="line">    <span class="keyword">return</span> nextprops.number !== <span class="built_in">this</span>.props.number</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;son组件更新了&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;this.props.number&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> OpComponent</span><br></pre></td></tr></table></figure>
+<h5 id="纯组件"><a href="#纯组件" class="headerlink" title="纯组件"></a>纯组件</h5></li>
+</ul>
+<h5 id="纯组件以及使用"><a href="#纯组件以及使用" class="headerlink" title="纯组件以及使用"></a>纯组件以及使用</h5><ul>
+<li>纯组件：PureComponent 与 React.Component功能相似</li>
+<li>区别：PureComponent  内部自动实现了shouldComponentUpdate钩子。不需要手动比较</li>
+<li>原理：纯组件内部自动对比了前后两次的props,state的值，来决定要不要更新组件</li>
+</ul>
+<h5 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h5><ul>
+<li><span style="color:red;">说明</span>：纯组件内部的对比是shallow compare（浅层对比）</li>
+<li>对于值类型来说：比较两个值是否相同</li>
+<li>引用类型：只对比对象的引用地址是否相同</li>
+<li>注意：state中或props中属性值为引用类型时，应该创建新数据，不要直接修改原数据</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/10/React02-%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%8F%8Arender-props/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -188,7 +320,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-12 20:09:02" itemprop="dateModified" datetime="2021-04-12T20:09:02+08:00">2021-04-12</time>
+                <time title="修改时间：2021-04-22 22:38:27" itemprop="dateModified" datetime="2021-04-22T22:38:27+08:00">2021-04-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -244,6 +376,57 @@
 </li>
 </ul>
 <h4 id="测试一下图片"><a href="#测试一下图片" class="headerlink" title="测试一下图片"></a>测试一下图片</h4><p><img src="/2021/04/10/React02-%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%8F%8Arender-props/jerry.gif"></p>
+<h4 id="组件的封装及复用"><a href="#组件的封装及复用" class="headerlink" title="组件的封装及复用"></a>组件的封装及复用</h4><h5 id="React组件的复用概述"><a href="#React组件的复用概述" class="headerlink" title="React组件的复用概述"></a>React组件的复用概述</h5><ul>
+<li>如果两个组件中的部分功能相似或相同，该如何处理</li>
+<li>处理方式：复用组件，封装</li>
+<li>具体复用的是哪部分？<ul>
+<li>state</li>
+<li>操作state的方法</li>
+</ul>
+</li>
+<li>两种方式:<ul>
+<li>render props模式</li>
+<li>高阶组件HOC</li>
+</ul>
+</li>
+<li>注意：这两种方式不是新的API，而是利用React自身的特点，演化而成的固定模式<h5 id="render-props思路分析"><a href="#render-props思路分析" class="headerlink" title="render-props思路分析"></a>render-props思路分析</h5></li>
+<li>思路：将要复用的state和操作state的方法封装到一个组件中</li>
+<li>如何拿到该组件中的state?<ul>
+<li>在使用该组件时，添加一个值为函数的prop，通过函数参数来获取。</li>
+</ul>
+</li>
+<li>如何渲染到任意UI？<ul>
+<li>使用该函数的返回值作为要渲染的UI内容<h5 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h5></li>
+</ul>
+</li>
+<li>创建Mouse组件，在组件中提供复用的逻辑代码</li>
+<li>将要复用的状态作为props.render函数参数，暴露到组件外部</li>
+<li>使用props.render()的返回值作为渲染的内容</li>
+</ul>
+<h5 id="代码优化（添加props验证，采用children属性代替render函数）"><a href="#代码优化（添加props验证，采用children属性代替render函数）" class="headerlink" title="代码优化（添加props验证，采用children属性代替render函数）"></a>代码优化（添加props验证，采用children属性代替render函数）</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> Tom <span class="keyword">from</span> <span class="string">&#x27;./image/tom.gif&#x27;</span></span><br><span class="line"><span class="keyword">import</span> PropTypes <span class="keyword">from</span> <span class="string">&#x27;prop-types&#x27;</span></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">render-props模式封装可复用组件</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mouse</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    x: <span class="number">0</span>,</span><br><span class="line">    y: <span class="number">0</span>,</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 鼠标移动处理函数 */</span></span><br><span class="line">  mousemoveHandler = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      x: e.clientX,</span><br><span class="line">      y: e.clientY,</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//组件渲染到页面后触发函数</span></span><br><span class="line">  <span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.props)</span><br><span class="line">    <span class="built_in">window</span>.addEventListener(<span class="string">&#x27;mousemove&#x27;</span>, <span class="built_in">this</span>.mousemoveHandler)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/* 组件卸载函数 */</span></span><br><span class="line">  <span class="function"><span class="title">componentWillUnmount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">/* 移除事件监听 */</span></span><br><span class="line">    <span class="built_in">window</span>.removeEventListener(<span class="string">&#x27;mousemove&#x27;</span>, <span class="built_in">this</span>.mousemoveHandler)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* 渲染函数 */</span></span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="comment">// return this.props.render(this.state)</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.props.children(<span class="built_in">this</span>.state)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* props校验 */</span></span><br><span class="line">Mouse.propTypes = &#123;</span><br><span class="line">  children: PropTypes.func.isRequired,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">默认导出App组件</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;h1&gt;<span class="number">111</span>&lt;/h1&gt;</span><br><span class="line">        &#123;<span class="comment">/*     &lt;Mouse</span></span><br><span class="line"><span class="comment">          render=&#123;(mouse) =&gt; &#123;</span></span><br><span class="line"><span class="comment">            return (</span></span><br><span class="line"><span class="comment">              &lt;p&gt;</span></span><br><span class="line"><span class="comment">                鼠标的位置：X:&#123;mouse.x&#125;,y:&#123;mouse.y&#125;</span></span><br><span class="line"><span class="comment">              &lt;/p&gt;</span></span><br><span class="line"><span class="comment">            )</span></span><br><span class="line"><span class="comment">          &#125;&#125;</span></span><br><span class="line"><span class="comment">        &gt;&lt;/Mouse&gt; */</span>&#125;</span><br><span class="line"></span><br><span class="line">        &#123;<span class="comment">/* </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">      children属性来代替render-props模式  </span></span><br><span class="line"><span class="comment">       */</span>&#125;</span><br><span class="line"></span><br><span class="line">        &lt;Mouse&gt;</span><br><span class="line">          &#123;<span class="function">(<span class="params">mouse</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> (</span><br><span class="line">              &lt;p&gt;</span><br><span class="line">                鼠标的位置：X:&#123;mouse.x&#125;,<span class="attr">y</span>:&#123;mouse.y&#125;</span><br><span class="line">              &lt;/p&gt;</span><br><span class="line">            )</span><br><span class="line">          &#125;&#125;</span><br><span class="line">        &lt;/Mouse&gt;</span><br><span class="line"></span><br><span class="line">        &#123;<span class="comment">/*   &lt;Mouse</span></span><br><span class="line"><span class="comment">          render=&#123;(mouse) =&gt; &#123;</span></span><br><span class="line"><span class="comment">            return (</span></span><br><span class="line"><span class="comment">              &lt;img</span></span><br><span class="line"><span class="comment">                src=&#123;Tom&#125;</span></span><br><span class="line"><span class="comment">                alt=&quot;tom&quot;</span></span><br><span class="line"><span class="comment">                style=&#123;&#123;</span></span><br><span class="line"><span class="comment">                  position: &#x27;absolute&#x27;,</span></span><br><span class="line"><span class="comment">                  top: mouse.y - 36.5,</span></span><br><span class="line"><span class="comment">                  left: mouse.x - 87.5,</span></span><br><span class="line"><span class="comment">                &#125;&#125;</span></span><br><span class="line"><span class="comment">              &gt;&lt;/img&gt;</span></span><br><span class="line"><span class="comment">            )</span></span><br><span class="line"><span class="comment">          &#125;&#125;</span></span><br><span class="line"><span class="comment">        &gt;&lt;/Mouse&gt; */</span>&#125;</span><br><span class="line"></span><br><span class="line">        &lt;Mouse&gt;</span><br><span class="line">          &#123;<span class="function">(<span class="params">mouse</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> (</span><br><span class="line">              &lt;img</span><br><span class="line">                src=&#123;Tom&#125;</span><br><span class="line">                alt=<span class="string">&quot;tom&quot;</span></span><br><span class="line">                style=&#123;&#123;</span><br><span class="line">                  position: <span class="string">&#x27;absolute&#x27;</span>,</span><br><span class="line">                  top: mouse.y - <span class="number">36.5</span>,</span><br><span class="line">                  left: mouse.x - <span class="number">87.5</span>,</span><br><span class="line">                &#125;&#125;</span><br><span class="line">              &gt;&lt;/img&gt;</span><br><span class="line">            )</span><br><span class="line">          &#125;&#125;</span><br><span class="line">        &lt;/Mouse&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="高阶组件封装可复用组件"><a href="#高阶组件封装可复用组件" class="headerlink" title="高阶组件封装可复用组件"></a>高阶组件封装可复用组件</h4><h5 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h5><ul>
+<li>目的：实现状态逻辑复用</li>
+<li>采用：包装模式</li>
+<li>手机：获取保护功能</li>
+<li>手机壳：提供保护功能</li>
+<li>高阶组件相当于手机壳，通过包装功能，给组件增强功能<h5 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h5></li>
+<li>高阶组件 HOC 是一个函数，接收要包装的组件，返回增强后的组件</li>
+<li>高阶组件中创建了一个组件，提供state状态和操作状态的方法，将被包装的组件挂载到该组件的render()函数，然后通过props将复用的状态传递给被包装的组件。<h5 id="使用步骤-1"><a href="#使用步骤-1" class="headerlink" title="使用步骤"></a>使用步骤</h5></li>
+<li>创建一个函数，名称约定以with开头</li>
+<li>指定函数参数为被包装的组件</li>
+<li>创建一个组件，实现复用的逻辑代码，组件内部挂载被封装的函数，props传递复用的状态</li>
+<li>return 包装后的组件</li>
+<li>调用高阶组件函数，同时将返回后的组件挂载到dom中<h5 id="设置displayName"><a href="#设置displayName" class="headerlink" title="设置displayName"></a>设置displayName</h5></li>
+<li>使用高阶组件存在的问题：得到两个组件的名称相同</li>
+<li>原因：默认情况下，React使用组件名称作为displayName</li>
+<li>解决方式：为高阶组件设置displayName，便于调试时区分不同的组件</li>
+<li>设置方式：<ul>
+<li><img src="/2021/04/10/React02-%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%8F%8Arender-props/displayName.jpg"><h5 id="传递props"><a href="#传递props" class="headerlink" title="传递props"></a>传递props</h5></li>
+</ul>
+</li>
+<li>问题：如果没有传递props，会导致props丢失问题</li>
+<li>解决方式：挂载被封装的组件时，将props也一起传递给组件<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> Tom <span class="keyword">from</span> <span class="string">&#x27;./image/tom.gif&#x27;</span></span><br><span class="line"><span class="comment">// import PropTypes from &#x27;prop-types&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* HOC高阶组件 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 包装函数  */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">WithHocComponent</span>(<span class="params">WarrpedComponent</span>) </span>&#123;</span><br><span class="line">  <span class="comment">/* 高阶组件内部渲染一个组件 */</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Mouse</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    state = &#123;</span><br><span class="line">      x: <span class="number">0</span>,</span><br><span class="line">      y: <span class="number">0</span>,</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* 处理的逻辑函数 */</span></span><br><span class="line">    handlerMouseMove = <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// console.log(&#x27;进入鼠标事件处理函数&#x27;, e.clientY)</span></span><br><span class="line">      <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">        x: e.clientX,</span><br><span class="line">        y: e.clientY,</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* 组件渲染函数 */</span></span><br><span class="line">    <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> (</span><br><span class="line">        &lt;WarrpedComponent &#123;...this.state&#125; &#123;...this.props&#125;&gt;&lt;/WarrpedComponent&gt;</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* 挂载组件的生命周期钩子 */</span></span><br><span class="line">    <span class="function"><span class="title">componentDidMount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="comment">/* 绑定鼠标移动事件 */</span></span><br><span class="line">      <span class="built_in">window</span>.addEventListener(<span class="string">&#x27;mousemove&#x27;</span>, <span class="built_in">this</span>.handlerMouseMove)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* 卸载组件的生命周期钩子 */</span></span><br><span class="line">    <span class="function"><span class="title">componentWillUnmount</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="comment">/* 移除事件监听 */</span></span><br><span class="line">      <span class="built_in">window</span>.removeEventListener(<span class="string">&#x27;mousemove&#x27;</span>, <span class="built_in">this</span>.handlerMouseMove)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/* 设置组件的displayName */</span></span><br><span class="line">  Mouse.displayName = getDisplayName(WarrpedComponent)</span><br><span class="line"></span><br><span class="line">  <span class="comment">/* return 包装后的组件 */</span></span><br><span class="line">  <span class="keyword">return</span> Mouse</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 组件设置displayName */</span></span><br><span class="line"><span class="keyword">const</span> getDisplayName = <span class="function">(<span class="params">WarrpedComponent</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`WithMouse<span class="subst">$&#123;WarrpedComponent&#125;</span>`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 测试包装函数的组件 */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestHoc</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;&#x27;鼠标x坐标:&#x27; + this.props.x + &#x27; 鼠标y坐标:&#x27; + this.props.y&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> TestWarrped = WithHocComponent(TestHoc)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* tom图片组件 */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TomCat</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;img</span><br><span class="line">        src=&#123;Tom&#125;</span><br><span class="line">        alt=<span class="string">&quot;tom&quot;</span></span><br><span class="line">        style=&#123;&#123;</span><br><span class="line">          position: <span class="string">&#x27;absolute&#x27;</span>,</span><br><span class="line">          left: <span class="built_in">this</span>.props.x - <span class="number">87.5</span>,</span><br><span class="line">          top: <span class="built_in">this</span>.props.y - <span class="number">36.5</span>,</span><br><span class="line">        &#125;&#125;</span><br><span class="line">      &gt;&lt;/img&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> WarrpedTom = WithHocComponent(TomCat)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 挂载到dom上的组件 */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HocComponent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;p&gt;高阶组件&lt;/p&gt;</span><br><span class="line">        &lt;TestWarrped&gt;&lt;/TestWarrped&gt;</span><br><span class="line">        &lt;WarrpedTom&gt;&lt;/WarrpedTom&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> &#123; HocComponent &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
     </div>
@@ -446,7 +629,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-12 20:19:31" itemprop="dateModified" datetime="2021-04-12T20:19:31+08:00">2021-04-12</time>
+                <time title="修改时间：2021-05-31 22:38:09" itemprop="dateModified" datetime="2021-05-31T22:38:09+08:00">2021-05-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -660,6 +843,8 @@ class Bob extends React.Component &#123;
 </ul>
 </li>
 </ul>
+<h4 id="react中多类名动态类名的添加"><a href="#react中多类名动态类名的添加" class="headerlink" title="react中多类名动态类名的添加"></a>react中多类名动态类名的添加</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;div className=&#123;[<span class="string">&#x27;tag1&#x27;</span>,<span class="string">&#x27;tag2&#x27;</span>,v.className].join(<span class="string">&#x27; &#x27;</span>)&#125;&gt;&lt;/div&gt;</span><br><span class="line">&lt;div className=&#123;<span class="string">&#x27;tag1 tag2&#x27;</span>&#125;&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -799,7 +984,7 @@ class Bob extends React.Component &#123;
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-04-02 08:44:17" itemprop="dateModified" datetime="2021-04-02T08:44:17+08:00">2021-04-02</time>
+                <time title="修改时间：2021-05-06 18:06:39" itemprop="dateModified" datetime="2021-05-06T18:06:39+08:00">2021-05-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -860,9 +1045,20 @@ class Bob extends React.Component &#123;
 
 <p><strong>更改model.node、model.link属性或者model本身的api</strong></p>
 <ul>
-<li>diagram.mode.setDataProperty（objectData:data,propName:string,val:any）一般属性</li>
-<li>如果要更改的是key，则setKeyForNodeData(nodedata: <a target="_blank" rel="noopener" href="https://gojs.net/latest/api/symbols/ObjectData.html">ObjectData</a>, key: <a target="_blank" rel="noopener" href="https://gojs.net/latest/api/index.html#Key">Key</a>): <em>void</em></li>
-<li>如果设置node的类别请用：setCategoryForNodeData(nodedata: <a target="_blank" rel="noopener" href="https://gojs.net/latest/api/symbols/ObjectData.html">ObjectData</a>, cat: <em>string</em>): <em>void</em></li>
+<li><p>diagram.mode.setDataProperty（objectData:data,propName:string,val:any）一般属性</p>
+</li>
+<li><p>如果要更改的是key，则setKeyForNodeData(nodedata: <a target="_blank" rel="noopener" href="https://gojs.net/latest/api/symbols/ObjectData.html">ObjectData</a>, key: <a target="_blank" rel="noopener" href="https://gojs.net/latest/api/index.html#Key">Key</a>): <em>void</em></p>
+</li>
+<li><p>如果设置node的类别请用：setCategoryForNodeData(nodedata: <a target="_blank" rel="noopener" href="https://gojs.net/latest/api/symbols/ObjectData.html">ObjectData</a>, cat: <em>string</em>): <em>void</em></p>
+</li>
+<li><p>如果更改Node整个节点的属性值方法如下，前提是属性已经通过 new go.Binding（）绑定。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">diagram.startTransaction(<span class="string">&quot;change node&quot;</span>);</span><br><span class="line">    <span class="keyword">const</span> nodeData = diagram.model.findNodeDataForKey(data.key);</span><br><span class="line">    <span class="comment">// diagram.selection.each(function(node) &#123;</span></span><br><span class="line">    <span class="comment">// console.log(&quot;node.data&quot;, node.data);</span></span><br><span class="line">    nodeData[<span class="string">&quot;dbid&quot;</span>] = data[<span class="string">&quot;dbid&quot;</span>];</span><br><span class="line">    nodeData[<span class="string">&quot;forKey&quot;</span>] = data[<span class="string">&quot;forKey&quot;</span>];</span><br><span class="line">    nodeData[<span class="string">&quot;title&quot;</span>] = data[<span class="string">&quot;title&quot;</span>];</span><br><span class="line">    nodeData[<span class="string">&quot;unite&quot;</span>] = data[<span class="string">&quot;unite&quot;</span>];</span><br><span class="line">    diagram.model.updateTargetBindings(nodeData);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;node&quot;</span>, nodeData);</span><br><span class="line">    <span class="comment">/*    diagram.model.setDataProperty(node, &quot;data&quot;, data); */</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;diagram.model&quot;</span>, diagram.model.toJson());</span><br><span class="line">    <span class="comment">// &#125;);</span></span><br><span class="line"></span><br><span class="line">    diagram.commitTransaction(<span class="string">&quot;change node&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
 </ul>
 <p><strong>画布生成图片或svg</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> 1 普通图片显示</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> <span class="comment">// var img = myDiagram.makeImage(&#123;scale:1,background:&#x27;#fff&#x27;,&#125;); </span></span><br><span class="line"> <span class="comment">// 将图片的src属性作为URL地址</span></span><br><span class="line"> <span class="comment">//  this.preViewUrl = img.src;</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">/* </span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"> 2.以svg的图片形式</span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">/*  this.preViewImg = myDiagram.makeSvg(&#123;scale:1.2&#125;);</span></span><br><span class="line"><span class="comment"> console.log(&#x27;img&#x27;,this.preViewImg);</span></span><br><span class="line"><span class="comment"> const svgBox=document.getElementById(&#x27;svgBox&#x27;)</span></span><br><span class="line"><span class="comment">  svgBox.appendChild(this.preViewImg) */</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">//通过gojs API获取画布的img对象</span></span><br><span class="line">  </span><br><span class="line"> <span class="comment">/* var img = myDiagram.makeImage(&#123;scale:1,background:&#x27;#fff&#x27;,&#125;); */</span></span><br><span class="line"> <span class="comment">// var a = document.createElement(&#x27;a&#x27;);</span></span><br><span class="line"> <span class="comment">// var event = new MouseEvent(&#x27;click&#x27;);</span></span><br><span class="line"> <span class="comment">// a.download = &#x27;下载图片名称&#x27;;</span></span><br><span class="line"> <span class="comment">// 将图片的src属性作为URL地址</span></span><br><span class="line"> <span class="comment">// url = img.src;</span></span><br><span class="line"> <span class="comment">// a.href = url;</span></span><br><span class="line"> <span class="comment">// a.dispatchEvent(event);</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -883,26 +1079,21 @@ class Bob extends React.Component &#123;
       myDiagram.div=null
      //重新挂载到容器上
       myDiagram.div=div
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 关于初始化</span><br><span class="line">  </span><br><span class="line">  - 如果要取消将关系图与HTML Div元素关联，要将Diagram.div设置为null，而且不可以手动修改此Div的内容这样不会引发Changed事件。</span><br><span class="line"></span><br><span class="line">**gojs中的局部刷新问题**</span><br><span class="line"></span><br><span class="line">- myDiagram.model.updateTargetBindings(nodeData); 不要事物更新</span><br><span class="line">- myDiagram.model.setDataProperty(nodeData, &#39;color&#39;, &quot;#ededed&quot;); 需要事物更新</span><br><span class="line"></span><br><span class="line">**gojs监听模型的变化事件**</span><br><span class="line"></span><br><span class="line">- apiaddModelChangedListener(listener: *function*(e: [ChangedEvent](https:&#x2F;&#x2F;gojs.net&#x2F;latest&#x2F;api&#x2F;symbols&#x2F;ChangedEvent.html)): *void*): *void*</span><br><span class="line"></span><br><span class="line">**gojs的提示工具悬浮时间**</span><br><span class="line"></span><br><span class="line">- &quot;toolManager.toolTipDuration&quot;: 100000,&#x2F;&#x2F;tip 悬浮显示时间</span><br><span class="line"></span><br><span class="line">**gojs的左侧拖拽画布更新数据**</span><br><span class="line"></span><br><span class="line">- &#96;&#96;&#96;javascript</span><br><span class="line">  myPalette.updateAllRelationshipsFromData();</span><br><span class="line">  myPalette.updateAllTargetBindings();</span><br></pre></td></tr></table></figure>
+
+
 </code></pre>
 </li>
-<li><p>关于初始化</p>
-<ul>
-<li>如果要取消将关系图与HTML Div元素关联，要将Diagram.div设置为null，而且不可以手动修改此Div的内容这样不会引发Changed事件。</li>
 </ul>
+<h5 id="gojs中获取节点的坐标信息"><a href="#gojs中获取节点的坐标信息" class="headerlink" title="gojs中获取节点的坐标信息"></a>gojs中获取节点的坐标信息</h5><ul>
+<li><pre><code class="javascript">console.log(&quot;节点坐标&quot;+ go.Point.parse(node.data.loc));
+console.log(&quot;节点相对于div的视图坐标&quot;+myDiagram.transformDocToView(go.Point.parse(node.data.loc)));
+console.log(&quot;节点相对图表的坐标&quot;+myDiagram.transformViewToDoc(go.Point.parse(node.data.loc)));
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- &#96;&#96;&#96;javascript</span><br><span class="line">     viewportBounds </span><br><span class="line">  		相对于div 的边界</span><br><span class="line">  	documentBounds </span><br><span class="line">  		相对于图表坐标边界</span><br></pre></td></tr></table></figure>
+</code></pre>
 </li>
-</ul>
-<p><strong>gojs中的局部刷新问题</strong></p>
-<ul>
-<li>myDiagram.model.updateTargetBindings(nodeData); 不要事物更新</li>
-<li>myDiagram.model.setDataProperty(nodeData, ‘color’, “#ededed”); 需要事物更新</li>
-</ul>
-<p><strong>gojs监听模型的变化事件</strong></p>
-<ul>
-<li>apiaddModelChangedListener(listener: <em>function</em>(e: <a target="_blank" rel="noopener" href="https://gojs.net/latest/api/symbols/ChangedEvent.html">ChangedEvent</a>): <em>void</em>): <em>void</em></li>
-</ul>
-<p><strong>gojs的提示工具悬浮时间</strong></p>
-<ul>
-<li>“toolManager.toolTipDuration”: 100000,//tip 悬浮显示时间</li>
 </ul>
 
       
@@ -1301,79 +1492,10 @@ class Bob extends React.Component &#123;
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/31/TypeScript-readonly%E4%BF%AE%E9%A5%B0%E7%AC%A6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
-      <meta itemprop="name" content="zzx">
-      <meta itemprop="description" content="敲代码是件快乐的事情">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zzx的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/31/TypeScript-readonly%E4%BF%AE%E9%A5%B0%E7%AC%A6/" class="post-title-link" itemprop="url">TypeScript-readonly修饰符</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-01-31 20:25:48 / 修改时间：20:31:05" itemprop="dateCreated datePublished" datetime="2021-01-31T20:25:48+08:00">2021-01-31</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="readonly修饰符"><a href="#readonly修饰符" class="headerlink" title="readonly修饰符"></a>readonly修饰符</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//类中的readonly修饰符：被修饰后的属性在外界只读，不可写。在类中的普通方法也不能修改，在constructor函数中可以修改。</span></span><br><span class="line">  <span class="comment">//在constructor中参数用readonly修饰的属性，那么该属性可以叫做参数属性。可以不在外面进行定义。外部也不能进行修改</span></span><br><span class="line">  <span class="comment">//同理，在constructor中用public,private,protected对参数进行修饰也一样。都会自动添加一个属性成员，而属性成员的特性由修饰符来决定</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line"> <span class="comment">/*  readonly name:string</span></span><br><span class="line"><span class="comment">    constructor(name:string) &#123;</span></span><br><span class="line"><span class="comment">       this.name=name</span></span><br><span class="line"><span class="comment">    &#125; */</span></span><br><span class="line">    <span class="comment">// readonly name:string</span></span><br><span class="line">  <span class="comment">/*   constructor(readonly name:string) &#123;</span></span><br><span class="line"><span class="comment">      //  this.name=name</span></span><br><span class="line"><span class="comment">   &#125; */</span></span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">private name:string</span>)</span> &#123;</span><br><span class="line">      <span class="comment">//  this.name=name</span></span><br><span class="line">   &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> ldh: Person = <span class="keyword">new</span> Person(<span class="string">&#x27;刘德华&#x27;</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(ldh);</span><br><span class="line">  <span class="comment">// ldh.name=&#x27;张学友&#x27;</span></span><br><span class="line">  <span class="comment">// console.log(ldh.name);</span></span><br><span class="line">  </span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1441,7 +1563,7 @@ class Bob extends React.Component &#123;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

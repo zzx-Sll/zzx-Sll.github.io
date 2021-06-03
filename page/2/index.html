@@ -157,6 +157,75 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/31/TypeScript-readonly%E4%BF%AE%E9%A5%B0%E7%AC%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="敲代码是件快乐的事情">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/31/TypeScript-readonly%E4%BF%AE%E9%A5%B0%E7%AC%A6/" class="post-title-link" itemprop="url">TypeScript-readonly修饰符</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-31 20:25:48 / 修改时间：20:31:05" itemprop="dateCreated datePublished" datetime="2021-01-31T20:25:48+08:00">2021-01-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="readonly修饰符"><a href="#readonly修饰符" class="headerlink" title="readonly修饰符"></a>readonly修饰符</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//类中的readonly修饰符：被修饰后的属性在外界只读，不可写。在类中的普通方法也不能修改，在constructor函数中可以修改。</span></span><br><span class="line">  <span class="comment">//在constructor中参数用readonly修饰的属性，那么该属性可以叫做参数属性。可以不在外面进行定义。外部也不能进行修改</span></span><br><span class="line">  <span class="comment">//同理，在constructor中用public,private,protected对参数进行修饰也一样。都会自动添加一个属性成员，而属性成员的特性由修饰符来决定</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line"> <span class="comment">/*  readonly name:string</span></span><br><span class="line"><span class="comment">    constructor(name:string) &#123;</span></span><br><span class="line"><span class="comment">       this.name=name</span></span><br><span class="line"><span class="comment">    &#125; */</span></span><br><span class="line">    <span class="comment">// readonly name:string</span></span><br><span class="line">  <span class="comment">/*   constructor(readonly name:string) &#123;</span></span><br><span class="line"><span class="comment">      //  this.name=name</span></span><br><span class="line"><span class="comment">   &#125; */</span></span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">private name:string</span>)</span> &#123;</span><br><span class="line">      <span class="comment">//  this.name=name</span></span><br><span class="line">   &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> ldh: Person = <span class="keyword">new</span> Person(<span class="string">&#x27;刘德华&#x27;</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(ldh);</span><br><span class="line">  <span class="comment">// ldh.name=&#x27;张学友&#x27;</span></span><br><span class="line">  <span class="comment">// console.log(ldh.name);</span></span><br><span class="line">  </span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/31/TypeScript-%E7%B1%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -511,7 +580,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-03-10 10:20:29" itemprop="dateModified" datetime="2021-03-10T10:20:29+08:00">2021-03-10</time>
+                <time title="修改时间：2021-05-28 08:44:50" itemprop="dateModified" datetime="2021-05-28T08:44:50+08:00">2021-05-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -602,6 +671,39 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">Make(</span><br><span class="line">       go.Panel,</span><br><span class="line">       <span class="string">&quot;Horizontal&quot;</span>,</span><br><span class="line">       <span class="comment">//设置文字</span></span><br><span class="line">       Make(</span><br><span class="line">         go.TextBlock,</span><br><span class="line">         &#123;</span><br><span class="line">           alignment: go.Spot.Center,</span><br><span class="line">           textAlign: <span class="string">&quot;center&quot;</span>,</span><br><span class="line">           editable: <span class="literal">false</span>,</span><br><span class="line">           font: <span class="string">&quot;bold 11pt Lato, Helvetica, Arial, sans-serif&quot;</span>,</span><br><span class="line">           stroke: <span class="string">&quot;black&quot;</span></span><br><span class="line">         &#125;,</span><br><span class="line">         <span class="comment">//绑定到模型数据</span></span><br><span class="line">         <span class="keyword">new</span> go.Binding(<span class="string">&quot;text&quot;</span>, <span class="string">&quot;title&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">val</span>) </span>&#123;</span><br><span class="line">           <span class="keyword">return</span> val + <span class="string">&quot;:&quot;</span>;</span><br><span class="line">         &#125;).makeTwoWay(),</span><br><span class="line">         <span class="keyword">new</span> go.Binding(<span class="string">&quot;font&quot;</span>, <span class="string">&quot;font&quot;</span>).makeTwoWay()</span><br><span class="line">       ),</span><br><span class="line">       Make(</span><br><span class="line">         go.TextBlock,</span><br><span class="line">         &#123;</span><br><span class="line">           alignment: go.Spot.Center,</span><br><span class="line">           textAlign: <span class="string">&quot;center&quot;</span>,</span><br><span class="line">           editable: <span class="literal">false</span>,</span><br><span class="line">           font: <span class="string">&quot;bold 11pt Lato, Helvetica, Arial, sans-serif&quot;</span>,</span><br><span class="line">           stroke: <span class="string">&quot;black&quot;</span></span><br><span class="line">         &#125;,</span><br><span class="line">         <span class="comment">//绑定到模型数据</span></span><br><span class="line">         <span class="keyword">new</span> go.Binding(<span class="string">&quot;text&quot;</span>, <span class="string">&quot;text&quot;</span>).makeTwoWay(),</span><br><span class="line">         <span class="keyword">new</span> go.Binding(<span class="string">&quot;font&quot;</span>, <span class="string">&quot;font&quot;</span>).makeTwoWay()</span><br><span class="line">       ),</span><br><span class="line">       Make(</span><br><span class="line">         go.TextBlock,</span><br><span class="line">         &#123;</span><br><span class="line">           alignment: go.Spot.Center,</span><br><span class="line">           textAlign: <span class="string">&quot;center&quot;</span>,</span><br><span class="line">           editable: <span class="literal">false</span>,</span><br><span class="line">           font: <span class="string">&quot;bold 11pt Lato, Helvetica, Arial, sans-serif&quot;</span>,</span><br><span class="line">           stroke: <span class="string">&quot;black&quot;</span></span><br><span class="line">         &#125;,</span><br><span class="line">         <span class="comment">//绑定到模型数据</span></span><br><span class="line">         <span class="keyword">new</span> go.Binding(<span class="string">&quot;text&quot;</span>, <span class="string">&quot;unite&quot;</span>).makeTwoWay(),</span><br><span class="line">         <span class="keyword">new</span> go.Binding(<span class="string">&quot;font&quot;</span>, <span class="string">&quot;font&quot;</span>).makeTwoWay()</span><br><span class="line">       )</span><br><span class="line">     )</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2021/01/28/learn-Gojs/Users\27921\AppData\Roaming\Typora\typora-user-images\image-20210310101921758.png"></p>
+<h5 id="gojs文本换行"><a href="#gojs文本换行" class="headerlink" title="gojs文本换行"></a>gojs文本换行</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">textAlign: <span class="string">&quot;center&quot;</span>,</span><br><span class="line">width: <span class="number">110</span>,</span><br><span class="line">maxLines: <span class="number">2</span>, <span class="comment">//设置行数</span></span><br><span class="line">overflow: go.TextBlock.OverflowEllipsis,</span><br><span class="line">wrap: go.TextBlock.WrapFit</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="goj去除水印"><a href="#goj去除水印" class="headerlink" title="goj去除水印"></a>goj去除水印</h4><ul>
+<li>在go.js中搜索关键字7eba17a4ca3b1a8346，将值替换成 function(){return true;}，如：a.Jv=function(){return true;}，可能前面并不一定是a.Jv=，但是不影响，把后面的值替换掉就可以了</li>
+</ul>
+<h5 id="gojs画布监听事件：通过监听画布的一些事件来进行你想要的操作"><a href="#gojs画布监听事件：通过监听画布的一些事件来进行你想要的操作" class="headerlink" title="gojs画布监听事件：通过监听画布的一些事件来进行你想要的操作"></a>gojs画布监听事件：通过监听画布的一些事件来进行你想要的操作</h5><ul>
+<li>ChangingSelection 选中节点集合的change事件。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 监听选中集合的修改事件 */</span></span><br><span class="line">   myDiagram.addDiagramListener(<span class="string">&quot;ChangingSelection&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">&quot;修改选中集合&quot;</span>, e.subject);</span><br><span class="line">       e.subject.each(<span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">           <span class="built_in">console</span>.log(<span class="string">&quot;n.data.key&quot;</span>, n.data.key);</span><br><span class="line">           updateNode(e.diagram, n.data);</span><br><span class="line">           monitorNodeChange(n);</span><br><span class="line">       &#125;);</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li> Modified事件，监听完成的修改操作</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 修改事件监听</span></span><br><span class="line">    myDiagram.addDiagramListener(<span class="string">&quot;Modified&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="comment">/*  var button = document.getElementById(&#x27;SaveButton&#x27;) */</span></span><br><span class="line">        <span class="comment">// console.log(&quot;修改了&quot;);</span></span><br><span class="line">        <span class="comment">// myDiagram.zoomToFit();</span></span><br><span class="line">        <span class="comment">/*  if (button) button.disabled = !myDiagram.isModified; */</span></span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>externalobjectsdropped，监听节点在画布生成的事件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加监听节点生成事件</span></span><br><span class="line">    myDiagram.addDiagramListener(<span class="string">&quot;externalobjectsdropped&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        e.subject.each(<span class="function"><span class="keyword">function</span>(<span class="params">n</span>) </span>&#123;</span><br><span class="line">            <span class="comment">// console.log(&#x27;n.data.key&#x27;, n.data.key);</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>LinkDrawn,监听线的生成事件</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 添加监听线生成事件</span></span><br><span class="line">   myDiagram.addDiagramListener(<span class="string">&quot;LinkDrawn&quot;</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(e.subject.data.to);</span><br><span class="line">   &#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>gojs去掉点击的画布黑色边框</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SelectionMoved</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
 
       
     </div>
@@ -1025,82 +1127,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/30/03-Map%E5%92%8CWeakMap/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
-      <meta itemprop="name" content="zzx">
-      <meta itemprop="description" content="敲代码是件快乐的事情">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zzx的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/30/03-Map%E5%92%8CWeakMap/" class="post-title-link" itemprop="url">Map和WeakMap</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-12-30 21:41:47 / 修改时间：22:56:43" itemprop="dateCreated datePublished" datetime="2020-12-30T21:41:47+08:00">2020-12-30</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ES6%E8%BF%9B%E9%98%B6/" itemprop="url" rel="index"><span itemprop="name">ES6进阶</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Map数据类型"><a href="#Map数据类型" class="headerlink" title="Map数据类型"></a>Map数据类型</h3><p>Map数据类型是为了解决对象的键不能是任意类型而产生的。</p>
-<p>构建Map数据类型：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> m=<span class="keyword">new</span> <span class="built_in">Map</span>()</span><br></pre></td></tr></table></figure>
-
-<p>Map的五种操作方法：</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1168,7 +1198,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">31</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
