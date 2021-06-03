@@ -157,6 +157,75 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/31/TypeScript-%E5%AD%98%E5%8F%96%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="敲代码是件快乐的事情">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/01/31/TypeScript-%E5%AD%98%E5%8F%96%E5%99%A8/" class="post-title-link" itemprop="url">TypeScript-存取器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-01-31 20:26:06 / 修改时间：20:31:41" itemprop="dateCreated datePublished" datetime="2021-01-31T20:26:06+08:00">2021-01-31</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="存取器"><a href="#存取器" class="headerlink" title="存取器"></a>存取器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//存取器： TypeScript 支持通过 getters/setters 来截取对对象成员的访问。 它能帮助你有效的控制对对象成员的访问。</span></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    firstName: string</span><br><span class="line">    lastName: string</span><br><span class="line">    <span class="function"><span class="title">constructor</span>(<span class="params">firstName: string, lastName: string</span>)</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.firstName = firstName</span><br><span class="line">      <span class="built_in">this</span>.lastName=lastName</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//读取器</span></span><br><span class="line">    <span class="keyword">get</span> <span class="title">fullName</span>() &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;读取中...&#x27;</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">this</span>.firstName+<span class="string">&#x27;_&#x27;</span>+<span class="built_in">this</span>.lastName</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 设置器</span></span><br><span class="line">    <span class="keyword">set</span> <span class="title">fullName</span>(<span class="params">val</span>) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&#x27;设置...&#x27;</span>);</span><br><span class="line">      <span class="keyword">let</span> names = val.split(<span class="string">&#x27;_&#x27;</span>)</span><br><span class="line">      <span class="built_in">this</span>.firstName=names[<span class="number">0</span>]</span><br><span class="line">      <span class="built_in">this</span>.lastName=names[<span class="number">1</span>]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"> <span class="comment">//实例化对象</span></span><br><span class="line">  <span class="keyword">let</span> ldh: Person = <span class="keyword">new</span> Person(<span class="string">&#x27;刘&#x27;</span>, <span class="string">&#x27;德华&#x27;</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(ldh);</span><br><span class="line">  <span class="comment">//读取属性</span></span><br><span class="line">  <span class="built_in">console</span>.log(ldh.fullName);</span><br><span class="line">  <span class="comment">// console.log(ldh.fullName=&#x27;张学友&#x27;);</span></span><br><span class="line">  <span class="comment">//修改属性</span></span><br><span class="line"> <span class="built_in">console</span>.log(ldh.fullName=<span class="string">&#x27;张_学友&#x27;</span>);</span><br><span class="line"> <span class="built_in">console</span>.log(ldh);</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/01/31/TypeScript-readonly%E4%BF%AE%E9%A5%B0%E7%AC%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1033,100 +1102,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/30/04-Proxy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
-      <meta itemprop="name" content="zzx">
-      <meta itemprop="description" content="敲代码是件快乐的事情">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zzx的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/30/04-Proxy/" class="post-title-link" itemprop="url">Proxy</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-12-30 22:55:58 / 修改时间：23:20:09" itemprop="dateCreated datePublished" datetime="2020-12-30T22:55:58+08:00">2020-12-30</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ES6%E8%BF%9B%E9%98%B6/" itemprop="url" rel="index"><span itemprop="name">ES6进阶</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="Proxy"><a href="#Proxy" class="headerlink" title="Proxy"></a>Proxy</h3><p>在ES6之前，object.defineProperty()可以拦截对象属性的读取和修改操作，Proxy可以理解成为比这个API更强大的，在目标对象之前架设一层拦截。</p>
-<p>注意：只有生成的Proxy实例操作才能起到拦截的作用。</p>
-<p>生成Proxy实例：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> proxy = <span class="keyword">new</span> <span class="built_in">Proxy</span> (target,handler);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>target :需要代理的对象</li>
-<li>handler:拦截的函数的集合</li>
-</ul>
-<p>如果handler是空对象则代表任何操作都不会拦截(透传到proxy身上)</p>
-<p>下面是Proxy支持的拦截操作一览，一共13种。</p>
-<ul>
-<li>get (target,propKey,receiver):拦截对象的属性读取，比如proxy.foo和proxy[‘foo’]</li>
-<li>set(target,propKey,receiver):拦截对象属性的设置，比如proxy.foo=v或proxy[‘foo’]=v，返回一个布尔值。</li>
-<li>has(target,propKey)：拦截propKey in proxy 的操作，返回一个布尔值。</li>
-<li>deleteProperty(target,propKey):拦截delete proxy[propkey]的操作，返回一个布尔值。</li>
-<li>ownKey(target):拦截object.getOwnPropertySymbols(proxy)、object.keys(proxy)、for in 循环、返回一个数组。该方法返回目标对象所有自身的属性的属性名。而object.keys()的返回结果仅包括目标对象自身的可遍历属性。</li>
-<li>getOwnPropertyDescriptor.propKey(proxy):拦截object.getOwnPropertyDescriptor(proxy,propKey)，返回属性的描述对象。</li>
-<li>defineProperty(target,propKey,propDesc):拦截object.defineProperty(proxy,propKey,propDesc)、object.defineProperty(proxy,propDesc)返回一个布尔值。</li>
-<li>getPrototypeOf(target):拦截object.getPrototypeOf(proxy)，返回一个对象。</li>
-<li>setPrototypeOf(target,proto)：拦截object.setPrototypeOf(proxy,proto)，返回一个布尔值，如果目标对象是函数，那么还有两种额外的操作可以拦截。</li>
-<li>apply(target,object,args)：拦截Proxy实例作为函数调用的操作，比如proxy(…args)、proxy.call(object,…ars)、proxy.apply(…)。</li>
-<li>construct(target,args):l拦截proxy实例作为构造函数调用的操作。比如 new Proxy(…args).</li>
-<li>isEctensible(target):拦截object.isExtensible(proxy),返回一个布尔值。</li>
-<li>preventExtensions(target):拦截object.preventExtensions(proxy),返回一个布尔值。</li>
-</ul>
-<p>Proxy给了开发者拦截语言默认行为的权限，可以不改变原有对象或函数的情况下，轻松运用在很多场景。例如：统计函数调用次数，实现响应式数据观测（vue 3.0),实现不可变数据(immutable)等等。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1198,7 +1173,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

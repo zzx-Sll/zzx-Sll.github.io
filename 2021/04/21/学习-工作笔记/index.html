@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="vscode中自定义一个简单的vue模板 首先打开vscode设置 选择用户代码片段的vue.json 然后自定义快捷键和vue模板 模板代码1234567891011121314151617181920212223242526272829303132&#x2F;&#x2F;json代码&quot;&lt;template&gt;&quot;,			   &quot; &lt;div&gt;&quot;,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习&#x2F;工作笔记">
+<meta property="og:url" content="http://example.com/2021/04/21/%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="zzx的个人博客">
+<meta property="og:description" content="vscode中自定义一个简单的vue模板 首先打开vscode设置 选择用户代码片段的vue.json 然后自定义快捷键和vue模板 模板代码1234567891011121314151617181920212223242526272829303132&#x2F;&#x2F;json代码&quot;&lt;template&gt;&quot;,			   &quot; &lt;div&gt;&quot;,">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/04/21/%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF01.jpg">
+<meta property="og:image" content="http://example.com/2021/04/21/%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF02.jpg">
+<meta property="og:image" content="http://example.com/2021/04/21/%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF03.jpg">
+<meta property="og:image" content="http://example.com/2021/04/21/%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF04.jpg">
+<meta property="og:image" content="http://example.com/2021/04/21/%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/antd-mobile_%E8%B5%B0%E9%A9%AC%E7%81%AF%E6%8A%A5%E9%94%99.jpg">
+<meta property="og:image" content="http://example.com/2021/04/21/%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/vue-cron.jpg">
+<meta property="article:published_time" content="2021-04-21T01:54:04.000Z">
+<meta property="article:modified_time" content="2021-06-03T07:46:49.065Z">
+<meta property="article:author" content="zzx">
+<meta property="article:tag" content="study">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/04/21/%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF01.jpg">
+
+<link rel="canonical" href="http://example.com/2021/04/21/%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>学习/工作笔记 | zzx的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">zzx的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/21/%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="敲代码是件快乐的事情">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          学习/工作笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-04-21 09:54:04" itemprop="dateCreated datePublished" datetime="2021-04-21T09:54:04+08:00">2021-04-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-06-03 15:46:49" itemprop="dateModified" datetime="2021-06-03T15:46:49+08:00">2021-06-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="vscode中自定义一个简单的vue模板"><a href="#vscode中自定义一个简单的vue模板" class="headerlink" title="vscode中自定义一个简单的vue模板"></a>vscode中自定义一个简单的vue模板</h4><ul>
+<li>首先打开vscode设置<br><img src="/2021/04/21/%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF01.jpg"></li>
+<li>选择用户代码片段的vue.json<br><img src="/2021/04/21/%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF02.jpg"></li>
+<li>然后自定义快捷键和vue模板<br><img src="/2021/04/21/%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF03.jpg"></li>
+<li>模板代码<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//json代码</span></span><br><span class="line"><span class="string">&quot;&lt;template&gt;&quot;</span>,</span><br><span class="line">			   <span class="string">&quot; &lt;div&gt;&quot;</span>,</span><br><span class="line">           <span class="string">&quot;&quot;</span>,</span><br><span class="line">				 <span class="string">&quot; &lt;/div&gt;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;&lt;/template&gt;&quot;</span>,</span><br><span class="line">       <span class="string">&quot;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;&lt;script&gt;&quot;</span>,</span><br><span class="line">			 <span class="string">&quot; export default &#123;&quot;</span>,</span><br><span class="line">					<span class="string">&quot;  name: &#x27;&#x27;,&quot;</span>,</span><br><span class="line">					<span class="string">&quot;  data() &#123;&quot;</span>,</span><br><span class="line"></span><br><span class="line">             <span class="string">&quot;    return &#123;&quot;</span>,</span><br><span class="line">               <span class="string">&quot;&quot;</span>,</span><br><span class="line">               <span class="string">&quot;&quot;</span>,</span><br><span class="line">          </span><br><span class="line">						 <span class="string">&quot;    &#125;&quot;</span>,</span><br><span class="line">					<span class="string">&quot;   &#125;,&quot;</span>,</span><br><span class="line">					<span class="string">&quot;  created()&#123;&#125;,&quot;</span>,</span><br><span class="line"></span><br><span class="line">					<span class="string">&quot;  mounted()&#123;&#125;,&quot;</span>,</span><br><span class="line">				<span class="string">&quot;  updated()&#123;&#125;,&quot;</span>,</span><br><span class="line">				<span class="string">&quot;  beforeDestroy()&#123;&#125;,&quot;</span>,</span><br><span class="line">				<span class="string">&quot;  watch:&#123;&#125;,&quot;</span>,</span><br><span class="line">					<span class="string">&quot;  computed:&#123;&#125;,&quot;</span>,</span><br><span class="line">					<span class="string">&quot;  components:&#123;&#125;,&quot;</span>,</span><br><span class="line">				<span class="string">&quot; &#125;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;&lt;/script&gt;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;&lt;style scoped&gt;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;&quot;</span>,</span><br><span class="line">			<span class="string">&quot;&lt;/style&gt;&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li>输入关键词就行了<br><img src="/2021/04/21/%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%A8%A1%E6%9D%BF04.jpg"></li>
+</ul>
+<h5 id="前端自动化导入"><a href="#前端自动化导入" class="headerlink" title="前端自动化导入"></a>前端自动化导入</h5><ul>
+<li><p>通过webpack提供的require.context()方法来实现自动化导入</p>
+</li>
+<li><p>该方法接收三个参数require.context(directory,<br>  (useSubdirectories = true),<br>  (regExp = /^./.*$/),) 第一个参数为路径，第二个为Boolean值，表示是否查找子目录。第三个参数是正则表达式。可以自定义规则进行匹配。</p>
+</li>
+<li><p>require.context()返回一个函数webpackContext。该函数相当于require，不过其接收的模块路径只能是require.context查找到的模块。</p>
+</li>
+<li><p>webpackContext还有两个静态方法（resolve,keys）和一个属性(id);</p>
+<ul>
+<li>resolve 接收参数为匹配成功的模块路径，即keys中存储的值；其返回匹配文件相对稳整个项目的相对路径。</li>
+<li>keys:返回成功获取的模块路径组成的数组。</li>
+<li>id:上下文模块的模块id。</li>
+</ul>
+</li>
+<li><p>代码示例（摘自原博主）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;Home&#x27;</span>,</span><br><span class="line">    component: Home</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找 /router/modules 下的全部js文件</span></span><br><span class="line"><span class="keyword">let</span> webpackContext = <span class="built_in">require</span>.context(<span class="string">&#x27;./modules&#x27;</span>, <span class="literal">true</span>, <span class="regexp">/\.js/</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历查询结果，将查询到的文件加载后插入数组modules</span></span><br><span class="line"><span class="keyword">let</span> moudulesRoutes = webpackContext.keys().map((<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 逐一加载模块</span></span><br><span class="line">  <span class="keyword">let</span> route = webpackContext(item);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> route;</span><br><span class="line">&#125;))；</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将加载到的路由合并到 routes 中</span></span><br><span class="line">moudulesRoutes.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">  routes.push(...item);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes</span><br><span class="line">&#125;);</span><br><span class="line">————————————————</span><br><span class="line">版权声明：本文为CSDN博主「杰~JIE」的原创文章，遵循CC <span class="number">4.0</span> BY-SA版权协议，转载请附上原文出处链接及本声明。</span><br><span class="line">原文链接：https:<span class="comment">//blog.csdn.net/weixin_44869002/article/details/109702090</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="React项目中使用antd-mobile中的走马灯组件报错"><a href="#React项目中使用antd-mobile中的走马灯组件报错" class="headerlink" title="React项目中使用antd-mobile中的走马灯组件报错"></a>React项目中使用antd-mobile中的走马灯组件报错</h5><h5 id="报错代码"><a href="#报错代码" class="headerlink" title="报错代码"></a>报错代码</h5><p><img src="/2021/04/21/%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/antd-mobile_%E8%B5%B0%E9%A9%AC%E7%81%AF%E6%8A%A5%E9%94%99.jpg"></p>
+<h5 id="报错原因"><a href="#报错原因" class="headerlink" title="报错原因"></a>报错原因</h5><ul>
+<li>由于浏览器必须要在执行事件处理函数之后，才能知道有没有掉用过 preventDefault() ，<br>这就导致了浏览器不能及时响应滚动，略有延迟。</li>
+</ul>
+<p>所以为了让页面滚动的效果如丝般顺滑，从 chrome56 开始，<br>在 window、document 和 body 上注册的 touchstart 和 touchmove 事件处理函数，<br>会默认为是 passive: true。浏览器忽略 preventDefault() 就可以第一时间滚动了。</p>
+<p>举例：<br>wnidow.addEventListener(‘touchmove’, func) 效果和下面一句一样<br>wnidow.addEventListener(‘touchmove’, func, { passive: true })</p>
+<ul>
+<li>解决办法<ul>
+<li>注册处理函数时，用如下方式，明确声明为不是被动的<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">&#x27;touchmove&#x27;</span>, func, &#123; <span class="attr">passive</span>: <span class="literal">false</span> &#125;)</span><br></pre></td></tr></table></figure></li>
+<li>为容器设置css属性touch-action，去除滑动时默认现象产生，但不影响事件触发<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch-action: none;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="element-ui-中select下拉框选中后视图无法更新"><a href="#element-ui-中select下拉框选中后视图无法更新" class="headerlink" title="element ui 中select下拉框选中后视图无法更新"></a>element ui 中select下拉框选中后视图无法更新</h5><ul>
+<li><p>原因：出现这个问题是因为下拉框数据循环调用接口数据，因为数据层次太多，render函数没有自动更新。</p>
+</li>
+<li><p>解决办法：手动强制刷新。</p>
+<ul>
+<li><pre><code class="javascript">//在selct的change事件中调用函数
+change()&#123;
+ this.$forceUpdate()
+&#125;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">-  同理，forceUpdate方法也适用一些很深组件的state已经改变的时候，在页面上调用，解决页面中v-for中修改item属性值页面值不改变的问题。</span><br><span class="line"></span><br><span class="line">##### vue中filter过滤器不能获取到vue实例？</span><br><span class="line"></span><br><span class="line">- filter实质就是一个处理数据的纯函数，不需要依赖组件和实例。所以在filter中打印this为undefined</span><br><span class="line">- 如果非要获取实例可以在初始时定义that ,在create周期令that&#x3D;this。然后通过that获取到vue实例</span><br><span class="line">- filter和computed区别，computed依赖组件但是功能更强大而且有缓存。filter不需要依赖组件，无缓存</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">##### vue结合element-ui将本地的表格数据导入并生成el-table展示</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;javascript</span><br><span class="line"> &#x2F;&#x2F;第一步上传文件</span><br><span class="line">    importExcel(file) &#123;</span><br><span class="line">      console.log(&quot;file&quot;, file);</span><br><span class="line">      let self &#x3D; this;</span><br><span class="line">      const types &#x3D; file.name.split(&quot;.&quot;)[1];</span><br><span class="line">      const fileType &#x3D; [&quot;xlsx&quot;, &quot;xlc&quot;, &quot;xlm&quot;, &quot;xls&quot;, &quot;xlt&quot;, &quot;xlw&quot;, &quot;csv&quot;].some(</span><br><span class="line">        item &#x3D;&gt; item &#x3D;&#x3D;&#x3D; types</span><br><span class="line">      );</span><br><span class="line">      console.log(fileType);</span><br><span class="line">      if (!fileType) &#123;</span><br><span class="line">        alert(&quot;格式错误！请重新选择&quot;);</span><br><span class="line">        return;</span><br><span class="line">      &#125;</span><br><span class="line">      this.file2Xce(file).then(tab &#x3D;&gt; &#123;</span><br><span class="line">        &#x2F;&#x2F; console.log(&#39;tab&#39;,tab)</span><br><span class="line"></span><br><span class="line">        if (tab &amp;&amp; tab.length &gt; 0) &#123;</span><br><span class="line">          this.tab &#x3D; tab;</span><br><span class="line">          if (this.tab.length !&#x3D; 0) &#123;</span><br><span class="line">            console.log(tab);</span><br><span class="line">            this.xlscList &#x3D; [];</span><br><span class="line">            this.tab[0].sheet.forEach(item &#x3D;&gt; &#123;</span><br><span class="line">              &#x2F;&#x2F; console.log(item.indexOf(&quot;C&quot;) !&#x3D; -1)</span><br><span class="line">              if (item.indexOf(&quot;&quot;) !&#x3D; -1) &#123;</span><br><span class="line">                let inputInfo &#x3D;</span><br><span class="line">                  item.indexOf(&quot;&#39;&quot;) &gt; -1 ? item.split(&quot;&#39;&quot;) : item.split(&quot;&#x3D;&quot;); &#x2F;&#x2F;excel的数据类型都是text所以通过item.split(&quot;&#39;&quot;)截取，拿到所以表的数据</span><br><span class="line">                console.log(&quot;inputInfo&quot;, inputInfo);</span><br><span class="line">                if (inputInfo.length &#x3D;&#x3D; 2) &#123;</span><br><span class="line">                  self.xlscList.push(inputInfo[1]);</span><br><span class="line">                  &#x2F;*   console.log(self.xlscList) *&#x2F;</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">          &#125;</span><br><span class="line">          if (this.xlscList.length !&#x3D; 0) &#123;</span><br><span class="line">            this.setInputToForm();</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    &#x2F;&#x2F;对组进行切割</span><br><span class="line">    setInputToForm() &#123;</span><br><span class="line">      if (this.xlscList.length &gt;&#x3D; 7) &#123;</span><br><span class="line">        &#x2F;&#x2F;判断表头的长度</span><br><span class="line">        &#x2F;*</span><br><span class="line">         * 将一个数组分成几个同等长度的数组</span><br><span class="line">         * array[分割的原数组]</span><br><span class="line">         * size[每个子数组的长度]</span><br><span class="line">         *&#x2F;</span><br><span class="line">        this.xlscList &#x3D; this.xlscList.slice(7);</span><br><span class="line">        &#x2F;&#x2F; console.log()</span><br><span class="line">        let result &#x3D; [];</span><br><span class="line">        let personnelList &#x3D; [];</span><br><span class="line">        for (var x &#x3D; 0; x &lt; Math.ceil(this.xlscList.length &#x2F; 7); x++) &#123;</span><br><span class="line">          var start &#x3D; x * 7;</span><br><span class="line">          var end &#x3D; start + 7;</span><br><span class="line">          result.push(this.xlscList.slice(start, end));</span><br><span class="line">        &#125;</span><br><span class="line">        console.log(&quot;result&quot;, result);</span><br><span class="line">        &#x2F;&#x2F; console.log(result)</span><br><span class="line">        &#x2F;&#x2F;获取每一个数组的第一个，第二个，第三个...通过push重新拼装成一个新的数组对象</span><br><span class="line">        for (let i &#x3D; 0; i &lt; result.length; i++) &#123;</span><br><span class="line">          for (let j &#x3D; 0; j &lt; result[i].length; j++) &#123;</span><br><span class="line">            if (j &#x3D;&#x3D; 0) &#123;</span><br><span class="line">              personnelList.push(&#123;</span><br><span class="line">                stcd: result[i][j],</span><br><span class="line">                sscd: result[i][j + 1],</span><br><span class="line">                lgtd: result[i][j + 2],</span><br><span class="line">                lttd: result[i][j + 3],</span><br><span class="line">                tm: result[i][j + 4],</span><br><span class="line">                dpcd: result[i][j + 5],</span><br><span class="line">                swcg: result[i][j + 6]</span><br><span class="line">              &#125;);</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        console.log(&quot;personnelList&quot;, personnelList);</span><br><span class="line">        this.tableData &#x3D; [...personnelList];</span><br><span class="line">        this.total &#x3D; this.tableData.length;</span><br><span class="line">        this.handleCurrentChange(1);</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        this.$message(&#123;</span><br><span class="line">          message: &quot;上传格式不對&quot;,</span><br><span class="line">          type: &quot;warning&quot;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    file2Xce(file) &#123;</span><br><span class="line">      &#x2F;&#x2F; console.log(&#39;file2&#39;,file);</span><br><span class="line">      return new Promise(function(resolve, reject) &#123;</span><br><span class="line">        const reader &#x3D; new FileReader();</span><br><span class="line">        &#x2F;&#x2F;  console.log(&#39;reader&#39;,reader);</span><br><span class="line">        reader.onload &#x3D; function(e) &#123;</span><br><span class="line">          const data &#x3D; e.target.result;</span><br><span class="line">          this.wb &#x3D; XLSX.read(data, &#123;</span><br><span class="line">            type: &quot;binary&quot;</span><br><span class="line">          &#125;);</span><br><span class="line"></span><br><span class="line">          const result &#x3D; [];</span><br><span class="line">          this.wb.SheetNames.forEach(sheetName &#x3D;&gt; &#123;</span><br><span class="line">            result.push(&#123;</span><br><span class="line">              sheetName: sheetName,</span><br><span class="line">              sheet: XLSX.utils.sheet_to_formulae(this.wb.Sheets[sheetName])</span><br><span class="line">            &#125;);</span><br><span class="line">          &#125;);</span><br><span class="line">          resolve(result);</span><br><span class="line">          &#x2F;&#x2F; console.log(&#39;result2&#39;,reslut);</span><br><span class="line">        &#125;;</span><br><span class="line">        reader.readAsBinaryString(file.raw);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>分页处理函数</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 处理当前页码改变 */</span></span><br><span class="line">   <span class="function"><span class="title">handleCurrentChange</span>(<span class="params">val</span>)</span> &#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">&quot;打印当前页&quot;</span>, val);</span><br><span class="line">     <span class="built_in">this</span>.currentPage = val;</span><br><span class="line">     <span class="built_in">this</span>.initPageData();</span><br><span class="line">   &#125;,</span><br></pre></td></tr></table></figure>
+
+<p><strong>上下两部分相结合就可以实现excel表格的导入并且展示了。</strong></p>
+<h4 id="element-ui中利用upload组件上传excel表格到后端"><a href="#element-ui中利用upload组件上传excel表格到后端" class="headerlink" title="element-ui中利用upload组件上传excel表格到后端"></a>element-ui中利用upload组件上传excel表格到后端</h4><ul>
+<li><p>DOM中：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-upload ref=<span class="string">&quot;upload&quot;</span> action=<span class="string">&quot;#&quot;</span> :show-file-list=<span class="string">&quot;false&quot;</span> :auto-upload=<span class="string">&quot;true&quot;</span> accept=<span class="string">&quot;.xls&quot;</span> :http-request=<span class="string">&quot;importExcel&quot;</span>&gt;</span><br><span class="line">       &lt;el-button size=<span class="string">&quot;small&quot;</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;d2-mt-10 d2-mb-10&quot;</span> icon=<span class="string">&quot;el-icon-upload&quot;</span> type=<span class="string">&quot;primary&quot;</span>&gt;</span><br><span class="line">         上传数据</span><br><span class="line">       &lt;/el-button&gt;</span><br><span class="line">&lt;/el-upload&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>函数代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 上传数据 */</span></span><br><span class="line">   <span class="function"><span class="title">importExcel</span>(<span class="params">file</span>)</span>&#123;</span><br><span class="line">     <span class="comment">/* 获取文件 */</span></span><br><span class="line">     <span class="keyword">let</span> uploadFile=file[<span class="string">&#x27;file&#x27;</span>]</span><br><span class="line">     <span class="comment">/* form表单格式数据，添加 */</span></span><br><span class="line">     <span class="keyword">let</span> form=<span class="keyword">new</span> FormData()</span><br><span class="line">     form.append(<span class="string">&#x27;files&#x27;</span>,uploadFile)</span><br><span class="line">     <span class="comment">// form=JSON.stringify(form)</span></span><br><span class="line">   <span class="comment">/*   const data=JSON.stringify(&#123;</span></span><br><span class="line"><span class="comment">       files:form</span></span><br><span class="line"><span class="comment">     &#125;) */</span></span><br><span class="line">    </span><br><span class="line">     <span class="keyword">const</span> data=&#123;<span class="attr">files</span>:form&#125;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">&#x27;data&#x27;</span>,data);</span><br><span class="line">     <span class="comment">// console.log(&#x27;form&#x27;,form);</span></span><br><span class="line">     <span class="keyword">const</span> url=<span class="string">`<span class="subst">$&#123;<span class="built_in">this</span>.basePath&#125;</span>ImportStSwcmoveRs`</span></span><br><span class="line">     <span class="built_in">this</span>.common_ajax(data,url,<span class="function">(<span class="params">res</span>)=&gt;</span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">&#x27;res&#x27;</span>,res);</span><br><span class="line">     &#125;)</span><br><span class="line">     <span class="comment">// $.ajax(&#123;</span></span><br><span class="line">     <span class="comment">//   url:url,</span></span><br><span class="line">     <span class="comment">//   data:data,</span></span><br><span class="line">     <span class="comment">//   type:&#x27;POST&#x27;,</span></span><br><span class="line">     <span class="comment">//   // processData: false,</span></span><br><span class="line">       </span><br><span class="line">     <span class="comment">//   // contentType: false,  // 不设置内容类型</span></span><br><span class="line">       </span><br><span class="line">     <span class="comment">//  /*  headers: &#123;&#x27;Content-Type&#x27;:&#x27;multipart/form-data&#x27;,&#125;, */</span></span><br><span class="line">     <span class="comment">//   contentType:&#x27;application/json;charset=UTF-8&#x27;,</span></span><br><span class="line">     <span class="comment">//   success:(res)=&gt;&#123;</span></span><br><span class="line">     <span class="comment">//     console.log(&#x27;res&#x27;,res);</span></span><br><span class="line">     <span class="comment">//   &#125;,</span></span><br><span class="line">     <span class="comment">//   error:(err)=&gt;&#123;</span></span><br><span class="line">     <span class="comment">//     console.log(&#x27;err&#x27;,err);</span></span><br><span class="line">     <span class="comment">//   &#125;</span></span><br><span class="line">        </span><br><span class="line">     <span class="comment">// &#125;)</span></span><br><span class="line">   &#125;,</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="前端导出excel表格"><a href="#前端导出excel表格" class="headerlink" title="前端导出excel表格"></a>前端导出excel表格</h4><h5 id="利用了第三方插接-xlsx-xlsx-style-file-saver"><a href="#利用了第三方插接-xlsx-xlsx-style-file-saver" class="headerlink" title="利用了第三方插接 xlsx xlsx-style  file-saver"></a>利用了第三方插接 xlsx xlsx-style  file-saver</h5><ul>
+<li><p>下载插件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i npm install xlsx xlsx-style --save</span><br><span class="line">npm i file-saver --save</span><br></pre></td></tr></table></figure></li>
+<li><p>导入</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> FileSaver <span class="keyword">from</span> <span class="string">&#x27;file-saver&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> XLSX <span class="keyword">from</span> <span class="string">&#x27;xlsx&#x27;</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>普通表格导出，不带样式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 导出数据 */</span></span><br><span class="line">   <span class="function"><span class="title">exportExcel</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">     <span class="comment">/* 判断当前表格是否有数据，如果无数据则进行提示 */</span></span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">this</span>.$refs[<span class="string">&#x27;CharacteristicTable&#x27;</span>].tableData.length == <span class="number">0</span>) &#123;</span><br><span class="line">               <span class="built_in">this</span>.$message(&#123;</span><br><span class="line">                   showClose: <span class="literal">true</span>,</span><br><span class="line">                   message: <span class="string">&quot;消息提示：当前无内容！&quot;</span>,</span><br><span class="line">                   type: <span class="string">&quot;warning&quot;</span>,</span><br><span class="line">               &#125;);</span><br><span class="line">               <span class="keyword">return</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="comment">/* XLSX.utils.table_to_book(DOM元素)工具导出 */</span></span><br><span class="line">           <span class="keyword">let</span> vb = XLSX.utils.table_to_book(<span class="built_in">document</span>.getElementById(<span class="string">&#x27;CharacteristicTable&#x27;</span>));  </span><br><span class="line">          <span class="comment">/* 导出的类型设置 */</span></span><br><span class="line">           <span class="keyword">let</span> vbout = XLSX.write(vb, &#123;<span class="attr">bookType</span>: <span class="string">&#x27;xlsx&#x27;</span>, <span class="attr">bookSST</span>: <span class="literal">false</span>, <span class="attr">type</span>: <span class="string">&#x27;array&#x27;</span>&#125;);</span><br><span class="line">          </span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">             <span class="comment">/* 文件保存格式，文件名设置 */</span></span><br><span class="line">               FileSaver.saveAs(<span class="keyword">new</span> Blob([vbout], &#123;<span class="attr">type</span>: <span class="string">&#x27;application/octet-stream&#x27;</span>&#125;), <span class="built_in">this</span>.$root.stationType.NM+<span class="string">&#x27; 特征值表(&#x27;</span>+(<span class="built_in">this</span>.date.length &gt; <span class="number">4</span> ? <span class="built_in">this</span>.formatDate(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">this</span>.date),<span class="string">&quot;yyyy年MM月&quot;</span>) : <span class="built_in">this</span>.formatDate(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">this</span>.date),<span class="string">&quot;yyyy年&quot;</span>))+<span class="string">&#x27;).xlsx&#x27;</span>);</span><br><span class="line">           &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">               <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">console</span> !== <span class="string">&#x27;undefined&#x27;</span>) <span class="built_in">console</span>.log(e, vbout);</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">return</span> vbout;</span><br><span class="line">       &#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果要设置样式，如导出的excel的边框，文字居中则需要再引入样式设置插件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> XLSXStyle <span class="keyword">from</span> <span class="string">&#x27;xlsx-style&#x27;</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>解决xlsx导入源码报错</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在\node_modules\xlsx-style\dist\cpexcel.js  </span><br><span class="line"><span class="keyword">var</span> cpt = <span class="built_in">require</span>(<span class="string">&#x27;./cpt&#x27;</span> + <span class="string">&#x27;able&#x27;</span>);  改为   <span class="keyword">var</span> cpt = cptable; </span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<p>-导出函数的代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">     <span class="comment">/* 导出数据 */</span></span><br><span class="line">      <span class="function"><span class="title">exportExcel</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="comment">/* 判断当前表格是否存在即有数据如果无数据则提示 */</span></span><br><span class="line">       <span class="keyword">if</span>(<span class="built_in">this</span>.activeStName===<span class="string">&#x27;FixedStation&#x27;</span>)&#123;</span><br><span class="line">           <span class="keyword">if</span> (!<span class="built_in">this</span>.$refs[<span class="string">&#x27;SSMonitorYearTable&#x27;</span>]||<span class="built_in">this</span>.$refs[<span class="string">&#x27;SSMonitorYearTable&#x27;</span>].tableData.length == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="built_in">this</span>.$message(&#123;</span><br><span class="line">                    showClose: <span class="literal">true</span>,</span><br><span class="line">                    message: <span class="string">&quot;消息提示：当前无内容！&quot;</span>,</span><br><span class="line">                    type: <span class="string">&quot;warning&quot;</span>,</span><br><span class="line">                &#125;);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">else</span>&#123;</span><br><span class="line">         <span class="keyword">if</span> (!<span class="built_in">this</span>.$refs[<span class="string">&#x27;MoveSSMonitorYearTable&#x27;</span>]||<span class="built_in">this</span>.$refs[<span class="string">&#x27;MoveSSMonitorYearTable&#x27;</span>].tableData.length == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="built_in">this</span>.$message(&#123;</span><br><span class="line">                    showClose: <span class="literal">true</span>,</span><br><span class="line">                    message: <span class="string">&quot;消息提示：当前无内容！&quot;</span>,</span><br><span class="line">                    type: <span class="string">&quot;warning&quot;</span>,</span><br><span class="line">                &#125;);</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">       &#125;</span><br><span class="line">            <span class="comment">/* XLSX生成工作簿 */</span></span><br><span class="line">            <span class="keyword">let</span> vb = XLSX.utils.table_to_book(<span class="built_in">document</span>.getElementById(<span class="string">&#x27;SS_main_table&#x27;</span>),&#123;<span class="attr">sheet</span>:<span class="string">&#x27;SHEET&#x27;</span>&#125;);  </span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;vb&#x27;</span>,vb);</span><br><span class="line">            <span class="comment">// 设置列宽 字号等</span></span><br><span class="line">            setExlStyle(vb[<span class="string">&#x27;Sheets&#x27;</span>][<span class="string">&#x27;SHEET&#x27;</span>]); </span><br><span class="line">            <span class="comment">/* 用XLSXStyle.write来设置导出的excel样式 */</span></span><br><span class="line">            <span class="keyword">let</span> vbout = XLSXStyle.write(vb, &#123;<span class="attr">bookType</span>: <span class="string">&#x27;xlsx&#x27;</span>, <span class="attr">bookSST</span>: <span class="literal">false</span>, <span class="attr">type</span>: <span class="string">&#x27;buffer&#x27;</span>&#125;);</span><br><span class="line">     </span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">              <span class="comment">/* 文件保存名 */</span></span><br><span class="line">                FileSaver.saveAs(<span class="keyword">new</span> Blob([vbout], &#123;<span class="attr">type</span>: <span class="string">&#x27;application/octet-stream&#x27;</span>&#125;),(<span class="built_in">this</span>.stnm+<span class="built_in">this</span>.activeStName===<span class="string">&#x27;FixedStation&#x27;</span>?<span class="string">&#x27;(固定站)&#x27;</span>:<span class="string">&#x27;(移动站)&#x27;</span>+ <span class="built_in">this</span>.$root.stationType.NM+<span class="string">&#x27; 年报(&#x27;</span>+<span class="built_in">this</span>.formatDate(<span class="keyword">new</span> <span class="built_in">Date</span>(<span class="built_in">this</span>.dateTime),<span class="string">&quot;yyyy年&quot;</span>))+<span class="string">&#x27;).xlsx&#x27;</span>);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">console</span> !== <span class="string">&#x27;undefined&#x27;</span>) <span class="built_in">console</span>.log(e, vbout);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> vbout;</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用到的设置配置函数</span></span><br><span class="line"><span class="comment">/* 设置导出表格的样式 */</span></span><br><span class="line"><span class="keyword">export</span>  <span class="keyword">const</span> setExlStyle=<span class="function">(<span class="params">data</span>)=&gt;</span> &#123;</span><br><span class="line">  data[<span class="string">&#x27;!cols&#x27;</span>] = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">in</span> data) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(key)</span><br><span class="line">      <span class="keyword">if</span> (data[key] <span class="keyword">instanceof</span> <span class="built_in">Object</span>) &#123;</span><br><span class="line">          data[key].s = &#123;</span><br><span class="line">              <span class="comment">// border: borderAll,</span></span><br><span class="line">               <span class="comment">/* 内容样式 */</span></span><br><span class="line">              alignment: &#123;</span><br><span class="line">                 <span class="comment">/// 自动换行</span></span><br><span class="line">                 wrapText: <span class="number">1</span>,</span><br><span class="line">                 <span class="comment">// 居中</span></span><br><span class="line">                 horizontal: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">                 vertical: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">                 indent: <span class="number">0</span>,</span><br><span class="line">              &#125;,</span><br><span class="line">              font:&#123;</span><br><span class="line">                sz:<span class="number">11</span></span><br><span class="line">              &#125;,</span><br><span class="line">              bold:<span class="literal">false</span>,</span><br><span class="line">              numFmt: <span class="number">0</span></span><br><span class="line">          &#125;</span><br><span class="line">            data[<span class="string">&#x27;!cols&#x27;</span>].push(&#123;<span class="attr">wpx</span>: <span class="number">50</span>&#125;);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> data;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<h4 id="vscode中prettier的格式化配置设置"><a href="#vscode中prettier的格式化配置设置" class="headerlink" title="vscode中prettier的格式化配置设置"></a>vscode中prettier的格式化配置设置</h4><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ctrl+shift+p 打开settings设置，然后输入配置</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;vetur.validation.template&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">    <span class="attr">&quot;[vue]&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;editor.defaultFormatter&quot;</span>: <span class="string">&quot;esbenp.prettier-vscode&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;[scss]&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;editor.defaultFormatter&quot;</span>: <span class="string">&quot;esbenp.prettier-vscode&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;vetur.format.defaultFormatter.html&quot;</span>: <span class="string">&quot;prettier&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;[javascript]&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;editor.defaultFormatter&quot;</span>: <span class="string">&quot;esbenp.prettier-vscode&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;[json]&quot;</span>: &#123;</span><br><span class="line">      <span class="attr">&quot;editor.defaultFormatter&quot;</span>: <span class="string">&quot;esbenp.prettier-vscode&quot;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">&quot;prettier.arrowParens&quot;</span>: <span class="string">&quot;avoid&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;prettier.trailingComma&quot;</span>: <span class="string">&quot;none&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="vue踩的坑error-‘nextZoom’-is-assigned-a-value-but-never-used-no-unused-vars"><a href="#vue踩的坑error-‘nextZoom’-is-assigned-a-value-but-never-used-no-unused-vars" class="headerlink" title="vue踩的坑error ‘nextZoom’ is assigned a value but never used no-unused-vars"></a>vue踩的坑error ‘nextZoom’ is assigned a value but never used no-unused-vars</h4><ul>
+<li><p>错误原因：eslint语法校验错误</p>
+</li>
+<li><p>解决办法</p>
+<ul>
+<li><pre><code class="javascript"> nextZoom = 13 // eslint-disable-line no-unused-vars
+ //代码后面接上这个就能够正常编译
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">#### 扩展运算符和解构赋值时浅拷贝还是深拷贝？</span><br><span class="line"></span><br><span class="line">**废话不多说直接上代码**</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;javascript</span><br><span class="line">&#x2F;* let obj &#x3D; &#123;</span><br><span class="line">  a: &#123;</span><br><span class="line">    name: &#39;zs&#39;,</span><br><span class="line">    age: 19,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">let &#123; a: newobj &#125; &#x3D; obj</span><br><span class="line">console.log(newobj)</span><br><span class="line">console.log(newobj &#x3D;&#x3D;&#x3D; obj.a)</span><br><span class="line">newobj[&#39;age&#39;] &#x3D; 20</span><br><span class="line">console.log(newobj, obj.a.age) *&#x2F;</span><br><span class="line">console.log(&#39;-------------------------------------&#39;)</span><br><span class="line">&#x2F;&#x2F; const arr &#x3D; [1, 2, 3]</span><br><span class="line">const arr &#x3D; [&#123; name: &#39;zs&#39; &#125;, 2, 3]</span><br><span class="line">&#x2F;* 扩展运算符赋值,浅拷贝 *&#x2F;</span><br><span class="line">const newArr &#x3D; [...arr]</span><br><span class="line"></span><br><span class="line">&#x2F;* 直接赋值，引用了地址会发生改变 *&#x2F;</span><br><span class="line">&#x2F;&#x2F; const newArr &#x3D; arr</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; newArr.push(4)</span><br><span class="line">&#x2F;&#x2F; newArr.splice(1, 1)</span><br><span class="line">&#x2F;&#x2F; newArr[0][&#39;name&#39;] &#x3D; &#39;ls&#39;</span><br><span class="line">console.log(newArr, arr)</span><br><span class="line"></span><br><span class="line">&#x2F;* </span><br><span class="line">结论：无论是扩展运算还是解构赋值。都是浅拷贝</span><br><span class="line">*&#x2F;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="当el-ment中form表单项为v-if动态渲染时验证规则添加失败"><a href="#当el-ment中form表单项为v-if动态渲染时验证规则添加失败" class="headerlink" title="当el-ment中form表单项为v-if动态渲染时验证规则添加失败"></a>当el-ment中form表单项为v-if动态渲染时验证规则添加失败</h4><ul>
+<li>原因:牵扯到diff算法，复用问题。因为form-item绑定验证事件是在mounted中进行的，规则变化后没有进行重新绑定验证事件，v-if渲染组件节点diff后被复用了，所以验证也就自然失效了</li>
+<li>解决办法：给item添加key属性，保证item的唯一。这样就可以动态绑定规则了</li>
+</ul>
+<h4 id="前端进行cron表达式的生成-vue-element"><a href="#前端进行cron表达式的生成-vue-element" class="headerlink" title="前端进行cron表达式的生成(vue+element)"></a>前端进行cron表达式的生成(vue+element)</h4><ul>
+<li>这里采用到了一个插件叫 vue-cron，所以首先下载插件<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install vue-cron </span><br></pre></td></tr></table></figure></li>
+<li>导入 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 全局导入的话在mani.js中进行操作 */</span></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> ElementUI <span class="keyword">from</span> <span class="string">&#x27;element-ui&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;element-ui/lib/theme-chalk/index.css&#x27;</span></span><br><span class="line">Vue.use(ElementUI);</span><br><span class="line"></span><br><span class="line"><span class="comment">//全局引入</span></span><br><span class="line"><span class="keyword">import</span> VueCron <span class="keyword">from</span> <span class="string">&#x27;vue-cron&#x27;</span></span><br><span class="line">Vue.use(VueCron);<span class="comment">//使用方式：&lt;vueCron&gt;&lt;/vueCron&gt;</span></span><br><span class="line"><span class="comment">/* 局部导入只需在该组件中引入就行 */</span></span><br><span class="line"><span class="comment">//局部引入</span></span><br><span class="line"><span class="keyword">import</span> &#123;cron&#125; <span class="keyword">from</span> <span class="string">&#x27;vue-cron&#x27;</span></span><br><span class="line"><span class="comment">// 使用方式：&lt;cron&gt;&lt;/cron&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li>实现效果<br><img src="/2021/04/21/%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/vue-cron.jpg"></li>
+</ul>
+<h4 id="前端利用elementui表单对cron表达式进行校验"><a href="#前端利用elementui表单对cron表达式进行校验" class="headerlink" title="前端利用elementui表单对cron表达式进行校验"></a>前端利用elementui表单对cron表达式进行校验</h4><ul>
+<li>首先要下载cron-parser插件进行cron表达式解析<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install cron-parser</span><br></pre></td></tr></table></figure></li>
+<li>然后在data(){}中自定义校验规则<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//校验是否为cron表达式</span></span><br><span class="line">    <span class="keyword">var</span> handleCronValidate=<span class="function">(<span class="params">rule,value,callback</span>)=&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!!value)&#123;</span><br><span class="line">    <span class="keyword">let</span> parser=<span class="built_in">require</span>(<span class="string">&#x27;cron-parser&#x27;</span>);</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">      <span class="keyword">let</span> interval=parser.parseExpression(value);</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;cronDate:&quot;</span>,interval.next().toDate());</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">      callback(<span class="string">&quot;非Cron表达式格式，请检查！&quot;</span>+e.message);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    callback(<span class="string">&quot;Cron表达式不能为空！&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  callback();</span><br><span class="line"><span class="comment">/* rules规则中 */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//统一写在form定义好的rules中；prop对应rules中的名称；</span></span><br><span class="line">rules: &#123;</span><br><span class="line">  cronExpression:[</span><br><span class="line">&#123;<span class="attr">required</span>:<span class="literal">true</span>,<span class="attr">validator</span>:handleCronValidate,<span class="attr">trigger</span>: <span class="string">&#x27;blur&#x27;</span>&#125;,</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="vue中触发视图更新与不能触发视图更新的操作"><a href="#vue中触发视图更新与不能触发视图更新的操作" class="headerlink" title="vue中触发视图更新与不能触发视图更新的操作"></a>vue中触发视图更新与不能触发视图更新的操作</h4><ul>
+<li><p>能够触发视图更新的操作（数组）</p>
+<ul>
+<li>push</li>
+<li>splice</li>
+<li>unshift</li>
+<li>pop</li>
+<li>shift</li>
+<li>sort</li>
+<li>reverse</li>
+</ul>
+</li>
+<li><p>不能够触发更新的操作(数组：这些方法基本都是返回一个新的数组，vue不能监测到)</p>
+<ul>
+<li>concat</li>
+<li>slice</li>
+<li>filter</li>
+<li>直接改变数组的长度如arr.length=newlength</li>
+<li>直接改变数组的某项值如arr[index]=newValue</li>
+</ul>
+</li>
+<li><p>对象，在初始化data赋值后给数组添加新的属性，也不能触发视图的更新</p>
+</li>
+<li><p>解决方法</p>
+<ul>
+<li><p>利用vue中的api：this.$set(obj|arr,prop|index,newValue)来给对象或数组添加响应式的属性或值，但是这个方法不能给vue实例或者vue的根数据源添加修改属性</p>
+</li>
+<li><p>对于对象可以利用Object.assgin()方法</p>
+<ul>
+<li><pre><code class="javascript">this.obj=Object(&#123;&#125;,this.obj,&#123;propa:&quot;&quot;,propb:&quot;&quot;&#125;)</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/study/" rel="tag"># study</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/04/18/React03-React%E5%8E%9F%E7%90%86%E6%8F%AD%E7%A7%98/" rel="prev" title="React03-React原理揭秘">
+      <i class="fa fa-chevron-left"></i> React03-React原理揭秘
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#vscode%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84vue%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.</span> <span class="nav-text">vscode中自定义一个简单的vue模板</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AF%BC%E5%85%A5"><span class="nav-number">1.1.</span> <span class="nav-text">前端自动化导入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#React%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8antd-mobile%E4%B8%AD%E7%9A%84%E8%B5%B0%E9%A9%AC%E7%81%AF%E7%BB%84%E4%BB%B6%E6%8A%A5%E9%94%99"><span class="nav-number">1.2.</span> <span class="nav-text">React项目中使用antd-mobile中的走马灯组件报错</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">报错代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E5%8E%9F%E5%9B%A0"><span class="nav-number">1.4.</span> <span class="nav-text">报错原因</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#element-ui-%E4%B8%ADselect%E4%B8%8B%E6%8B%89%E6%A1%86%E9%80%89%E4%B8%AD%E5%90%8E%E8%A7%86%E5%9B%BE%E6%97%A0%E6%B3%95%E6%9B%B4%E6%96%B0"><span class="nav-number">1.5.</span> <span class="nav-text">element ui 中select下拉框选中后视图无法更新</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#element-ui%E4%B8%AD%E5%88%A9%E7%94%A8upload%E7%BB%84%E4%BB%B6%E4%B8%8A%E4%BC%A0excel%E8%A1%A8%E6%A0%BC%E5%88%B0%E5%90%8E%E7%AB%AF"><span class="nav-number">2.</span> <span class="nav-text">element-ui中利用upload组件上传excel表格到后端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E5%AF%BC%E5%87%BAexcel%E8%A1%A8%E6%A0%BC"><span class="nav-number">3.</span> <span class="nav-text">前端导出excel表格</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E4%BA%86%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8F%92%E6%8E%A5-xlsx-xlsx-style-file-saver"><span class="nav-number">3.1.</span> <span class="nav-text">利用了第三方插接 xlsx xlsx-style  file-saver</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vscode%E4%B8%ADprettier%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E9%85%8D%E7%BD%AE%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">vscode中prettier的格式化配置设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vue%E8%B8%A9%E7%9A%84%E5%9D%91error-%E2%80%98nextZoom%E2%80%99-is-assigned-a-value-but-never-used-no-unused-vars"><span class="nav-number">5.</span> <span class="nav-text">vue踩的坑error ‘nextZoom’ is assigned a value but never used no-unused-vars</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BD%93el-ment%E4%B8%ADform%E8%A1%A8%E5%8D%95%E9%A1%B9%E4%B8%BAv-if%E5%8A%A8%E6%80%81%E6%B8%B2%E6%9F%93%E6%97%B6%E9%AA%8C%E8%AF%81%E8%A7%84%E5%88%99%E6%B7%BB%E5%8A%A0%E5%A4%B1%E8%B4%A5"><span class="nav-number">6.</span> <span class="nav-text">当el-ment中form表单项为v-if动态渲染时验证规则添加失败</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E8%BF%9B%E8%A1%8Ccron%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E7%94%9F%E6%88%90-vue-element"><span class="nav-number">7.</span> <span class="nav-text">前端进行cron表达式的生成(vue+element)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E5%88%A9%E7%94%A8elementui%E8%A1%A8%E5%8D%95%E5%AF%B9cron%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BF%9B%E8%A1%8C%E6%A0%A1%E9%AA%8C"><span class="nav-number">8.</span> <span class="nav-text">前端利用elementui表单对cron表达式进行校验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vue%E4%B8%AD%E8%A7%A6%E5%8F%91%E8%A7%86%E5%9B%BE%E6%9B%B4%E6%96%B0%E4%B8%8E%E4%B8%8D%E8%83%BD%E8%A7%A6%E5%8F%91%E8%A7%86%E5%9B%BE%E6%9B%B4%E6%96%B0%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">9.</span> <span class="nav-text">vue中触发视图更新与不能触发视图更新的操作</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zzx"
+      src="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+  <p class="site-author-name" itemprop="name">zzx</p>
+  <div class="site-description" itemprop="description">敲代码是件快乐的事情</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zzx-Sll" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zzx-Sll" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zzx</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
