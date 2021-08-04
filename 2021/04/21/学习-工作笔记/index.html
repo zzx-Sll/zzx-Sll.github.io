@@ -34,7 +34,7 @@
 <meta property="og:image" content="http://example.com/2021/04/21/%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/antd-mobile_%E8%B5%B0%E9%A9%AC%E7%81%AF%E6%8A%A5%E9%94%99.jpg">
 <meta property="og:image" content="http://example.com/2021/04/21/%E5%AD%A6%E4%B9%A0-%E5%B7%A5%E4%BD%9C%E7%AC%94%E8%AE%B0/vue-cron.jpg">
 <meta property="article:published_time" content="2021-04-21T01:54:04.000Z">
-<meta property="article:modified_time" content="2021-06-03T07:56:02.834Z">
+<meta property="article:modified_time" content="2021-07-30T02:39:20.113Z">
 <meta property="article:author" content="zzx">
 <meta property="article:tag" content="study">
 <meta name="twitter:card" content="summary">
@@ -198,7 +198,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-06-03 15:56:02" itemprop="dateModified" datetime="2021-06-03T15:56:02+08:00">2021-06-03</time>
+                <time title="修改时间：2021-07-30 10:39:20" itemprop="dateModified" datetime="2021-07-30T10:39:20+08:00">2021-07-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -243,7 +243,7 @@
 </ul>
 </li>
 <li><p>代码示例（摘自原博主）：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;Home&#x27;</span>,</span><br><span class="line">    component: Home</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找 /router/modules 下的全部js文件</span></span><br><span class="line"><span class="keyword">let</span> webpackContext = <span class="built_in">require</span>.context(<span class="string">&#x27;./modules&#x27;</span>, <span class="literal">true</span>, <span class="regexp">/\.js/</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历查询结果，将查询到的文件加载后插入数组modules</span></span><br><span class="line"><span class="keyword">let</span> moudulesRoutes = webpackContext.keys().map((<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 逐一加载模块</span></span><br><span class="line">  <span class="keyword">let</span> route = webpackContext(item);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> route;</span><br><span class="line">&#125;))；</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将加载到的路由合并到 routes 中</span></span><br><span class="line">moudulesRoutes.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">  routes.push(...item);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes</span><br><span class="line">&#125;);</span><br><span class="line">————————————————</span><br><span class="line">版权声明：本文为CSDN博主「杰~JIE」的原创文章，遵循CC <span class="number">4.0</span> BY-SA版权协议，转载请附上原文出处链接及本声明。</span><br><span class="line">原文链接：https:<span class="comment">//blog.csdn.net/weixin_44869002/article/details/109702090</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes = [</span><br><span class="line">  &#123;</span><br><span class="line">    path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">    name: <span class="string">&#x27;Home&#x27;</span>,</span><br><span class="line">    component: Home</span><br><span class="line">  &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找 /router/modules 下的全部js文件</span></span><br><span class="line"><span class="keyword">let</span> webpackContext = <span class="built_in">require</span>.context(<span class="string">&#x27;./modules&#x27;</span>, <span class="literal">true</span>, <span class="regexp">/\.js/</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 遍历查询结果，将查询到的文件加载后插入数组modules</span></span><br><span class="line"><span class="keyword">let</span> moudulesRoutes = webpackContext.keys().map((<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 逐一加载模块</span></span><br><span class="line">  <span class="keyword">let</span> route = webpackContext(item);</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> route;</span><br><span class="line">&#125;))；</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将加载到的路由合并到 routes 中</span></span><br><span class="line">moudulesRoutes.forEach(<span class="function"><span class="params">item</span> =&gt;</span> &#123;</span><br><span class="line">  routes.push(...item);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> VueRouter(&#123;</span><br><span class="line">  routes</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
@@ -266,7 +266,7 @@
 </ul>
 </li>
 </ul>
-<h5 id="element-ui-中select下拉框选中后视图无法更新"><a href="#element-ui-中select下拉框选中后视图无法更新" class="headerlink" title="element ui 中select下拉框选中后视图无法更新"></a>element ui 中select下拉框选中后视图无法更新</h5><ul>
+<h5 id="elementui中select下拉框选中后视图无法更新"><a href="#elementui中select下拉框选中后视图无法更新" class="headerlink" title="elementui中select下拉框选中后视图无法更新"></a>elementui中select下拉框选中后视图无法更新</h5><ul>
 <li><p>原因：出现这个问题是因为下拉框数据循环调用接口数据，因为数据层次太多，render函数没有自动更新。</p>
 </li>
 <li><p>解决办法：手动强制刷新。</p>
@@ -382,10 +382,69 @@ change()&#123;
 </li>
 <li><p>对于对象可以利用Object.assgin()方法</p>
 <ul>
-<li><pre><code class="javascript">this.obj=Object(&#123;&#125;,this.obj,&#123;propa:&quot;&quot;,propb:&quot;&quot;&#125;)</code></pre>
+<li><pre><code class="javascript">this.obj=Object(&#123;&#125;,this.obj,&#123;propa:&quot;&quot;,propb:&quot;&quot;&#125;)
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 项目中关闭prettier</span><br><span class="line"></span><br><span class="line">- 在eslintrc.js中的rules下关闭prettier</span><br><span class="line"></span><br><span class="line">- &#96;&#96;&#96;javascript</span><br><span class="line">  module.exports &#x3D; &#123;</span><br><span class="line">    root: true,</span><br><span class="line">    env: &#123;</span><br><span class="line">      node: true,</span><br><span class="line">    &#125;,</span><br><span class="line">    extends: [</span><br><span class="line">      &quot;plugin:vue&#x2F;vue3-essential&quot;,</span><br><span class="line">      &quot;eslint:recommended&quot;,</span><br><span class="line">      &quot;@vue&#x2F;typescript&#x2F;recommended&quot;,</span><br><span class="line">      &quot;@vue&#x2F;prettier&quot;,</span><br><span class="line">      &quot;@vue&#x2F;prettier&#x2F;@typescript-eslint&quot;,</span><br><span class="line">    ],</span><br><span class="line">    parserOptions: &#123;</span><br><span class="line">      ecmaVersion: 2020,</span><br><span class="line">    &#125;,</span><br><span class="line">    rules: &#123;</span><br><span class="line">      &quot;prettier&#x2F;prettier&quot;: &quot;off&quot;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+</code></pre>
 </li>
 </ul>
 </li>
+</ul>
+</li>
+</ul>
+<h4 id="使用XLSX导出el-table表格数据重复的问题"><a href="#使用XLSX导出el-table表格数据重复的问题" class="headerlink" title="使用XLSX导出el-table表格数据重复的问题"></a>使用XLSX导出el-table表格数据重复的问题</h4><ul>
+<li><p>问题描述：xlsx导出el-table表格数据时，出现数据重复导出问题，经查验，table表格数据无重复，导出方式也无问题。最后经查阅发现，如果给el-table表格中的列添加了fixed属性，在导出时会导致表格重复。</p>
+</li>
+<li><p>解决方法：在导出前做校验，移除fixed属性，然后再导出就不会出现数据 重复了。</p>
+</li>
+<li><p>代码：</p>
+<ul>
+<li><pre><code class="javascript"> //  .table要导出的是哪一个表格,id：表格id
+      let table = document
+        .querySelector(id) 
+        .cloneNode(true);
+      // console.log(&quot;table&quot;, table);
+      // 因为element-ui的表格的fixed属性导致多出一个table，会下载重复内容，这里删除掉
+      table.removeChild(table.querySelector(&quot;.el-table__fixed&quot;));
+      let vb = XLSX.utils.table_to_book(table, &#123; raw: false &#125;);
+
+      let vbout = XLSX.write(vb, &#123;
+        bookType: &quot;xlsx&quot;,
+        bookSST: false,
+        type: &quot;array&quot;
+      &#125;);
+
+      try &#123;
+        FileSaver.saveAs(
+          new Blob([vbout], &#123; type: &quot;application/octet-stream&quot; &#125;),
+          this.$root.stationType.NM +
+            &quot; 年特征值表(&quot; +
+            (this.date.length &gt; 4
+              ? this.formatDate(new Date(this.date), &quot;yyyy年MM月&quot;)
+              : this.formatDate(new Date(this.date), &quot;yyyy年&quot;)) +
+            &quot;).xlsx&quot;
+        );
+      &#125; catch (e) &#123;
+        if (typeof console !== &quot;undefined&quot;) console.log(e, vbout);
+      &#125;
+      return vbout;
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### scrollIntoView实现锚点滚动</span><br><span class="line"></span><br><span class="line">**快速平滑移动到某个dom元素，可以模拟实现锚点定位效果**</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;javascript</span><br><span class="line"> this.$el.querySelector(selector).scrollIntoView(&#123;</span><br><span class="line">          behavior: &quot;smooth&quot;,  &#x2F;&#x2F; 平滑过渡</span><br><span class="line">          block:    &quot;start&quot;  &#x2F;&#x2F; 上边框与视窗顶部平齐。默认值</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="Vue3中获取当前组件实例-getcurrentInstance"><a href="#Vue3中获取当前组件实例-getcurrentInstance" class="headerlink" title="Vue3中获取当前组件实例:getcurrentInstance()"></a>Vue3中获取当前组件实例:getcurrentInstance()</h4><h4 id="获取元素距离可视区域的距离：element-getBoundingClientRect"><a href="#获取元素距离可视区域的距离：element-getBoundingClientRect" class="headerlink" title="获取元素距离可视区域的距离：element.getBoundingClientRect()"></a>获取元素距离可视区域的距离：element.getBoundingClientRect()</h4><ul>
+<li>该方法返回一个rect对象，该对象是由该元素的getClientRect()方法返回的一组矩形集合，包含完整元素的最小矩形。rect是一个具有left、right、top、bottom的DOMRect对象。</li>
+<li>left、right、top、bottom表示当前盒子距离可视区域的各个方向距离</li>
+<li>当计算边界矩形时，会考虑到当前视口区域的滚动操作，也就是说当滚动位置发生了改变，rect的对象值也会随之发生改变。如果你需要获得相对于当前页面左上角的的坐标值，只需给left、top加上window.scrollLeft、window.scrollTop（为了照顾浏览器的兼容性可以使用window.pageXoffset和window.pageYoffset替代）。就可以得到与当前滚动位置无关的值。</li>
+<li>获取可视区域的相关数据:window.innerHeight、window.innerWidth、document.documentElement.clientHeight、document.documentElement.clientWidth</li>
+<li>根据这些信息可以实现一些如让元素滚动到可视区域再加载动画或者图片的操作</li>
+</ul>
+<h4 id="ajax实现图片-文件上传遇到的问题"><a href="#ajax实现图片-文件上传遇到的问题" class="headerlink" title="ajax实现图片/文件上传遇到的问题"></a>ajax实现图片/文件上传遇到的问题</h4><ul>
+<li>问题描述：ajax上传文件，后端给定的上传格式为formData格式，但是当用ajax手动上传设置contentType: “multipart/form-data”时，会报错the request was rejected because no multipart。</li>
+<li>问题分析:<ul>
+<li>当直接利用表单提交时，将表单的enctype设置为’multipart/form-data’可以实现。</li>
+<li>当用ajax发送请求时，则需要将配置项contentType设置为false，而不能直接设置为”multipart/form-data”，后者发送的请求在Request headers的contentType中没有分界符，会导致后台无法解析并报错。</li>
 </ul>
 </li>
 </ul>
@@ -410,7 +469,10 @@ change()&#123;
     <a href="/2021/04/18/React03-React%E5%8E%9F%E7%90%86%E6%8F%AD%E7%A7%98/" rel="prev" title="React03-React原理揭秘">
       <i class="fa fa-chevron-left"></i> React03-React原理揭秘
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/08/04/webpack-ts/" rel="next" title="webpack-ts">
+      webpack-ts <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -469,7 +531,7 @@ change()&#123;
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#vscode%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84vue%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.</span> <span class="nav-text">vscode中自定义一个简单的vue模板</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AF%BC%E5%85%A5"><span class="nav-number">1.1.</span> <span class="nav-text">前端自动化导入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#React%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8antd-mobile%E4%B8%AD%E7%9A%84%E8%B5%B0%E9%A9%AC%E7%81%AF%E7%BB%84%E4%BB%B6%E6%8A%A5%E9%94%99"><span class="nav-number">1.2.</span> <span class="nav-text">React项目中使用antd-mobile中的走马灯组件报错</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">报错代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E5%8E%9F%E5%9B%A0"><span class="nav-number">1.4.</span> <span class="nav-text">报错原因</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#element-ui-%E4%B8%ADselect%E4%B8%8B%E6%8B%89%E6%A1%86%E9%80%89%E4%B8%AD%E5%90%8E%E8%A7%86%E5%9B%BE%E6%97%A0%E6%B3%95%E6%9B%B4%E6%96%B0"><span class="nav-number">1.5.</span> <span class="nav-text">element ui 中select下拉框选中后视图无法更新</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#element-ui%E4%B8%AD%E5%88%A9%E7%94%A8upload%E7%BB%84%E4%BB%B6%E4%B8%8A%E4%BC%A0excel%E8%A1%A8%E6%A0%BC%E5%88%B0%E5%90%8E%E7%AB%AF"><span class="nav-number">2.</span> <span class="nav-text">element-ui中利用upload组件上传excel表格到后端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E5%AF%BC%E5%87%BAexcel%E8%A1%A8%E6%A0%BC"><span class="nav-number">3.</span> <span class="nav-text">前端导出excel表格</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E4%BA%86%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8F%92%E6%8E%A5-xlsx-xlsx-style-file-saver"><span class="nav-number">3.1.</span> <span class="nav-text">利用了第三方插接 xlsx xlsx-style  file-saver</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vscode%E4%B8%ADprettier%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E9%85%8D%E7%BD%AE%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">vscode中prettier的格式化配置设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vue%E8%B8%A9%E7%9A%84%E5%9D%91error-%E2%80%98nextZoom%E2%80%99-is-assigned-a-value-but-never-used-no-unused-vars"><span class="nav-number">5.</span> <span class="nav-text">vue踩的坑error ‘nextZoom’ is assigned a value but never used no-unused-vars</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BD%93el-ment%E4%B8%ADform%E8%A1%A8%E5%8D%95%E9%A1%B9%E4%B8%BAv-if%E5%8A%A8%E6%80%81%E6%B8%B2%E6%9F%93%E6%97%B6%E9%AA%8C%E8%AF%81%E8%A7%84%E5%88%99%E6%B7%BB%E5%8A%A0%E5%A4%B1%E8%B4%A5"><span class="nav-number">6.</span> <span class="nav-text">当el-ment中form表单项为v-if动态渲染时验证规则添加失败</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E8%BF%9B%E8%A1%8Ccron%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E7%94%9F%E6%88%90-vue-element"><span class="nav-number">7.</span> <span class="nav-text">前端进行cron表达式的生成(vue+element)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E5%88%A9%E7%94%A8elementui%E8%A1%A8%E5%8D%95%E5%AF%B9cron%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BF%9B%E8%A1%8C%E6%A0%A1%E9%AA%8C"><span class="nav-number">8.</span> <span class="nav-text">前端利用elementui表单对cron表达式进行校验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vue%E4%B8%AD%E8%A7%A6%E5%8F%91%E8%A7%86%E5%9B%BE%E6%9B%B4%E6%96%B0%E4%B8%8E%E4%B8%8D%E8%83%BD%E8%A7%A6%E5%8F%91%E8%A7%86%E5%9B%BE%E6%9B%B4%E6%96%B0%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">9.</span> <span class="nav-text">vue中触发视图更新与不能触发视图更新的操作</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#vscode%E4%B8%AD%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84vue%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.</span> <span class="nav-text">vscode中自定义一个简单的vue模板</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AF%BC%E5%85%A5"><span class="nav-number">1.1.</span> <span class="nav-text">前端自动化导入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#React%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8antd-mobile%E4%B8%AD%E7%9A%84%E8%B5%B0%E9%A9%AC%E7%81%AF%E7%BB%84%E4%BB%B6%E6%8A%A5%E9%94%99"><span class="nav-number">1.2.</span> <span class="nav-text">React项目中使用antd-mobile中的走马灯组件报错</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">报错代码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8A%A5%E9%94%99%E5%8E%9F%E5%9B%A0"><span class="nav-number">1.4.</span> <span class="nav-text">报错原因</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#elementui%E4%B8%ADselect%E4%B8%8B%E6%8B%89%E6%A1%86%E9%80%89%E4%B8%AD%E5%90%8E%E8%A7%86%E5%9B%BE%E6%97%A0%E6%B3%95%E6%9B%B4%E6%96%B0"><span class="nav-number">1.5.</span> <span class="nav-text">elementui中select下拉框选中后视图无法更新</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#element-ui%E4%B8%AD%E5%88%A9%E7%94%A8upload%E7%BB%84%E4%BB%B6%E4%B8%8A%E4%BC%A0excel%E8%A1%A8%E6%A0%BC%E5%88%B0%E5%90%8E%E7%AB%AF"><span class="nav-number">2.</span> <span class="nav-text">element-ui中利用upload组件上传excel表格到后端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E5%AF%BC%E5%87%BAexcel%E8%A1%A8%E6%A0%BC"><span class="nav-number">3.</span> <span class="nav-text">前端导出excel表格</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%A9%E7%94%A8%E4%BA%86%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8F%92%E6%8E%A5-xlsx-xlsx-style-file-saver"><span class="nav-number">3.1.</span> <span class="nav-text">利用了第三方插接 xlsx xlsx-style  file-saver</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vscode%E4%B8%ADprettier%E7%9A%84%E6%A0%BC%E5%BC%8F%E5%8C%96%E9%85%8D%E7%BD%AE%E8%AE%BE%E7%BD%AE"><span class="nav-number">4.</span> <span class="nav-text">vscode中prettier的格式化配置设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vue%E8%B8%A9%E7%9A%84%E5%9D%91error-%E2%80%98nextZoom%E2%80%99-is-assigned-a-value-but-never-used-no-unused-vars"><span class="nav-number">5.</span> <span class="nav-text">vue踩的坑error ‘nextZoom’ is assigned a value but never used no-unused-vars</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BD%93el-ment%E4%B8%ADform%E8%A1%A8%E5%8D%95%E9%A1%B9%E4%B8%BAv-if%E5%8A%A8%E6%80%81%E6%B8%B2%E6%9F%93%E6%97%B6%E9%AA%8C%E8%AF%81%E8%A7%84%E5%88%99%E6%B7%BB%E5%8A%A0%E5%A4%B1%E8%B4%A5"><span class="nav-number">6.</span> <span class="nav-text">当el-ment中form表单项为v-if动态渲染时验证规则添加失败</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E8%BF%9B%E8%A1%8Ccron%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E7%94%9F%E6%88%90-vue-element"><span class="nav-number">7.</span> <span class="nav-text">前端进行cron表达式的生成(vue+element)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E5%88%A9%E7%94%A8elementui%E8%A1%A8%E5%8D%95%E5%AF%B9cron%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BF%9B%E8%A1%8C%E6%A0%A1%E9%AA%8C"><span class="nav-number">8.</span> <span class="nav-text">前端利用elementui表单对cron表达式进行校验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vue%E4%B8%AD%E8%A7%A6%E5%8F%91%E8%A7%86%E5%9B%BE%E6%9B%B4%E6%96%B0%E4%B8%8E%E4%B8%8D%E8%83%BD%E8%A7%A6%E5%8F%91%E8%A7%86%E5%9B%BE%E6%9B%B4%E6%96%B0%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">9.</span> <span class="nav-text">vue中触发视图更新与不能触发视图更新的操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8XLSX%E5%AF%BC%E5%87%BAel-table%E8%A1%A8%E6%A0%BC%E6%95%B0%E6%8D%AE%E9%87%8D%E5%A4%8D%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">10.</span> <span class="nav-text">使用XLSX导出el-table表格数据重复的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Vue3%E4%B8%AD%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E7%BB%84%E4%BB%B6%E5%AE%9E%E4%BE%8B-getcurrentInstance"><span class="nav-number">11.</span> <span class="nav-text">Vue3中获取当前组件实例:getcurrentInstance()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0%E8%B7%9D%E7%A6%BB%E5%8F%AF%E8%A7%86%E5%8C%BA%E5%9F%9F%E7%9A%84%E8%B7%9D%E7%A6%BB%EF%BC%9Aelement-getBoundingClientRect"><span class="nav-number">12.</span> <span class="nav-text">获取元素距离可视区域的距离：element.getBoundingClientRect()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ajax%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">13.</span> <span class="nav-text">ajax实现图片&#x2F;文件上传遇到的问题</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -485,20 +547,20 @@ change()&#123;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
