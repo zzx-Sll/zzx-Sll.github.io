@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="性能优化 浏览器的渲染机制：  解析html解构生成Dom树 解析css生成CSSOM Dom和cssom合成renderTree Layout阶段，计算出每个节点在文档上的具体位置 Painting：将Layout后的节点内容呈现到屏幕上   重排(Reflow)与重绘(Repaint)  重排与重绘是无法避免的。重排是指元素的大小位置发生了变化，需要重新计算其在节点中的位置，引起整个文档都需要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="性能优化之重排与重绘">
+<meta property="og:url" content="http://example.com/2021/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/index.html">
+<meta property="og:site_name" content="zzx的个人博客">
+<meta property="og:description" content="性能优化 浏览器的渲染机制：  解析html解构生成Dom树 解析css生成CSSOM Dom和cssom合成renderTree Layout阶段，计算出每个节点在文档上的具体位置 Painting：将Layout后的节点内容呈现到屏幕上   重排(Reflow)与重绘(Repaint)  重排与重绘是无法避免的。重排是指元素的大小位置发生了变化，需要重新计算其在节点中的位置，引起整个文档都需要">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/pic01.jpg">
+<meta property="og:image" content="http://example.com/2021/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/pic02.jpg">
+<meta property="og:image" content="http://example.com/2021/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/pic03.jpg">
+<meta property="og:image" content="http://example.com/2021/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/pic04.jpg">
+<meta property="article:published_time" content="2021-10-22T07:39:40.000Z">
+<meta property="article:modified_time" content="2021-10-22T08:57:57.490Z">
+<meta property="article:author" content="zzx">
+<meta property="article:tag" content="性能优化">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/pic01.jpg">
+
+<link rel="canonical" href="http://example.com/2021/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>性能优化之重排与重绘 | zzx的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">zzx的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="敲代码是件快乐的事情">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          性能优化之重排与重绘
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-10-22 15:39:40 / 修改时间：16:57:57" itemprop="dateCreated datePublished" datetime="2021-10-22T15:39:40+08:00">2021-10-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h3><ul>
+<li><p>浏览器的渲染机制：</p>
+<ol>
+<li>解析html解构生成Dom树</li>
+<li>解析css生成CSSOM</li>
+<li>Dom和cssom合成renderTree</li>
+<li>Layout阶段，计算出每个节点在文档上的具体位置</li>
+<li>Painting：将Layout后的节点内容呈现到屏幕上</li>
+</ol>
+</li>
+<li><p>重排(Reflow)与重绘(Repaint)</p>
+<ul>
+<li>重排与重绘是无法避免的。重排是指元素的大小位置发生了变化，需要重新计算其在节点中的位置，引起整个文档都需要重新渲染。而重绘是值某个元素的背景色颜色边框颜色等等不影响其在文档上的位置时，只会引起文档的部分渲染。</li>
+<li>重排与重绘都需要消耗性能，而重排需要消耗极大的性能。</li>
+<li>重排一定会引起重绘，重绘不一定引起重排</li>
+</ul>
+</li>
+<li><p>当我们知道重排与重绘需要消耗很大性能时，我们应当考虑怎样操作来减少对性能的消耗</p>
+<ul>
+<li><p>我们应当尽量减少对DOM元素的操作。在vue中尽量以数据去驱动视图改变。而尽量避免直接操作DOM元素来改变视图</p>
+</li>
+<li><p>经常切换位置的元素可以使通过position：absoulte;来使元素脱离文档流这样修改元素时不会引起自身的重排/重绘，从而提升性能。</p>
+</li>
+<li><p>插入元素的操作放在操作css后。</p>
+</li>
+<li><p>当需要对DOM元素进行操作时，应进行批量操作，这样只会进行一次重排重绘。进而减少了很多性能消耗</p>
+<ul>
+<li><p>当我们只是对某个元素进行一些操作时，如果改变宽高、位置时。不要直接通过js去操作。而是可以通过js操作元素添加一个类名。这个类名改变这个元素的样式如宽高、位置。</p>
+</li>
+<li><p>当我们需要对多个元素进行某些同样的样式进行修改的话。我们可以通过自定义一些方法。先将这些元素从文档中移除，然后添加类名改变样式。最后再将这些元素添加进文档中。以下是一个例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 定义删除和插入函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">RemoveAndInsert</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line"><span class="keyword">const</span> parentNode = element.parentNode</span><br><span class="line"><span class="keyword">const</span> nextSibling = element.nextSibling</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;🚀 ~ file: 45.性能优化之相同样式修改多个元素样式.html ~ line 25 ~ RemoveAndInsert ~ nextSibling&#x27;</span>, nextSibling)</span><br><span class="line"><span class="comment">// 移除该元素</span></span><br><span class="line">parentNode.removeChild(element)</span><br><span class="line"><span class="comment">// 返回插入该元素的闭包回调函数</span></span><br><span class="line"><span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 判断插入元素的位置</span></span><br><span class="line">  <span class="keyword">if</span> (!nextSibling) parentNode.appendChild(element)</span><br><span class="line">  <span class="keyword">else</span> parentNode.insertBefore(element, nextSibling)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> ul = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.ul_all&#x27;</span>);</span><br><span class="line"><span class="comment">// console.log(&#x27;🚀 ~ file: 45.性能优化之相同样式修改多个元素样式.html ~ line 29 ~ ul&#x27;, ul)</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//</span></span><br><span class="line"> <span class="comment">// function </span></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">addClassTo</span>(<span class="params">element, className</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">let</span> lists = element.getElementsByTagName(<span class="string">&#x27;li&#x27;</span>)</span><br><span class="line"> <span class="comment">// 移除element</span></span><br><span class="line"> <span class="keyword">let</span> InsertCallback = RemoveAndInsert(ul)</span><br><span class="line"> <span class="comment">// 将HTMLCollection元素集合转换为数组结构</span></span><br><span class="line"> lists = <span class="built_in">Array</span>.from(lists)</span><br><span class="line"> <span class="comment">// console.log(&#x27;🚀 ~ file: 45.性能优化之相同样式修改多个元素样式.html ~ line 68 ~ addClassTo ~ lists&#x27;, lists)</span></span><br><span class="line"> <span class="comment">// 变量元素数组,添加类名</span></span><br><span class="line"> lists.forEach(<span class="function"><span class="params">li</span> =&gt;</span> &#123;</span><br><span class="line">  li.classList.add(className)</span><br><span class="line"> &#125;)</span><br><span class="line">  <span class="comment">// 添加完毕，将元素插入回文档中</span></span><br><span class="line">   InsertCallback()</span><br><span class="line">  &#125;</span><br><span class="line">  addClassTo(ul, <span class="string">&#x27;lis&#x27;</span>)</span><br><span class="line"> <span class="comment">// nodeList 和 HTMLCollection 的区别</span></span><br><span class="line"> <span class="comment">// nodeList返回的元素集合是静态的。 HTMLCollection返回的元素集合是动态。</span></span><br><span class="line"> <span class="comment">// querySelectAll返回NodeList。 getElementsByClassName 返回HTMLCollection</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过上面的代码我们将原效果图如下：<img src="/2021/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/pic01.jpg"> <img src="/2021/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/pic02.jpg"> <img src="/2021/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/pic03.jpg"> 通过将ul元素移除然后进行操作最后添加进文档中实现效果如下： <img src="/2021/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/pic04.jpg"></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" rel="tag"># 性能优化</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/10/20/%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E7%9A%84%E7%AE%80%E5%8D%95%E5%8E%BB%E9%87%8D/" rel="prev" title="对象数组的简单去重">
+      <i class="fa fa-chevron-left"></i> 对象数组的简单去重
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/10/26/jquery%E6%8E%A5%E6%94%B6%E5%90%8E%E7%AB%AF%E8%BF%94%E5%9B%9E%E7%9A%84%E6%96%87%E4%BB%B6%E6%B5%81%E5%B9%B6%E4%B8%8B%E8%BD%BD/" rel="next" title="jquery接收后端返回的文件流并下载">
+      jquery接收后端返回的文件流并下载 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">性能优化</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zzx"
+      src="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+  <p class="site-author-name" itemprop="name">zzx</p>
+  <div class="site-description" itemprop="description">敲代码是件快乐的事情</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zzx-Sll" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zzx-Sll" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zzx</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
