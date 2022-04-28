@@ -157,7 +157,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/03/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%B8%A6%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96url%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2%E5%8F%82%E6%95%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/16/js%E4%B8%AD%E5%87%A0%E7%A7%8Dundefined%E7%9A%84%E6%83%85%E5%86%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
@@ -171,83 +171,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/11/03/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%B8%A6%E5%87%BD%E6%95%B0%E8%8E%B7%E5%8F%96url%E8%B7%AF%E5%BE%84%E6%9F%A5%E8%AF%A2%E5%8F%82%E6%95%B0/" class="post-title-link" itemprop="url">浏览器自带函数获取url路径查询参数</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-03 17:00:41" itemprop="dateCreated datePublished" datetime="2021-11-03T17:00:41+08:00">2021-11-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-11-04 17:38:57" itemprop="dateModified" datetime="2021-11-04T17:38:57+08:00">2021-11-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="函数方法获取url路径的查询参数"><a href="#函数方法获取url路径的查询参数" class="headerlink" title="函数方法获取url路径的查询参数"></a>函数方法获取url路径的查询参数</h3><ul>
-<li>话不多说，直接上代码<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">        <span class="comment">/* </span></span><br><span class="line"><span class="comment">使用浏览器提供的查询函数 URLSearchParams</span></span><br><span class="line"><span class="comment">1 使用该构造函数new 一个路径查询参数对象，将url做为该函数测参数</span></span><br><span class="line"><span class="comment">2 用第一步得到的对象调用其原型链上的entries()方法 返回包含路径参数的键值对数组</span></span><br><span class="line"><span class="comment">3 用Object.fromEntries(上一步得到的数组)返回一个对象，此对象中就包含了路径查询参数</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;search&#x27;</span>, <span class="built_in">window</span>.location.search);</span><br><span class="line"><span class="keyword">let</span> Params = <span class="keyword">new</span> URLSearchParams(<span class="built_in">window</span>.location.search)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;🚀 ~ file: 51.获取浏览器查询参数.html ~ line 24 ~ Params&#x27;</span>, Params)</span><br><span class="line">Params = <span class="built_in">Object</span>.fromEntries(Params.entries())</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;🚀 ~ file: 51.获取浏览器查询参数.html ~ line 26 ~ Params&#x27;</span>, Params)</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/28/%E7%9B%92%E5%AD%90%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94%E3%80%81%E5%AE%BD%E9%AB%98%E7%AD%89%E6%AF%94%E7%BC%A9%E6%94%BE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
-      <meta itemprop="name" content="zzx">
-      <meta itemprop="description" content="敲代码是件快乐的事情">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zzx的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/28/%E7%9B%92%E5%AD%90%E5%AE%BD%E5%BA%A6%E8%87%AA%E9%80%82%E5%BA%94%E3%80%81%E5%AE%BD%E9%AB%98%E7%AD%89%E6%AF%94%E7%BC%A9%E6%94%BE/" class="post-title-link" itemprop="url">盒子宽度自适应、宽高等比缩放</a>
+            <a href="/2021/12/16/js%E4%B8%AD%E5%87%A0%E7%A7%8Dundefined%E7%9A%84%E6%83%85%E5%86%B5/" class="post-title-link" itemprop="url">js中几种undefined的情况</a>
         </h2>
 
         <div class="post-meta">
@@ -258,7 +182,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-10-28 16:37:56 / 修改时间：16:40:12" itemprop="dateCreated datePublished" datetime="2021-10-28T16:37:56+08:00">2021-10-28</time>
+              <time title="创建时间：2021-12-16 16:34:07 / 修改时间：16:45:32" itemprop="dateCreated datePublished" datetime="2021-12-16T16:34:07+08:00">2021-12-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -281,50 +205,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="几种css方法使盒子宽度自适应，宽高等比缩放"><a href="#几种css方法使盒子宽度自适应，宽高等比缩放" class="headerlink" title="几种css方法使盒子宽度自适应，宽高等比缩放"></a>几种css方法使盒子宽度自适应，宽高等比缩放</h3><ul>
-<li><pre><code class="css">      *,
-  div &#123;
-    margin: 0;
-    padding: 8px;
-  &#125;
-
-  /* 方法1:盒子宽度百分比 高度vh */
-  /* #app &#123;
-    margin: 0 auto;
-    width: 30%;
-    height: 30vh;
-    background-color: pink;
-  &#125; */
-
-  /* 方法2 盒子高度0 宽度百分比 利用 padding值相对于父盒子 设置padding百分比 */
-  /* #app &#123;
-    padding-bottom: 30%;
-    margin: 0 auto;
-    width: 30%;
-    height: 0;
-
-    background-color: pink;
-
-  &#125;
-  */
-  /* 方法3 盒子宽度百分比 伪元素content为空，然后垂直方向padding值100% 相当于宽度的百分比 */
-  #app &#123;
-    margin: 0 auto;
-    width: 30%;
-
-  &#125;
-
-  #app::after &#123;
-
-    display: block;
-    /* margin-top: ; */
-    width: 100%;
-
-    content: &#39;&#39;;
-    padding-top: 100%;
-    background-color: pink;
-  &#125;</code></pre>
-</li>
+          <h3 id="js中几种输出undefined的情况"><a href="#js中几种输出undefined的情况" class="headerlink" title="js中几种输出undefined的情况"></a>js中几种输出undefined的情况</h3><ul>
+<li>变量声明未赋值</li>
+<li>访问对象中不存在的属性时</li>
+<li>函数未return或者return undefined的时候</li>
+<li>函数需要实参，但是调用时未传参</li>
 </ul>
 
       
@@ -345,7 +230,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/26/jquery%E6%8E%A5%E6%94%B6%E5%90%8E%E7%AB%AF%E8%BF%94%E5%9B%9E%E7%9A%84%E6%96%87%E4%BB%B6%E6%B5%81%E5%B9%B6%E4%B8%8B%E8%BD%BD/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/13/%E5%87%BD%E6%95%B0%E7%9A%84%E5%A3%B0%E6%98%8E%E5%BC%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
@@ -359,7 +244,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/10/26/jquery%E6%8E%A5%E6%94%B6%E5%90%8E%E7%AB%AF%E8%BF%94%E5%9B%9E%E7%9A%84%E6%96%87%E4%BB%B6%E6%B5%81%E5%B9%B6%E4%B8%8B%E8%BD%BD/" class="post-title-link" itemprop="url">jquery接收后端返回的文件流并下载</a>
+            <a href="/2021/12/13/%E5%87%BD%E6%95%B0%E7%9A%84%E5%A3%B0%E6%98%8E%E5%BC%8F/" class="post-title-link" itemprop="url">函数的声明式</a>
         </h2>
 
         <div class="post-meta">
@@ -370,7 +255,16 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-10-26 10:04:11 / 修改时间：10:11:59" itemprop="dateCreated datePublished" datetime="2021-10-26T10:04:11+08:00">2021-10-26</time>
+              <time title="创建时间：2021-12-13 15:06:33 / 修改时间：15:18:06" itemprop="dateCreated datePublished" datetime="2021-12-13T15:06:33+08:00">2021-12-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
             </span>
 
           
@@ -384,63 +278,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="工作中遇到了一个问题，前端提交数据，后端返回文件流表格。前端进行接收并且下载"><a href="#工作中遇到了一个问题，前端提交数据，后端返回文件流表格。前端进行接收并且下载" class="headerlink" title="工作中遇到了一个问题，前端提交数据，后端返回文件流表格。前端进行接收并且下载"></a>工作中遇到了一个问题，前端提交数据，后端返回文件流表格。前端进行接收并且下载</h3><ul>
-<li><p>问题：由于用到了get请求，并且需要携带大量参数(吐槽一句,这样的请求方法属实有点毛病，但是不得不使用)。我在这里使用的是jquery。后端返回文件流不能直接接收下载，会导致乱码问题，故需要声明接收的数据类型为blob</p>
+          <h3 id="函数的声明方式在js中只有三种"><a href="#函数的声明方式在js中只有三种" class="headerlink" title="函数的声明方式在js中只有三种"></a>函数的声明方式在js中只有三种</h3><ul>
+<li>1 通过函数构造器声明<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="keyword">new</span> <span class="built_in">Function</span>()</span><br></pre></td></tr></table></figure></li>
+<li>2 函数表达式来声明<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;123&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>3 函数声明<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;123&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>注意：<ul>
+<li>其中，可以进行变量解析提升的只有函数声明方式。通过函数表达式来声明的函数无法进行函数提升。</li>
+<li>不建议在块级作用域中定义函数，如果非要定义函数只能通过函数表达式来定义函数</li>
+<li>函数表达来定义函数funciton 后不能定义名字。如 var f=function g(){},此时通过g来访问函数时无效的。typeof打印g为undefined。打印g()会报错。</li>
+<li>示例：<ul>
+<li><pre><code class="javascript">    var f = function g() &#123;
+        return 23;
+     &#125;;
+    typeof g(); // Error</code></pre>
 </li>
-<li><p>坑，在网上搜到一大堆答案都是说jquery不能直接声明接收的数据类型为blob，需要使用原生的XMLHttpRequest方法。但是原生的ajax不能携带参数到body(参数有点多所以需要放body里面)。然后有搜到答案说jquery直接在xhrFiled里面指定返回的数据类型为blob即可。但是试了半天发现报错。最后才发现项目使用的jquery版本为2.1不支持直接指定接收数据类型。然后又将版本升级到3.1才解决问题。话不多说了，直接上代码</p>
-<ul>
-<li><pre><code class="javascript">    // 发送请求
-    const url = `$&#123;this.basePath&#125;GetDownStEqBsExcel`;
-    $.ajax(&#123;
-      url: url,
-      type: &#39;GET&#39;,
-      data: &#123;
-        data: JSON.stringify(newTable),
-      &#125;,
-      // dataType: &quot;json&quot;,
-      traditional: true, //这里设置为true,否则传递数组数组失败
-      xhrFields: &#123;
-        responseType: &#39;blob&#39;, //声明返回数据类型
-      &#125;,
-
-      // 重写xhr
-      // xhr: function () &#123;
-      //   var xhr = new XMLHttpRequest();
-      //   xhr.responseType = &#39;blob&#39;;
-      //   return xhr;
-      // &#125;,
-      success: (res) =&gt; &#123;
-        this.downLoadXls(res, `测站设备导入模板.xls`);
-      &#125;,
-      error: (error) =&gt; &#123;
-        console.log(&#39;error&#39;, error);
-      &#125;,
-    &#125;);
-
-    //解析文件下载表格的方法
-     // 解析blob文件，并进行下载
-  downLoadXls(data, filename) &#123;
-    // var blob = new Blob([data], &#123; type: &#39;application/vnd.ms-excel;charset=utf-8&#39; &#125;); //接收的是blob，若接收的是文件流，需要转化一下
-
-    if (typeof window.chrome !== &#39;undefined&#39;) &#123;
-      // Chrome version
-      var link = document.createElement(&#39;a&#39;);
-      link.href = window.URL.createObjectURL(data);
-      link.download = filename;
-      link.click();
-    &#125; else if (typeof window.navigator.msSaveBlob !== &#39;undefined&#39;) &#123;
-      // IE version
-
-      var blob = new Blob([data], &#123; type: &#39;application/force-download&#39; &#125;);
-      window.navigator.msSaveBlob(blob, filename);
-    &#125; else &#123;
-      // Firefox version
-      var file = new File([data], filename, &#123;
-        type: &#39;application/force-download&#39;,
-      &#125;);
-      window.open(URL.createObjectURL(file));
-    &#125;
-  &#125;,</code></pre>
+</ul>
 </li>
 </ul>
 </li>
@@ -464,7 +316,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/01/requestAnimationFrame%E4%B9%8B%E6%B8%B2%E6%9F%93%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
@@ -478,7 +330,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/" class="post-title-link" itemprop="url">性能优化之重排与重绘</a>
+            <a href="/2021/12/01/requestAnimationFrame%E4%B9%8B%E6%B8%B2%E6%9F%93%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE/" class="post-title-link" itemprop="url">requestAnimationFrame之渲染大量数据</a>
         </h2>
 
         <div class="post-meta">
@@ -489,7 +341,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-10-22 15:39:40 / 修改时间：16:57:57" itemprop="dateCreated datePublished" datetime="2021-10-22T15:39:40+08:00">2021-10-22</time>
+              <time title="创建时间：2021-12-01 10:13:26 / 修改时间：10:18:57" itemprop="dateCreated datePublished" datetime="2021-12-01T10:13:26+08:00">2021-12-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -512,45 +364,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h3><ul>
-<li><p>浏览器的渲染机制：</p>
-<ol>
-<li>解析html解构生成Dom树</li>
-<li>解析css生成CSSOM</li>
-<li>Dom和cssom合成renderTree</li>
-<li>Layout阶段，计算出每个节点在文档上的具体位置</li>
-<li>Painting：将Layout后的节点内容呈现到屏幕上</li>
-</ol>
-</li>
-<li><p>重排(Reflow)与重绘(Repaint)</p>
+          <h3 id="requestAniamationFrame之渲染大量数据"><a href="#requestAniamationFrame之渲染大量数据" class="headerlink" title="requestAniamationFrame之渲染大量数据"></a>requestAniamationFrame之渲染大量数据</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>requestAnimationFrame渲染大量数据<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    ul &#123;</span><br><span class="line">      margin: 100px auto;</span><br><span class="line">      width: 500px;</span><br><span class="line">      height: 300px;</span><br><span class="line">      overflow: auto;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    li &#123;</span><br><span class="line">      list-style: none;</span><br><span class="line">      margin: 10px;</span><br><span class="line"><span class="css">      <span class="selector-tag">color</span>: <span class="selector-id">#7dbcfc</span>;</span></span><br><span class="line">      text-align: center;</span><br><span class="line">      height: 50px;</span><br><span class="line">      line-height: 50px;</span><br><span class="line"><span class="css">      <span class="selector-tag">background</span>: <span class="selector-id">#e8f3fe</span>;</span></span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">  /*</span><br><span class="line"><span class="javascript">  <span class="built_in">window</span>.requestAnimationFrame(callback)：告诉浏览器你希望执行一个动画，并且这个动画的执行时机为浏览器下次重绘之前</span></span><br><span class="line">      callback:为下次重绘之前调用的函数来更新动画。该函数会被传入DOMHighResTimeStamp作为参数，表示requestAnimationFrame()执行callback的时刻</span><br><span class="line"><span class="javascript">  和<span class="built_in">setTimeout</span>相比，优点是将函数的调用时机交给浏览器，浏览器多久刷新重绘一次就调用一次，这样做的好处是不会掉帧，不会引起卡顿。提高了CPU性能。</span></span><br><span class="line"></span><br><span class="line">  */</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  /*</span><br><span class="line">  渲染十万条数据:</span><br><span class="line">   定义渲染的函数：分页显示。循环调用</span><br><span class="line">   定义requestAnimationFrame的callback</span><br><span class="line">  */</span><br><span class="line"><span class="javascript">  <span class="keyword">let</span> ul = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;ul&#x27;</span>)</span></span><br><span class="line"><span class="javascript">  <span class="comment">// 加载的总条数</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">let</span> total = <span class="number">30</span></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 每页条数</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">let</span> pageSize = <span class="number">20</span></span></span><br><span class="line"><span class="javascript">  <span class="comment">// 当前页码</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">let</span> currentPage = <span class="number">1</span></span></span><br><span class="line"></span><br><span class="line">  /* </span><br><span class="line">    渲染函数</span><br><span class="line">  */</span><br><span class="line"><span class="javascript">  <span class="function"><span class="keyword">function</span> <span class="title">loop</span>(<span class="params">currentTotal, pageSize</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">&#x27;loop&#x27;</span>)</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 判断当前传入的总数据条数是否大于0，如果小于等于0则直接return</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">if</span> (currentTotal &lt;= <span class="number">0</span>) <span class="keyword">return</span></span></span><br><span class="line"><span class="javascript">    <span class="comment">// currentTotal&gt;0 todo</span></span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="comment">// 取当前剩余的总条数和pageSize中较小值，防止当前剩余的条数小于分页条数时渲染的条数出错</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> count = <span class="built_in">Math</span>.min(currentTotal, pageSize)</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="built_in">window</span>.requestAnimationFrame(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= count; i++) &#123;</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 创建li标签</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> li = <span class="built_in">document</span>.createElement(<span class="string">&#x27;li&#x27;</span>)</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 得到当前的索引</span></span></span><br><span class="line"><span class="javascript">        <span class="keyword">let</span> index = (currentPage - <span class="number">1</span>) * pageSize + i</span></span><br><span class="line"><span class="javascript">        <span class="comment">// 写入内容</span></span></span><br><span class="line"><span class="javascript">        li.innerHTML = <span class="string">`当前是第<span class="subst">$&#123;index&#125;</span>条`</span></span></span><br><span class="line"><span class="javascript">        <span class="comment">// 插入进Li中</span></span></span><br><span class="line">        ul.appendChild(li)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">      <span class="comment">// 得到当前剩余的条数</span></span></span><br><span class="line"><span class="javascript">      <span class="keyword">let</span> restTotal = currentTotal - count</span></span><br><span class="line"><span class="javascript">      <span class="comment">// 页码加1</span></span></span><br><span class="line">      currentPage++</span><br><span class="line"><span class="javascript">      <span class="comment">// 递归调用加载</span></span></span><br><span class="line">      loop(restTotal, pageSize)</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">  <span class="comment">// 调用函数</span></span></span><br><span class="line">  loop(total, pageSize);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>重排与重绘是无法避免的。重排是指元素的大小位置发生了变化，需要重新计算其在节点中的位置，引起整个文档都需要重新渲染。而重绘是值某个元素的背景色颜色边框颜色等等不影响其在文档上的位置时，只会引起文档的部分渲染。</li>
-<li>重排与重绘都需要消耗性能，而重排需要消耗极大的性能。</li>
-<li>重排一定会引起重绘，重绘不一定引起重排</li>
-</ul>
-</li>
-<li><p>当我们知道重排与重绘需要消耗很大性能时，我们应当考虑怎样操作来减少对性能的消耗</p>
+<li><p>优点</p>
 <ul>
-<li><p>我们应当尽量减少对DOM元素的操作。在vue中尽量以数据去驱动视图改变。而尽量避免直接操作DOM元素来改变视图</p>
+<li><p>CPU 节能：使用 setTimeout 实现的动画，当页面被隐藏或最小化时，setTimeout 仍然在后台执行动画任务，由于此时页面处于不可见或不可用状态，刷新动画是没有意义的，完全是浪费 CPU 资源。而 requestAnimationFrame 则完全不同，当页面处理未激活的状态下，该页面的屏幕刷新任务也会被系统暂停，因此跟着系统步伐走的 requestAnimationFrame 也会停止渲染，当页面被激活时，动画就从上次停留的地方继续执行，有效节省了 CPU 开销</p>
+<p>作者：lzg9527<br>链接：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7028744289890861063">https://juejin.cn/post/7028744289890861063</a><br>来源：稀土掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 </li>
-<li><p>经常切换位置的元素可以使通过position：absoulte;来使元素脱离文档流这样修改元素时不会引起自身的重排/重绘，从而提升性能。</p>
-</li>
-<li><p>插入元素的操作放在操作css后。</p>
-</li>
-<li><p>当需要对DOM元素进行操作时，应进行批量操作，这样只会进行一次重排重绘。进而减少了很多性能消耗</p>
-<ul>
-<li><p>当我们只是对某个元素进行一些操作时，如果改变宽高、位置时。不要直接通过js去操作。而是可以通过js操作元素添加一个类名。这个类名改变这个元素的样式如宽高、位置。</p>
-</li>
-<li><p>当我们需要对多个元素进行某些同样的样式进行修改的话。我们可以通过自定义一些方法。先将这些元素从文档中移除，然后添加类名改变样式。最后再将这些元素添加进文档中。以下是一个例子：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 定义删除和插入函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">RemoveAndInsert</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line"><span class="keyword">const</span> parentNode = element.parentNode</span><br><span class="line"><span class="keyword">const</span> nextSibling = element.nextSibling</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;🚀 ~ file: 45.性能优化之相同样式修改多个元素样式.html ~ line 25 ~ RemoveAndInsert ~ nextSibling&#x27;</span>, nextSibling)</span><br><span class="line"><span class="comment">// 移除该元素</span></span><br><span class="line">parentNode.removeChild(element)</span><br><span class="line"><span class="comment">// 返回插入该元素的闭包回调函数</span></span><br><span class="line"><span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 判断插入元素的位置</span></span><br><span class="line">  <span class="keyword">if</span> (!nextSibling) parentNode.appendChild(element)</span><br><span class="line">  <span class="keyword">else</span> parentNode.insertBefore(element, nextSibling)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> ul = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.ul_all&#x27;</span>);</span><br><span class="line"><span class="comment">// console.log(&#x27;🚀 ~ file: 45.性能优化之相同样式修改多个元素样式.html ~ line 29 ~ ul&#x27;, ul)</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">//</span></span><br><span class="line"> <span class="comment">// function </span></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">addClassTo</span>(<span class="params">element, className</span>) </span>&#123;</span><br><span class="line"> <span class="keyword">let</span> lists = element.getElementsByTagName(<span class="string">&#x27;li&#x27;</span>)</span><br><span class="line"> <span class="comment">// 移除element</span></span><br><span class="line"> <span class="keyword">let</span> InsertCallback = RemoveAndInsert(ul)</span><br><span class="line"> <span class="comment">// 将HTMLCollection元素集合转换为数组结构</span></span><br><span class="line"> lists = <span class="built_in">Array</span>.from(lists)</span><br><span class="line"> <span class="comment">// console.log(&#x27;🚀 ~ file: 45.性能优化之相同样式修改多个元素样式.html ~ line 68 ~ addClassTo ~ lists&#x27;, lists)</span></span><br><span class="line"> <span class="comment">// 变量元素数组,添加类名</span></span><br><span class="line"> lists.forEach(<span class="function"><span class="params">li</span> =&gt;</span> &#123;</span><br><span class="line">  li.classList.add(className)</span><br><span class="line"> &#125;)</span><br><span class="line">  <span class="comment">// 添加完毕，将元素插入回文档中</span></span><br><span class="line">   InsertCallback()</span><br><span class="line">  &#125;</span><br><span class="line">  addClassTo(ul, <span class="string">&#x27;lis&#x27;</span>)</span><br><span class="line"> <span class="comment">// nodeList 和 HTMLCollection 的区别</span></span><br><span class="line"> <span class="comment">// nodeList返回的元素集合是静态的。 HTMLCollection返回的元素集合是动态。</span></span><br><span class="line"> <span class="comment">// querySelectAll返回NodeList。 getElementsByClassName 返回HTMLCollection</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>通过上面的代码我们将原效果图如下：<img src="/2021/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/pic01.jpg"> <img src="/2021/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/pic02.jpg"> <img src="/2021/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/pic03.jpg"> 通过将ul元素移除然后进行操作最后添加进文档中实现效果如下： <img src="/2021/10/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E4%B9%8B%E9%87%8D%E6%8E%92%E4%B8%8E%E9%87%8D%E7%BB%98/pic04.jpg"></p>
+<li><p>函数节流：在高频率事件(resize,scroll 等)中，为了防止在一个刷新间隔内发生多次函数执行，使用 requestAnimationFrame 可保证每个刷新间隔内，函数只被执行一次，这样既能保证流畅性，也能更好的节省函数执行的开销。一个刷新间隔内函数执行多次时没有意义的，因为显示器每 16.7ms 刷新一次，多次绘制并不会在屏幕上体现出来。</p>
 </li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
+<pre><code>作者：lzg9527
+链接：https://juejin.cn/post/7028744289890861063
+来源：稀土掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</code></pre>
 
       
     </div>
@@ -570,7 +400,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/20/%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E7%9A%84%E7%AE%80%E5%8D%95%E5%8E%BB%E9%87%8D/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/29/IntersectionObserver%E4%B9%8B%E6%97%A0%E9%99%90%E6%BB%9A%E5%8A%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
@@ -584,7 +414,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/10/20/%E5%AF%B9%E8%B1%A1%E6%95%B0%E7%BB%84%E7%9A%84%E7%AE%80%E5%8D%95%E5%8E%BB%E9%87%8D/" class="post-title-link" itemprop="url">对象数组的简单去重</a>
+            <a href="/2021/11/29/IntersectionObserver%E4%B9%8B%E6%97%A0%E9%99%90%E6%BB%9A%E5%8A%A8/" class="post-title-link" itemprop="url">IntersectionObserver之无限滚动</a>
         </h2>
 
         <div class="post-meta">
@@ -593,16 +423,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-10-20 17:51:24" itemprop="dateCreated datePublished" datetime="2021-10-20T17:51:24+08:00">2021-10-20</time>
+              <time title="创建时间：2021-11-29 10:03:48 / 修改时间：10:12:13" itemprop="dateCreated datePublished" datetime="2021-11-29T10:03:48+08:00">2021-11-29</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-22 15:55:58" itemprop="dateModified" datetime="2021-10-22T15:55:58+08:00">2021-10-22</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -624,7 +448,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="数组对象根据属性的简单去重"><a href="#数组对象根据属性的简单去重" class="headerlink" title="数组对象根据属性的简单去重"></a>数组对象根据属性的简单去重</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1 合并数组得到新数组</span></span><br><span class="line"><span class="comment">2 新数组filter(item,index)=&gt;&#123;新数组findIndex方法遍历 return </span></span><br><span class="line"><span class="comment"> 新数组.findIndex(citem=&gt;&#123;</span></span><br><span class="line"><span class="comment">  根据属性、值来进行判断相等过滤</span></span><br><span class="line"><span class="comment"> &#125;)===index&#125; </span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">let</span> a = [&#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span>, <span class="attr">age</span>: <span class="number">18</span> &#125;, &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">name</span>: <span class="string">&#x27;ls&#x27;</span>, <span class="attr">age</span>: <span class="number">18</span> &#125;, &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span>, <span class="attr">age</span>: <span class="number">18</span> &#125;];</span><br><span class="line"><span class="keyword">let</span> b = [&#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">name</span>: <span class="string">&#x27;zs&#x27;</span>, <span class="attr">age</span>: <span class="number">18</span> &#125;, &#123; <span class="attr">id</span>: <span class="number">4</span>, <span class="attr">name</span>: <span class="string">&#x27;ww&#x27;</span>, <span class="attr">age</span>: <span class="number">28</span> &#125;];</span><br><span class="line"></span><br><span class="line">a = a.concat(b)</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="comment">// filter + findIndex 去重</span></span><br><span class="line">a = a.filter(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> a.findIndex(<span class="function">(<span class="params">citem</span>) =&gt;</span> citem.id === item.id &amp;&amp; citem.name === item.name &amp;&amp; citem.age === item.age) === index</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="comment">// reduce+findIndex方法去重</span></span><br><span class="line"><span class="keyword">let</span> arr = a.reduce(<span class="function">(<span class="params">arr, cur, index, a</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (a.findIndex(<span class="function"><span class="params">item</span> =&gt;</span> item.id === cur.id &amp;&amp; item.name === cur.name) === index) &#123; arr.push(cur) &#125;</span><br><span class="line">  <span class="keyword">return</span> arr</span><br><span class="line">&#125;, [])</span><br><span class="line"><span class="built_in">console</span>.log(arr);</span><br></pre></td></tr></table></figure>
+          <h3 id="除了图片懒加载，无限滚动也同样可以使用IntersectionObserver来完成"><a href="#除了图片懒加载，无限滚动也同样可以使用IntersectionObserver来完成" class="headerlink" title="除了图片懒加载，无限滚动也同样可以使用IntersectionObserver来完成"></a>除了图片懒加载，无限滚动也同样可以使用IntersectionObserver来完成</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">            </span><br><span class="line">            <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">title</span>&gt;</span>无限滚动<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">            h1 &#123;</span><br><span class="line">              text-align: center;</span><br><span class="line">            &#125;</span><br><span class="line">        </span><br><span class="line">            ul &#123;</span><br><span class="line">              margin: 200px auto;</span><br><span class="line">              width: 500px;</span><br><span class="line">              height: 300px;</span><br><span class="line">              overflow: auto;</span><br><span class="line">            &#125;</span><br><span class="line">        </span><br><span class="line">            li &#123;</span><br><span class="line">               list-style: none;</span><br><span class="line">               margin: 10px;</span><br><span class="line"><span class="css">               <span class="selector-tag">color</span>: <span class="selector-id">#7dbcfc</span>;</span></span><br><span class="line">               text-align: center;</span><br><span class="line">               height: 50px;</span><br><span class="line">               line-height: 50px;</span><br><span class="line"><span class="css">               <span class="selector-tag">background</span>: <span class="selector-id">#e8f3fe</span>;</span></span><br><span class="line">             &#125;</span><br><span class="line">            <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">          </span><br><span class="line">           <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">h1</span>&gt;</span>无限滚动<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">              <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">          </span><br><span class="line">            <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line">               /*</span><br><span class="line">                  无限滚动也可以使用IntersectionObserver来实现</span><br><span class="line">           </span><br><span class="line">                   IntersectionObserver是一个函数构造器,接收一个callback函数来监视处理相关变化,返回一个实例对象       obsever</span><br><span class="line">                      obsever 对象的四个方法：</span><br><span class="line">                        1 observer.observe(target,option) (option可选参数)开启监视 监视多个元素则多次调用该方法</span><br><span class="line">                        2 observer.unobserve() 停止对象观察工作</span><br><span class="line">                        3 observer.disconnect(element) 停止特定元素监听</span><br><span class="line">                        4 observer.takeRecord() 返回所有观察对象数组</span><br><span class="line">                      当目标元素的可见性发生变化时，callback函数就会触发。一般来说会触发两次，一次是目标元素进入可视       区，一次是完全离开可视区。</span><br><span class="line">                      callback(entries)参数entries包括监听成员，如果监听了两个就有两个成员。而被监听元素的属性如下：</span><br><span class="line">                        time:可见性发生变化的时间戳。单位为毫秒</span><br><span class="line">                        target:被观察的目标元素。</span><br><span class="line">                        isIntersecting:目标元素是否可见</span><br><span class="line"><span class="javascript">                        rootBounds:根元素的矩形区域信息,getBoundingClientRect()方法的返回值，如果没有根元素则(相对       于视口滚动)返回<span class="literal">null</span>.</span></span><br><span class="line">                        boundingClientRect()：目标元素的矩形区域信息</span><br><span class="line">                        intersectionRect:目标元素与视口(或者根元素)的交叉区域信息。</span><br><span class="line">                        intersectionRatio:目标元素的可见区域比例,即intersectionRect占boundingClientRect的比例，完       全可见为1完全不可见时小于等于0</span><br><span class="line">          */</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">           /* </span><br><span class="line">             1 获取监听滚动的元素 (li)</span><br><span class="line">             2  创建监听可视区域的变化的callback(entries)</span><br><span class="line"><span class="javascript">             <span class="number">3</span> 实例化observer=<span class="keyword">new</span> IntersectionObserver(callback)</span></span><br><span class="line">             4 监听可视状态的变化 observer.observe(target)</span><br><span class="line">             5 callback 函数中 需要用到 MutationObserver()，当非可视区域的li滚动到可视区域时，需要创建多个li，然后append进父元素中这样才能实现无限滚动</span><br><span class="line">           */</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="javascript">           <span class="comment">//  获取ul元素</span></span></span><br><span class="line"><span class="javascript">           <span class="keyword">let</span> ulDom = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;ul&#x27;</span>);</span></span><br><span class="line"><span class="javascript">           <span class="comment">// 获取li元素</span></span></span><br><span class="line"><span class="javascript">           <span class="keyword">let</span> lis = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;li&#x27;</span>);</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">           <span class="comment">//  设定最大值</span></span></span><br><span class="line"><span class="javascript">           <span class="keyword">let</span> max = <span class="number">60</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">           <span class="comment">// 当前滚动条的位置</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// let targetScrollY = 0;</span></span></span><br><span class="line">     </span><br><span class="line"><span class="javascript">            <span class="comment">// 当前被监视的元素</span></span></span><br><span class="line"><span class="javascript">            <span class="comment">// let targetDom;</span></span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="javascript">           <span class="comment">// 监听结构变化的</span></span></span><br><span class="line"><span class="javascript">           <span class="function"><span class="keyword">function</span> <span class="title">NodeCallback</span>(<span class="params">mutationList, nodeObserve</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">             <span class="comment">// console.log(&#123; mutationList &#125;);</span></span></span><br><span class="line"><span class="javascript">             mutationList.forEach(<span class="function"><span class="params">record</span> =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">               <span class="keyword">if</span> (record.type === <span class="string">&#x27;childList&#x27;</span>) <span class="built_in">console</span>.log(<span class="string">&#x27;插入了li&#x27;</span>);</span></span><br><span class="line">             &#125;)</span><br><span class="line"> </span><br><span class="line">           &#125;</span><br><span class="line"> </span><br><span class="line"><span class="javascript">           <span class="keyword">let</span> nodeObserve = <span class="keyword">new</span> MutationObserver(NodeCallback);</span></span><br><span class="line"><span class="javascript">           nodeObserve.observe(ulDom, &#123; <span class="attr">childList</span>: <span class="literal">true</span>, <span class="attr">attributes</span>: <span class="literal">true</span>, <span class="attr">subtree</span>: <span class="literal">true</span> &#125;)</span></span><br><span class="line"></span><br><span class="line">          /* </span><br><span class="line">           1 获取监听滚动的目标元素</span><br><span class="line">           2 定义监听元素可视状态变化的callback:元素不可见时则调用 创建加载li的函数</span><br><span class="line">           3 实例化IntersectionObserver </span><br><span class="line">           4 进行可视状态的监听</span><br><span class="line">          */</span><br><span class="line"><span class="javascript">          <span class="keyword">let</span> observer = <span class="keyword">new</span> IntersectionObserver(callback)</span></span><br><span class="line"><span class="javascript">          <span class="function"><span class="keyword">function</span> <span class="title">callback</span>(<span class="params">entries</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">            <span class="built_in">console</span>.log(&#123; entries &#125;);</span></span><br><span class="line"><span class="javascript">            <span class="comment">// 如果最后一个li进入了可视区域则继续加载</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">let</span> lastLi = entries[<span class="number">0</span>]</span></span><br><span class="line">  </span><br><span class="line"><span class="javascript">            <span class="comment">// 当当前被监视的元素进入到可视区域时则继续加载创建li</span></span></span><br><span class="line"><span class="javascript">            <span class="keyword">if</span> (lastLi.isIntersecting) &#123;</span></span><br><span class="line">              loadLis(2)</span><br><span class="line"><span class="javascript">              <span class="comment">// 移除对当前的元素监听防止向上滚动时也继续加载li</span></span></span><br><span class="line">              observer.unobserve(lastLi.target)</span><br><span class="line"><span class="javascript">            &#125; <span class="keyword">else</span> <span class="keyword">return</span></span></span><br><span class="line">  </span><br><span class="line">          &#125;</span><br><span class="line">  </span><br><span class="line"><span class="javascript">          <span class="comment">// 调用写入内容的方法</span></span></span><br><span class="line">          writeInnerHtml(lis)</span><br><span class="line">  </span><br><span class="line"><span class="javascript">             <span class="comment">// 加载li的函数</span></span></span><br><span class="line"><span class="javascript">             <span class="function"><span class="keyword">function</span> <span class="title">loadLis</span>(<span class="params">count</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">               <span class="comment">// 记录当前的滚动位置</span></span></span><br><span class="line"><span class="javascript">               <span class="keyword">let</span> targetScrollY = ulDom.scrollTop</span></span><br><span class="line"><span class="javascript">               <span class="comment">// 删除ul</span></span></span><br><span class="line"><span class="javascript">               <span class="keyword">let</span> insertCallback = removeAndInsert(ulDom)</span></span><br><span class="line"><span class="javascript">               <span class="comment">// 循环插入li</span></span></span><br><span class="line"><span class="javascript">               <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span></span><br><span class="line"><span class="javascript">                 <span class="comment">// 循环创建li </span></span></span><br><span class="line"><span class="javascript">                 <span class="keyword">let</span> li = <span class="built_in">document</span>.createElement(<span class="string">&#x27;li&#x27;</span>)</span></span><br><span class="line"><span class="javascript">                 <span class="comment">//  插入li</span></span></span><br><span class="line">                 ulDom.appendChild(li)</span><br><span class="line">  </span><br><span class="line">               &#125;</span><br><span class="line">  </span><br><span class="line"><span class="javascript">               <span class="comment">// 插入完毕后将ul插入document中</span></span></span><br><span class="line">               insertCallback()</span><br><span class="line"><span class="javascript">               <span class="comment">// 插入之后滚动到原位置</span></span></span><br><span class="line">               ulDom.scrollTo(&#123;</span><br><span class="line">                 top: targetScrollY,</span><br><span class="line">  </span><br><span class="line">               &#125;)</span><br><span class="line"><span class="javascript">               <span class="comment">// 写入内容</span></span></span><br><span class="line">               writeInnerHtml(lis)</span><br><span class="line">             &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line"><span class="javascript">             <span class="comment">// removeAndInsert</span></span></span><br><span class="line">             /*</span><br><span class="line">               removeAndInsert:删除目标节点，根据当前节点是否有下一个兄弟元素来选择插入的方法。并且返回这    个 插入的方法</span><br><span class="line">               target:目标节点 </span><br><span class="line">           </span><br><span class="line">             */</span><br><span class="line"><span class="javascript">             <span class="function"><span class="keyword">function</span> <span class="title">removeAndInsert</span>(<span class="params">target</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">               <span class="comment">// 获取父级元素和下一个兄弟元素，如果有下一个兄弟元素则是insertBefore插入，否则为    appendchild插入</span></span></span><br><span class="line"><span class="javascript">               <span class="keyword">let</span> parentNode = target.parentNode</span></span><br><span class="line"><span class="javascript">                     <span class="keyword">let</span> nextSibling = target.nextSibling</span></span><br><span class="line">              </span><br><span class="line"><span class="javascript">                 <span class="comment">// 移除目标元素</span></span></span><br><span class="line">                 parentNode.removeChild(target)</span><br><span class="line"><span class="javascript">                 <span class="comment">// 返回插入的方法</span></span></span><br><span class="line"><span class="javascript">                 <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">                   <span class="keyword">if</span> (nextSibling) &#123;</span></span><br><span class="line">                     parentNode.insertBefore(target, nextSibling)</span><br><span class="line"><span class="javascript">                   &#125; <span class="keyword">else</span> &#123;</span></span><br><span class="line">                     parentNode.appendChild(target)</span><br><span class="line">                   &#125;</span><br><span class="line">                 &#125;</span><br><span class="line">               &#125;</span><br><span class="line">              </span><br><span class="line">       </span><br><span class="line"></span><br><span class="line">              /* </span><br><span class="line">                写入内容的函数</span><br><span class="line">              */</span><br><span class="line">      </span><br><span class="line"><span class="javascript">              <span class="function"><span class="keyword">function</span> <span class="title">writeInnerHtml</span>(<span class="params">arr</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">                (<span class="built_in">Array</span>.from(arr)).forEach(<span class="function">(<span class="params">li, index</span>) =&gt;</span> &#123;</span></span><br><span class="line"><span class="javascript">                  <span class="comment">// 写入li的内容为index</span></span></span><br><span class="line">                  li.innerHTML = index + 1</span><br><span class="line"><span class="javascript">                  <span class="comment">// 给li插入属性为index</span></span></span><br><span class="line"><span class="javascript">                  li.setAttribute(<span class="string">&#x27;index&#x27;</span>, index)</span></span><br><span class="line"><span class="javascript">                  <span class="keyword">if</span> (arr.length - <span class="number">1</span> === index) &#123;  <span class="comment">// 监听可视状态变化</span></span></span><br><span class="line"><span class="javascript">                    <span class="comment">// targetDom = li</span></span></span><br><span class="line">                    observer.observe(li, &#123;</span><br><span class="line">                      root: ulDom</span><br><span class="line">                    &#125;)</span><br><span class="line">                  &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">      </span><br><span class="line">              &#125;</span><br><span class="line">      </span><br><span class="line">             <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">       <span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
       
     </div>
 
@@ -643,7 +469,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/09/elementui%E8%8F%9C%E5%8D%95%E6%A0%8F%E6%8A%98%E5%8F%A0%E9%97%AE%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/29/IntersectionObserver%E4%B9%8B%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
@@ -657,7 +483,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/10/09/elementui%E8%8F%9C%E5%8D%95%E6%A0%8F%E6%8A%98%E5%8F%A0%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">elementui菜单栏折叠问题</a>
+            <a href="/2021/11/29/IntersectionObserver%E4%B9%8B%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/" class="post-title-link" itemprop="url">IntersectionObserver之图片懒加载</a>
         </h2>
 
         <div class="post-meta">
@@ -666,16 +492,19 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-10-09 18:10:04" itemprop="dateCreated datePublished" datetime="2021-10-09T18:10:04+08:00">2021-10-09</time>
+              <time title="创建时间：2021-11-29 09:57:30 / 修改时间：10:03:14" itemprop="dateCreated datePublished" datetime="2021-11-29T09:57:30+08:00">2021-11-29</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-10-28 17:57:44" itemprop="dateModified" datetime="2021-10-28T17:57:44+08:00">2021-10-28</time>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
               </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
 
           
 
@@ -688,103 +517,114 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="elementui菜单栏折叠问题"><a href="#elementui菜单栏折叠问题" class="headerlink" title="elementui菜单栏折叠问题"></a>elementui菜单栏折叠问题</h4><ul>
-<li><p>问题描述：当菜单栏使用动态折叠后,鼠标移入会提示栈溢出问题</p>
+          <h3 id="IntersectionObserver之图片懒加载"><a href="#IntersectionObserver之图片懒加载" class="headerlink" title="IntersectionObserver之图片懒加载"></a>IntersectionObserver之图片懒加载</h3><ul>
+<li><p>传统的图片懒加载是通过监听scroll事件结合getBoundingClientRect()返回图片盒子与可视区域的矩形区域信息来做的。但是这样做的缺点就是scroll滚动时会频繁触发，对性能消耗比较大。我们可以利用新的API IntersectionObsever来做</p>
 </li>
-<li><p>原因：网上查阅可能是由于递归子菜单，而submenu默认append-to-body，冒泡时会导致进入死循环</p>
-</li>
-<li><p>解决方法：</p>
-<ul>
-<li><p>可以直接设置submenu属性popper-append-to-body为false。但是我使用后鼠标移入不会弹出子菜单，故采用了第二种方法</p>
-</li>
-<li><p>在递归的submenu外面套一个div，然后会出现文字和右箭头无法隐藏。第二步设置css隐藏文字和右箭头</p>
-</li>
-<li><p>代码如下：</p>
-<ul>
-<li><pre><code class="html">  &lt;template&gt;
-          &lt;!-- 最外层套div解决折叠菜单后鼠标移入导致栈溢出问题 --&gt;
-         &lt;div&gt;
-          &lt;BasicMenuItem v-if=&quot;!menuHasChildren(menuItem)&quot; :menuItem=&quot;menuItem&quot; /&gt;
-           &lt;el-submenu v-else :key=&quot;menuItem.path&quot; :index=&quot;menuItem.path&quot;&gt;
-               &lt;template #title&gt;
-         &lt;BasicMenuItemContent :menuItem=&quot;menuItem&quot; /&gt;
-             &lt;/template&gt;
-              &lt;template&gt;
-         &lt;BasicSubMenuItem
-           v-for=&quot;childrenItem in menuItem.children&quot;
-           :menuItem=&quot;childrenItem&quot;
-           :key=&quot;childrenItem.path&quot;
-         /&gt;
-          &lt;/template&gt;
-          &lt;/el-submenu&gt;
-          &lt;/div&gt;
-         &lt;/template&gt;
+<li><pre><code class="html">               &lt;!DOCTYPE html&gt;
+           &lt;html lang=&quot;en&quot;&gt;
 
-           &lt;script&gt;
-           import &#123; isArray &#125; from &quot;@/components/utils/is&quot;;
+          &lt;head&gt;
+           &lt;meta charset=&quot;UTF-8&quot;&gt;
+           &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+           &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+           &lt;title&gt;Document&lt;/title&gt;
+           &lt;style&gt;
+             .img-box &#123;
+               margin-bottom: 20px;
 
-           import BasicMenuItem from &quot;./BasicMenuItem.vue&quot;;
-           import BasicMenuItemContent from &quot;./BasicMenuItemContent.vue&quot;;
+               width: 100%;
+               height: 500px;
+               border: 1px solid #eee;
 
-           export default &#123;
-           name: &quot;BasicSubMenuItem&quot;,
-           components: &#123; BasicMenuItem, BasicMenuItemContent &#125;,
-           props: &#123;
-             menuItem: Object
-           &#125;,
-           methods: &#123;
-             menuHasChildren(menuItem) &#123;
-               return isArray(menuItem.children) &amp;&amp; menuItem.children.length &gt; 0;
              &#125;
-           &#125;
-           &#125;;
-           &lt;/script&gt;
 
-           &lt;style scoped lang=&quot;less&quot;&gt;&lt;/style&gt;
+             .img-box img &#123;
+               width: 100%;
+               height: 100%;
+             &#125;
+           &lt;/style&gt;
+          &lt;/head&gt;
+
+          &lt;body&gt;
+           &lt;div class=&quot;img-box&quot;&gt;&lt;img src=&quot;./images/404notfind.jfif&quot; alt=&quot;&quot; data-src=&quot;&quot;&gt;&lt;/div&gt;
+           &lt;div class=&quot;img-box&quot;&gt;&lt;img src=&quot;./images/404notfind.jfif&quot; alt=&quot;&quot; data-src=&quot;&quot;&gt;&lt;/div&gt;
+           &lt;div class=&quot;img-box&quot;&gt;&lt;img src=&quot;./images/404notfind.jfif&quot; alt=&quot;&quot; data-src=&quot;&quot;&gt;&lt;/div&gt;
+           &lt;div class=&quot;img-box&quot;&gt;&lt;img src=&quot;./images/404notfind.jfif&quot; alt=&quot;&quot; data-src=&quot;&quot;&gt;&lt;/div&gt;
+           &lt;div class=&quot;img-box&quot;&gt;&lt;img src=&quot;./images/404notfind.jfif&quot; alt=&quot;&quot; data-src=&quot;&quot;&gt;&lt;/div&gt;
+           &lt;div class=&quot;img-box&quot;&gt;&lt;img src=&quot;./images/404notfind.jfif&quot; alt=&quot;&quot; data-src=&quot;&quot;&gt;&lt;/div&gt;
+           &lt;div class=&quot;img-box&quot;&gt;&lt;img src=&quot;./images/404notfind.jfif&quot; alt=&quot;&quot; data-src=&quot;&quot;&gt;&lt;/div&gt;
+           &lt;div class=&quot;img-box&quot;&gt;&lt;img src=&quot;./images/404notfind.jfif&quot; alt=&quot;&quot; data-src=&quot;&quot;&gt;&lt;/div&gt;
+           &lt;div class=&quot;img-box&quot;&gt;&lt;img src=&quot;./images/404notfind.jfif&quot; alt=&quot;&quot; data-src=&quot;&quot;&gt;&lt;/div&gt;
+          &lt;/body&gt;
+          &lt;script&gt;
+
+           /*
+           图片懒加载
+           图片懒加载的原理主要是判断当前图片是否到了可视区域这一核心逻辑实现的。这样可以节省带宽，提高网页性能。传统的突破懒加载是通过监听 scroll 事件实现的，但是 scroll 事件会在很短的时间内触发很多次，严重影响页面性能。为提高页面性能，我们可以使用 IntersectionObserver 来实现图片懒加载。
+
+              IntersectionObserver是一个函数构造器,接收一个callback函数来监视处理相关变化,返回一个实例对象obsever
+                 obsever 对象的四个方法：
+                   1 observer.observe(target,option) (option可选参数)开启监视 监视多个元素则多次调用该方法
+                   2 observer.unobserve() 停止对象观察工作
+                   3 observer.disconnect(element) 停止特定元素监听
+                   4 observer.takeRecord() 返回所有观察对象数组
+                 当目标元素的可见性发生变化时，callback函数就会触发。一般来说会触发两次，一次是目标元素进入可视区，一次是完全离开可视区。
+                 callback(entries)参数entries包括监听成员，如果监听了两个就有两个成员。而被监听元素的属性如下：
+                   time:可见性发生变化的时间戳。单位为毫秒
+                   target:被观察的目标元素。
+                   isIntersecting:目标元素是否可见
+                   rootBounds:根元素的矩形区域信息,getBoundingClientRect()方法的返回值，如果没有根元素则(相对于视口滚动)返回null.
+                   boundingClientRect()：目标元素的矩形区域信息
+                   intersectionRect:目标元素与视口(或者根元素)的交叉区域信息。
+                   intersectionRatio:目标元素的可见区域比例,即intersectionRect占boundingClientRect的比例，完全可见为1完全不可见时小于等于0
+           */
+
+           let imgList = [&#39;https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg9.51tietu.net%2Fpic%2F2019-091403%2Fpwmijozrhiepwmijozrhie.jpg&amp;refer=http%3A%2F%2Fimg9.51tietu.net&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1640529171&amp;t=33be1f9cbdaeebae2c9f9ebe14ccf1b0&#39;, &#39;https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2018-06-08%2F5b1a2804f3893.jpg%3Fdown&amp;refer=http%3A%2F%2Fpic1.win4000.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1640529171&amp;t=d8e9a8edb72faec0cb75e8492bf2949c&#39;, &#39;https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2018-08-22%2F5b7cfb7f5d2b0.jpg&amp;refer=http%3A%2F%2Fpic1.win4000.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1640529171&amp;t=ac00da69aa5d82d6ca0ae27df8658edc&#39;,];
 
 </code></pre>
 </li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code>                 /**
-               解决折叠菜单后递归处理submenu，鼠标移入导致栈溢出的问题：在 递归的submenu外面套一层 div然后写入下面样式，对文字，右箭头进行隐藏处理
-                **/
-               // /deep/.el-menu--collapse &gt; div &gt; .el-submenu &gt; .el-submenu__title span &#123;
-               //   height: 0;
-               //   width: 0;
-               //   overflow: hidden;
-               //   visibility: hidden;
-               //   display: inline-block;
-               // &#125;
-               .el-menu--collapse &#123;
-                 &amp; .el-submenu__title,
-                 &amp; .el-menu-item &#123;
-                   &amp; span &#123;
-                     // height: 0;
-                     // width: 0;
-                     // overflow: hidden;
-                     // visibility: hidden;
-                     // display: inline-block;
-                     display: none;
-                   &#125;
+<pre><code>         /* 
+         1 获取全部的图片标签
+         2 定义元素进入可视区域变化的callback
+         3 实例化IntersectionObsever(callback) =&gt; observer
+         4 开启监听observer.observe(target)
 
-                   &amp; .el-submenu__icon-arrow &#123;
-                     display: none;
-                   &#125;
-                 &#125;
-               &#125;
-               // .el-menu--collapse
-               //   &gt; div
-               //   &gt; .el-submenu
-               //   &gt; .el-submenu__title
-              //   .el-submenu__icon-arrow &#123;
-              //   display: none;
-              // &#125;
-                   &#125;
-   ```</code></pre>
+         */
+
+         // 获取所以的图片标签
+         let imgs = document.querySelectorAll(&#39;img[data-src]&#39;)
+
+         // 定义callback函数
+         function callback(entries) &#123;
+           console.log(&#123; entries &#125;);
+           /* 
+            遍历被监视元素 如果进入了可视区域则替换src
+            替换src后则删除data-src属性 并且停止监听
+           */
+           entries.forEach(element =&gt; &#123;
+             if (element.isIntersecting) &#123;
+               element.target.src = imgList[2]
+
+               observe.unobserve(element.target)
+               element.target.removeAttribute(&#39;data-src&#39;)
+             &#125;
+           &#125;)
+         &#125;
+
+         // 实例化obseve
+         let observe = new IntersectionObserver(callback)
+
+         // 遍历图片数组进行监视
+         imgs.forEach(img =&gt; &#123;
+           // 
+           observe.observe(img)
+         &#125;)
+
+         &lt;/script&gt;
+
+         &lt;html&gt;</code></pre>
+<pre><code></code></pre>
 
       
     </div>
@@ -804,7 +644,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/09/%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/12/typeof%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
@@ -818,7 +658,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/10/09/%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6/" class="post-title-link" itemprop="url">点击事件执行机制</a>
+            <a href="/2021/11/12/typeof%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="post-title-link" itemprop="url">typeof的注意事项</a>
         </h2>
 
         <div class="post-meta">
@@ -829,7 +669,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-10-09 17:46:21 / 修改时间：17:47:16" itemprop="dateCreated datePublished" datetime="2021-10-09T17:46:21+08:00">2021-10-09</time>
+              <time title="创建时间：2021-11-12 10:39:32 / 修改时间：10:40:59" itemprop="dateCreated datePublished" datetime="2021-11-12T10:39:32+08:00">2021-11-12</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -852,8 +692,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    /* div &#123;</span><br><span class="line">      width: 100px;</span><br><span class="line">      height: 30px;</span><br><span class="line">      background-color: pink;</span><br><span class="line">    &#125; */</span><br><span class="line"></span><br><span class="line"><span class="css">    <span class="selector-class">.grandFather</span> &#123;</span></span><br><span class="line">      box-sizing: border-box;</span><br><span class="line">      width: 200px;</span><br><span class="line">      height: 200px;</span><br><span class="line"><span class="css">      <span class="selector-tag">border</span>: 2<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#333</span>;</span></span><br><span class="line">      background-color: pink;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="css">    <span class="selector-class">.father</span> &#123;</span></span><br><span class="line">      box-sizing: border-box;</span><br><span class="line">      width: 100px;</span><br><span class="line">      height: 100px;</span><br><span class="line"><span class="css">      <span class="selector-tag">border</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#333</span>;</span></span><br><span class="line">      /* background-color: transparent;</span><br><span class="line">       */</span><br><span class="line">      background-color: yellow;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="css">    <span class="selector-class">.son</span> &#123;</span></span><br><span class="line">      box-sizing: border-box;</span><br><span class="line">      width: 50px;</span><br><span class="line">      height: 50px;</span><br><span class="line"><span class="css">      <span class="selector-tag">border</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#333</span>;</span></span><br><span class="line">      /* background-color: transparent;</span><br><span class="line">       */</span><br><span class="line">      background-color: green;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /* li &#123;</span><br><span class="line">      width: 100px;</span><br><span class="line">      height: 30px;</span><br><span class="line">      background-color: green;</span><br><span class="line">    &#125; */</span><br><span class="line">  <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;grandFather&quot;</span>&gt;</span></span><br><span class="line">    grandfa</span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">span</span>&gt;</span>father<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;son&quot;</span>&gt;</span></span><br><span class="line">        son<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- &lt;ul&gt;</span></span><br><span class="line"><span class="comment">      &lt;li&gt;&lt;/li&gt;</span></span><br><span class="line"><span class="comment">      &lt;li&gt;&lt;/li&gt;</span></span><br><span class="line"><span class="comment">      &lt;li&gt;&lt;/li&gt;</span></span><br><span class="line"><span class="comment">    &lt;/ul&gt; --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> son = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.son&#x27;</span>);</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> father = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.father&#x27;</span>);</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> grandFather = <span class="built_in">document</span>.querySelector(<span class="string">&#x27;.grandFather&#x27;</span>);</span></span><br><span class="line"><span class="javascript">  <span class="comment">// son.onclick = function () &#123;</span></span></span><br><span class="line"><span class="javascript">  <span class="comment">//   console.log(&#x27;son-冒泡&#x27;);</span></span></span><br><span class="line"><span class="javascript">  <span class="comment">// &#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="javascript">  son.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">&#x27;son-冒泡&#x27;</span>);</span></span><br><span class="line"><span class="javascript">  &#125;, <span class="literal">false</span>)</span></span><br><span class="line"><span class="javascript">  son.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">&#x27;son-捕获&#x27;</span>);</span></span><br><span class="line"><span class="javascript">  &#125;, <span class="literal">true</span>)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="javascript">  father.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">&#x27;father-捕获&#x27;</span>);</span></span><br><span class="line"><span class="javascript">  &#125;, <span class="literal">true</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">  father.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">&#x27;father-冒泡&#x27;</span>);</span></span><br><span class="line"><span class="javascript">  &#125;, <span class="literal">false</span>)</span></span><br><span class="line"><span class="javascript">  <span class="comment">// father.onclick = function () &#123;</span></span></span><br><span class="line"><span class="javascript">  <span class="comment">//   console.log(&#x27;father-冒泡&#x27;);</span></span></span><br><span class="line"><span class="javascript">  <span class="comment">// &#125;</span></span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line"><span class="javascript">  grandFather.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">&#x27;grandFather-冒泡&#x27;</span>);</span></span><br><span class="line"><span class="javascript">  &#125;, <span class="literal">false</span>)</span></span><br><span class="line"><span class="javascript">  grandFather.addEventListener(<span class="string">&#x27;click&#x27;</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">&#x27;grandFather-捕获&#x27;</span>);</span></span><br><span class="line"><span class="javascript">  &#125;, <span class="literal">true</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">  <span class="comment">// 绑定在被点击元素的事件是按照代码顺序发生，其他元素通过冒泡或者捕获“感知”的事件，按照W3C的标准，先发生捕获事件，后发生冒泡事件。所有事件的顺序是：其他元素捕获阶段事件 -&gt; 本元素代码顺序事件 -&gt; 其他元素冒泡阶段事件 。注：谷歌浏览器最新版有更改，目标元素执行顺序为先执行捕获事件再执行冒泡事件</span></span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+          <h3 id="typeof注意事项"><a href="#typeof注意事项" class="headerlink" title="typeof注意事项"></a>typeof注意事项</h3><ul>
+<li><pre><code class="javascript">        // typeof 运算符返回一个操作后的字符串
+        var test = 1; typeof test == &#39;number&#39;; // true
+        var test = 1.2; typeof test == &#39;float&#39;; //false
+        var test = undefined; typeof test == &#39;undefined&#39;; //true
+        var test = &#123;&#125;; typeof test == &#39;object&#39;;//true
+        var test = &#39;4399&#39; - 0; typeof test == &#39;number&#39;; //true
+        var test = null; typeof test == &#39;object&#39;; //true
+        /*
+        typeof 输出的结果
+         Undefined =&gt; undefined
+         Null      =&gt; object //从javascript创立便如此。null为一个空指针。所以是对象结构
+         Boolean   =&gt; boolean
+         BigInt    =&gt; bigint
+         String    =&gt; string
+         Symbol    =&gt; symbol
+         Funciton  =&gt; funciton
+         其他任何对象   =&gt; object
 
+         注意：除了 Funciton 构造函数之外，其他任何构造函数构造的都是object
+        */</code></pre>
+</li>
+</ul>
 
       
     </div>
@@ -873,7 +734,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/10/TypeSrcipt-%E9%AB%98%E7%BA%A7%E7%B1%BB%E5%9E%8B/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/11/%E6%9C%89%E5%85%B3%E5%88%A4%E6%96%AD%E7%9A%84%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
@@ -887,7 +748,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/10/TypeSrcipt-%E9%AB%98%E7%BA%A7%E7%B1%BB%E5%9E%8B/" class="post-title-link" itemprop="url">TypeSrcipt-高级类型</a>
+            <a href="/2021/11/11/%E6%9C%89%E5%85%B3%E5%88%A4%E6%96%AD%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">有关判断的问题</a>
         </h2>
 
         <div class="post-meta">
@@ -897,15 +758,24 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-09-10 17:28:08" itemprop="dateCreated datePublished" datetime="2021-09-10T17:28:08+08:00">2021-09-10</time>
+              <time title="创建时间：2021-11-11 17:10:05" itemprop="dateCreated datePublished" datetime="2021-11-11T17:10:05+08:00">2021-11-11</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-13 10:05:57" itemprop="dateModified" datetime="2021-09-13T10:05:57+08:00">2021-09-13</time>
+                <time title="修改时间：2022-02-10 09:03:28" itemprop="dateModified" datetime="2022-02-10T09:03:28+08:00">2022-02-10</time>
               </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
 
           
 
@@ -918,80 +788,258 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="ts中的高级类型"><a href="#ts中的高级类型" class="headerlink" title="ts中的高级类型"></a>ts中的高级类型</h3><p><strong>是什么？</strong></p>
-<ul>
-<li>ts中除了string、number、boolean基础类型外，还声明了一些高级类型可以灵活运用在一些特定场景。帮助我们应对复杂的开发场景</li>
+          <h3 id="有关判等的问题"><a href="#有关判等的问题" class="headerlink" title="有关判等的问题"></a>有关判等的问题</h3><ul>
+<li><pre><code class="javascript">          console.log(([]) ? true : false);
+          console.log(([] == false ? true : false));
+          console.log((&#123; a: 2 &#125; == false) ? true : false);
+          /*
+          output: true true false
+          首先了解一下：Boolean()判断为false的情况
+           null、undefined、NaN、0、&#39;&#39;。其他情况下判断都为true
+          其次 == 在进行判断时会进行类型转换。而它一般喜欢转为数字
+          第一题:  Boolean([]) 为true
+          第二题: false 转为0, 而[]在进行数组转换前先转为&#39;&#39; 空字符串转为0 所以第二题是 0==0?true:false=》true
+          第三题: false转为0 而空对象转为 NaN，所以NaN==0?true:false =&gt;false
+          */</code></pre>
+</li>
+<li>‘&gt;’比较运算符是转为ASCII码来进行比较的</li>
+<li>==比较时，喜欢转为数字来进行比较。</li>
 </ul>
-<p><strong>有哪些？</strong></p>
-<ul>
-<li><p>ts中的高级类型主要有一下几种类型</p>
-<ul>
-<li>交叉类型</li>
-<li>联合类型</li>
-<li>类型别名</li>
-<li>类型索引</li>
-<li>类型约束</li>
-<li>映射类型</li>
-<li>条件类型</li>
-</ul>
-</li>
-<li><p>交叉类型</p>
-<ul>
-<li><p>用 &amp; 来定义，表示并的意思。将多个类型合并为一个类型</p>
-</li>
-<li><p>语法: T &amp; U,适用对象合并场景。</p>
-</li>
-<li><pre><code class="javascript">  function extend&lt;T,U&gt;(obj1:T,obj2:U):T &amp; U&#123;
-    let extendObj=&#123;&#125;
-    for(let k in obj1)&#123;
-      extendObj[k]=obj1[k]
-    &#125;
 
-    for(let j in obj2)&#123;
-      if(!extendObj.hasOwnProperty(j))&#123;
-        extendObj[j]=obj2[j]
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/09/%E5%8F%98%E9%87%8F%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E9%A2%84%E8%A7%A3%E6%9E%90%E6%8F%90%E5%8D%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="敲代码是件快乐的事情">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/09/%E5%8F%98%E9%87%8F%E3%80%81%E5%87%BD%E6%95%B0%E7%9A%84%E9%A2%84%E8%A7%A3%E6%9E%90%E6%8F%90%E5%8D%87/" class="post-title-link" itemprop="url">变量、函数的预解析提升</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-09 16:32:17" itemprop="dateCreated datePublished" datetime="2021-11-09T16:32:17+08:00">2021-11-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-17 16:37:50" itemprop="dateModified" datetime="2021-12-17T16:37:50+08:00">2021-12-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="变量、函数的预解析"><a href="#变量、函数的预解析" class="headerlink" title="变量、函数的预解析"></a>变量、函数的预解析</h3><ul>
+<li><p>```javascript</p>
+<pre><code>                   /* 
+            函数的作用域：只有函数有作用域，函数的作用域在函数声明写好时就已经确定了！
+            js的预解析: js并不是一味的从上到下执行。在执行之前会有个预解析过程。预解析就是变量、函数的声明会提升到当前作用域的顶部的过程
+               注意：!!!! 
+                1:当函数同名时，后提升的函数会覆盖前一个函数！！！
+                2：函数和变量重名时，只会提升函数，忽略变量 ！！！
+                3：函数表达式不会被提升！！！
+                4：预解析是分作用域的！！！
+                5： 条件式函数申明在不同浏览器中表现不同所以不要在条件表达中声明函数！！！
+            */
+
+            // 函数作用域的示例
+            var num = 123;
+            function foo1() &#123;
+              console.log(num);
+            &#125;
+
+            function foo2() &#123;
+              // console.log(num);
+              var num = 456;
+              foo1() // num=123
+            &#125;
+            foo2()
+
+            /* 
+             以下示例可正常执行。就是因为变量提升,函数的声明会提升到顶部。之后才是函数的调用
+            */
+            foo()
+            function foo() &#123;
+              console.log(&#39;我可以执行&#39;);
+            &#125;
+            /* 
+             函数表达式不会被提升！！！
+            */
+            (
+              function () &#123;
+                var x = foo();
+                // 函数表达式不会提升！！！
+                var foo = function foo() &#123;
+                  console.log(&#39;foo函数被执行了&#39;);
+                  return &#39;footbar&#39;
+                &#125;
+                foo()
+                console.log(&#123; x &#125;);
+                return x
+              &#125;
+            )()
+
+            // var x; 1
+            //  var foo  2
+            // x = foo() 3
+            //  function foo()&#123;
+
+            // &#125; 4</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- 补充:函数表达式不会提升并不是定义这个变量不会提升！</span><br><span class="line">  - &#96;&#96;&#96;javascript</span><br><span class="line">       console.log(fn()) &#x2F;&#x2F; 14</span><br><span class="line">       console.log(a()) &#x2F;&#x2F; error : a is not a function</span><br><span class="line">       var a&#x3D;function()&#123;</span><br><span class="line">        return  b&#x3D;12</span><br><span class="line"></span><br><span class="line">       &#125;</span><br><span class="line">       function fn()&#123;</span><br><span class="line">        return  c&#x3D;14</span><br><span class="line">       &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>上式a()打印报错是因为此时a只是一个变量 而不是函数所以报错</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(fn()) <span class="comment">// 14</span></span><br><span class="line"> <span class="built_in">console</span>.log(a) <span class="comment">// undefined</span></span><br><span class="line"> <span class="keyword">var</span> a=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span>  b=<span class="number">12</span></span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span>  c=<span class="number">14</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>上式 var a会进行变量提升 但是未赋值所以打印 undefined</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/05/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E5%85%B3%E7%B3%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="敲代码是件快乐的事情">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/05/%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F%E7%9A%84%E5%85%B3%E7%B3%BB/" class="post-title-link" itemprop="url">函数参数作用域和函数作用域的关系</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-05 17:47:11" itemprop="dateCreated datePublished" datetime="2021-11-05T17:47:11+08:00">2021-11-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-12-13 15:21:03" itemprop="dateModified" datetime="2021-12-13T15:21:03+08:00">2021-12-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="函数参数作用域和函数作用域的关系"><a href="#函数参数作用域和函数作用域的关系" class="headerlink" title="函数参数作用域和函数作用域的关系"></a>函数参数作用域和函数作用域的关系</h3><ul>
+<li>首先我们先看代码<ul>
+<li><pre><code class="javascript">    function m(a = &#39;aaa&#39;, n = function () 
+     &#123;
+          console.log(a); // &#39;aaa&#39;
+          a = &#39;bbb&#39;
+          console.log(a);  // &#39;bbb&#39;
+         &#125;) &#123;
+           var a = &#39;ccc&#39;
+           console.log(a); //&#39;ccc&#39;
+           n()
+           console.log(a);  // ccc
       &#125;
-    &#125;
-
-    return extendObj
-  &#125;
-
-  &lt;!-- interface IObj&lt;T&gt;&#123;
-
-</code></pre>
-</li>
+      m()
+      /* 
+       ccc
+       aaa
+       bbb
+       ccc
+      */</code></pre>
+<ul>
+<li>产生这种情况的原因是因为ES6中参数的默认值会产生一个参数作用域，并且该作用域与函数作用域是独立的。所以在函数体内是访问不到参数体内的变量</li>
+<li>但是，当我们在函数体内用let m=’ccc’时。会发现浏览器出现报错。为什么明明是两个独立作用域却还是会报错呢？</li>
+<li>后面在网上查看到了一个解释比较有信服力。下面让我们看下</li>
+<li>我们不希望这个函数只是因为给a参数加了默认值就报语法错误，所以就只好选择允许新作用域上产生一个重名变量。虽然var a和a参数实际是两个变量，我们又要保持原有的行为（即在var a声明之前访问a的结果就是a参数的值），这意味着var a的初始值必须就是a参数的初始值。最终就导致了题主的代码片段2这样看似诡异的结果。好在ES6的实践上我们已经不再使用var，而是全部转向let/const，所以在工程上避免了这种很让人confuse的情况。</li>
 </ul>
 </li>
-</ul>
-<pre><code>  &#125; --&gt;
-
-  extend()
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 联合类型</span><br><span class="line">  - 联合类型类似于或，表示几个类型中的一个，本质上是交的关系</span><br><span class="line">  - 语法：T|U</span><br><span class="line">  - &#96;&#96;&#96;javascript</span><br><span class="line">     type obj&#x3D;string|number;</span><br><span class="line">     let a:obj&#x3D;&#39;123&#39;</span><br><span class="line">     let b:obj&#x3D;123</span><br><span class="line">     let c:obj&#x3D;false &#x2F;&#x2F;error</span><br></pre></td></tr></table></figure></code></pre>
-<ul>
-<li><p>类型别名</p>
-<ul>
-<li>类型别名会给类型起个新名字，有点类似接口。但是可以作用于原始值,元组以及任何手写的类型。</li>
-<li>语法 type typename=someValidType</li>
-<li>```javascript<br>type variable=string | number<br> let a:variable=’123’<br> let b:variable=123<br> let c:variable=false //error<br> 此外：类型别名可以是泛型，可以是联合类型。交叉类型<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">- 类型索引</span><br><span class="line">  - 类型索引类似于Object.keys 用于获取一个接口中的所有key的联合类型。</span><br><span class="line">  - 语法 keyof interface</span><br><span class="line">  - &#96;&#96;&#96;javascript</span><br><span class="line">     interface IPerson&#123;</span><br><span class="line">       name:string</span><br><span class="line">       age:number</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     type keys&#x3D;keyof Iperson</span><br><span class="line">     &#x2F;&#x2F;等价于</span><br><span class="line">     type keys&#x3D; &#39;name&#39; | &#39;age&#39;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>类型约束</p>
-<ul>
-<li><p>通过关键字 <span style="color:red;font-weight:700;">extends</span> 来对类型进行约束，不同于类中使用extends的继承，泛型中使用extends的主要作用是对类型进行约束</p>
-</li>
-<li><p>```javascript<br>  type BaseType=string | number | boolean</p>
-<p>  function returnSelf<T extends basetype>(arg:T):T{</T></p>
-<pre><code>return arg</code></pre>
-<p>  }<br>  //表示 该函数参数只能是 string number boolean中的一种</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- 映射类型</span><br><span class="line">  - 利用关键词 in 来遍历已有接口的key或是联合类型。</span><br><span class="line">  - &#96;&#96;&#96;javascript</span><br><span class="line">         interface IPerson&#123;</span><br><span class="line">          name:string</span><br><span class="line">          age:number</span><br><span class="line">          status:false</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      type Readonly&lt;T&gt;&#x3D;&#123;</span><br><span class="line">       readonly [p in keyof T]:T[p]</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      let readonlyObj&#x3D;Readonly&lt;IPerson&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>条件类型</p>
-<ul>
-<li>条件类型的语法和三元表达式的语法规则一样，满足某种条件则输出对应的类型。经常用于一些类型不确定的情况</li>
-<li><pre><code class="javascript">   T extends U ? X:Y</code></pre>
-</li>
-<li>上面的意思是T是否是U的子集，是则输出X类型，否则输出Y类型</li>
 </ul>
 </li>
 </ul>
@@ -1014,7 +1062,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/03/Vue%E4%B8%AD%E7%9A%84nextTick/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/11/04/webpack%E5%8E%9F%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
@@ -1028,7 +1076,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/09/03/Vue%E4%B8%AD%E7%9A%84nextTick/" class="post-title-link" itemprop="url">Vue中的nextTick</a>
+            <a href="/2021/11/04/webpack%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">webpack原理</a>
         </h2>
 
         <div class="post-meta">
@@ -1037,16 +1085,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-09-03 10:38:06" itemprop="dateCreated datePublished" datetime="2021-09-03T10:38:06+08:00">2021-09-03</time>
+              <time title="创建时间：2021-11-04 22:22:58 / 修改时间：22:29:19" itemprop="dateCreated datePublished" datetime="2021-11-04T22:22:58+08:00">2021-11-04</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-09-15 18:25:05" itemprop="dateModified" datetime="2021-09-15T18:25:05+08:00">2021-09-15</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -1068,151 +1110,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="Vue中的-nextTick"><a href="#Vue中的-nextTick" class="headerlink" title="Vue中的$nextTick"></a>Vue中的$nextTick</h4><ul>
-<li>在vue中我们经常会遇到一个问题，当有时我们设置了数据值时，DOM视图数据并没有立马更新。又或者当我们给数据赋值后里面去查看数据，发现数据并没有更新。</li>
-<li>vue官网给出的解释：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">可能你还没有注意到，Vue 在更新 DOM 时是异步执行的。只要侦听到数据变化，Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据变更。如果同一个 watcher 被多次触发，只会被推入到队列中一次。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作是非常重要的。然后，在下一个的事件循环“tick”中，Vue 刷新队列并执行实际 (已去重的) 工作。Vue 在内部对异步队列尝试使用原生的 Promise.then、MutationObserver 和 setImmediate，如果执行环境不支持，则会采用 setTimeout(fn, 0) 代替。</span><br><span class="line"></span><br><span class="line">    也就是说我们在设置this.msg = &#x27;some thing&#x27;的时候，Vue并没有马上去更新DOM数据，而是将这个操作放进一个队列中；如果我们重复执行的话，队列还会进行去重操作；等待同一事件循环中的所有数据变化完成之后，会将队列中的事件拿出来处理。</span><br><span class="line"></span><br><span class="line">  这样做主要是为了提升性能，因为如果在主线程中更新DOM，循环100次就要更新100次DOM；但是如果等事件循环完成之后更新DOM，只需要更新1次。</span><br><span class="line"></span><br><span class="line">     为了在数据更新操作之后操作DOM，我们可以在数据变化之后立即使用Vue.nextTick(callback)；这样回调函数会  在DOM更新完成后被调用，就可以拿到最新的DOM元素了。</span><br></pre></td></tr></table></figure></li>
-<li>知道问题的原因了，只需我们调用this.$nextTick(()=&gt;{})，在函数回调中就可以拿到更新的数据了。</li>
-<li>那么vue中的$nextTick的执行原理呢？<br>1、 将所有的nextTick()中的回调函数push进callbacks数组，定义pending状态，控制每次只执行一个函数<br>2、内部做了一些判断浏览器环境来进行promise.then/MutationObservers/setImmediate/setTimeout降级操作来将这些任务放入微任务/宏任务队列等待执行<br>3、 等待同步任务执行完后，执行微任务/宏任务中的callbacks中的回调</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/09/02/async%E3%80%81await%E3%80%81promise%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
-      <meta itemprop="name" content="zzx">
-      <meta itemprop="description" content="敲代码是件快乐的事情">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zzx的个人博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/02/async%E3%80%81await%E3%80%81promise%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F/" class="post-title-link" itemprop="url">async、await、promise执行顺序</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-02 18:04:24" itemprop="dateCreated datePublished" datetime="2021-09-02T18:04:24+08:00">2021-09-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-12-16 16:39:46" itemprop="dateModified" datetime="2021-12-16T16:39:46+08:00">2021-12-16</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="async、await、promise执行的机制"><a href="#async、await、promise执行的机制" class="headerlink" title="async、await、promise执行的机制"></a>async、await、promise执行的机制</h3><ul>
-<li><p>首先话不多说直接看试题</p>
-<ul>
-<li><pre><code class="javascript">async function async1() &#123;
-console.log(&#39;async1 start&#39;); 
- await async2();
-
-  console.log(&#39;async1 end&#39;) 
-&#125;
-async function async2() &#123;
-  console.log(&#39;async2&#39;)   
-  //  return new Promise().then
-
-&#125;
-console.log(&#39;script start&#39;); 
-setTimeout(function () &#123;
-  console.log(&#39;setTimeout&#39;) 
-&#125;, 0);
-async1(); 
-new Promise(function (resolve) &#123;
-  console.log(&#39;promise1&#39;); 
-  resolve()
-&#125;).then(function () &#123;
-  console.log(&#39;promise2&#39;) 
-&#125;);
-console.log(&#39;script end&#39;)  
-
-/* 
-输出结果：
-1 script start
-2 async1 start
-3 async2
-4 promise1
-5 script end
-6 async1 end
-7 promise2
-8 setTimeout
-
-*/
-</code></pre>
-</li>
-</ul>
-</li>
-<li><p>知识点：</p>
-<ul>
-<li>async执行函数后会返回一个promise对象，如果函数返回的不是promise则会自行promise.reslove(函数的result)进行包装</li>
-<li>promise构建函数时同步任务，执行reslove步骤是异步微任务</li>
-<li>await的知识点:<ul>
-<li>和async搭配使用，用在async函数内部</li>
-<li>从右往左执行，先执行awiat右边的函数体，然后将执行的函数结果返回。遇到左边的await让出线程，所以会阻塞async函数体中await函数后面的代码执行<ul>
-<li>函数返回的结果有两种情况：<ul>
-<li>1结果为promise，则先执行async函数外部的所有同步函数，然后再把promise的参数作为await表达式的结果</li>
-<li>2结果为非promise，先执行async函数外部的所有同步函数,然后把这个结果作为await表达式的结果</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>输出流程:<ul>
-<li>首先执行同步代码,输出 script start (1)</li>
-<li>遇到定时器异步宏任务，推到异步队列中</li>
-<li>调用async1函数，输出 async1 start (2)</li>
-<li>继续执行async2函数 输出 async2 ，async2返回结果undefined (3)</li>
-<li>将async2的结果包装成 promise.resolve(undefined)，遇到左边的await,让出线程执行async1函数外部的同步代码</li>
-<li>new promise()构建promise为同步执行，所以输出 promise1  ( 4)，然后遇到resolve().then()，异步微任务，推到异步队列中</li>
-<li>执行同步代码 输出 script end (5)</li>
-<li>所有同步任务执行完毕，返回async1中的await，此时将promise.resolve(undefinde)推到异步队列中， await async2()已经执行完毕，执行后续代码，输出async end (6)</li>
-<li>同步代码已经执行完毕</li>
-<li>执行异步队列的微任务 输出promise2 (7) 执行async1中的async2()的promise微任务代码。</li>
-<li>执行定时器任务 输出 setTimeout (8)</li>
+          <h3 id="webpack打包的原理"><a href="#webpack打包的原理" class="headerlink" title="webpack打包的原理"></a>webpack打包的原理</h3><h4 id="手写一个简单的webapck"><a href="#手写一个简单的webapck" class="headerlink" title="手写一个简单的webapck"></a>手写一个简单的webapck</h4><ul>
+<li>准备工作：<ul>
+<li>新建一个项目名文件夹</li>
+<li>npm init -y 初始化一个项目</li>
+<li>根目录下建立一个 bin 文件夹</li>
+<li>在bin目录下建立一个打包的主程序js文件（文件名自定义）</li>
+<li>在主程序文件下顶部对该程序文件进行声明当前的运行环境为node #!/usr/bin/env node</li>
+<li>在package.json文件下进行bin节点的声明，建立自己的打包脚本指令，指定打包的文件路径。</li>
+<li>npm link 将自己打包程序文件链接到全局</li>
+<li>然后执行打包指令就可以在node环境下输出了</li>
 </ul>
 </li>
 </ul>
@@ -1234,7 +1141,7 @@ console.log(&#39;script end&#39;)
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1302,7 +1209,7 @@ console.log(&#39;script end&#39;)
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-count">75</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1315,7 +1222,7 @@ console.log(&#39;script end&#39;)
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-count">45</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1347,7 +1254,7 @@ console.log(&#39;script end&#39;)
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

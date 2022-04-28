@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="通过自定义指令实现图片懒加载说明  当项目中出现很多图片时，一下子全部加载出来会很耗费性能。我们可以通过图片懒加载，是图片进入可视区域时再进行加载。这样可以节省很多性能。 vue3中通过自定义指令来实现。结合intersectionObserver API，监听图片进入可视区域进行加载。然后将地址赋值给src。 代码 &#96;&#96;&#96;javascript &#x2F;*     扩展vue原有的功能：全局组件，自定义">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue3中通过自定义指令实现图片懒加载">
+<meta property="og:url" content="http://example.com/2022/01/14/vue3%E4%B8%AD%E9%80%9A%E8%BF%87%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/index.html">
+<meta property="og:site_name" content="zzx的个人博客">
+<meta property="og:description" content="通过自定义指令实现图片懒加载说明  当项目中出现很多图片时，一下子全部加载出来会很耗费性能。我们可以通过图片懒加载，是图片进入可视区域时再进行加载。这样可以节省很多性能。 vue3中通过自定义指令来实现。结合intersectionObserver API，监听图片进入可视区域进行加载。然后将地址赋值给src。 代码 &#96;&#96;&#96;javascript &#x2F;*     扩展vue原有的功能：全局组件，自定义">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-01-14T01:23:25.000Z">
+<meta property="article:modified_time" content="2022-01-26T01:08:04.672Z">
+<meta property="article:author" content="zzx">
+<meta property="article:tag" content="图片懒加载">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/01/14/vue3%E4%B8%AD%E9%80%9A%E8%BF%87%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>vue3中通过自定义指令实现图片懒加载 | zzx的个人博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">zzx的个人博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/14/vue3%E4%B8%AD%E9%80%9A%E8%BF%87%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+      <meta itemprop="name" content="zzx">
+      <meta itemprop="description" content="敲代码是件快乐的事情">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zzx的个人博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          vue3中通过自定义指令实现图片懒加载
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-01-14 09:23:25" itemprop="dateCreated datePublished" datetime="2022-01-14T09:23:25+08:00">2022-01-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-26 09:08:04" itemprop="dateModified" datetime="2022-01-26T09:08:04+08:00">2022-01-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%89%8D%E7%AB%AF/" itemprop="url" rel="index"><span itemprop="name">前端</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="通过自定义指令实现图片懒加载"><a href="#通过自定义指令实现图片懒加载" class="headerlink" title="通过自定义指令实现图片懒加载"></a>通过自定义指令实现图片懒加载</h3><p><strong>说明</strong></p>
+<ul>
+<li>当项目中出现很多图片时，一下子全部加载出来会很耗费性能。我们可以通过图片懒加载，是图片进入可视区域时再进行加载。这样可以节省很多性能。</li>
+<li>vue3中通过自定义指令来实现。结合intersectionObserver API，监听图片进入可视区域进行加载。然后将地址赋值给src。</li>
+<li>代码<ul>
+<li>```javascript <pre><code>/* </code></pre>
+   扩展vue原有的功能：全局组件，自定义指令，挂载原型方法，注意：没有全局过滤器。<br>   这就是插件<br>   vue2.0插件写法要素：导出一个对象，有install函数，默认传入了Vue构造函数，Vue基础之上扩展<br>   vue3.0插件写法要素：导出一个对象，有install函数，默认传入了app应用实例，app基础之上扩展<br>  */<br>  // 导入骨架屏组件<br>  import Skeleton from ‘@/components/lib/skeleton/index.vue’;<br>  // 导入轮播图组件<br>  import Carousel from ‘@/components/lib/carousel/index.vue’;<br>  // 导入查看更多组件<br>  import More from ‘@/components/lib/more/index.vue’;<br>  // 导入自定义的图片懒加载指令函数<br>  import defineDirective from ‘@/components/lib/v-lazy’;<br>  export default {<pre><code>// 在app上进行扩展，app提供 component directive 函数
+// 如果要挂载原型 app.config.globalProperties 方式
+install(app) &#123;
+  // 挂载全局组件
+  app.component(Skeleton.name, Skeleton);
+  app.component(Carousel.name, Carousel);
+  app.component(More.name, More);
+  // 自定义指令实现图片懒加载
+  defineDirective(app);
+&#125;,</code></pre>
+  };<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">- defineDirective函数中代码</span><br><span class="line">  - &#96;&#96;&#96;javascript</span><br><span class="line">           &#x2F;&#x2F; 导入默认图片</span><br><span class="line">       import defaultImg from &#39;@&#x2F;assets&#x2F;images&#x2F;defaultImg.png&#39;;</span><br><span class="line">       &#x2F;* </span><br><span class="line">       自定义指令实现图片懒加载：</span><br><span class="line">       1 通过自定义指令实现图片懒加载的效果可以解决图片资源过多时性能消耗</span><br><span class="line">       2 自定义指令的实现</span><br><span class="line">         2.1 全局的自定义指令v-lazy vue3.0中使用Vue.directive(指令名,配置对象) vue2.0中使用Vue.directive（）</span><br><span class="line">         2.2 配置项中使用钩子函数来监听元素的挂载完成 vue2.0中inserted钩子、vue3.0的钩子与组件的钩子函数相同 mounted(el,binding) el:自       定义指令的元素 binding:v-lazy&#x3D;&quot;值&quot; v-lazy可以传入值，而在mounted中我们可以通过binding.value获取传入的值</span><br><span class="line">         2.3 通过IntersectionObserver来监听 el 是否进入可视区域</span><br><span class="line">         2.4 进入可视区域 停止对元素的监听，替换图片元素el.src&#x3D;binding.value</span><br><span class="line">       3 实现图片加载失败时显示默认图片来处理图片加载失败的情况</span><br><span class="line">         3.1 图片加载的函数 onload加载成功 onerror加载失败</span><br><span class="line">         3.2 加载失败时 el.src&#x3D;defaultImage</span><br><span class="line">       *&#x2F;</span><br><span class="line">       const defineDirective &#x3D; (app) &#x3D;&gt; &#123;</span><br><span class="line">         &#x2F;&#x2F;1 注册一个 全局的自定义指令v-lazy vue3.0中使用Vue.directive(指令名,配置对象) vue2.0中使用Vue.directive（）</span><br><span class="line">         app.directive(&#39;lazy&#39;, &#123;</span><br><span class="line">           &#x2F;&#x2F;监听元素的挂载</span><br><span class="line">           mounted(el, binding) &#123;</span><br><span class="line">             &#x2F;&#x2F; interSection实例</span><br><span class="line">             const Observer &#x3D; new IntersectionObserver(</span><br><span class="line">               ([&#123; isIntersecting &#125;]) &#x3D;&gt; &#123;</span><br><span class="line">                 &#x2F;&#x2F; 进入可视区域，停止观察。将src替换为传入的地址</span><br><span class="line">                 if (isIntersecting) &#123;</span><br><span class="line">                   Observer.unobserve(el); &#x2F;&#x2F;停止监听</span><br><span class="line">                   el.src &#x3D; binding.value; &#x2F;&#x2F;替换为真实的地址</span><br><span class="line">                   &#x2F;&#x2F; 利用onerror函数处理图片加载失败的情况</span><br><span class="line">                   el.onerror &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">                     el.src &#x3D; defaultImg;</span><br><span class="line">                   &#125;;</span><br><span class="line">                 &#125;</span><br><span class="line">               &#125;,</span><br><span class="line">               &#123;</span><br><span class="line">                 threshold: 0, &#x2F;&#x2F;设置判断是否进入可视区域的门槛:元素与可视区的相交比例 0~1</span><br><span class="line">               &#125;,</span><br><span class="line">             );</span><br><span class="line">       </span><br><span class="line">             &#x2F;&#x2F; 开启监听</span><br><span class="line">             Observer.observe(el);</span><br><span class="line">           &#125;,</span><br><span class="line">         &#125;);</span><br><span class="line">       &#125;;</span><br><span class="line">      </span><br><span class="line">       export default defineDirective;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>在模板中图片标签中使用<ul>
+<li><pre><code class="vue"> &lt;template&gt;
+ &lt;img v-lazy=&quot;http://xxx&quot;&gt;
+ &lt;/template&gt;</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD/" rel="tag"># 图片懒加载</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/12/25/%E5%89%8D%E7%AB%AF%E8%87%AA%E5%8A%A8%E5%8C%96%E5%AF%BC%E5%85%A5%E6%96%87%E4%BB%B6/" rel="prev" title="前端自动化导入文件">
+      <i class="fa fa-chevron-left"></i> 前端自动化导入文件
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/18/vue3%E4%B8%AD%E4%BD%BF%E7%94%A8render%E5%87%BD%E6%95%B0%E6%9D%A5%E6%B8%B2%E6%9F%93%E7%BB%84%E4%BB%B6/" rel="next" title="vue3中使用render函数来渲染组件">
+      vue3中使用render函数来渲染组件 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E6%87%92%E5%8A%A0%E8%BD%BD"><span class="nav-number">1.</span> <span class="nav-text">通过自定义指令实现图片懒加载</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="zzx"
+      src="/images/%E7%8B%97%E5%AD%90%E5%A4%B4%E5%83%8F1.jpg">
+  <p class="site-author-name" itemprop="name">zzx</p>
+  <div class="site-description" itemprop="description">敲代码是件快乐的事情</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">75</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">45</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zzx-Sll" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zzx-Sll" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zzx</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
